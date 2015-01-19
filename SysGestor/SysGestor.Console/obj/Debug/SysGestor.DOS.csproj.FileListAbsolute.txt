@@ -1,0 +1,8 @@
+G:\github\sysgestor\SysGestor\SysGestor.Console\obj\Debug\SysGestor.DOS.csprojResolveAssemblyReference.cache
+G:\github\sysgestor\SysGestor\SysGestor.Console\obj\Debug\SysGestor.Console.exe
+G:\github\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.Console.exe.config
+G:\github\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.Console.exe
+G:\github\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.Console.pdb
+G:\github\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.DAL.dll
+G:\github\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.DAL.pdb
+G:\github\sysgestor\SysGestor\SysGestor.Console\obj\Debug\SysGestor.Console.pdb

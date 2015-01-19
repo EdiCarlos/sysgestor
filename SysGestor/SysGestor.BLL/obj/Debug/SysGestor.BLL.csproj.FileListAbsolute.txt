@@ -1,0 +1,4 @@
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.BLL.dll
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.BLL.pdb
+G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.dll
+G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.pdb
