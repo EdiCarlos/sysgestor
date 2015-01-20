@@ -1,4 +1,9 @@
 G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.BLL.dll
 G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.BLL.pdb
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DAL.dll
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DTO.dll
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DAL.pdb
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DTO.pdb
+G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.csprojResolveAssemblyReference.cache
 G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.dll
 G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.pdb

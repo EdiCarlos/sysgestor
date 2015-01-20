@@ -49,9 +49,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SysGestor.BLL\SysGestor.BLL.csproj">
+      <Project>{fc8bf5d8-84b8-4b8e-a402-aae662468366}</Project>
+      <Name>SysGestor.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SysGestor.DAL\SysGestor.DAL.csproj">
       <Project>{6d5ac572-e89a-4949-85a0-0a08cd1ac2d6}</Project>
       <Name>SysGestor.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysGestor.DTO\SysGestor.DTO.csproj">
+      <Project>{53dcd568-65b9-46ec-8d08-549a6ac50822}</Project>
+      <Name>SysGestor.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

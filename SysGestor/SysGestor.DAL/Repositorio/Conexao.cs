@@ -30,5 +30,10 @@ namespace SysGestor.DAL.Repositorio
             return dr;
         }
 
+
+        internal static MySqlDataReader Selecionar(MySqlCommand comando)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

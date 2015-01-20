@@ -1,5 +1,7 @@
 G:\github\sysgestor\SysGestor\SysGestor.DAL\bin\Debug\SysGestor.DAL.dll
 G:\github\sysgestor\SysGestor\SysGestor.DAL\bin\Debug\SysGestor.DAL.pdb
+G:\github\sysgestor\SysGestor\SysGestor.DAL\bin\Debug\SysGestor.DTO.dll
+G:\github\sysgestor\SysGestor\SysGestor.DAL\bin\Debug\SysGestor.DTO.pdb
+G:\github\sysgestor\SysGestor\SysGestor.DAL\obj\Debug\SysGestor.DAL.csprojResolveAssemblyReference.cache
 G:\github\sysgestor\SysGestor\SysGestor.DAL\obj\Debug\SysGestor.DAL.dll
 G:\github\sysgestor\SysGestor\SysGestor.DAL\obj\Debug\SysGestor.DAL.pdb
-G:\github\sysgestor\SysGestor\SysGestor.DAL\obj\Debug\SysGestor.DAL.csprojResolveAssemblyReference.cache

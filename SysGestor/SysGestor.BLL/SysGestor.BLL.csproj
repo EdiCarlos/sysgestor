@@ -39,7 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SysGestor.DAL\SysGestor.DAL.csproj">
+      <Project>{6d5ac572-e89a-4949-85a0-0a08cd1ac2d6}</Project>
+      <Name>SysGestor.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysGestor.DTO\SysGestor.DTO.csproj">
+      <Project>{53dcd568-65b9-46ec-8d08-549a6ac50822}</Project>
+      <Name>SysGestor.DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

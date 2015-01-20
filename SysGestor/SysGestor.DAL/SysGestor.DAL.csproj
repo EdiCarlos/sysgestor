@@ -41,14 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PessoaDal\ClienteDal\ClienteDal.cs" />
+    <Compile Include="PessoaDal\PessoaDal.cs" />
     <Compile Include="Repositorio\Conexao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Cliente\" />
-    <Folder Include="Fornecedor\" />
-    <Folder Include="Pedido\" />
-    <Folder Include="Produto\" />
+    <Folder Include="FornecedorDal\" />
+    <Folder Include="PedidoDal\" />
+    <Folder Include="ProdutoDal\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SysGestor.DTO\SysGestor.DTO.csproj">
+      <Project>{53dcd568-65b9-46ec-8d08-549a6ac50822}</Project>
+      <Name>SysGestor.DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
