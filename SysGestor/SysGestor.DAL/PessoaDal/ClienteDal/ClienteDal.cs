@@ -10,16 +10,17 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
     public class ClienteDal
     {
 
-        public void Inserir(int idPessoa)
+        public void Inserir(ClienteDto clienteDto, int idPessoa)
         {
             try
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "INSERT INTO cliente(idpessoa) " +
-                                      "VALUES (@IdPessoa)";
+                comando.CommandText = "INSERT INTO cliente(limitecredito, idpessoa) " +
+                                      "VALUES (@LimiteCredito, @IdPessoa)";
 
                 comando.Parameters.AddWithValue("@IdPessoa", idPessoa);
+                comando.Parameters.AddWithValue("@LimiteCredito", clienteDto.LimiteCredito);
 
                 Conexao.Crud(comando);
             }
@@ -35,7 +36,7 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idcliente " +
+                comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idcliente, limitecredito " +
                                       "FROM pessoa A " +
                                       "INNER JOIN cliente B ON A.idpessoa = B.idpessoa "
                                     + "WHERE B.idcliente = @IdCliente";

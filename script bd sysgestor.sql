@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `SysGestor`.`pessoa` (
   `cpfcnpj` VARCHAR(20) NULL,
   `rgie` VARCHAR(20) NULL,
   `datanascimento` DATE NULL,
-  `datacadastro` DATETIME NULL,
+  `datacadastro` DATE NULL,
   `ativo` INT NOT NULL DEFAULT 0,
   `observacao` LONGTEXT NULL,
   PRIMARY KEY (`idpessoa`))
@@ -102,7 +102,6 @@ CREATE TABLE IF NOT EXISTS `SysGestor`.`usuario` (
   `idusuario` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  `ativo` INT NOT NULL DEFAULT 0,
   `idperfil` INT NOT NULL,
   `idpessoa` INT NOT NULL,
   PRIMARY KEY (`idusuario`),
@@ -249,6 +248,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SysGestor`.`cliente` (
   `idcliente` INT NOT NULL AUTO_INCREMENT,
+  `limitecredito` DOUBLE NULL,
   `idpessoa` INT NOT NULL,
   PRIMARY KEY (`idcliente`),
   INDEX `fk_cliente_pessoa1_idx` (`idpessoa` ASC),

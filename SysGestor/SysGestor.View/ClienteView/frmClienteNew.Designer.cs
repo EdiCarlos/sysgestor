@@ -32,18 +32,18 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.groupBoxDados = new System.Windows.Forms.GroupBox();
             this.btnDebito = new System.Windows.Forms.Button();
+            this.lblDebito = new System.Windows.Forms.Label();
             this.lblLimiteDisponivel = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLimiteCredito = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.mskCpfCnpj = new System.Windows.Forms.MaskedTextBox();
             this.mskDataNasc = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxTipoPessoa = new System.Windows.Forms.GroupBox();
             this.rbJuridica = new System.Windows.Forms.RadioButton();
             this.rbFisica = new System.Windows.Forms.RadioButton();
             this.txtRgIe = new System.Windows.Forms.TextBox();
-            this.txtCpfCnpj = new System.Windows.Forms.TextBox();
             this.lblRgIe = new System.Windows.Forms.Label();
             this.lblCpfCnpj = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -90,9 +90,9 @@
             this.lblNomeRazaoSocial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomeRazaoSocial.Location = new System.Drawing.Point(16, 72);
             this.lblNomeRazaoSocial.Name = "lblNomeRazaoSocial";
-            this.lblNomeRazaoSocial.Size = new System.Drawing.Size(49, 17);
+            this.lblNomeRazaoSocial.Size = new System.Drawing.Size(60, 17);
             this.lblNomeRazaoSocial.TabIndex = 0;
-            this.lblNomeRazaoSocial.Text = "Nome";
+            this.lblNomeRazaoSocial.Text = "Nome *";
             // 
             // txtNome
             // 
@@ -102,21 +102,21 @@
             this.txtNome.Location = new System.Drawing.Point(19, 90);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(370, 24);
-            this.txtNome.TabIndex = 1;
+            this.txtNome.TabIndex = 0;
             // 
             // groupBoxDados
             // 
             this.groupBoxDados.Controls.Add(this.btnDebito);
+            this.groupBoxDados.Controls.Add(this.lblDebito);
             this.groupBoxDados.Controls.Add(this.lblLimiteDisponivel);
-            this.groupBoxDados.Controls.Add(this.textBox4);
             this.groupBoxDados.Controls.Add(this.label5);
             this.groupBoxDados.Controls.Add(this.label4);
-            this.groupBoxDados.Controls.Add(this.textBox1);
+            this.groupBoxDados.Controls.Add(this.txtLimiteCredito);
             this.groupBoxDados.Controls.Add(this.label3);
+            this.groupBoxDados.Controls.Add(this.mskCpfCnpj);
             this.groupBoxDados.Controls.Add(this.mskDataNasc);
             this.groupBoxDados.Controls.Add(this.groupBoxTipoPessoa);
             this.groupBoxDados.Controls.Add(this.txtRgIe);
-            this.groupBoxDados.Controls.Add(this.txtCpfCnpj);
             this.groupBoxDados.Controls.Add(this.txtNome);
             this.groupBoxDados.Controls.Add(this.lblRgIe);
             this.groupBoxDados.Controls.Add(this.lblCpfCnpj);
@@ -125,7 +125,7 @@
             this.groupBoxDados.Location = new System.Drawing.Point(12, 97);
             this.groupBoxDados.Name = "groupBoxDados";
             this.groupBoxDados.Size = new System.Drawing.Size(782, 185);
-            this.groupBoxDados.TabIndex = 2;
+            this.groupBoxDados.TabIndex = 0;
             this.groupBoxDados.TabStop = false;
             this.groupBoxDados.Text = "Dados";
             // 
@@ -134,30 +134,31 @@
             this.btnDebito.Location = new System.Drawing.Point(708, 127);
             this.btnDebito.Name = "btnDebito";
             this.btnDebito.Size = new System.Drawing.Size(66, 39);
-            this.btnDebito.TabIndex = 8;
+            this.btnDebito.TabIndex = 7;
             this.btnDebito.Text = "Débitos";
             this.btnDebito.UseVisualStyleBackColor = true;
+            // 
+            // lblDebito
+            // 
+            this.lblDebito.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDebito.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblDebito.Location = new System.Drawing.Point(534, 140);
+            this.lblDebito.Name = "lblDebito";
+            this.lblDebito.Size = new System.Drawing.Size(167, 25);
+            this.lblDebito.TabIndex = 6;
+            this.lblDebito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblLimiteDisponivel
             // 
             this.lblLimiteDisponivel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblLimiteDisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLimiteDisponivel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblLimiteDisponivel.Location = new System.Drawing.Point(346, 140);
+            this.lblLimiteDisponivel.Location = new System.Drawing.Point(348, 140);
             this.lblLimiteDisponivel.Name = "lblLimiteDisponivel";
             this.lblLimiteDisponivel.Size = new System.Drawing.Size(167, 25);
-            this.lblLimiteDisponivel.TabIndex = 4;
+            this.lblLimiteDisponivel.TabIndex = 5;
             this.lblLimiteDisponivel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.Red;
-            this.textBox4.Location = new System.Drawing.Point(536, 140);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(166, 24);
-            this.textBox4.TabIndex = 5;
             // 
             // label5
             // 
@@ -179,15 +180,15 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Limite Disponível";
             // 
-            // textBox1
+            // txtLimiteCredito
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.DarkBlue;
-            this.textBox1.Location = new System.Drawing.Point(162, 140);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 24);
-            this.textBox1.TabIndex = 5;
+            this.txtLimiteCredito.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLimiteCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLimiteCredito.ForeColor = System.Drawing.Color.DarkBlue;
+            this.txtLimiteCredito.Location = new System.Drawing.Point(163, 140);
+            this.txtLimiteCredito.Name = "txtLimiteCredito";
+            this.txtLimiteCredito.Size = new System.Drawing.Size(166, 24);
+            this.txtLimiteCredito.TabIndex = 4;
             // 
             // label3
             // 
@@ -198,6 +199,17 @@
             this.label3.Size = new System.Drawing.Size(108, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "Limite Crédito";
+            // 
+            // mskCpfCnpj
+            // 
+            this.mskCpfCnpj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mskCpfCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskCpfCnpj.ForeColor = System.Drawing.Color.DarkBlue;
+            this.mskCpfCnpj.Location = new System.Drawing.Point(400, 90);
+            this.mskCpfCnpj.Mask = "000.000.000-00";
+            this.mskCpfCnpj.Name = "mskCpfCnpj";
+            this.mskCpfCnpj.Size = new System.Drawing.Size(180, 24);
+            this.mskCpfCnpj.TabIndex = 1;
             // 
             // mskDataNasc
             // 
@@ -217,7 +229,7 @@
             this.groupBoxTipoPessoa.Location = new System.Drawing.Point(19, 24);
             this.groupBoxTipoPessoa.Name = "groupBoxTipoPessoa";
             this.groupBoxTipoPessoa.Size = new System.Drawing.Size(234, 45);
-            this.groupBoxTipoPessoa.TabIndex = 2;
+            this.groupBoxTipoPessoa.TabIndex = 4;
             this.groupBoxTipoPessoa.TabStop = false;
             this.groupBoxTipoPessoa.Text = "Tipo Pessoa";
             // 
@@ -229,7 +241,7 @@
             this.rbJuridica.Location = new System.Drawing.Point(132, 15);
             this.rbJuridica.Name = "rbJuridica";
             this.rbJuridica.Size = new System.Drawing.Size(77, 22);
-            this.rbJuridica.TabIndex = 0;
+            this.rbJuridica.TabIndex = 1;
             this.rbJuridica.Text = "Jurídica";
             this.rbJuridica.UseVisualStyleBackColor = true;
             this.rbJuridica.CheckedChanged += new System.EventHandler(this.rbJuridica_CheckedChanged);
@@ -257,17 +269,7 @@
             this.txtRgIe.Location = new System.Drawing.Point(594, 90);
             this.txtRgIe.Name = "txtRgIe";
             this.txtRgIe.Size = new System.Drawing.Size(180, 24);
-            this.txtRgIe.TabIndex = 1;
-            // 
-            // txtCpfCnpj
-            // 
-            this.txtCpfCnpj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCpfCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCpfCnpj.ForeColor = System.Drawing.Color.DarkBlue;
-            this.txtCpfCnpj.Location = new System.Drawing.Point(401, 90);
-            this.txtCpfCnpj.Name = "txtCpfCnpj";
-            this.txtCpfCnpj.Size = new System.Drawing.Size(180, 24);
-            this.txtCpfCnpj.TabIndex = 1;
+            this.txtRgIe.TabIndex = 2;
             // 
             // lblRgIe
             // 
@@ -318,16 +320,18 @@
             this.groupBoxEndereco.Location = new System.Drawing.Point(12, 288);
             this.groupBoxEndereco.Name = "groupBoxEndereco";
             this.groupBoxEndereco.Size = new System.Drawing.Size(782, 185);
-            this.groupBoxEndereco.TabIndex = 3;
+            this.groupBoxEndereco.TabIndex = 1;
             this.groupBoxEndereco.TabStop = false;
             this.groupBoxEndereco.Text = "Endereço";
             // 
             // cmbCidade
             // 
+            this.cmbCidade.DropDownHeight = 180;
             this.cmbCidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCidade.ForeColor = System.Drawing.Color.DarkBlue;
             this.cmbCidade.FormattingEnabled = true;
+            this.cmbCidade.IntegralHeight = false;
             this.cmbCidade.Location = new System.Drawing.Point(109, 139);
             this.cmbCidade.Name = "cmbCidade";
             this.cmbCidade.Size = new System.Drawing.Size(358, 26);
@@ -335,14 +339,19 @@
             // 
             // cmbUf
             // 
+            this.cmbUf.DropDownHeight = 180;
             this.cmbUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUf.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUf.ForeColor = System.Drawing.Color.DarkBlue;
             this.cmbUf.FormattingEnabled = true;
+            this.cmbUf.IntegralHeight = false;
+            this.cmbUf.ItemHeight = 18;
             this.cmbUf.Location = new System.Drawing.Point(18, 139);
             this.cmbUf.Name = "cmbUf";
             this.cmbUf.Size = new System.Drawing.Size(75, 26);
-            this.cmbUf.TabIndex = 6;
+            this.cmbUf.TabIndex = 5;
+            this.cmbUf.SelectedIndexChanged += new System.EventHandler(this.cmbUf_SelectedIndexChanged);
             // 
             // txtComplemento
             // 
@@ -352,7 +361,7 @@
             this.txtComplemento.Location = new System.Drawing.Point(19, 88);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(234, 24);
-            this.txtComplemento.TabIndex = 5;
+            this.txtComplemento.TabIndex = 3;
             // 
             // label7
             // 
@@ -372,7 +381,7 @@
             this.txtNumero.Location = new System.Drawing.Point(595, 35);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(180, 24);
-            this.txtNumero.TabIndex = 5;
+            this.txtNumero.TabIndex = 2;
             this.txtNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label8
@@ -381,9 +390,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(591, 17);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 17);
+            this.label8.Size = new System.Drawing.Size(75, 17);
             this.label8.TabIndex = 4;
-            this.label8.Text = "Número";
+            this.label8.Text = "Número *";
             // 
             // mskCep
             // 
@@ -394,7 +403,7 @@
             this.mskCep.Mask = "00000-000";
             this.mskCep.Name = "mskCep";
             this.mskCep.Size = new System.Drawing.Size(125, 24);
-            this.mskCep.TabIndex = 3;
+            this.mskCep.TabIndex = 7;
             // 
             // txtBairro
             // 
@@ -404,7 +413,7 @@
             this.txtBairro.Location = new System.Drawing.Point(275, 88);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(499, 24);
-            this.txtBairro.TabIndex = 1;
+            this.txtBairro.TabIndex = 4;
             // 
             // txtLogradouro
             // 
@@ -422,9 +431,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(272, 70);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 17);
+            this.label9.Size = new System.Drawing.Size(63, 17);
             this.label9.TabIndex = 0;
-            this.label9.Text = "Bairro";
+            this.label9.Text = "Bairro *";
             // 
             // label10
             // 
@@ -432,9 +441,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(15, 17);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(92, 17);
+            this.label10.Size = new System.Drawing.Size(103, 17);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Logradouro";
+            this.label10.Text = "Logradouro *";
             // 
             // label6
             // 
@@ -452,9 +461,9 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(488, 121);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(38, 17);
+            this.label11.Size = new System.Drawing.Size(49, 17);
             this.label11.TabIndex = 0;
-            this.label11.Text = "CEP";
+            this.label11.Text = "CEP *";
             // 
             // label12
             // 
@@ -479,7 +488,7 @@
             this.groupBoxContato.Location = new System.Drawing.Point(12, 480);
             this.groupBoxContato.Name = "groupBoxContato";
             this.groupBoxContato.Size = new System.Drawing.Size(782, 79);
-            this.groupBoxContato.TabIndex = 4;
+            this.groupBoxContato.TabIndex = 2;
             this.groupBoxContato.TabStop = false;
             this.groupBoxContato.Text = "Contato";
             // 
@@ -492,7 +501,7 @@
             this.mskTelComercial.Mask = "(00)0000-0000";
             this.mskTelComercial.Name = "mskTelComercial";
             this.mskTelComercial.Size = new System.Drawing.Size(125, 24);
-            this.mskTelComercial.TabIndex = 3;
+            this.mskTelComercial.TabIndex = 2;
             // 
             // mskCelular
             // 
@@ -503,7 +512,7 @@
             this.mskCelular.Mask = "(00)00000-0000";
             this.mskCelular.Name = "mskCelular";
             this.mskCelular.Size = new System.Drawing.Size(125, 24);
-            this.mskCelular.TabIndex = 3;
+            this.mskCelular.TabIndex = 1;
             // 
             // mskTelFixo
             // 
@@ -514,7 +523,7 @@
             this.mskTelFixo.Mask = "(00)0000-0000";
             this.mskTelFixo.Name = "mskTelFixo";
             this.mskTelFixo.Size = new System.Drawing.Size(125, 24);
-            this.mskTelFixo.TabIndex = 3;
+            this.mskTelFixo.TabIndex = 0;
             // 
             // label15
             // 
@@ -534,7 +543,7 @@
             this.txtEmail.Location = new System.Drawing.Point(450, 42);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(324, 24);
-            this.txtEmail.TabIndex = 1;
+            this.txtEmail.TabIndex = 3;
             // 
             // label14
             // 
@@ -575,7 +584,7 @@
             this.txtObservacao.Multiline = true;
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.Size = new System.Drawing.Size(782, 45);
-            this.txtObservacao.TabIndex = 5;
+            this.txtObservacao.TabIndex = 4;
             // 
             // label17
             // 
@@ -637,7 +646,13 @@
             this.Controls.Add(this.groupBoxContato);
             this.Controls.Add(this.groupBoxEndereco);
             this.Controls.Add(this.groupBoxDados);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(822, 677);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(822, 677);
             this.Name = "frmClienteNew";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar - Cliente";
             this.Load += new System.EventHandler(this.frmClienteNew_Load);
             this.groupBoxDados.ResumeLayout(false);
@@ -663,15 +678,13 @@
         private System.Windows.Forms.RadioButton rbJuridica;
         private System.Windows.Forms.RadioButton rbFisica;
         private System.Windows.Forms.TextBox txtRgIe;
-        private System.Windows.Forms.TextBox txtCpfCnpj;
         private System.Windows.Forms.Label lblRgIe;
         private System.Windows.Forms.Label lblCpfCnpj;
         private System.Windows.Forms.MaskedTextBox mskDataNasc;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLimiteCredito;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblLimiteDisponivel;
         private System.Windows.Forms.GroupBox groupBoxEndereco;
@@ -705,5 +718,7 @@
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Label lblDebito;
+        private System.Windows.Forms.MaskedTextBox mskCpfCnpj;
     }
 }

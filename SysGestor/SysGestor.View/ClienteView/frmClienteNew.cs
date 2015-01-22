@@ -1,4 +1,6 @@
 ﻿using SysGestor.BLL;
+using SysGestor.BLL.PessoaBll;
+using SysGestor.DTO.PessoaDto;
 using SysGestor.DTO.PessoaDto.ClienteDto;
 using System;
 using System.Collections.Generic;
@@ -15,7 +17,9 @@ namespace SysGestor.View.ClienteView
     public partial class frmClienteNew : Form
     {
         private string _tipoPessoa;
-       
+        private int _idCidade;
+
+
         public frmClienteNew()
         {
             InitializeComponent();
@@ -25,6 +29,7 @@ namespace SysGestor.View.ClienteView
         private void frmClienteNew_Load(object sender, EventArgs e)
         {
             tipoPessoa();
+            loadComboUf();
         }
 
         private void tipoPessoa()
@@ -32,16 +37,18 @@ namespace SysGestor.View.ClienteView
             if (rbFisica.Checked)
             {
                 lblCpfCnpj.Text = "CPF";
+                mskCpfCnpj.Mask = "000.000.000-00";
                 lblRgIe.Text = "RG";
-                lblNomeRazaoSocial.Text = "Nome";
+                lblNomeRazaoSocial.Text = "Nome *";
                 _tipoPessoa = "Física";
             }
 
             if (rbJuridica.Checked)
             {
                 lblCpfCnpj.Text = "CNPJ";
+                mskCpfCnpj.Mask = "00.000.000/0000-00";
                 lblRgIe.Text = "Insc. Est.";
-                lblNomeRazaoSocial.Text = "Razão Social";
+                lblNomeRazaoSocial.Text = "Razão Social *";
                 _tipoPessoa = "Jurídica";
             }
         }
@@ -56,7 +63,31 @@ namespace SysGestor.View.ClienteView
             tipoPessoa();
         }
 
+        private void loadComboUf()
+        {
+            CidadeBll cidadeBll = new CidadeBll();
 
+            IList<CidadeDto> listaUf = new List<CidadeDto>();
+
+            listaUf = cidadeBll.FindUf();
+
+            cmbUf.DataSource = listaUf;
+            cmbUf.DisplayMember = "Uf";
+            cmbUf.ValueMember = "Id";
+        }
+
+        private void loadComboCidade()
+        {
+            CidadeBll cidadeBll = new CidadeBll();
+
+            IList<CidadeDto> listaCidade = new List<CidadeDto>();
+
+            listaCidade = cidadeBll.FindCidade(cmbUf.Text);
+
+            cmbCidade.DataSource = listaCidade;
+            cmbCidade.DisplayMember = "Cidade";
+            cmbCidade.ValueMember = "Id";
+        }
 
 
         #region Inserir Cliente
@@ -69,22 +100,39 @@ namespace SysGestor.View.ClienteView
                 MessageBox.Show("Data de nascimento inválida.", "Validação da Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-           
-                ClienteBll clienteBll = new ClienteBll();
-                ClienteDto clienteDto = new ClienteDto();
 
-                clienteDto.Nome = txtNome.Text.Trim();
-                clienteDto.TipoPessoa = _tipoPessoa;
-                clienteDto.CpfCnpj = txtCpfCnpj.Text.Trim();
-                clienteDto.RgIe = txtRgIe.Text.Trim();
-                clienteDto.DataNascimento = Convert.ToDateTime(mskDataNasc.Text.Trim());
-                clienteDto.DataCadastro = DateTime.Now;
-                clienteDto.Observacao = txtObservacao.Text.Trim();
+            ClienteBll clienteBll = new ClienteBll();
+            ClienteDto clienteDto = new ClienteDto();
+            EnderecoBll enderecoBll = new EnderecoBll();
+            EnderecoDto enderecoDto = new EnderecoDto();
 
-                clienteBll.Inserir(clienteDto);       
-               
+            clienteDto.Nome = txtNome.Text.Trim();
+            clienteDto.TipoPessoa = _tipoPessoa;
+            clienteDto.CpfCnpj = mskCpfCnpj.Text.Trim();
+            clienteDto.RgIe = txtRgIe.Text.Trim();
+            clienteDto.DataNascimento = Convert.ToDateTime(mskDataNasc.Text.Trim());
+            clienteDto.LimiteCredito = Convert.ToDouble(txtLimiteCredito.Text.Trim());
+            clienteDto.DataCadastro = DateTime.Now;
+            clienteDto.Observacao = txtObservacao.Text.Trim();
+
+            enderecoDto.Logradouro = txtLogradouro.Text.Trim();
+            enderecoDto.Numero = txtNumero.Text.Trim();
+            enderecoDto.Complemento = txtComplemento.Text.Trim();
+            enderecoDto.Bairro = txtBairro.Text.Trim();
+            enderecoDto.Cep = mskCep.Text.Trim();
+            enderecoDto.CidadeDto.Id = Convert.ToInt32(cmbCidade.SelectedValue);
+
+            clienteBll.Inserir(clienteDto);
+            enderecoBll.Inserir(enderecoDto);
+
         }
         #endregion
+
+
+        private void cmbUf_SelectedIndexChanged(object sender, EventArgs e)
+        {           
+            loadComboCidade();
+        }
 
 
     }

@@ -25,7 +25,7 @@ namespace SysGestor.BLL
         {
             _pessoaDal.Inserir(clienteDto);
             var idPessoa = GetIdPessoa();
-            _clienteDal.Inserir(idPessoa);
+            _clienteDal.Inserir(clienteDto, idPessoa);
         }
 
         public void Alterar(ClienteDto clienteDto)

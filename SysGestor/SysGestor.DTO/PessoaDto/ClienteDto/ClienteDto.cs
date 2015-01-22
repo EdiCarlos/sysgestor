@@ -5,6 +5,8 @@ namespace SysGestor.DTO.PessoaDto.ClienteDto
     {
         public int IdCliente { get; set; }
 
+        public double LimiteCredito { get; set; }
+
         public PessoaDto PessoaDto { get; set; }
 
         public ClienteDto()

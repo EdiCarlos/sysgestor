@@ -12,7 +12,7 @@ namespace SysGestor.DAL.PessoaDal
 {
     public class EnderecoDal
     {
-        public void Inserir(EnderecoDto enderecoDto)
+        public void Inserir(EnderecoDto enderecoDto, int idPessoa)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace SysGestor.DAL.PessoaDal
                 comando.Parameters.AddWithValue("@Complemento", enderecoDto.Complemento);
                 comando.Parameters.AddWithValue("@Cep", enderecoDto.Cep);
                 comando.Parameters.AddWithValue("@Bairro", enderecoDto.Bairro);
-                comando.Parameters.AddWithValue("@IdPessoa", enderecoDto.PessoaDto.Id);
+                comando.Parameters.AddWithValue("@IdPessoa", idPessoa);
                 comando.Parameters.AddWithValue("@IdCidade", enderecoDto.CidadeDto.Id);
 
                 Conexao.Crud(comando);
