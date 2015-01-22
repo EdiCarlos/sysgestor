@@ -123,5 +123,45 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
                 throw new Exception("Erro ao buscar dados. " + ex.Message);
             }
         }
+
+        public void Remove(int idCliente)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idcliente FROM cliente WHERE idcliente = @IdCliente)";
+
+                comando.Parameters.AddWithValue("@IdCliente", idCliente);
+
+                Conexao.Crud(comando);
+               
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao excluir dados. " + ex.Message);
+            }
+        }
+
+        public void RemoveMass(int [] idCliente)
+        {
+            try
+            {
+                for (int i = 0; i < idCliente.Length; i++)
+                {
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.CommandType = CommandType.Text;
+                    comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idcliente FROM cliente WHERE idcliente = @IdCliente)";
+
+                    comando.Parameters.AddWithValue("@IdCliente", idCliente[i]);
+
+                    Conexao.Crud(comando); 
+                }              
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao excluir dados. " + ex.Message);
+            }
+        }
     }
 }

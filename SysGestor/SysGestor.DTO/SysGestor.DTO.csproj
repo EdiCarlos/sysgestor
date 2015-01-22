@@ -39,7 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PessoaDto\CidadeDto.cs" />
     <Compile Include="PessoaDto\ClienteDto\ClienteDto.cs" />
+    <Compile Include="PessoaDto\ContatoDto.cs" />
+    <Compile Include="PessoaDto\EnderecoDto.cs" />
     <Compile Include="PessoaDto\PessoaDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

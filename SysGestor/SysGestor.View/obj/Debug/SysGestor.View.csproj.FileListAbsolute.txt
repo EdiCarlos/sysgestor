@@ -1,0 +1,16 @@
+G:\github\sysgestor\SysGestor\SysGestor.View\bin\Debug\SysGestor.View.exe.config
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.csprojResolveAssemblyReference.cache
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.MDISysGestor.resources
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.Properties.Resources.resources
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.csproj.GenerateResource.Cache
+G:\github\sysgestor\SysGestor\SysGestor.View\bin\Debug\SysGestor.View.exe
+G:\github\sysgestor\SysGestor\SysGestor.View\bin\Debug\SysGestor.View.pdb
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.exe
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.pdb
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.ClienteView.frmClienteNew.resources
+G:\github\sysgestor\SysGestor\SysGestor.View\bin\Debug\SysGestor.BLL.dll
+G:\github\sysgestor\SysGestor\SysGestor.View\bin\Debug\SysGestor.DTO.dll
+G:\github\sysgestor\SysGestor\SysGestor.View\bin\Debug\SysGestor.DAL.dll
+G:\github\sysgestor\SysGestor\SysGestor.View\bin\Debug\SysGestor.BLL.pdb
+G:\github\sysgestor\SysGestor\SysGestor.View\bin\Debug\SysGestor.DTO.pdb
+G:\github\sysgestor\SysGestor\SysGestor.View\bin\Debug\SysGestor.DAL.pdb

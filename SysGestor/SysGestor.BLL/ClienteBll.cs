@@ -41,8 +41,8 @@ namespace SysGestor.BLL
 
             if (id != 0)
                 lista = _clienteDal.FindById(id);
-           
-                return lista;          
+
+            return lista;
         }
 
         public IList<ClienteDto> FindAll()
@@ -50,10 +50,20 @@ namespace SysGestor.BLL
             IList<ClienteDto> lista = new List<ClienteDto>();
 
             lista = null;
-         
-                lista = _clienteDal.FindAll();
+
+            lista = _clienteDal.FindAll();
 
             return lista;
+        }
+
+        public void Remove(int idCliente)
+        {
+            _clienteDal.Remove(idCliente);
+        }
+
+        public void RemoveMass(int[] idCliente)
+        {
+            _clienteDal.RemoveMass(idCliente);
         }
     }
 }
