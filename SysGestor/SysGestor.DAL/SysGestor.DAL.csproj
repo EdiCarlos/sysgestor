@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="PessoaDal\CidadeDal.cs" />
     <Compile Include="PessoaDal\ClienteDal\ClienteDal.cs" />
+    <Compile Include="PessoaDal\ContatoDal.cs" />
     <Compile Include="PessoaDal\EnderecoDal.cs" />
     <Compile Include="PessoaDal\PessoaDal.cs" />
     <Compile Include="Repositorio\Conexao.cs" />

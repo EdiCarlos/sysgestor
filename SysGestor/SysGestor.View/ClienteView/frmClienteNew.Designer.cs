@@ -47,9 +47,9 @@
             this.lblRgIe = new System.Windows.Forms.Label();
             this.lblCpfCnpj = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtUf = new System.Windows.Forms.TextBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
             this.groupBoxEndereco = new System.Windows.Forms.GroupBox();
-            this.cmbCidade = new System.Windows.Forms.ComboBox();
-            this.cmbUf = new System.Windows.Forms.ComboBox();
             this.txtComplemento = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -189,6 +189,9 @@
             this.txtLimiteCredito.Name = "txtLimiteCredito";
             this.txtLimiteCredito.Size = new System.Drawing.Size(166, 24);
             this.txtLimiteCredito.TabIndex = 4;
+            this.txtLimiteCredito.Text = "200,00";
+            this.txtLimiteCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtLimiteCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimiteCredito_KeyPress);
             // 
             // label3
             // 
@@ -270,6 +273,7 @@
             this.txtRgIe.Name = "txtRgIe";
             this.txtRgIe.Size = new System.Drawing.Size(180, 24);
             this.txtRgIe.TabIndex = 2;
+            this.txtRgIe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRgIe_KeyPress);
             // 
             // lblRgIe
             // 
@@ -301,10 +305,62 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Data Nasc.";
             // 
+            // txtUf
+            // 
+            this.txtUf.AutoCompleteCustomSource.AddRange(new string[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PR",
+            "PB",
+            "PA",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SE",
+            "SP",
+            "TO"});
+            this.txtUf.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtUf.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtUf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUf.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUf.ForeColor = System.Drawing.Color.DarkBlue;
+            this.txtUf.Location = new System.Drawing.Point(18, 139);
+            this.txtUf.Name = "txtUf";
+            this.txtUf.Size = new System.Drawing.Size(74, 24);
+            this.txtUf.TabIndex = 5;
+            this.txtUf.Validated += new System.EventHandler(this.txtUf_Validated);
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCidade.ForeColor = System.Drawing.Color.DarkBlue;
+            this.txtCidade.Location = new System.Drawing.Point(110, 139);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(357, 24);
+            this.txtCidade.TabIndex = 6;
+            this.txtCidade.Text = " ";
+            // 
             // groupBoxEndereco
             // 
-            this.groupBoxEndereco.Controls.Add(this.cmbCidade);
-            this.groupBoxEndereco.Controls.Add(this.cmbUf);
+            this.groupBoxEndereco.Controls.Add(this.txtUf);
             this.groupBoxEndereco.Controls.Add(this.txtComplemento);
             this.groupBoxEndereco.Controls.Add(this.label7);
             this.groupBoxEndereco.Controls.Add(this.txtNumero);
@@ -312,6 +368,7 @@
             this.groupBoxEndereco.Controls.Add(this.mskCep);
             this.groupBoxEndereco.Controls.Add(this.txtBairro);
             this.groupBoxEndereco.Controls.Add(this.txtLogradouro);
+            this.groupBoxEndereco.Controls.Add(this.txtCidade);
             this.groupBoxEndereco.Controls.Add(this.label9);
             this.groupBoxEndereco.Controls.Add(this.label10);
             this.groupBoxEndereco.Controls.Add(this.label6);
@@ -323,35 +380,6 @@
             this.groupBoxEndereco.TabIndex = 1;
             this.groupBoxEndereco.TabStop = false;
             this.groupBoxEndereco.Text = "Endereço";
-            // 
-            // cmbCidade
-            // 
-            this.cmbCidade.DropDownHeight = 180;
-            this.cmbCidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCidade.ForeColor = System.Drawing.Color.DarkBlue;
-            this.cmbCidade.FormattingEnabled = true;
-            this.cmbCidade.IntegralHeight = false;
-            this.cmbCidade.Location = new System.Drawing.Point(109, 139);
-            this.cmbCidade.Name = "cmbCidade";
-            this.cmbCidade.Size = new System.Drawing.Size(358, 26);
-            this.cmbCidade.TabIndex = 6;
-            // 
-            // cmbUf
-            // 
-            this.cmbUf.DropDownHeight = 180;
-            this.cmbUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbUf.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmbUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbUf.ForeColor = System.Drawing.Color.DarkBlue;
-            this.cmbUf.FormattingEnabled = true;
-            this.cmbUf.IntegralHeight = false;
-            this.cmbUf.ItemHeight = 18;
-            this.cmbUf.Location = new System.Drawing.Point(18, 139);
-            this.cmbUf.Name = "cmbUf";
-            this.cmbUf.Size = new System.Drawing.Size(75, 26);
-            this.cmbUf.TabIndex = 5;
-            this.cmbUf.SelectedIndexChanged += new System.EventHandler(this.cmbUf_SelectedIndexChanged);
             // 
             // txtComplemento
             // 
@@ -699,8 +727,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox cmbCidade;
-        private System.Windows.Forms.ComboBox cmbUf;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBoxContato;
         private System.Windows.Forms.MaskedTextBox mskTelComercial;
@@ -720,5 +746,7 @@
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Label lblDebito;
         private System.Windows.Forms.MaskedTextBox mskCpfCnpj;
+        private System.Windows.Forms.TextBox txtUf;
+        private System.Windows.Forms.TextBox txtCidade;
     }
 }

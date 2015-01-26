@@ -41,7 +41,9 @@
   <ItemGroup>
     <Compile Include="PessoaBll\CidadeBll.cs" />
     <Compile Include="PessoaBll\ClienteBll\ClienteBll.cs" />
+    <Compile Include="PessoaBll\ContatoBll.cs" />
     <Compile Include="PessoaBll\EnderecoBll.cs" />
+    <Compile Include="PessoaBll\PessoaBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

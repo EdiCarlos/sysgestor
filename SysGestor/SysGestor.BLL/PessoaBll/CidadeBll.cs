@@ -34,5 +34,19 @@ namespace SysGestor.BLL.PessoaBll
 
             return lista;   
         }
+
+        public IList<CidadeDto> FindSuggestionCidade(string uf) 
+        {
+            IList<CidadeDto> lista = new List<CidadeDto>();
+
+            lista = _cidadeDal.FindSuggestionCidade(uf);
+
+            return lista;   
+        }
+
+        public int GetIdCidade(string cidade) 
+        {
+            return _cidadeDal.GetIdCidade(cidade);
+        }
     }
 }

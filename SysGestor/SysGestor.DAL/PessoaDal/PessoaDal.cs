@@ -83,7 +83,6 @@ namespace SysGestor.DAL.PessoaDal
             catch (Exception ex)
             {
                 throw new Exception("Erro ao buscar dados. " + ex.Message);
-                return 0;
             }
             return idPessoa;
         }

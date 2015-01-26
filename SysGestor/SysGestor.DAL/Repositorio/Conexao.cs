@@ -31,9 +31,12 @@ namespace SysGestor.DAL.Repositorio
         }
 
 
-        internal static MySqlDataReader Selecionar(MySqlCommand comando)
+        public static object Selecionar(MySqlCommand cm)
         {
-            throw new System.NotImplementedException();
+            var con = Conectar();
+            cm.Connection = con;
+            var valor = cm.ExecuteScalar();
+            return valor;
         }
     }
 }

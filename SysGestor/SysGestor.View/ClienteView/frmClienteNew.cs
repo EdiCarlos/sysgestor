@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Reflection;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,9 @@ namespace SysGestor.View.ClienteView
 {
     public partial class frmClienteNew : Form
     {
+        AutoCompleteStringCollection source = new AutoCompleteStringCollection();
         private string _tipoPessoa;
-        private int _idCidade;
-
+        PessoaBll _pessoaBll;
 
         public frmClienteNew()
         {
@@ -29,7 +30,6 @@ namespace SysGestor.View.ClienteView
         private void frmClienteNew_Load(object sender, EventArgs e)
         {
             tipoPessoa();
-            loadComboUf();
         }
 
         private void tipoPessoa()
@@ -63,48 +63,78 @@ namespace SysGestor.View.ClienteView
             tipoPessoa();
         }
 
-        private void loadComboUf()
-        {
-            CidadeBll cidadeBll = new CidadeBll();
-
-            IList<CidadeDto> listaUf = new List<CidadeDto>();
-
-            listaUf = cidadeBll.FindUf();
-
-            cmbUf.DataSource = listaUf;
-            cmbUf.DisplayMember = "Uf";
-            cmbUf.ValueMember = "Id";
-        }
-
-        private void loadComboCidade()
+        private void loadSuggestionCidade()
         {
             CidadeBll cidadeBll = new CidadeBll();
 
             IList<CidadeDto> listaCidade = new List<CidadeDto>();
 
-            listaCidade = cidadeBll.FindCidade(cmbUf.Text);
+            try
+            {
+                listaCidade = cidadeBll.FindSuggestionCidade(txtUf.Text.Trim());
 
-            cmbCidade.DataSource = listaCidade;
-            cmbCidade.DisplayMember = "Cidade";
-            cmbCidade.ValueMember = "Id";
+                DataTable dtCidade = new DataTable();
+
+                dtCidade.Columns.Add("Cidade", typeof(string));
+
+                foreach (var item in listaCidade)
+                {
+                    DataRow row = dtCidade.NewRow();
+
+                    row["Cidade"] = item.Cidade;
+
+                    dtCidade.Rows.Add(row);
+                }
+
+                //DataSet dsCidade = new DataSet();
+                //dsCidade.Tables.Add(dtCidade);
+
+                foreach (DataRow row in dtCidade.Rows)
+                {
+                    source.Add(Convert.ToString(row["Cidade"]));
+                }
+
+                txtCidade.AutoCompleteCustomSource = source;
+                txtCidade.AutoCompleteMode = AutoCompleteMode.Suggest;
+                txtCidade.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
         #region Inserir Cliente
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            DateTime resultado = DateTime.MinValue;
+            if (txtNome.Text == string.Empty || txtNome.Text.Length < 5)
+            {
+                MessageBox.Show("Campo nome não pode ser vazio.", "Validação de Nome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            DateTime resultado = DateTime.MinValue;
             if (!DateTime.TryParse(this.mskDataNasc.Text.Trim(), out resultado))
             {
                 MessageBox.Show("Data de nascimento inválida.", "Validação da Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
+            if (txtLimiteCredito.Text == string.Empty)
+            {
+                MessageBox.Show("Campo limite de crédito não pode ser vazio.", "Validação de Limite de Crédito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            CidadeBll cidadeBll = new CidadeBll();
             ClienteBll clienteBll = new ClienteBll();
             ClienteDto clienteDto = new ClienteDto();
             EnderecoBll enderecoBll = new EnderecoBll();
             EnderecoDto enderecoDto = new EnderecoDto();
+            ContatoBll contatoBll = new ContatoBll();
+            ContatoDto contatoDto = new ContatoDto();
+            _pessoaBll = new PessoaBll();
 
             clienteDto.Nome = txtNome.Text.Trim();
             clienteDto.TipoPessoa = _tipoPessoa;
@@ -120,20 +150,50 @@ namespace SysGestor.View.ClienteView
             enderecoDto.Complemento = txtComplemento.Text.Trim();
             enderecoDto.Bairro = txtBairro.Text.Trim();
             enderecoDto.Cep = mskCep.Text.Trim();
-            enderecoDto.CidadeDto.Id = Convert.ToInt32(cmbCidade.SelectedValue);
+            enderecoDto.CidadeDto.Id = cidadeBll.GetIdCidade(txtCidade.Text.Trim());
+
+            contatoDto.TelFixo = mskTelFixo.Text.Trim();
+            contatoDto.TelCel = mskCelular.Text.Trim();
+            contatoDto.TelComercial = mskTelComercial.Text.Trim();
+            contatoDto.Email = txtEmail.Text.Trim();
 
             clienteBll.Inserir(clienteDto);
+
+            contatoDto.PessoaDto.Id = _pessoaBll.GetIdPessoa();
+
             enderecoBll.Inserir(enderecoDto);
 
+            contatoBll.Inserir(contatoDto);
+
         }
+
+       
         #endregion
 
-
-        private void cmbUf_SelectedIndexChanged(object sender, EventArgs e)
-        {           
-            loadComboCidade();
+        #region Validação de Campos
+        private void txtLimiteCredito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
+        private void txtRgIe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        #endregion
+        private void txtUf_Validated(object sender, EventArgs e)
+        {
+            loadSuggestionCidade();
+        }
+
+       
 
     }
 }

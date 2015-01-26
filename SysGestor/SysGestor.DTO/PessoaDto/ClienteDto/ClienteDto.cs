@@ -12,6 +12,7 @@ namespace SysGestor.DTO.PessoaDto.ClienteDto
         public ClienteDto()
         {
             PessoaDto = new PessoaDto();
+            LimiteCredito = 200.00;
         }
     }
 }
