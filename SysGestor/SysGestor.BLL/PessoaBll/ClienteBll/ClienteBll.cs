@@ -1,5 +1,6 @@
 ﻿using SysGestor.DAL.PessoaDal;
 using SysGestor.DAL.PessoaDal.ClienteDal;
+using SysGestor.DTO.PessoaDto;
 using SysGestor.DTO.PessoaDto.ClienteDto;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,21 +29,15 @@ namespace SysGestor.BLL
             _clienteDal.Inserir(clienteDto, idPessoa);
         }
 
-        public void Alterar(ClienteDto clienteDto)
+        public void Alterar(ClienteDto clienteDto, int idPessoa)
         {
-            _pessoaDal.Alterar(clienteDto);
+            _pessoaDal.Alterar(clienteDto, idPessoa);
+            _clienteDal.Alterar(clienteDto);
         }
 
-        public IList<ClienteDto> FindById(int id)
+        public ClienteDto GetCliente(int id)
         {
-            IList<ClienteDto> lista = new List<ClienteDto>();
-
-            lista = null;
-
-            if (id != 0)
-                lista = _clienteDal.FindById(id);
-
-            return lista;
+            return _clienteDal.GetCliente(id);   
         }
 
         public IList<ClienteDto> FindAll()

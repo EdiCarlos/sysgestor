@@ -24,5 +24,15 @@ namespace SysGestor.BLL.PessoaBll
             var idPessoa = _clienteBll.GetIdPessoa();
             _enderecoDal.Inserir(enderecoDto, idPessoa);
         }
+
+        public void Alterar(EnderecoDto enderecoDto)
+        {
+            _enderecoDal.Alterar(enderecoDto);
+        }
+                
+        public EnderecoDto GetEndereco(int id)
+        {
+            return _enderecoDal.GetEndereco(id);
+        }
     }
 }

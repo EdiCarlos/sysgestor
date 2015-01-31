@@ -73,10 +73,11 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxDados.SuspendLayout();
             this.groupBoxTipoPessoa.SuspendLayout();
             this.groupBoxEndereco.SuspendLayout();
@@ -189,9 +190,7 @@
             this.txtLimiteCredito.Name = "txtLimiteCredito";
             this.txtLimiteCredito.Size = new System.Drawing.Size(166, 24);
             this.txtLimiteCredito.TabIndex = 4;
-            this.txtLimiteCredito.Text = "200,00";
             this.txtLimiteCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtLimiteCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimiteCredito_KeyPress);
             // 
             // label3
             // 
@@ -209,7 +208,7 @@
             this.mskCpfCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskCpfCnpj.ForeColor = System.Drawing.Color.DarkBlue;
             this.mskCpfCnpj.Location = new System.Drawing.Point(400, 90);
-            this.mskCpfCnpj.Mask = "000.000.000-00";
+            this.mskCpfCnpj.Mask = "000,000,000-00";
             this.mskCpfCnpj.Name = "mskCpfCnpj";
             this.mskCpfCnpj.Size = new System.Drawing.Size(180, 24);
             this.mskCpfCnpj.TabIndex = 1;
@@ -624,14 +623,6 @@
             this.label17.TabIndex = 6;
             this.label17.Text = "Observações";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(809, 92);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnNovo
             // 
             this.btnNovo.Location = new System.Drawing.Point(336, 57);
@@ -640,6 +631,7 @@
             this.btnNovo.TabIndex = 8;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnGravar
             // 
@@ -653,18 +645,37 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(503, 57);
+            this.btnSair.Location = new System.Drawing.Point(607, 57);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
             this.btnSair.TabIndex = 8;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(518, 57);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(809, 92);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmClienteNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 639);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnNovo);
@@ -682,6 +693,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar - Cliente";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmClienteNew_Load);
             this.groupBoxDados.ResumeLayout(false);
             this.groupBoxDados.PerformLayout();
@@ -748,5 +760,6 @@
         private System.Windows.Forms.MaskedTextBox mskCpfCnpj;
         private System.Windows.Forms.TextBox txtUf;
         private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

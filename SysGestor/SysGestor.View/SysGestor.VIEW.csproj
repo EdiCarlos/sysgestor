@@ -44,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteView\frmClienteEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClienteView\frmClienteEdit.Designer.cs">
+      <DependentUpon>frmClienteEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClienteView\frmClienteGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClienteView\frmClienteGrid.Designer.cs">
+      <DependentUpon>frmClienteGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClienteView\frmClienteNew.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +70,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ClienteView\frmClienteEdit.resx">
+      <DependentUpon>frmClienteEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClienteView\frmClienteGrid.resx">
+      <DependentUpon>frmClienteGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClienteView\frmClienteNew.resx">
       <DependentUpon>frmClienteNew.cs</DependentUpon>
     </EmbeddedResource>
@@ -72,6 +90,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -95,6 +114,18 @@
       <Project>{53dcd568-65b9-46ec-8d08-549a6ac50822}</Project>
       <Name>SysGestor.DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excluir_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lixeira_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lixeira_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

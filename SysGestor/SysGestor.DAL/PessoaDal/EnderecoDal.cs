@@ -59,7 +59,7 @@ namespace SysGestor.DAL.PessoaDal
             }
             catch (MySqlException ex)
             {
-                throw new Exception("Erro ao inserir dados. " + ex.Message);
+                throw new Exception("Erro ao alterar dados. " + ex.Message);
             }
         }
 
@@ -101,6 +101,48 @@ namespace SysGestor.DAL.PessoaDal
                     listaEndereco = null;
                 }
                 return listaEndereco;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao buscar dados. " + ex.Message);
+            }
+        }
+
+        public EnderecoDto GetEndereco(int id)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT idendereco, logradouro, numero, complemento, cep, bairro, idcidade, idpessoa  " +
+                                      "FROM endereco " +
+                                      "WHERE idpessoa = @IdPessoa";
+
+                comando.Parameters.AddWithValue("@IdPessoa", id);
+
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                var endereco = new EnderecoDto();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        endereco.Id = (int)dr["idendereco"];
+                        endereco.Logradouro = (string)dr["logradouro"];
+                        endereco.Numero = (string)dr["numero"];
+                        endereco.Complemento = (string)dr["complemento"];
+                        endereco.Cep = (string)dr["cep"];
+                        endereco.Bairro = (string)dr["bairro"];
+                        endereco.CidadeDto.Id = (int)dr["idcidade"];
+                        endereco.PessoaDto.Id = (int)dr["idpessoa"];
+                    }
+                }
+                else
+                {
+                    endereco = null;
+                }
+                return endereco;
             }
             catch (Exception ex)
             {

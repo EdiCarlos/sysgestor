@@ -23,5 +23,11 @@ namespace SysGestor.View
             frmClienteNew frmClienteView = new frmClienteNew();
             frmClienteView.ShowDialog();
         }
+
+        private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmClienteGrid frmClienteGrid = new frmClienteGrid();
+            frmClienteGrid.ShowDialog();
+        }
     }
 }

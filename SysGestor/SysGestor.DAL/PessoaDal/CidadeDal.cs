@@ -188,5 +188,41 @@ namespace SysGestor.DAL.PessoaDal
             }
             return idCidade;
         }
+
+        public CidadeDto GetUfCidade(int idPessoa) 
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT idcidade, uf, cidade "
+                                    + "FROM cidade WHERE idcidade = (SELECT idcidade FROM endereco WHERE idpessoa = @IdPessoa)";
+
+                comando.Parameters.AddWithValue("@IdPessoa", idPessoa);
+
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                var cidade = new CidadeDto();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {                
+                        cidade.Id = (int)dr["idcidade"];
+                        cidade.Cidade = (string)dr["cidade"];
+                        cidade.Uf = (string)dr["uf"];
+                    }
+                }
+                else
+                {
+                    cidade = null;
+                }
+                return cidade;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao buscar dados. " + ex.Message);
+            }
+        }
     }
 }

@@ -48,5 +48,10 @@ namespace SysGestor.BLL.PessoaBll
         {
             return _cidadeDal.GetIdCidade(cidade);
         }
+
+        public CidadeDto GetUfCidade(int idPessoa)
+        {
+            return _cidadeDal.GetUfCidade(idPessoa);
+        }
     }
 }

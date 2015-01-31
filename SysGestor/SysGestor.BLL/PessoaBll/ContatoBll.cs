@@ -21,5 +21,15 @@ namespace SysGestor.BLL.PessoaBll
         {
             _contatoDal.Inserir(contatoDto);
         }
+
+        public void Alterar(ContatoDto contatoDto)
+        {
+            _contatoDal.Alterar(contatoDto);
+        }
+
+        public ContatoDto GetContato(int id)
+        {
+            return _contatoDal.GetContato(id);
+        }
     }
 }

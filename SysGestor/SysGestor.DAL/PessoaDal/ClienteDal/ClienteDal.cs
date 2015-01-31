@@ -30,28 +30,46 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
             }
         }
 
-        public IList<ClienteDto> FindById(int idCliente)
+        public void Alterar(ClienteDto clienteDto)
         {
             try
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idcliente, limitecredito " +
+                comando.CommandText = "UPDATE cliente SET limitecredito = @LimiteCredito " +
+                                      "WHERE idpessoa = @IdPessoa";
+
+                comando.Parameters.AddWithValue("@IdPessoa", clienteDto.PessoaDto.Id);
+                comando.Parameters.AddWithValue("@LimiteCredito", clienteDto.LimiteCredito);
+
+                Conexao.Crud(comando);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao alterar dados. " + ex.Message);
+            }
+        }
+
+        public ClienteDto GetCliente(int idCliente)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idcliente, B.limitecredito " +
                                       "FROM pessoa A " +
                                       "INNER JOIN cliente B ON A.idpessoa = B.idpessoa "
                                     + "WHERE B.idcliente = @IdCliente";
                 comando.Parameters.AddWithValue("@IdCliente", idCliente);
                 MySqlDataReader dr = Conexao.Buscar(comando);
 
-                var listaCliente = new List<ClienteDto>();
+                var cliente = new ClienteDto();
 
                 if (dr.HasRows)
                 {
                     while (dr.Read())
-                    {
-                        var cliente = new ClienteDto();
-
-                        cliente.Id = (int)dr["idpessoa"];
+                    {                  
+                        cliente.PessoaDto.Id = (int)dr["idpessoa"];
                         cliente.Nome = (string)dr["nome"];
                         cliente.TipoPessoa = (string)dr["tipopessoa"];
                         cliente.CpfCnpj = (string)dr["cpfcnpj"];
@@ -61,16 +79,14 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
                         cliente.Ativo = (int)dr["ativo"];
                         cliente.Observacao = (string)dr["observacao"];
                         cliente.IdCliente = (int)dr["idcliente"];
-
-                        listaCliente.Add(cliente);
-
+                        cliente.LimiteCredito = (double)dr["limitecredito"];                
                     }
                 }
                 else
                 {
-                    listaCliente = null;
+                    cliente = null;
                 }
-                return listaCliente;
+                return cliente;
             }
             catch (Exception ex)
             {
@@ -86,7 +102,8 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idcliente " +
                                       "FROM pessoa A " +
-                                      "INNER JOIN cliente B ON A.idpessoa = B.idpessoa ";
+                                      "INNER JOIN cliente B ON A.idpessoa = B.idpessoa " +
+                                      "WHERE A.ativo = 0";
            
                 MySqlDataReader dr = Conexao.Buscar(comando);
 

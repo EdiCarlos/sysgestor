@@ -34,24 +34,23 @@ namespace SysGestor.DAL.PessoaDal
             }
         }
 
-        public void Alterar(PessoaDto pessoaDto)
+        public void Alterar(PessoaDto pessoaDto, int idPessoa)
         {
             try
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = "UPDATE pessoa SET nome = @Nome, tipopessoa = @TipoPessoa, cpfcnpj = @CpfCnpj, rgie = @RgIe, " + 
-                                                         "datanascimento = @DataNascimento, datacadastro = @DataCadastro, observacao = @Observacao " +
-                                                         "WHERE idpessoa = @IdPssoa";
+                                                         "datanascimento = @DataNascimento, observacao = @Observacao " +
+                                                         "WHERE idpessoa = @IdPessoa";
 
                 comando.Parameters.AddWithValue("@Nome", pessoaDto.Nome);
                 comando.Parameters.AddWithValue("@TipoPessoa", pessoaDto.TipoPessoa);
                 comando.Parameters.AddWithValue("@CpfCnpj", pessoaDto.CpfCnpj);
                 comando.Parameters.AddWithValue("@RgIe", pessoaDto.RgIe);
                 comando.Parameters.AddWithValue("@DataNascimento", pessoaDto.DataNascimento);
-                comando.Parameters.AddWithValue("@DataCadastro", pessoaDto.DataCadastro);
                 comando.Parameters.AddWithValue("@Observacao", pessoaDto.Observacao);
-                comando.Parameters.AddWithValue("@IdPessoa", pessoaDto.Id);
+                comando.Parameters.AddWithValue("@IdPessoa", idPessoa);
 
                 Conexao.Crud(comando);
             }

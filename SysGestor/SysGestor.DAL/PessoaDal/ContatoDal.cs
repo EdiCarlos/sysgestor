@@ -59,7 +59,7 @@ namespace SysGestor.DAL.PessoaDal
             }
         }
 
-        public ContatoDto GetContato(PessoaDto pessoaDto)
+        public ContatoDto GetContato(int id )
         {
             try
             {
@@ -69,7 +69,7 @@ namespace SysGestor.DAL.PessoaDal
                                       "FROM contato " +
                                       "WHERE idpessoa = @IdPessoa";
 
-                comando.Parameters.AddWithValue("@IdPessoa", pessoaDto.Id);
+                comando.Parameters.AddWithValue("@IdPessoa",id);
 
                 MySqlDataReader dr = Conexao.Buscar(comando);
 

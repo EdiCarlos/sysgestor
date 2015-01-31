@@ -20,39 +20,18 @@ namespace SysGestor.View.ClienteView
         AutoCompleteStringCollection source = new AutoCompleteStringCollection();
         private string _tipoPessoa;
         PessoaBll _pessoaBll;
-
+    
         public frmClienteNew()
         {
             InitializeComponent();
         }
-
 
         private void frmClienteNew_Load(object sender, EventArgs e)
         {
             tipoPessoa();
         }
 
-        private void tipoPessoa()
-        {
-            if (rbFisica.Checked)
-            {
-                lblCpfCnpj.Text = "CPF";
-                mskCpfCnpj.Mask = "000.000.000-00";
-                lblRgIe.Text = "RG";
-                lblNomeRazaoSocial.Text = "Nome *";
-                _tipoPessoa = "Física";
-            }
-
-            if (rbJuridica.Checked)
-            {
-                lblCpfCnpj.Text = "CNPJ";
-                mskCpfCnpj.Mask = "00.000.000/0000-00";
-                lblRgIe.Text = "Insc. Est.";
-                lblNomeRazaoSocial.Text = "Razão Social *";
-                _tipoPessoa = "Jurídica";
-            }
-        }
-
+        #region Eventos
         private void rbFisica_CheckedChanged(object sender, EventArgs e)
         {
             tipoPessoa();
@@ -63,6 +42,187 @@ namespace SysGestor.View.ClienteView
             tipoPessoa();
         }
 
+        private void txtUf_Validated(object sender, EventArgs e)
+        {
+            loadSuggestionCidade();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            habilitaCampo();
+            limpaCampo();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            desabilitaCampo();
+        }
+        #endregion
+
+        #region Inserir Cliente
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            CidadeBll cidadeBll = new CidadeBll();
+            CidadeDto cidadeDto = new CidadeDto();
+            ClienteBll clienteBll = new ClienteBll();
+            ClienteDto clienteDto = new ClienteDto();
+            EnderecoBll enderecoBll = new EnderecoBll();
+            EnderecoDto enderecoDto = new EnderecoDto();
+            ContatoBll contatoBll = new ContatoBll();
+            ContatoDto contatoDto = new ContatoDto();
+            _pessoaBll = new PessoaBll();
+
+            if (txtNome.Text == string.Empty || txtNome.Text.Length < 5)
+            {
+                MessageBox.Show("Campo nome não pode ser vazio.", "Validação de Nome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtNome.Focus();
+                return;
+            }
+
+            DateTime resultado = DateTime.MinValue;
+            if (!DateTime.TryParse(this.mskDataNasc.Text.Trim(), out resultado))
+            {
+                MessageBox.Show("Data de nascimento inválida.", "Validação da Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mskDataNasc.Focus();
+                return;
+            }
+
+            if (txtLimiteCredito.Text == string.Empty)
+            {
+                MessageBox.Show("Campo limite de crédito não pode ser vazio.", "Validação de Limite de Crédito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtLimiteCredito.Focus();
+                return;
+            }
+
+            if (txtCidade.Text == " ")
+            {
+                MessageBox.Show("Campo uf e cidade não pode ser vazio.", "Validação da Cidade", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtUf.Focus();
+                return;
+            }
+
+            clienteDto.Nome = txtNome.Text.Trim();
+            clienteDto.TipoPessoa = _tipoPessoa;
+            clienteDto.CpfCnpj = mskCpfCnpj.Text.Trim();
+            clienteDto.RgIe = txtRgIe.Text.Trim();
+            clienteDto.DataNascimento = Convert.ToDateTime(mskDataNasc.Text.Trim());
+            clienteDto.LimiteCredito = Convert.ToDouble(txtLimiteCredito.Text.Trim());
+            clienteDto.DataCadastro = DateTime.Now;
+            clienteDto.Observacao = txtObservacao.Text.Trim();
+
+            enderecoDto.Logradouro = txtLogradouro.Text.Trim();
+            enderecoDto.Numero = txtNumero.Text.Trim();
+            enderecoDto.Complemento = txtComplemento.Text.Trim();
+            enderecoDto.Bairro = txtBairro.Text.Trim();
+            enderecoDto.Cep = mskCep.Text.Trim();
+            enderecoDto.CidadeDto.Id = cidadeBll.GetIdCidade(txtCidade.Text.Trim());
+
+            contatoDto.TelFixo = mskTelFixo.Text.Trim();
+            contatoDto.TelCel = mskCelular.Text.Trim();
+            contatoDto.TelComercial = mskTelComercial.Text.Trim();
+            contatoDto.Email = txtEmail.Text.Trim();
+
+            clienteBll.Inserir(clienteDto);
+
+            contatoDto.PessoaDto.Id = _pessoaBll.GetIdPessoa();
+
+            enderecoBll.Inserir(enderecoDto);
+
+            contatoBll.Inserir(contatoDto);
+
+            desabilitaCampo();
+        }        
+        #endregion
+             
+        #region Validação de Campos
+        //private void txtLimiteCredito_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if (!char.IsDigit(e.KeyChar))
+        //    {
+        //        e.Handled = true;
+        //    }
+        //}
+
+        private void txtRgIe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void limpaCampo()
+        {
+            rbFisica.Checked = true;
+            txtNome.Text = string.Empty;
+            mskCpfCnpj.Text = string.Empty;
+            txtRgIe.Text = string.Empty;
+            mskDataNasc.Text = string.Empty;
+            txtLimiteCredito.Text = string.Empty;
+            txtLogradouro.Text = string.Empty;
+            txtNumero.Text = string.Empty;
+            txtComplemento.Text = string.Empty;
+            txtBairro.Text = string.Empty;
+            txtUf.Text = string.Empty;
+            txtCidade.Text = string.Empty;
+            mskCep.Text = string.Empty;
+            mskTelFixo.Text = string.Empty;
+            mskCelular.Text = string.Empty;
+            mskTelComercial.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtObservacao.Text = string.Empty;
+        }
+
+        private void desabilitaCampo()
+        {
+            txtNome.Enabled = false;
+            mskCpfCnpj.Enabled = false;
+            txtRgIe.Enabled = false;
+            mskDataNasc.Enabled = false;
+            txtLimiteCredito.Enabled = false;
+            txtLogradouro.Enabled = false;
+            txtNumero.Enabled = false;
+            txtComplemento.Enabled = false;
+            txtBairro.Enabled = false;
+            txtUf.Enabled = false;
+            txtCidade.Enabled = false;
+            mskCep.Enabled = false;
+            mskTelFixo.Enabled = false;
+            mskCelular.Enabled = false;
+            mskTelComercial.Enabled = false;
+            txtEmail.Enabled = false;
+            txtObservacao.Enabled = false;
+
+            btnGravar.Enabled = false;
+            btnNovo.Enabled = true;
+        }
+
+        private void habilitaCampo()
+        {
+            txtNome.Enabled = true;
+            mskCpfCnpj.Enabled = true;
+            txtRgIe.Enabled = true;
+            mskDataNasc.Enabled = true;
+            txtLimiteCredito.Enabled = true;
+            txtLogradouro.Enabled = true;
+            txtNumero.Enabled = true;
+            txtComplemento.Enabled = true;
+            txtBairro.Enabled = true;
+            txtUf.Enabled = true;
+            txtCidade.Enabled = true;
+            mskCep.Enabled = true;
+            mskTelFixo.Enabled = true;
+            mskCelular.Enabled = true;
+            mskTelComercial.Enabled = true;
+            txtEmail.Enabled = true;
+            txtObservacao.Enabled = true;
+
+            btnGravar.Enabled = true;
+            btnNovo.Enabled = false;
+        }
+        #endregion
+
+        #region Funções
         private void loadSuggestionCidade()
         {
             CidadeBll cidadeBll = new CidadeBll();
@@ -104,96 +264,30 @@ namespace SysGestor.View.ClienteView
             }
         }
 
-
-        #region Inserir Cliente
-        private void btnGravar_Click(object sender, EventArgs e)
+        private void tipoPessoa()
         {
-            if (txtNome.Text == string.Empty || txtNome.Text.Length < 5)
+            if (rbFisica.Checked)
             {
-                MessageBox.Show("Campo nome não pode ser vazio.", "Validação de Nome", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                lblCpfCnpj.Text = "CPF";
+                mskCpfCnpj.Mask = "000,000,000-00";
+                lblRgIe.Text = "RG";
+                lblNomeRazaoSocial.Text = "Nome *";
+                _tipoPessoa = "Física";
             }
 
-            DateTime resultado = DateTime.MinValue;
-            if (!DateTime.TryParse(this.mskDataNasc.Text.Trim(), out resultado))
+            if (rbJuridica.Checked)
             {
-                MessageBox.Show("Data de nascimento inválida.", "Validação da Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                lblCpfCnpj.Text = "CNPJ";
+                mskCpfCnpj.Mask = "00,000,000/0000-00";
+                lblRgIe.Text = "Insc. Est.";
+                lblNomeRazaoSocial.Text = "Razão Social *";
+                _tipoPessoa = "Jurídica";
             }
-
-            if (txtLimiteCredito.Text == string.Empty)
-            {
-                MessageBox.Show("Campo limite de crédito não pode ser vazio.", "Validação de Limite de Crédito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            CidadeBll cidadeBll = new CidadeBll();
-            ClienteBll clienteBll = new ClienteBll();
-            ClienteDto clienteDto = new ClienteDto();
-            EnderecoBll enderecoBll = new EnderecoBll();
-            EnderecoDto enderecoDto = new EnderecoDto();
-            ContatoBll contatoBll = new ContatoBll();
-            ContatoDto contatoDto = new ContatoDto();
-            _pessoaBll = new PessoaBll();
-
-            clienteDto.Nome = txtNome.Text.Trim();
-            clienteDto.TipoPessoa = _tipoPessoa;
-            clienteDto.CpfCnpj = mskCpfCnpj.Text.Trim();
-            clienteDto.RgIe = txtRgIe.Text.Trim();
-            clienteDto.DataNascimento = Convert.ToDateTime(mskDataNasc.Text.Trim());
-            clienteDto.LimiteCredito = Convert.ToDouble(txtLimiteCredito.Text.Trim());
-            clienteDto.DataCadastro = DateTime.Now;
-            clienteDto.Observacao = txtObservacao.Text.Trim();
-
-            enderecoDto.Logradouro = txtLogradouro.Text.Trim();
-            enderecoDto.Numero = txtNumero.Text.Trim();
-            enderecoDto.Complemento = txtComplemento.Text.Trim();
-            enderecoDto.Bairro = txtBairro.Text.Trim();
-            enderecoDto.Cep = mskCep.Text.Trim();
-            enderecoDto.CidadeDto.Id = cidadeBll.GetIdCidade(txtCidade.Text.Trim());
-
-            contatoDto.TelFixo = mskTelFixo.Text.Trim();
-            contatoDto.TelCel = mskCelular.Text.Trim();
-            contatoDto.TelComercial = mskTelComercial.Text.Trim();
-            contatoDto.Email = txtEmail.Text.Trim();
-
-            clienteBll.Inserir(clienteDto);
-
-            contatoDto.PessoaDto.Id = _pessoaBll.GetIdPessoa();
-
-            enderecoBll.Inserir(enderecoDto);
-
-            contatoBll.Inserir(contatoDto);
-
         }
 
-       
+
         #endregion
 
-        #region Validação de Campos
-        private void txtLimiteCredito_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtRgIe_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        #endregion
-        private void txtUf_Validated(object sender, EventArgs e)
-        {
-            loadSuggestionCidade();
-        }
-
-       
 
     }
 }
