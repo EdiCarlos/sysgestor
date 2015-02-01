@@ -43,6 +43,7 @@
     <Compile Include="PessoaDto\ClienteDto\ClienteDto.cs" />
     <Compile Include="PessoaDto\ContatoDto.cs" />
     <Compile Include="PessoaDto\EnderecoDto.cs" />
+    <Compile Include="PessoaDto\FornecedorDto\FornecedorDto.cs" />
     <Compile Include="PessoaDto\PessoaDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

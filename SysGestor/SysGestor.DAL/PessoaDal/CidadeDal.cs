@@ -19,7 +19,7 @@ namespace SysGestor.DAL.PessoaDal
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = "SELECT  idcidade, cidade, uf " +
-                                      "FROM cidades ";
+                                      "FROM cidade ";
 
                 MySqlDataReader dr = Conexao.Buscar(comando);
 
@@ -58,7 +58,7 @@ namespace SysGestor.DAL.PessoaDal
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = "SELECT DISTINCT uf " +
-                                      "FROM cidades ";
+                                      "FROM cidade ";
 
                 MySqlDataReader dr = Conexao.Buscar(comando);
 
@@ -95,7 +95,7 @@ namespace SysGestor.DAL.PessoaDal
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = "SELECT idcidade, cidade " +
-                                      "FROM cidades WHERE uf = @Uf";
+                                      "FROM cidade WHERE uf = @Uf";
 
                 comando.Parameters.AddWithValue("@Uf", uf);
 
@@ -135,7 +135,7 @@ namespace SysGestor.DAL.PessoaDal
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = "SELECT idcidade, cidade " +
-                                      "FROM cidades WHERE uf = @Uf ";
+                                      "FROM cidade WHERE uf = @Uf ";
 
                 comando.Parameters.AddWithValue("@Uf", uf);
 

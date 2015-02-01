@@ -45,12 +45,12 @@
     <Compile Include="PessoaDal\ClienteDal\ClienteDal.cs" />
     <Compile Include="PessoaDal\ContatoDal.cs" />
     <Compile Include="PessoaDal\EnderecoDal.cs" />
+    <Compile Include="PessoaDal\FornecedorDal\FornecedorDal.cs" />
     <Compile Include="PessoaDal\PessoaDal.cs" />
     <Compile Include="Repositorio\Conexao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="FornecedorDal\" />
     <Folder Include="PedidoDal\" />
     <Folder Include="ProdutoDal\" />
   </ItemGroup>
