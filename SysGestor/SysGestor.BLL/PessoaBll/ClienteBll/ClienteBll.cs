@@ -11,6 +11,7 @@ namespace SysGestor.BLL
     {
         PessoaDal _pessoaDal;
         ClienteDal _clienteDal;
+
         public ClienteBll()
         {
             _pessoaDal = new PessoaDal();
