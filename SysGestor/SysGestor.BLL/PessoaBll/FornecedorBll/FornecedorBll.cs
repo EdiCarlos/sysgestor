@@ -35,7 +35,7 @@ namespace SysGestor.BLL.PessoaBll.FornecedorBll
         public void Alterar(FornecedorDto fornecedorDto, int idPessoa)
         {
             _pessoaDal.Alterar(fornecedorDto, idPessoa);
-            _fornecedorDal.Alterar(fornecedorDto);
+           // _fornecedorDal.Alterar(fornecedorDto);
         }
 
         public FornecedorDto GetFornecedor(int id)
