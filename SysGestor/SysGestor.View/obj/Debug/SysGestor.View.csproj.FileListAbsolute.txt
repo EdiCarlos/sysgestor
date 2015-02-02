@@ -16,3 +16,6 @@ G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.exe
 G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.pdb
 G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.ClienteView.frmClienteGrid.resources
 G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.ClienteView.frmClienteEdit.resources
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.FornecedorView.frmFornecedorNew.resources
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.FornecedorView.frmFornecedorGrid.resources
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.FornecedorView.frmFornecedorEdit.resources

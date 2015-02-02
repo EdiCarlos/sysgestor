@@ -1,6 +1,6 @@
-﻿namespace SysGestor.View.ClienteView
+﻿namespace SysGestor.View.FornecedorView
 {
-    partial class frmClienteGrid
+    partial class frmFornecedorGrid
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClienteGrid));
-            this.dtgCliente = new System.Windows.Forms.DataGridView();
-            this.groupBoxEndereco = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFornecedorGrid));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkSelecionarTodos = new System.Windows.Forms.CheckBox();
             this.rbCpfCnpj = new System.Windows.Forms.RadioButton();
             this.rbNome = new System.Windows.Forms.RadioButton();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.groupBoxBusca = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.chkSelecionarTodos = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtgFornecedor = new System.Windows.Forms.DataGridView();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnSair = new System.Windows.Forms.Button();
@@ -49,47 +49,33 @@
             this.dataNasc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgCliente)).BeginInit();
-            this.groupBoxEndereco.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBoxBusca.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFornecedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtgCliente
+            // groupBox1
             // 
-            this.dtgCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgCliente.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dtgCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtgCliente.ColumnHeadersHeight = 30;
-            this.dtgCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dtgCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.selecionar,
-            this.idCliente,
-            this.nome,
-            this.CpfCnpj,
-            this.dataNasc,
-            this.editar,
-            this.excluir});
-            this.dtgCliente.Location = new System.Drawing.Point(12, 214);
-            this.dtgCliente.Name = "dtgCliente";
-            this.dtgCliente.Size = new System.Drawing.Size(782, 411);
-            this.dtgCliente.TabIndex = 0;
-            this.dtgCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgCliente_CellContentClick);
+            this.groupBox1.Controls.Add(this.chkSelecionarTodos);
+            this.groupBox1.Controls.Add(this.btnExcluir);
+            this.groupBox1.Location = new System.Drawing.Point(527, 96);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(266, 112);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
             // 
-            // groupBoxEndereco
+            // chkSelecionarTodos
             // 
-            this.groupBoxEndereco.Controls.Add(this.rbCpfCnpj);
-            this.groupBoxEndereco.Controls.Add(this.rbNome);
-            this.groupBoxEndereco.Controls.Add(this.txtPesquisa);
-            this.groupBoxEndereco.Controls.Add(this.label10);
-            this.groupBoxEndereco.Location = new System.Drawing.Point(12, 96);
-            this.groupBoxEndereco.Name = "groupBoxEndereco";
-            this.groupBoxEndereco.Size = new System.Drawing.Size(504, 112);
-            this.groupBoxEndereco.TabIndex = 2;
-            this.groupBoxEndereco.TabStop = false;
-            this.groupBoxEndereco.Text = "Buscar Cliente";
+            this.chkSelecionarTodos.AutoSize = true;
+            this.chkSelecionarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSelecionarTodos.Location = new System.Drawing.Point(11, 70);
+            this.chkSelecionarTodos.Name = "chkSelecionarTodos";
+            this.chkSelecionarTodos.Size = new System.Drawing.Size(135, 22);
+            this.chkSelecionarTodos.TabIndex = 3;
+            this.chkSelecionarTodos.Text = "Selecionar Tudo";
+            this.chkSelecionarTodos.UseVisualStyleBackColor = true;
+            this.chkSelecionarTodos.CheckedChanged += new System.EventHandler(this.chkSelecionarTodos_CheckedChanged);
             // 
             // rbCpfCnpj
             // 
@@ -126,7 +112,19 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(487, 24);
             this.txtPesquisa.TabIndex = 1;
-            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            // 
+            // groupBoxBusca
+            // 
+            this.groupBoxBusca.Controls.Add(this.rbCpfCnpj);
+            this.groupBoxBusca.Controls.Add(this.rbNome);
+            this.groupBoxBusca.Controls.Add(this.txtPesquisa);
+            this.groupBoxBusca.Controls.Add(this.label10);
+            this.groupBoxBusca.Location = new System.Drawing.Point(11, 96);
+            this.groupBoxBusca.Name = "groupBoxBusca";
+            this.groupBoxBusca.Size = new System.Drawing.Size(504, 112);
+            this.groupBoxBusca.TabIndex = 11;
+            this.groupBoxBusca.TabStop = false;
+            this.groupBoxBusca.Text = "Buscar Fornecedor";
             // 
             // label10
             // 
@@ -138,27 +136,28 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Pesquisa";
             // 
-            // chkSelecionarTodos
+            // dtgFornecedor
             // 
-            this.chkSelecionarTodos.AutoSize = true;
-            this.chkSelecionarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelecionarTodos.Location = new System.Drawing.Point(11, 70);
-            this.chkSelecionarTodos.Name = "chkSelecionarTodos";
-            this.chkSelecionarTodos.Size = new System.Drawing.Size(135, 22);
-            this.chkSelecionarTodos.TabIndex = 3;
-            this.chkSelecionarTodos.Text = "Selecionar Tudo";
-            this.chkSelecionarTodos.UseVisualStyleBackColor = true;
-            this.chkSelecionarTodos.CheckedChanged += new System.EventHandler(this.chkSelecionarTodos_CheckedChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.chkSelecionarTodos);
-            this.groupBox1.Controls.Add(this.btnExcluir);
-            this.groupBox1.Location = new System.Drawing.Point(528, 96);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(266, 112);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
+            this.dtgFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgFornecedor.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dtgFornecedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtgFornecedor.ColumnHeadersHeight = 30;
+            this.dtgFornecedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dtgFornecedor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.selecionar,
+            this.idCliente,
+            this.nome,
+            this.CpfCnpj,
+            this.dataNasc,
+            this.editar,
+            this.excluir});
+            this.dtgFornecedor.Location = new System.Drawing.Point(11, 214);
+            this.dtgFornecedor.Name = "dtgFornecedor";
+            this.dtgFornecedor.Size = new System.Drawing.Size(782, 413);
+            this.dtgFornecedor.TabIndex = 10;
+            this.dtgFornecedor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgFornecedor_CellContentClick);
             // 
             // dataGridViewImageColumn1
             // 
@@ -187,10 +186,10 @@
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Image = global::SysGestor.View.Properties.Resources.sair_32x32;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(717, 47);
+            this.btnSair.Location = new System.Drawing.Point(716, 47);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(77, 39);
-            this.btnSair.TabIndex = 9;
+            this.btnSair.TabIndex = 14;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.btnSair.UseVisualStyleBackColor = false;
@@ -199,10 +198,10 @@
             // pcbCabecalho
             // 
             this.pcbCabecalho.Image = global::SysGestor.View.Properties.Resources.img_sistema;
-            this.pcbCabecalho.Location = new System.Drawing.Point(0, 0);
+            this.pcbCabecalho.Location = new System.Drawing.Point(-1, 0);
             this.pcbCabecalho.Name = "pcbCabecalho";
             this.pcbCabecalho.Size = new System.Drawing.Size(809, 92);
-            this.pcbCabecalho.TabIndex = 8;
+            this.pcbCabecalho.TabIndex = 13;
             this.pcbCabecalho.TabStop = false;
             // 
             // btnExcluir
@@ -270,7 +269,7 @@
             this.excluir.ToolTipText = "Excluir Cliente";
             this.excluir.Width = 40;
             // 
-            // frmClienteGrid
+            // frmFornecedorGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -278,23 +277,24 @@
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.pcbCabecalho);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBoxEndereco);
-            this.Controls.Add(this.dtgCliente);
+            this.Controls.Add(this.groupBoxBusca);
+            this.Controls.Add(this.dtgFornecedor);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(822, 677);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(822, 677);
-            this.Name = "frmClienteGrid";
+            this.Name = "frmFornecedorGrid";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lista - Cliente";
-            this.Load += new System.EventHandler(this.frmClienteGrid_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgCliente)).EndInit();
-            this.groupBoxEndereco.ResumeLayout(false);
-            this.groupBoxEndereco.PerformLayout();
+            this.Text = "Lista - Fornecedor";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.frmFornecedorGrid_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBoxBusca.ResumeLayout(false);
+            this.groupBoxBusca.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgFornecedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).EndInit();
             this.ResumeLayout(false);
 
@@ -302,19 +302,19 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtgCliente;
-        private System.Windows.Forms.GroupBox groupBoxEndereco;
-        private System.Windows.Forms.TextBox txtPesquisa;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.PictureBox pcbCabecalho;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkSelecionarTodos;
         private System.Windows.Forms.RadioButton rbCpfCnpj;
         private System.Windows.Forms.RadioButton rbNome;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.CheckBox chkSelecionarTodos;
-        private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pcbCabecalho;
-        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.GroupBox groupBoxBusca;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dtgFornecedor;
         private System.Windows.Forms.DataGridViewCheckBoxColumn selecionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;

@@ -50,7 +50,7 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
             }
         }
 
-        public FornecedorDto GetFornecedor(int idFornecedor)
+        public FornecedorDto GetFornecedor(int idPessoa)
         {
             try
             {
@@ -58,9 +58,9 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idfornecedor " +
                                       "FROM pessoa A " +
-                                      "INNER JOIN fornecedor B ON A.idpessoa = B.idfornecedor "
-                                    + "WHERE B.idfornecedor = @IdFornecedor";
-                comando.Parameters.AddWithValue("@IdFornecedor", idFornecedor);
+                                      "INNER JOIN fornecedor B ON A.idpessoa = B.idpessoa "
+                                    + "WHERE A.idpessoa = @IdPessoa";
+                comando.Parameters.AddWithValue("@IdPessoa", idPessoa);
                 MySqlDataReader dr = Conexao.Buscar(comando);
 
                 var fornecedor = new FornecedorDto();
@@ -101,8 +101,8 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idfornecedor " +
                                       "FROM pessoa A " +
-                                      "INNER JOIN fornecedor B ON A.idpessoa = B.idfornecedor " +
-                                      "WHERE A.ativo = 0";
+                                      "INNER JOIN fornecedor B ON A.idpessoa = B.idpessoa " +
+                                      "WHERE A.ativo = 0 ";
 
                 MySqlDataReader dr = Conexao.Buscar(comando);
 

@@ -1,32 +1,31 @@
-﻿using SysGestor.BLL;
-using SysGestor.BLL.PessoaBll;
+﻿using SysGestor.BLL.PessoaBll;
+using SysGestor.BLL.PessoaBll.FornecedorBll;
 using SysGestor.DTO.PessoaDto;
-using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.DTO.PessoaDto.FornecedorDto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Reflection;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SysGestor.View.ClienteView
+namespace SysGestor.View.FornecedorView
 {
-    public partial class frmClienteNew : Form
+    public partial class frmFornecedorNew : Form
     {
         AutoCompleteStringCollection source = new AutoCompleteStringCollection();
         private string _tipoPessoa;
         PessoaBll _pessoaBll;
-    
-        public frmClienteNew()
+
+        public frmFornecedorNew()
         {
             InitializeComponent();
         }
 
-        private void frmClienteNew_Load(object sender, EventArgs e)
+        private void frmFornecedorNew_Load(object sender, EventArgs e)
         {
             pcbCabecalho.Controls.Add(btnNovo);
             pcbCabecalho.Controls.Add(btnGravar);
@@ -73,13 +72,13 @@ namespace SysGestor.View.ClienteView
         }
         #endregion
 
-        #region Inserir Cliente
+        #region Inserir Fornecedor
         private void btnGravar_Click(object sender, EventArgs e)
         {
             CidadeBll cidadeBll = new CidadeBll();
             CidadeDto cidadeDto = new CidadeDto();
-            ClienteBll clienteBll = new ClienteBll();
-            ClienteDto clienteDto = new ClienteDto();
+            FornecedorBll fornecedorBll = new FornecedorBll();
+            FornecedorDto fornecedorDto = new FornecedorDto();
             EnderecoBll enderecoBll = new EnderecoBll();
             EnderecoDto enderecoDto = new EnderecoDto();
             ContatoBll contatoBll = new ContatoBll();
@@ -101,13 +100,6 @@ namespace SysGestor.View.ClienteView
                 return;
             }
 
-            if (txtLimiteCredito.Text == string.Empty)
-            {
-                MessageBox.Show("Campo limite de crédito não pode ser vazio.", "Validação de Limite de Crédito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtLimiteCredito.Focus();
-                return;
-            }
-
             if (txtCidade.Text == " ")
             {
                 MessageBox.Show("Campo uf e cidade não pode ser vazio.", "Validação da Cidade", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -115,14 +107,13 @@ namespace SysGestor.View.ClienteView
                 return;
             }
 
-            clienteDto.Nome = txtNome.Text.Trim();
-            clienteDto.TipoPessoa = _tipoPessoa;
-            clienteDto.CpfCnpj = mskCpfCnpj.Text.Trim();
-            clienteDto.RgIe = txtRgIe.Text.Trim();
-            clienteDto.DataNascimento = Convert.ToDateTime(mskDataNasc.Text.Trim());
-            clienteDto.LimiteCredito = Convert.ToDouble(txtLimiteCredito.Text.Trim());
-            clienteDto.DataCadastro = DateTime.Now;
-            clienteDto.Observacao = txtObservacao.Text.Trim();
+            fornecedorDto.Nome = txtNome.Text.Trim();
+            fornecedorDto.TipoPessoa = _tipoPessoa;
+            fornecedorDto.CpfCnpj = mskCpfCnpj.Text.Trim();
+            fornecedorDto.RgIe = txtRgIe.Text.Trim();
+            fornecedorDto.DataNascimento = Convert.ToDateTime(mskDataNasc.Text.Trim());
+            fornecedorDto.DataCadastro = DateTime.Now;
+            fornecedorDto.Observacao = txtObservacao.Text.Trim();
 
             enderecoDto.Logradouro = txtLogradouro.Text.Trim();
             enderecoDto.Numero = txtNumero.Text.Trim();
@@ -136,7 +127,7 @@ namespace SysGestor.View.ClienteView
             contatoDto.TelComercial = mskTelComercial.Text.Trim();
             contatoDto.Email = txtEmail.Text.Trim();
 
-            clienteBll.Inserir(clienteDto);
+            fornecedorBll.Inserir(fornecedorDto);
 
             contatoDto.PessoaDto.Id = _pessoaBll.GetIdPessoa();
 
@@ -145,10 +136,10 @@ namespace SysGestor.View.ClienteView
             contatoBll.Inserir(contatoDto);
 
             desabilitaCampo();
-        }        
+        }
         #endregion
-             
-        #region Validação de Campos     
+
+        #region Validação de Campos
         private void txtRgIe_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar))
@@ -164,7 +155,6 @@ namespace SysGestor.View.ClienteView
             mskCpfCnpj.Text = string.Empty;
             txtRgIe.Text = string.Empty;
             mskDataNasc.Text = string.Empty;
-            txtLimiteCredito.Text = string.Empty;
             txtLogradouro.Text = string.Empty;
             txtNumero.Text = string.Empty;
             txtComplemento.Text = string.Empty;
@@ -185,7 +175,6 @@ namespace SysGestor.View.ClienteView
             mskCpfCnpj.Enabled = false;
             txtRgIe.Enabled = false;
             mskDataNasc.Enabled = false;
-            txtLimiteCredito.Enabled = false;
             txtLogradouro.Enabled = false;
             txtNumero.Enabled = false;
             txtComplemento.Enabled = false;
@@ -209,7 +198,6 @@ namespace SysGestor.View.ClienteView
             mskCpfCnpj.Enabled = true;
             txtRgIe.Enabled = true;
             mskDataNasc.Enabled = true;
-            txtLimiteCredito.Enabled = true;
             txtLogradouro.Enabled = true;
             txtNumero.Enabled = true;
             txtComplemento.Enabled = true;

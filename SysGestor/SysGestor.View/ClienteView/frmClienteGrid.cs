@@ -55,6 +55,7 @@ namespace SysGestor.View.ClienteView
 
         private void frmClienteGrid_Load(object sender, EventArgs e)
         {
+            pcbCabecalho.Controls.Add(btnSair);
             carregaGrid(txtPesquisa.Text.Trim());
         }
 
@@ -148,6 +149,15 @@ namespace SysGestor.View.ClienteView
                clienteBll.RemoveMass(ids);
 
                 carregaGrid(txtPesquisa.Text.Trim());
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Dispose(true);
+                this.Close();
+            }
         }
     }
 }

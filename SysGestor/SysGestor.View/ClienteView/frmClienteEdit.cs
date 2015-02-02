@@ -35,6 +35,10 @@ namespace SysGestor.View.ClienteView
 
         private void frmClienteEdit_Load(object sender, EventArgs e)
         {
+            pcbCabecalho.Controls.Add(btnGravar);
+            pcbCabecalho.Controls.Add(btnCancelar);
+            pcbCabecalho.Controls.Add(btnSair);
+
             cidadeBll = new CidadeBll();
             cidadeDto = new CidadeDto();
             clienteBll = new ClienteBll();
@@ -71,6 +75,15 @@ namespace SysGestor.View.ClienteView
         private void txtUf_Validated(object sender, EventArgs e)
         {
             loadSuggestionCidade();
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Dispose(true);
+                this.Close();
+            }
         }
         #endregion
 
@@ -173,15 +186,7 @@ namespace SysGestor.View.ClienteView
         }    
         #endregion
 
-        #region Validação de Campos
-        //private void txtLimiteCredito_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (!char.IsDigit(e.KeyChar))
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
-
+        #region Validação de Campos   
         private void txtRgIe_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar))
@@ -321,7 +326,7 @@ namespace SysGestor.View.ClienteView
                 MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
+        #endregion      
 
     }
 }

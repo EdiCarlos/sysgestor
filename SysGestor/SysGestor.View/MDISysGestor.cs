@@ -1,4 +1,5 @@
 ﻿using SysGestor.View.ClienteView;
+using SysGestor.View.FornecedorView;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,13 +22,25 @@ namespace SysGestor.View
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmClienteNew frmClienteView = new frmClienteNew();
-            frmClienteView.ShowDialog();
+            frmClienteView.Show();
         }
 
         private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmClienteGrid frmClienteGrid = new frmClienteGrid();
-            frmClienteGrid.ShowDialog();
+            frmClienteGrid.Show();
+        }
+
+        private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFornecedorNew frmFornecedorNew = new frmFornecedorNew();
+            frmFornecedorNew.Show();
+        }
+
+        private void fornecedorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmFornecedorGrid frmFornecedorGrid = new frmFornecedorGrid();
+            frmFornecedorGrid.Show();
         }
     }
 }

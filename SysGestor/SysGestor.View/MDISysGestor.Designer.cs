@@ -33,6 +33,8 @@
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fornecedorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMdi.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +52,8 @@
             // cadastroToolStripMenuItem
             // 
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clienteToolStripMenuItem});
+            this.clienteToolStripMenuItem,
+            this.fornecedorToolStripMenuItem});
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.cadastroToolStripMenuItem.Text = "&Cadastro";
@@ -65,7 +68,8 @@
             // buscarToolStripMenuItem
             // 
             this.buscarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clienteToolStripMenuItem1});
+            this.clienteToolStripMenuItem1,
+            this.fornecedorToolStripMenuItem1});
             this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.buscarToolStripMenuItem.Text = "&Buscar";
@@ -76,6 +80,20 @@
             this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.clienteToolStripMenuItem1.Text = "&Cliente";
             this.clienteToolStripMenuItem1.Click += new System.EventHandler(this.clienteToolStripMenuItem1_Click);
+            // 
+            // fornecedorToolStripMenuItem
+            // 
+            this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fornecedorToolStripMenuItem.Text = "&Fornecedor";
+            this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.fornecedorToolStripMenuItem_Click);
+            // 
+            // fornecedorToolStripMenuItem1
+            // 
+            this.fornecedorToolStripMenuItem1.Name = "fornecedorToolStripMenuItem1";
+            this.fornecedorToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.fornecedorToolStripMenuItem1.Text = "&Fornecedor";
+            this.fornecedorToolStripMenuItem1.Click += new System.EventHandler(this.fornecedorToolStripMenuItem1_Click);
             // 
             // MDISysGestor
             // 
@@ -104,5 +122,7 @@
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem fornecedorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fornecedorToolStripMenuItem1;
     }
 }

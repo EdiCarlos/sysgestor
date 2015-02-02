@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon %281%29.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -62,6 +65,24 @@
     <Compile Include="ClienteView\frmClienteNew.Designer.cs">
       <DependentUpon>frmClienteNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="FornecedorView\frmFornecedorEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FornecedorView\frmFornecedorEdit.Designer.cs">
+      <DependentUpon>frmFornecedorEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FornecedorView\frmFornecedorGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FornecedorView\frmFornecedorGrid.Designer.cs">
+      <DependentUpon>frmFornecedorGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FornecedorView\frmFornecedorNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FornecedorView\frmFornecedorNew.Designer.cs">
+      <DependentUpon>frmFornecedorNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="MDISysGestor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +91,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="ClienteView\frmClienteEdit.resx">
       <DependentUpon>frmClienteEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +100,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClienteView\frmClienteNew.resx">
       <DependentUpon>frmClienteNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FornecedorView\frmFornecedorEdit.resx">
+      <DependentUpon>frmFornecedorEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FornecedorView\frmFornecedorGrid.resx">
+      <DependentUpon>frmFornecedorGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FornecedorView\frmFornecedorNew.resx">
+      <DependentUpon>frmFornecedorNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDISysGestor.resx">
       <DependentUpon>MDISysGestor.cs</DependentUpon>
@@ -126,6 +157,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lixeira_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sair_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_sistema.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon %281%29.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

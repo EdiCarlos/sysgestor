@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClienteNew));
             this.lblNomeRazaoSocial = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.groupBoxDados = new System.Windows.Forms.GroupBox();
@@ -73,16 +74,16 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnGravar = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnGravar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.pcbCabecalho = new System.Windows.Forms.PictureBox();
             this.groupBoxDados.SuspendLayout();
             this.groupBoxTipoPessoa.SuspendLayout();
             this.groupBoxEndereco.SuspendLayout();
             this.groupBoxContato.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNomeRazaoSocial
@@ -123,7 +124,7 @@
             this.groupBoxDados.Controls.Add(this.lblCpfCnpj);
             this.groupBoxDados.Controls.Add(this.label2);
             this.groupBoxDados.Controls.Add(this.lblNomeRazaoSocial);
-            this.groupBoxDados.Location = new System.Drawing.Point(12, 97);
+            this.groupBoxDados.Location = new System.Drawing.Point(12, 96);
             this.groupBoxDados.Name = "groupBoxDados";
             this.groupBoxDados.Size = new System.Drawing.Size(782, 185);
             this.groupBoxDados.TabIndex = 0;
@@ -373,7 +374,7 @@
             this.groupBoxEndereco.Controls.Add(this.label6);
             this.groupBoxEndereco.Controls.Add(this.label11);
             this.groupBoxEndereco.Controls.Add(this.label12);
-            this.groupBoxEndereco.Location = new System.Drawing.Point(12, 288);
+            this.groupBoxEndereco.Location = new System.Drawing.Point(12, 287);
             this.groupBoxEndereco.Name = "groupBoxEndereco";
             this.groupBoxEndereco.Size = new System.Drawing.Size(782, 185);
             this.groupBoxEndereco.TabIndex = 1;
@@ -623,68 +624,111 @@
             this.label17.TabIndex = 6;
             this.label17.Text = "Observações";
             // 
-            // btnNovo
+            // btnCancelar
             // 
-            this.btnNovo.Location = new System.Drawing.Point(336, 57);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(75, 23);
-            this.btnNovo.TabIndex = 8;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // btnGravar
-            // 
-            this.btnGravar.Location = new System.Drawing.Point(423, 57);
-            this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(75, 23);
-            this.btnGravar.TabIndex = 8;
-            this.btnGravar.Text = "Gravar";
-            this.btnGravar.UseVisualStyleBackColor = true;
-            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Image = global::SysGestor.View.Properties.Resources.cancel_32x32;
+            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelar.Location = new System.Drawing.Point(598, 47);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(111, 39);
+            this.btnCancelar.TabIndex = 8;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(607, 57);
+            this.btnSair.BackColor = System.Drawing.Color.Transparent;
+            this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSair.FlatAppearance.BorderSize = 0;
+            this.btnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSair.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Image = global::SysGestor.View.Properties.Resources.sair_32x32;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(716, 46);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(75, 23);
+            this.btnSair.Size = new System.Drawing.Size(77, 39);
             this.btnSair.TabIndex = 8;
             this.btnSair.Text = "Sair";
-            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // btnCancelar
+            // btnGravar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(518, 57);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 8;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnGravar.BackColor = System.Drawing.Color.Transparent;
+            this.btnGravar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGravar.FlatAppearance.BorderSize = 0;
+            this.btnGravar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnGravar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnGravar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGravar.Image = global::SysGestor.View.Properties.Resources.Save_32x32;
+            this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGravar.Location = new System.Drawing.Point(493, 47);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(98, 39);
+            this.btnGravar.TabIndex = 8;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnGravar.UseVisualStyleBackColor = false;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
-            // pictureBox1
+            // btnNovo
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(809, 92);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.btnNovo.BackColor = System.Drawing.Color.Transparent;
+            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNovo.FlatAppearance.BorderSize = 0;
+            this.btnNovo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnNovo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.Image = global::SysGestor.View.Properties.Resources.new_32x32;
+            this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNovo.Location = new System.Drawing.Point(399, 47);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(87, 39);
+            this.btnNovo.TabIndex = 8;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnNovo.UseVisualStyleBackColor = false;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            // 
+            // pcbCabecalho
+            // 
+            this.pcbCabecalho.Image = global::SysGestor.View.Properties.Resources.img_sistema;
+            this.pcbCabecalho.Location = new System.Drawing.Point(-3, -1);
+            this.pcbCabecalho.Name = "pcbCabecalho";
+            this.pcbCabecalho.Size = new System.Drawing.Size(809, 92);
+            this.pcbCabecalho.TabIndex = 7;
+            this.pcbCabecalho.TabStop = false;
             // 
             // frmClienteNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 639);
+            this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnGravar);
-            this.Controls.Add(this.btnNovo);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtObservacao);
             this.Controls.Add(this.groupBoxContato);
             this.Controls.Add(this.groupBoxEndereco);
             this.Controls.Add(this.groupBoxDados);
+            this.Controls.Add(this.pcbCabecalho);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(822, 677);
             this.MinimizeBox = false;
@@ -703,7 +747,7 @@
             this.groupBoxEndereco.PerformLayout();
             this.groupBoxContato.ResumeLayout(false);
             this.groupBoxContato.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -752,7 +796,7 @@
         private System.Windows.Forms.TextBox txtObservacao;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnDebito;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pcbCabecalho;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnSair;

@@ -63,6 +63,16 @@ namespace SysGestor.View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancel_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit_16x16 {
             get {
                 object obj = ResourceManager.GetObject("edit_16x16", resourceCulture);
@@ -83,6 +93,16 @@ namespace SysGestor.View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_sistema {
+            get {
+                object obj = ResourceManager.GetObject("img_sistema", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lixeira_16x16 {
             get {
                 object obj = ResourceManager.GetObject("lixeira_16x16", resourceCulture);
@@ -96,6 +116,36 @@ namespace SysGestor.View.Properties {
         internal static System.Drawing.Bitmap lixeira_32x32 {
             get {
                 object obj = ResourceManager.GetObject("lixeira_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap new_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("new_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sair_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("sair_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Save_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Save_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
