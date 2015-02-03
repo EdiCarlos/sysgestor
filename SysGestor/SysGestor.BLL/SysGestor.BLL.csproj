@@ -45,6 +45,8 @@
     <Compile Include="PessoaBll\EnderecoBll.cs" />
     <Compile Include="PessoaBll\FornecedorBll\FornecedorBll.cs" />
     <Compile Include="PessoaBll\PessoaBll.cs" />
+    <Compile Include="ProdutoBll\CategoriaBll.cs" />
+    <Compile Include="ProdutoBll\ProdutoBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrocaInfo.cs" />
   </ItemGroup>

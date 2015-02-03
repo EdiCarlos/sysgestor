@@ -89,6 +89,12 @@
     <Compile Include="MDISysGestor.Designer.cs">
       <DependentUpon>MDISysGestor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProdutoView\frmCategoriaNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\frmCategoriaNew.Designer.cs">
+      <DependentUpon>frmCategoriaNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MDISysGestor.resx">
       <DependentUpon>MDISysGestor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\frmCategoriaNew.resx">
+      <DependentUpon>frmCategoriaNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -176,6 +185,7 @@
   <ItemGroup>
     <Content Include="favicon %281%29.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

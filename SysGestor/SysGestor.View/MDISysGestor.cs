@@ -1,5 +1,6 @@
 ﻿using SysGestor.View.ClienteView;
 using SysGestor.View.FornecedorView;
+using SysGestor.View.ProdutoView;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,12 @@ namespace SysGestor.View
         {
             frmFornecedorGrid frmFornecedorGrid = new frmFornecedorGrid();
             frmFornecedorGrid.Show();
+        }
+
+        private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCategoriaNew frmCategoriaNew = new frmCategoriaNew();
+            frmCategoriaNew.Show();
         }
     }
 }
