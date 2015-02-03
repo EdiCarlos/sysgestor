@@ -148,7 +148,7 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idcliente FROM cliente WHERE idcliente = @IdCliente)";
+                comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idpessoa FROM cliente WHERE idcliente = @IdCliente)";
 
                 comando.Parameters.AddWithValue("@IdCliente", idCliente);
 
@@ -169,7 +169,7 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
                 {
                     MySqlCommand comando = new MySqlCommand();
                     comando.CommandType = CommandType.Text;
-                    comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idcliente FROM cliente WHERE idcliente = @IdCliente)";
+                    comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idpessoa FROM cliente WHERE idcliente = @IdCliente)";
 
                     comando.Parameters.AddWithValue("@IdCliente", idCliente[i]);
 

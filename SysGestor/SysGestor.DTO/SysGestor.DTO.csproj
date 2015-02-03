@@ -45,6 +45,10 @@
     <Compile Include="PessoaDto\EnderecoDto.cs" />
     <Compile Include="PessoaDto\FornecedorDto\FornecedorDto.cs" />
     <Compile Include="PessoaDto\PessoaDto.cs" />
+    <Compile Include="ProdutoDto\CategoriaDto.cs" />
+    <Compile Include="ProdutoDto\GradeDto.cs" />
+    <Compile Include="ProdutoDto\ProdutoDto.cs" />
+    <Compile Include="ProdutoDto\ValorProdutoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

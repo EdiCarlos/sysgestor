@@ -102,7 +102,6 @@
             this.mskCpfCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskCpfCnpj.ForeColor = System.Drawing.Color.DarkBlue;
             this.mskCpfCnpj.Location = new System.Drawing.Point(400, 90);
-            this.mskCpfCnpj.Mask = "000,000,000-00";
             this.mskCpfCnpj.Name = "mskCpfCnpj";
             this.mskCpfCnpj.Size = new System.Drawing.Size(180, 24);
             this.mskCpfCnpj.TabIndex = 1;

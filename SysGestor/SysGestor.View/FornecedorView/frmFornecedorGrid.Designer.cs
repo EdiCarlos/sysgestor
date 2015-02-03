@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFornecedorGrid));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkSelecionarTodos = new System.Windows.Forms.CheckBox();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.rbCpfCnpj = new System.Windows.Forms.RadioButton();
             this.rbNome = new System.Windows.Forms.RadioButton();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
@@ -41,7 +42,6 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnSair = new System.Windows.Forms.Button();
             this.pcbCabecalho = new System.Windows.Forms.PictureBox();
-            this.btnExcluir = new System.Windows.Forms.Button();
             this.selecionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +76,21 @@
             this.chkSelecionarTodos.Text = "Selecionar Tudo";
             this.chkSelecionarTodos.UseVisualStyleBackColor = true;
             this.chkSelecionarTodos.CheckedChanged += new System.EventHandler(this.chkSelecionarTodos_CheckedChanged);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Image = global::SysGestor.View.Properties.Resources.lixeira_32x32;
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcluir.Location = new System.Drawing.Point(162, 53);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(92, 42);
+            this.btnExcluir.TabIndex = 4;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // rbCpfCnpj
             // 
@@ -112,6 +127,7 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(487, 24);
             this.txtPesquisa.TabIndex = 1;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
             // groupBoxBusca
             // 
@@ -204,21 +220,6 @@
             this.pcbCabecalho.TabIndex = 13;
             this.pcbCabecalho.TabStop = false;
             // 
-            // btnExcluir
-            // 
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Image = global::SysGestor.View.Properties.Resources.lixeira_32x32;
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(162, 53);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(92, 42);
-            this.btnExcluir.TabIndex = 4;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
             // selecionar
             // 
             this.selecionar.HeaderText = "Selec.";
@@ -227,7 +228,7 @@
             // 
             // idCliente
             // 
-            this.idCliente.DataPropertyName = "Id";
+            this.idCliente.DataPropertyName = "IdFornecedor";
             this.idCliente.HeaderText = "Código";
             this.idCliente.Name = "idCliente";
             this.idCliente.Width = 80;

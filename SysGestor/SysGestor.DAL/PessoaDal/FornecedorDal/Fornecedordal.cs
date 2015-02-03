@@ -50,7 +50,7 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
             }
         }
 
-        public FornecedorDto GetFornecedor(int idPessoa)
+        public FornecedorDto GetFornecedor(int idFornecedor)
         {
             try
             {
@@ -59,8 +59,8 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
                 comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idfornecedor " +
                                       "FROM pessoa A " +
                                       "INNER JOIN fornecedor B ON A.idpessoa = B.idpessoa "
-                                    + "WHERE A.idpessoa = @IdPessoa";
-                comando.Parameters.AddWithValue("@IdPessoa", idPessoa);
+                                    + "WHERE B.idfornecedor = @IdFornrcedor";
+                comando.Parameters.AddWithValue("@IdFornrcedor", idFornecedor);
                 MySqlDataReader dr = Conexao.Buscar(comando);
 
                 var fornecedor = new FornecedorDto();
@@ -147,7 +147,7 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idfornecedor FROM fornecedor WHERE idfornecedor = @IdFornecedor)";
+                comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idpessoa FROM fornecedor WHERE idfornecedor = @IdFornecedor)";
 
                 comando.Parameters.AddWithValue("@IdFornecedor", idFornecedor);
 
@@ -168,7 +168,7 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
                 {
                     MySqlCommand comando = new MySqlCommand();
                     comando.CommandType = CommandType.Text;
-                    comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idfornecedor FROM fornecedor WHERE idfornecedor = @IdFornecedor)";
+                    comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idpessoa FROM fornecedor WHERE idfornecedor = @IdFornecedor)";
 
                     comando.Parameters.AddWithValue("@IdFornecedor", idFornecedor[i]);
 
