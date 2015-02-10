@@ -1,0 +1,6 @@
+G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\bin\Debug\SysGestor.RESOURCE.dll
+G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\bin\Debug\SysGestor.RESOURCE.pdb
+G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.Resources.Errors.resources
+G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.csproj.GenerateResource.Cache
+G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.dll
+G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.pdb

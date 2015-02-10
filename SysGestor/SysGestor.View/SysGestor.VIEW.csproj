@@ -89,11 +89,53 @@
     <Compile Include="MDISysGestor.Designer.cs">
       <DependentUpon>MDISysGestor.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProdutoView\frmCategoriaNew.cs">
+    <Compile Include="ProdutoView\Categoria\frmCategoriaEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProdutoView\frmCategoriaNew.Designer.cs">
+    <Compile Include="ProdutoView\Categoria\frmCategoriaEdit.Designer.cs">
+      <DependentUpon>frmCategoriaEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutoView\Categoria\frmCategoriaGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\Categoria\frmCategoriaGrid.Designer.cs">
+      <DependentUpon>frmCategoriaGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutoView\Categoria\frmCategoriaNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\Categoria\frmCategoriaNew.Designer.cs">
       <DependentUpon>frmCategoriaNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutoView\frmProdutoNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\frmProdutoNew.Designer.cs">
+      <DependentUpon>frmProdutoNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutoView\Grade\frmGradeEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\Grade\frmGradeEdit.Designer.cs">
+      <DependentUpon>frmGradeEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutoView\Grade\frmGradeGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\Grade\frmGradeGrid.Designer.cs">
+      <DependentUpon>frmGradeGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutoView\Grade\frmGradeNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\Grade\frmGradeNew.Designer.cs">
+      <DependentUpon>frmGradeNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutoView\Unidade\frmUnidadeNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\Unidade\frmUnidadeNew.Designer.cs">
+      <DependentUpon>frmUnidadeNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,8 +161,29 @@
     <EmbeddedResource Include="MDISysGestor.resx">
       <DependentUpon>MDISysGestor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProdutoView\frmCategoriaNew.resx">
+    <EmbeddedResource Include="ProdutoView\Categoria\frmCategoriaEdit.resx">
+      <DependentUpon>frmCategoriaEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\Categoria\frmCategoriaGrid.resx">
+      <DependentUpon>frmCategoriaGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\Categoria\frmCategoriaNew.resx">
       <DependentUpon>frmCategoriaNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\frmProdutoNew.resx">
+      <DependentUpon>frmProdutoNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\Grade\frmGradeEdit.resx">
+      <DependentUpon>frmGradeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\Grade\frmGradeGrid.resx">
+      <DependentUpon>frmGradeGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\Grade\frmGradeNew.resx">
+      <DependentUpon>frmGradeNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\Unidade\frmUnidadeNew.resx">
+      <DependentUpon>frmUnidadeNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

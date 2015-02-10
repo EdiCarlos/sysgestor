@@ -1,37 +1,43 @@
-﻿using SysGestor.BLL.ProdutoBll;
+﻿using SysGestor.BLL;
+using SysGestor.BLL.ProdutoBll;
 using SysGestor.DTO.ProdutoDto;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SysGestor.View.ProdutoView
+namespace SysGestor.View.ProdutoView.Categoria
 {
-    public partial class frmCategoriaNew : Form
+    public partial class frmCategoriaEdit : Form
     {
         CategoriaDto _categoriaDto;
         CategoriaBll _categoriaBll;
 
-        public frmCategoriaNew()
+        public frmCategoriaEdit()
         {
             InitializeComponent();
             _categoriaDto = new CategoriaDto();
             _categoriaBll = new CategoriaBll();
+        }     
+            
+        #region Eventos
+        private void frmCategoriaEdit_Load(object sender, EventArgs e)
+        {
+            pcbCabecalho.Controls.Add(btnGravar);
+            pcbCabecalho.Controls.Add(btnCancelar);
+            pcbCabecalho.Controls.Add(btnSair);
+
+            _categoriaDto = _categoriaBll.GetCategoria(TrocaInfo.Id);
+            TrocaInfo.Dispose();
+
+            txtDescricao.Text = _categoriaDto.Descricao;
         }
 
-        #region Eventos
         private void btnGravar_Click(object sender, EventArgs e)
         {
             _categoriaDto.Descricao = txtDescricao.Text.Trim();
 
             try
             {
-                _categoriaBll.Inserir(_categoriaDto);
+                _categoriaBll.Alterar(_categoriaDto);
             }
             catch (Exception ex)
             {
@@ -40,14 +46,10 @@ namespace SysGestor.View.ProdutoView
             finally
             {
                 desabilitaCampo();
+                this.Close();
+                frmCategoriaGrid frmCategoriaGrid = new frmCategoriaGrid();
+                frmCategoriaGrid.Show();
             }
-        }
-
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-            habilitaCampo();
-            limpaCampo();
-            txtDescricao.Focus();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -75,17 +77,17 @@ namespace SysGestor.View.ProdutoView
         {
             txtDescricao.Enabled = false;
 
-            btnGravar.Enabled = false;
-            btnNovo.Enabled = true;
+            btnGravar.Enabled = false;         
         }
 
         private void habilitaCampo()
         {
             txtDescricao.Enabled = true;
 
-            btnGravar.Enabled = true;
-            btnNovo.Enabled = false;
+            btnGravar.Enabled = true;       
         }
         #endregion
+
+        
     }
 }

@@ -12,5 +12,12 @@ namespace SysGestor.DTO.ProdutoDto
         public decimal Margem { get; set; }
 
         public decimal Comissao { get; set; }
+
+        public ProdutoDto ProdutoDto { get; set; }
+
+        public ValorProdutoDto()
+        {
+            ProdutoDto = new ProdutoDto();
+        }
     }
 }

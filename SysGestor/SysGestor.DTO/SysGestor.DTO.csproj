@@ -48,6 +48,8 @@
     <Compile Include="ProdutoDto\CategoriaDto.cs" />
     <Compile Include="ProdutoDto\GradeDto.cs" />
     <Compile Include="ProdutoDto\ProdutoDto.cs" />
+    <Compile Include="ProdutoDto\ProdutoGridDto\ValorProdutoGridDto.cs" />
+    <Compile Include="ProdutoDto\UnidadeDto.cs" />
     <Compile Include="ProdutoDto\ValorProdutoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

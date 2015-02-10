@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SysGestor.DAL.Repositorio;
 using SysGestor.DTO.ProdutoDto;
+using SysGestor.RESOURCE.Resources;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,8 +28,8 @@ namespace SysGestor.DAL.ProdutoDal
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao inserir dados. " + ex.Message);
-            }
+                throw new Exception(Errors.InsertDataErrors + " - " + ex.Message);
+            }           
         }
 
         public void Alterar(CategoriaDto categoriaDto) 
@@ -37,7 +38,7 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "UPDATE categoria SET descricao = @Descricao" +
+                comando.CommandText = "UPDATE categoria SET descricao = @Descricao " +
                                       "WHERE idcategoria = @IdCategoria";
 
                 comando.Parameters.AddWithValue("@Descricao", categoriaDto.Descricao);
@@ -47,7 +48,7 @@ namespace SysGestor.DAL.ProdutoDal
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao alterar dados. " + ex.Message);
+                throw new Exception(Errors.UpdateDataErrors + " - " + ex.Message);
             }
         }
 
@@ -66,7 +67,7 @@ namespace SysGestor.DAL.ProdutoDal
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao excluir dados. " + ex.Message);
+                throw new Exception(Errors.DeleteDataErros + " - " + ex.Message);
             }
         }
 
@@ -87,7 +88,7 @@ namespace SysGestor.DAL.ProdutoDal
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao excluir dados. " + ex.Message);
+                throw new Exception(Errors.DeleteDataErros + " - " + ex.Message);
             }
         }
 
@@ -122,7 +123,40 @@ namespace SysGestor.DAL.ProdutoDal
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao buscar dados. " + ex.Message);
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
+            }
+        }
+
+        public string GetEqualsCategoria(string descricao)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT descricao FROM categoria WHERE descricao = @Descricao";
+
+                comando.Parameters.AddWithValue("@Descricao", descricao);
+
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                var categoria = "";
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        categoria = (string)dr["descricao"];
+                    }
+                }
+                else
+                {
+                    categoria = null;
+                }
+                return categoria;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
             }
         }
 
@@ -132,7 +166,7 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT idcategoria, descricao, ativo FROM categoria WHERE idcategoria = @IdCategoria";
+                comando.CommandText = "SELECT idcategoria, descricao, ativo FROM categoria WHERE ativo = 0";
 
                 MySqlDataReader dr = Conexao.Buscar(comando);
 
@@ -159,7 +193,7 @@ namespace SysGestor.DAL.ProdutoDal
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao buscar dados. " + ex.Message);
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
             }
         }
     }

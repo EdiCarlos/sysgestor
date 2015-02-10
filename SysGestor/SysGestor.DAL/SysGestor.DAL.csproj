@@ -48,7 +48,10 @@
     <Compile Include="PessoaDal\FornecedorDal\FornecedorDal.cs" />
     <Compile Include="PessoaDal\PessoaDal.cs" />
     <Compile Include="ProdutoDal\CategoriaDal.cs" />
+    <Compile Include="ProdutoDal\GradeDal.cs" />
     <Compile Include="ProdutoDal\ProdutoDal.cs" />
+    <Compile Include="ProdutoDal\UnidadeDal.cs" />
+    <Compile Include="ProdutoDal\ValorProdutoDal.cs" />
     <Compile Include="Repositorio\Conexao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,6 +62,10 @@
     <ProjectReference Include="..\SysGestor.DTO\SysGestor.DTO.csproj">
       <Project>{53dcd568-65b9-46ec-8d08-549a6ac50822}</Project>
       <Name>SysGestor.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysGestor.RESOURCE\SysGestor.RESOURCE.csproj">
+      <Project>{b8fc8c86-7eed-47c4-a30b-4d84f4f80aa0}</Project>
+      <Name>SysGestor.RESOURCE</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

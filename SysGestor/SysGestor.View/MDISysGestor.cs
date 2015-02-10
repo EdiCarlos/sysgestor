@@ -1,6 +1,8 @@
 ﻿using SysGestor.View.ClienteView;
 using SysGestor.View.FornecedorView;
 using SysGestor.View.ProdutoView;
+using SysGestor.View.ProdutoView.Categoria;
+using SysGestor.View.ProdutoView.Grade;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,6 +50,30 @@ namespace SysGestor.View
         {
             frmCategoriaNew frmCategoriaNew = new frmCategoriaNew();
             frmCategoriaNew.Show();
+        }
+
+        private void categoriaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmCategoriaGrid frmCategoriaGrid = new frmCategoriaGrid();
+            frmCategoriaGrid.Show();
+        }
+
+        private void gradeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGradeNew frmGradeNew = new frmGradeNew();
+            frmGradeNew.Show();
+        }
+
+        private void gradeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmGradeGrid frmGradeGrid = new frmGradeGrid();
+            frmGradeGrid.Show();
+        }
+
+        private void produtoNovoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProdutoNew frmProdutoNew = new frmProdutoNew();
+            frmProdutoNew.Show();
         }
     }
 }
