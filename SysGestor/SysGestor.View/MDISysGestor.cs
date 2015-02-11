@@ -3,6 +3,7 @@ using SysGestor.View.FornecedorView;
 using SysGestor.View.ProdutoView;
 using SysGestor.View.ProdutoView.Categoria;
 using SysGestor.View.ProdutoView.Grade;
+using SysGestor.View.ProdutoView.Unidade;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,6 +75,12 @@ namespace SysGestor.View
         {
             frmProdutoNew frmProdutoNew = new frmProdutoNew();
             frmProdutoNew.Show();
+        }
+
+        private void unidadeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {          
+                frmUnidadeNew frmUnidade = new frmUnidadeNew();
+                frmUnidade.Show();           
         }
     }
 }

@@ -93,7 +93,7 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
             }
         }
 
-        public IList<FornecedorDto> FindAll()
+        public List<FornecedorDto> FindAll()
         {
             try
             {
@@ -133,7 +133,7 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
                 {
                     listaFornecedor = null;
                 }
-                return listaFornecedor;
+                return listaFornecedor.ToList();
             }
             catch (Exception ex)
             {

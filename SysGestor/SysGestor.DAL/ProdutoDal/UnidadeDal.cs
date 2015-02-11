@@ -29,6 +29,25 @@ namespace SysGestor.DAL.ProdutoDal
             }
         }
 
+        public void Alterar(UnidadeDto unidadeDto)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "UPDATE unidmedida SET descricao = @Descricao WHERE idunidmedida = @IdUnidMedida ";
+
+                comando.Parameters.AddWithValue("@Descricao", unidadeDto.Descricao);
+                comando.Parameters.AddWithValue("@IdUnidMedida", unidadeDto.IdUnidMedida);
+
+                Conexao.Crud(comando);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.UpdateDataErrors + " - " + ex.Message);
+            }
+        }
+
         public void Remove(int id)
         {
             try
@@ -116,5 +135,7 @@ namespace SysGestor.DAL.ProdutoDal
                 throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
             }
         }
+
+      
     }
 }

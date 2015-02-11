@@ -70,12 +70,44 @@ namespace SysGestor.BLL.ProdutoBll
             categorias = _categoriaDal.FindAll().ToList();
 
             if (searchValue == "Descricao" && filter != "")
-                return categorias.Where(x => x.Descricao.Contains(Convert.ToString(filter))).ToList();
+                return categorias.Where(x => x.Descricao.ToUpper().Contains(Convert.ToString(filter).ToUpper())).ToList();
 
             if (searchValue == "Id" && filter != "")
                 return categorias.Where(x => x.Id == Convert.ToInt32(filter)).ToList();
 
             return categorias;
+        }
+
+        public List<CategoriaDto> FindAll()
+        {
+            var lista = new List<CategoriaDto>();
+
+            lista = null;
+
+            lista = _categoriaDal.FindAll().ToList();
+
+            if (lista != null) return lista;
+            else return null;
+        }
+
+        public int GetIdListaCategoria(string categoria)
+        {
+            int id = 0;
+
+            if (!string.IsNullOrEmpty(categoria))
+            {
+                var listaCategoria = new List<CategoriaDto>();
+
+                listaCategoria = FindAll().ToList();
+
+                if (listaCategoria != null)
+                {
+                    var p = from x in listaCategoria where x.Descricao == categoria select x.Id; //consulta linq
+
+                    id = p.FirstOrDefault();
+                }
+            }
+            return id;
         }
     }
 }

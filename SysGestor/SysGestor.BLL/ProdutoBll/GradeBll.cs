@@ -26,7 +26,7 @@ namespace SysGestor.BLL.ProdutoBll
                                                  GetEqualsGrade(gradeDto.Descricao),
                                                  Errors.EqualsValue);
 
-            _gradeDal.Inserir(gradeDto);   
+            _gradeDal.Inserir(gradeDto);
         }
 
         public void Alterar(GradeDto gradeDto)
@@ -62,7 +62,7 @@ namespace SysGestor.BLL.ProdutoBll
 
         public string GetEqualsGrade(string descricao)
         {
-           return _gradeDal.GetEqualsCategoria(descricao);
+            return _gradeDal.GetEqualsCategoria(descricao);
         }
 
         public List<GradeDto> FindAll(string searchValue, object filter)
@@ -72,12 +72,44 @@ namespace SysGestor.BLL.ProdutoBll
             grades = _gradeDal.FindAll().ToList();
 
             if (searchValue == "Descricao" && filter != "")
-                return grades.Where(x => x.Descricao.Contains(Convert.ToString(filter))).ToList();
+                return grades.Where(x => x.Descricao.ToUpper().Contains(Convert.ToString(filter).ToUpper())).ToList();
 
             if (searchValue == "Id" && filter != "")
                 return grades.Where(x => x.Id == Convert.ToInt32(filter)).ToList();
 
             return grades;
+        }
+
+        public List<GradeDto> FindAll()
+        {
+            var lista = new List<GradeDto>();
+
+            lista = null;
+
+            lista = _gradeDal.FindAll().ToList();
+
+            if (lista != null) return lista;
+            else return null;
+        }
+
+        public int GetIdListaGrade(string grade)
+        {
+            int id = 0;
+
+            if (!string.IsNullOrEmpty(grade))
+            {
+                var listaGrade = new List<GradeDto>();
+
+                listaGrade = FindAll();
+
+                if (listaGrade != null)
+                {
+                    var p = from x in listaGrade where x.Descricao == grade select x.Id; //consulta linq
+
+                    id = p.FirstOrDefault();
+                }
+            }
+            return id;
         }
     }
 }

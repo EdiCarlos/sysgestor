@@ -147,6 +147,9 @@
   <data name="InvalidValue" xml:space="preserve">
     <value>Valor não pode ser null</value>
   </data>
+  <data name="NullReturn" xml:space="preserve">
+    <value>O valor retornado é null</value>
+  </data>
   <data name="SelectDataErrors" xml:space="preserve">
     <value>Erro ao buscar dados</value>
   </data>

@@ -160,7 +160,7 @@ namespace SysGestor.DAL.ProdutoDal
             }
         }
 
-        public IList<GradeDto> FindAll()
+        public List<GradeDto> FindAll()
         {
             try
             {

@@ -43,15 +43,16 @@ namespace SysGestor.BLL.PessoaBll.FornecedorBll
             return _fornecedorDal.GetFornecedor(id);   
         }
 
-        public IList<FornecedorDto> FindAll()
+        public List<FornecedorDto> FindAll()
         {
-            IList<FornecedorDto> lista = new List<FornecedorDto>();
+           var lista = new List<FornecedorDto>();
 
             lista = null;
 
-            lista = _fornecedorDal.FindAll();
+            lista = _fornecedorDal.FindAll().ToList();
 
-            return lista;
+            if (lista != null) return lista;
+            else return null;
         }
 
         public void Remove(int idFornecedor)
@@ -62,6 +63,26 @@ namespace SysGestor.BLL.PessoaBll.FornecedorBll
         public void RemoveMass(int[] idFornecedor)
         {
             _fornecedorDal.RemoveMass(idFornecedor);
+        }
+
+        public int GetIdListaFornecedor(string nome)
+        {
+            int id = 0;
+
+            if (!string.IsNullOrEmpty(nome))
+            {
+                var listaFornecedor = new List<FornecedorDto>();
+
+                listaFornecedor = FindAll();
+
+                if (listaFornecedor != null)
+                {
+                    var p = from x in listaFornecedor where x.Nome == nome select x.PessoaDto.Id; //consulta linq
+
+                    id = p.FirstOrDefault();
+                }
+            }
+            return id;
         }
     }
 }

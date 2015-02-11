@@ -58,7 +58,7 @@
             this.txtDescricao.Location = new System.Drawing.Point(10, 52);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(452, 24);
-            this.txtDescricao.TabIndex = 17;
+            this.txtDescricao.TabIndex = 0;
             // 
             // label6
             // 
@@ -77,9 +77,8 @@
             this.groupBox1.Location = new System.Drawing.Point(9, 99);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(473, 106);
-            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Observação";
             // 
             // btnSair
             // 
@@ -132,9 +131,15 @@
             this.Controls.Add(this.pcbCabecalho);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(507, 253);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(507, 253);
             this.Name = "frmUnidadeNew";
-            this.Text = "frmUnidadeNew";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cadastrar - Unidade de Medida";
+            this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmUnidadeNew_FormClosed);
             this.Load += new System.EventHandler(this.frmUnidadeNew_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).EndInit();
             this.groupBox1.ResumeLayout(false);

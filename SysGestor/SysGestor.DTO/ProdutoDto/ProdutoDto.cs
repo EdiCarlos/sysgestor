@@ -26,6 +26,8 @@ namespace SysGestor.DTO.ProdutoDto
 
         public GradeDto GradeDto { get; set; }
 
+        public UnidadeDto UnidadeDto { get; set; }
+
         public FornecedorDto FornecedorDto { get; set; }
 
         public ProdutoDto()
@@ -33,6 +35,7 @@ namespace SysGestor.DTO.ProdutoDto
             CategoriaDto = new CategoriaDto();
             GradeDto = new GradeDto();
             FornecedorDto = new FornecedorDto();
+            UnidadeDto = new UnidadeDto();
         }
 
 

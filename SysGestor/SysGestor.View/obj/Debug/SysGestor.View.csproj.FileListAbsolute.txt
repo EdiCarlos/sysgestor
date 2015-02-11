@@ -28,3 +28,4 @@ G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.VIEW.csproj.Gen
 G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.exe
 G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.pdb
 G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.ProdutoView.frmProdutoNew.resources
+G:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.ProdutoView.Unidade.frmUnidadeNew.resources

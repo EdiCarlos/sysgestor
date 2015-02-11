@@ -151,6 +151,15 @@ namespace SysGestor.RESOURCE.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O valor retornado é null.
+        /// </summary>
+        public static string NullReturn {
+            get {
+                return ResourceManager.GetString("NullReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Erro ao buscar dados.
         /// </summary>
         public static string SelectDataErrors {

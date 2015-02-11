@@ -1,4 +1,5 @@
-﻿using SysGestor.DAL.ProdutoDal;
+﻿using System;
+using SysGestor.DAL.ProdutoDal;
 using SysGestor.DTO.ProdutoDto;
 using SysGestor.RESOURCE.Resources;
 using SysGestor.RESOURCE.Validation;
@@ -20,7 +21,7 @@ namespace SysGestor.BLL.ProdutoBll
         public void Inserir(ProdutoDto produtoDto)
         {
             AssertionConcern.AssertArgumentNotNull(produtoDto.IdInterno, Errors.InvalidId);
-            AssertionConcern.AssertArgumentNotNull(produtoDto.Descricao, Errors.EmptyDescription);
+            AssertionConcern.AssertArgumentNotEmpty(produtoDto.Descricao, Errors.EmptyDescription);
             AssertionConcern.AssertArgumentNotNull(produtoDto.CategoriaDto.Id, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotNull(produtoDto.GradeDto.Id, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotNull(produtoDto.FornecedorDto.Id, Errors.InvalidValue);
@@ -34,7 +35,7 @@ namespace SysGestor.BLL.ProdutoBll
         public void Alterar(ProdutoDto produtoDto)
         {
             AssertionConcern.AssertArgumentNotNull(produtoDto.IdInterno, Errors.InvalidId);
-            AssertionConcern.AssertArgumentNotNull(produtoDto.Descricao, Errors.EmptyDescription);
+            AssertionConcern.AssertArgumentNotEmpty(produtoDto.Descricao, Errors.EmptyDescription);
             AssertionConcern.AssertArgumentNotNull(produtoDto.CategoriaDto.Id, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotNull(produtoDto.GradeDto.Id, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotNull(produtoDto.FornecedorDto.Id, Errors.InvalidValue);
@@ -75,5 +76,7 @@ namespace SysGestor.BLL.ProdutoBll
         {
             return _produtoDal.FindAllByDescricaoCategoriaIdInterno(descricao, categoria, idInterno);
         }
+
+       
     }
 }

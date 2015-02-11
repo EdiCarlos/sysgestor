@@ -44,6 +44,7 @@
             this.produtoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gradeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.unidadeMedidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMdi.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +89,8 @@
             this.produtoNovoToolStripMenuItem,
             this.categoriaToolStripMenuItem,
             this.gradeToolStripMenuItem,
-            this.valorProdutoToolStripMenuItem});
+            this.valorProdutoToolStripMenuItem,
+            this.unidadeMedidaToolStripMenuItem});
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             this.produtoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.produtoToolStripMenuItem.Text = "&Produto";
@@ -96,28 +98,28 @@
             // produtoNovoToolStripMenuItem
             // 
             this.produtoNovoToolStripMenuItem.Name = "produtoNovoToolStripMenuItem";
-            this.produtoNovoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.produtoNovoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.produtoNovoToolStripMenuItem.Text = "&Produto Novo";
             this.produtoNovoToolStripMenuItem.Click += new System.EventHandler(this.produtoNovoToolStripMenuItem_Click);
             // 
             // categoriaToolStripMenuItem
             // 
             this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.categoriaToolStripMenuItem.Text = "&Categoria";
             this.categoriaToolStripMenuItem.Click += new System.EventHandler(this.categoriaToolStripMenuItem_Click);
             // 
             // gradeToolStripMenuItem
             // 
             this.gradeToolStripMenuItem.Name = "gradeToolStripMenuItem";
-            this.gradeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gradeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.gradeToolStripMenuItem.Text = "&Grade";
             this.gradeToolStripMenuItem.Click += new System.EventHandler(this.gradeToolStripMenuItem_Click);
             // 
             // valorProdutoToolStripMenuItem
             // 
             this.valorProdutoToolStripMenuItem.Name = "valorProdutoToolStripMenuItem";
-            this.valorProdutoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.valorProdutoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.valorProdutoToolStripMenuItem.Text = "&Valor Produto";
             // 
             // buscarToolStripMenuItem
@@ -174,6 +176,13 @@
             this.gradeToolStripMenuItem1.Text = "&Grade";
             this.gradeToolStripMenuItem1.Click += new System.EventHandler(this.gradeToolStripMenuItem1_Click);
             // 
+            // unidadeMedidaToolStripMenuItem
+            // 
+            this.unidadeMedidaToolStripMenuItem.Name = "unidadeMedidaToolStripMenuItem";
+            this.unidadeMedidaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.unidadeMedidaToolStripMenuItem.Text = "&Unidade Medida";
+            this.unidadeMedidaToolStripMenuItem.Click += new System.EventHandler(this.unidadeMedidaToolStripMenuItem_Click);
+            // 
             // MDISysGestor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,5 +221,6 @@
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem gradeToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem unidadeMedidaToolStripMenuItem;
     }
 }

@@ -2,12 +2,7 @@
 using SysGestor.DTO.ProdutoDto;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SysGestor.View.ProdutoView.Unidade
@@ -34,19 +29,31 @@ namespace SysGestor.View.ProdutoView.Unidade
         {
             UnidadeDto unidadeDto = new UnidadeDto();
 
+            unidadeDto.IdUnidMedida = _unidadeBll.GetIdListaUnidade(txtDescricao.Text.Trim());
             unidadeDto.Descricao = txtDescricao.Text.Trim();
             
             try
             {
-                _unidadeBll.Inserir(unidadeDto);
+                _unidadeBll.Salvar(unidadeDto);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            loadSuggestionUnidade();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Dispose(true);
+                this.Close();
+            }
+        }
+
+        private void frmUnidadeNew_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -63,6 +70,8 @@ namespace SysGestor.View.ProdutoView.Unidade
             try
             {
                 listaUnidade = _unidadeBll.FindAll();
+
+                if (listaUnidade == null) return; //Se for null sai da função
 
                 DataTable dtUnidade = new DataTable();
 
@@ -91,5 +100,6 @@ namespace SysGestor.View.ProdutoView.Unidade
                 MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

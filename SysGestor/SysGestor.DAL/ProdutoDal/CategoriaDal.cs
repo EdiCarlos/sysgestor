@@ -160,7 +160,7 @@ namespace SysGestor.DAL.ProdutoDal
             }
         }
 
-        public IList<CategoriaDto> FindAll() 
+        public List<CategoriaDto> FindAll() 
         {
             try
             {

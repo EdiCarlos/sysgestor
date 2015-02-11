@@ -4,3 +4,4 @@ G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.Re
 G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.csproj.GenerateResource.Cache
 G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.dll
 G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.pdb
+G:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.csprojResolveAssemblyReference.cache
