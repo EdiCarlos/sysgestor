@@ -247,6 +247,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon %281%29.ico" />
+    <None Include="Resources\edit_32x32.png" />
+    <None Include="Resources\edit_48x48.png" />
+    <None Include="Resources\lixeira_32x321.png" />
+    <None Include="Resources\1423778494_pencil-48.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

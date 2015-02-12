@@ -16,16 +16,19 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "INSERT INTO produto(referencia, codigointerno, descricao, estoqueminimo, localizacaofisica, idcategoria, idgrade, idfornecedor) " +
-                                      "VALUES (@Referencia, @CodigoInterno, @Descricao, @EstoqueMinimo, @LocalizacaoFisica, @IdCategoria, @IdGrade, @IdFornecedor)";
+                comando.CommandText = "INSERT INTO produto(referencia, codigointerno, descricao, marca, estoqueminimo, localizacaofisica, observacao, idcategoria, idgrade, idunidmedida, idfornecedor) " +
+                                      "VALUES (@Referencia, @CodigoInterno, @Descricao, @Marca, @EstoqueMinimo, @LocalizacaoFisica, @Observacao, @IdCategoria, @IdGrade, @IdUnidMedida, @IdFornecedor)";
 
                 comando.Parameters.AddWithValue("@Referencia", produtoDto.Referencia);
                 comando.Parameters.AddWithValue("@CodigoInterno", produtoDto.IdInterno);
                 comando.Parameters.AddWithValue("@Descricao", produtoDto.Descricao);
+                comando.Parameters.AddWithValue("@Marca", produtoDto.Marca);
                 comando.Parameters.AddWithValue("@EstoqueMinimo", produtoDto.EstoqueMinimo);
                 comando.Parameters.AddWithValue("@LocalizacaoFisica", produtoDto.LocalizacaoFisica);
+                comando.Parameters.AddWithValue("@Observacao", produtoDto.Observacao);
                 comando.Parameters.AddWithValue("@IdCategoria", produtoDto.CategoriaDto.Id);
                 comando.Parameters.AddWithValue("@IdGrade", produtoDto.GradeDto.Id);
+                comando.Parameters.AddWithValue("@IdUnidMedida", produtoDto.UnidadeDto.IdUnidMedida);
                 comando.Parameters.AddWithValue("@IdFornecedor", produtoDto.FornecedorDto.Id);
 
                 Conexao.Crud(comando);
@@ -42,18 +45,21 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "UPDATE produto SET referencia = @Referencia, codigointerno = @CodigoInterno, descricao = @Descricao, estoqueminimo = @EstoqueMinimo, " +  
-                                      "localizacaofisica = @LocalizacaoFisica, idcategoria = @IdCategoria, idgrade = @IdGrade, idfornecedor = @IdFornecedor " +
-                                      "WHERE idproduto = @IdProduto";
+                comando.CommandText = "UPDATE produto SET referencia = @Referencia, codigointerno = @CodigoInterno, descricao = @Descricao, marca = @Marca, estoqueminimo = @EstoqueMinimo, " +  
+                                      "localizacaofisica = @LocalizacaoFisica, observacao = @Observacao, idcategoria = @IdCategoria, idgrade = @IdGrade, idfornecedor = @IdFornecedor " +
+                                      "WHERE idproduto = @IdProduto AND codigointerno = @CodigoInterno";
 
                 comando.Parameters.AddWithValue("@Referencia", produtoDto.Referencia);
-                comando.Parameters.AddWithValue("@CodigoInterno", produtoDto.IdInterno);
                 comando.Parameters.AddWithValue("@Descricao", produtoDto.Descricao);
+                comando.Parameters.AddWithValue("@Marca", produtoDto.Marca);
                 comando.Parameters.AddWithValue("@EstoqueMinimo", produtoDto.EstoqueMinimo);
                 comando.Parameters.AddWithValue("@LocalizacaoFisica", produtoDto.LocalizacaoFisica);
+                comando.Parameters.AddWithValue("@Observacao", produtoDto.Observacao);
                 comando.Parameters.AddWithValue("@IdCategoria", produtoDto.CategoriaDto.Id);
                 comando.Parameters.AddWithValue("@IdGrade", produtoDto.GradeDto.Id);
+                comando.Parameters.AddWithValue("@IdUnidMedida", produtoDto.UnidadeDto.IdUnidMedida);
                 comando.Parameters.AddWithValue("@IdFornecedor", produtoDto.FornecedorDto.Id);
+                comando.Parameters.AddWithValue("@CodigoInterno", produtoDto.IdInterno);
                 comando.Parameters.AddWithValue("@IdProduto", produtoDto.Id);
 
                 Conexao.Crud(comando);
@@ -110,8 +116,8 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT idproduto, referencia, codigointerno, descricao, estoqueminimo, " + 
-                                       "localizacaofisica, idcategoria, idgrade, idfornecedor, ativo " +
+                comando.CommandText = "SELECT idproduto, referencia, codigointerno, descricao, marca, estoqueminimo, " + 
+                                       "localizacaofisica, observacao, idcategoria, idgrade, idunidmedida, idfornecedor, ativo " +
                                        "FROM produto WHERE idproduto = @IdProduto";
 
                 comando.Parameters.AddWithValue("@IdProduto", idProduto);
@@ -128,10 +134,13 @@ namespace SysGestor.DAL.ProdutoDal
                         produto.Referencia = (string)dr["referencia"];
                         produto.IdInterno = (string)dr["codigointerno"];
                         produto.Descricao = (string)dr["descricao"];
+                        produto.Marca = (string)dr["marca"];
                         produto.EstoqueMinimo = (decimal)dr["estoqueminimo"];
                         produto.LocalizacaoFisica = (string)dr["localizacaofisica"];
+                        produto.Observacao = (string)dr["observacao"];
                         produto.CategoriaDto.Id = (int)dr["idcategoria"];
                         produto.GradeDto.Id = (int)dr["idgrade"];
+                        produto.UnidadeDto.IdUnidMedida = (int)dr["idunidmedida"];
                         produto.FornecedorDto.Id = (int)dr["idfornecedor"];
                         produto.Ativo = (int)dr["ativo"];
                     }
@@ -146,6 +155,32 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
             }
+        }
+
+        public int GetIdProduto()
+        {
+            int id = 0;
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT idproduto "
+                                    + "FROM produto ORDER BY idproduto DESC LIMIT 1";
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        id = (int)dr["idproduto"];
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
+            }
+            return id;
         }
 
         public string GetEqualsProduto(string descricao)
@@ -181,17 +216,18 @@ namespace SysGestor.DAL.ProdutoDal
             }
         }
 
-        public IList<ProdutoDto> FindAllByDescricaoCategoriaIdInterno(string descricao, string categoria, string idInterno)
+        public List<ProdutoDto> FindAllByDescricaoCategoriaIdInterno(string descricao, string categoria, string idInterno)
         {
             try
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT A.idproduto, A.referencia, A.codigointerno, A.descricao, A.estoqueminimo, " + 
-                                      "A.localizacaofisica, A.idcategoria, A.idgrade, A.idfornecedor, A.ativo, B.descricao, C.descricao, D.nome " +
+                comando.CommandText = "SELECT A.idproduto, A.referencia, A.codigointerno, A.descricao, A.marca, A.estoqueminimo, " + 
+                                      "A.localizacaofisica, A.observacao, A.idcategoria, A.idgrade, A.idunidmedida, A.idfornecedor, A.ativo, B.descricao, C.descricao, E.descricao D.nome " +
                                       "FROM produto A " + 
                                       "INNER JOIN categoria B ON A.idcategoria = B.idcategoria " +
                                       "INNER JOIN grade C ON A.idgrade = B.idgrade " +
+                                      "INNER JOIN unidmedida E ON A.idgrade = E.idunidmedida " +
                                       "INNER JOIN fornecedor D  ON A.idfornecedor = D.idfornecedor " +
                                       "WHERE A.ativo = 0";
                
@@ -209,14 +245,18 @@ namespace SysGestor.DAL.ProdutoDal
                         produto.Referencia = (string)dr["referencia"];
                         produto.IdInterno = (string)dr["codigointerno"];
                         produto.Descricao = (string)dr["descricao"];
+                        produto.Marca = (string)dr["marca"];
                         produto.EstoqueMinimo = (decimal)dr["estoqueminimo"];
                         produto.LocalizacaoFisica = (string)dr["localizacaofisica"];
+                        produto.Observacao = (string)dr["observacao"];
                         produto.CategoriaDto.Id = (int)dr["idcategoria"];
                         produto.GradeDto.Id = (int)dr["idgrade"];
+                        produto.UnidadeDto.IdUnidMedida = (int)dr["idunidmedida"];
                         produto.FornecedorDto.Id = (int)dr["idfornecedor"];
                         produto.Ativo = (int)dr["ativo"];
                         produto.CategoriaDto.Descricao = (string)dr["descricao"];
                         produto.GradeDto.Descricao = (string)dr["descricao"];
+                        produto.UnidadeDto.Descricao = (string)dr["descricao"];
                         produto.FornecedorDto.Nome = (string)dr["nome"];
 
                         listaProduto.Add(produto);

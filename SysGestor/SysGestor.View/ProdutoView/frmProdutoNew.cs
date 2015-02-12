@@ -20,6 +20,7 @@ namespace SysGestor.View.ProdutoView
     public partial class frmProdutoNew : Form
     {
         ProdutoBll _produtoBll;
+        ValorProdutoBll _valorProdutoBll;
         GradeBll _gradeBll;
         CategoriaBll _categoriaBll;
         FornecedorBll _fornecedorBll;
@@ -42,6 +43,7 @@ namespace SysGestor.View.ProdutoView
             pcbCabecalho.Controls.Add(btnCancelar);
             pcbCabecalho.Controls.Add(btnSair);
             _produtoBll = new ProdutoBll();
+            _valorProdutoBll = new ValorProdutoBll();
             _gradeBll = new GradeBll();
             _categoriaBll = new CategoriaBll();
             _fornecedorBll = new FornecedorBll();
@@ -79,6 +81,49 @@ namespace SysGestor.View.ProdutoView
             frmFornecedorNew frmFornecedorNew = new frmFornecedorNew();
             frmFornecedorNew.Show();
         }
+
+        private void txtValorCusto_Validated(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtValorCusto.Text))
+                txtMargem.Enabled = true;
+            txtMargem.Focus();
+        }
+
+        private void txtMargem_Validated(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMargem.Text)) CalculaMargemLucro();
+        }
+
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            habilitaCampo();
+            limpaCampo();
+            txtIdInterno.Focus();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            desabilitaCampo();
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Dispose(true);
+                this.Close();
+            }
+        }
+
+        private void frmProdutoNew_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Dispose(true);
+                this.Close();
+            }
+        }
+
         #endregion
 
         #region Validação de Campos
@@ -88,6 +133,7 @@ namespace SysGestor.View.ProdutoView
             txtIdInterno.Text = string.Empty;
             txtReferencia.Text = string.Empty;
             txtDescricao.Text = string.Empty;
+            txtMarca.Text = string.Empty;
             txtGrade.Text = string.Empty;
             txtUnidMedida.Text = string.Empty;
             txtLocalizacaoFisica.Text = string.Empty;
@@ -107,6 +153,7 @@ namespace SysGestor.View.ProdutoView
             txtIdInterno.Enabled = false;
             txtReferencia.Enabled = false;
             txtDescricao.Enabled = false;
+            txtMarca.Enabled = false;
             txtGrade.Enabled = false;
             txtUnidMedida.Enabled = false;
             txtLocalizacaoFisica.Enabled = false;
@@ -129,6 +176,7 @@ namespace SysGestor.View.ProdutoView
             txtIdInterno.Enabled = true;
             txtReferencia.Enabled = true;
             txtDescricao.Enabled = true;
+            txtMarca.Enabled = true;
             txtGrade.Enabled = true;
             txtUnidMedida.Enabled = true;
             txtLocalizacaoFisica.Enabled = true;
@@ -157,12 +205,41 @@ namespace SysGestor.View.ProdutoView
 
         private void GravaProduto()
         {
-            ProdutoDto produtoDto = new ProdutoDto();
+            try
+            {
+                ProdutoDto produtoDto = new ProdutoDto();
+                ValorProdutoDto valorProdutoDto = new ValorProdutoDto();
 
-            produtoDto.GradeDto.Id = _gradeBll.GetIdListaGrade(txtGrade.Text.Trim());
-            produtoDto.UnidadeDto.IdUnidMedida = _unidadeBll.GetIdListaUnidade(txtUnidMedida.Text.Trim());
-            produtoDto.CategoriaDto.Id = _categoriaBll.GetIdListaCategoria(txtCategoria.Text.Trim());
-            produtoDto.FornecedorDto.Id = _fornecedorBll.GetIdListaFornecedor(txtFornecedor.Text.Trim());
+                produtoDto.IdInterno = txtIdInterno.Text.Trim();
+                produtoDto.Referencia = txtReferencia.Text.Trim();
+                produtoDto.Descricao = txtDescricao.Text.Trim();
+                produtoDto.GradeDto.Id = _gradeBll.GetIdListaGrade(txtGrade.Text.Trim());
+                produtoDto.Marca = txtMarca.Text.Trim();
+                produtoDto.UnidadeDto.IdUnidMedida = _unidadeBll.GetIdListaUnidade(txtUnidMedida.Text.Trim());
+                produtoDto.LocalizacaoFisica = txtLocalizacaoFisica.Text.Trim();
+                produtoDto.EstoqueMinimo = Convert.ToDecimal(txtEstoqueMinimo.Text.Trim());
+                produtoDto.CategoriaDto.Id = _categoriaBll.GetIdListaCategoria(txtCategoria.Text.Trim());
+                produtoDto.FornecedorDto.Id = _fornecedorBll.GetIdListaFornecedor(txtFornecedor.Text.Trim());
+                produtoDto.Observacao = txtObservacao.Text.Trim();
+
+                _produtoBll.Inserir(produtoDto);
+
+                valorProdutoDto.ProdutoDto.Id = _produtoBll.GetIdProduto();
+                valorProdutoDto.ValorCompra = Convert.ToDouble(txtValorCusto.Text.Trim());
+                valorProdutoDto.Margem = Convert.ToDecimal(txtMargem.Text.Trim());
+                valorProdutoDto.Comissao = Convert.ToDecimal(txtComissao.Text.Trim());
+                valorProdutoDto.ValorVenda = Convert.ToDouble(lblValorVenda.Text.Trim());
+
+                _valorProdutoBll.Inserir(valorProdutoDto);
+
+                MessageBox.Show("Produto cadastrado com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            desabilitaCampo();
 
             LoadSuggestions();
         }
@@ -181,7 +258,7 @@ namespace SysGestor.View.ProdutoView
 
             txtMargem.Enabled = false;
 
-            txtValorCusto.Focus();
+            txtMargem.Focus();
         }
         #endregion
 
@@ -347,17 +424,17 @@ namespace SysGestor.View.ProdutoView
         }
         #endregion
 
-        private void txtValorCusto_Validated(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtValorCusto.Text))
-                txtMargem.Enabled = true;
-                txtMargem.Focus();
+
         }
 
-        private void txtMargem_Validated(object sender, EventArgs e)
+        private void btmExcluir_Click(object sender, EventArgs e)
         {
-                if (!string.IsNullOrEmpty(txtMargem.Text)) CalculaMargemLucro();
+
         }
+
+
 
     }
 }

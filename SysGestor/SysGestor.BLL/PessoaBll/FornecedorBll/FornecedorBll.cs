@@ -77,7 +77,7 @@ namespace SysGestor.BLL.PessoaBll.FornecedorBll
 
                 if (listaFornecedor != null)
                 {
-                    var p = from x in listaFornecedor where x.Nome == nome select x.PessoaDto.Id; //consulta linq
+                    var p = from x in listaFornecedor where x.Nome == nome select x.IdFornecedor; //consulta linq
 
                     id = p.FirstOrDefault();
                 }

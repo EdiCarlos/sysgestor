@@ -23,8 +23,7 @@ namespace SysGestor.BLL.ProdutoBll
             AssertionConcern.AssertArgumentNotNull(produtoDto.IdInterno, Errors.InvalidId);
             AssertionConcern.AssertArgumentNotEmpty(produtoDto.Descricao, Errors.EmptyDescription);
             AssertionConcern.AssertArgumentNotNull(produtoDto.CategoriaDto.Id, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotNull(produtoDto.GradeDto.Id, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotNull(produtoDto.FornecedorDto.Id, Errors.InvalidValue);
+            AssertionConcern.AssertArgumentNotNull(produtoDto.UnidadeDto.IdUnidMedida, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotEquals(produtoDto.Descricao,
                                                  GetEqualsProduto(produtoDto.Descricao),
                                                  Errors.EqualsValue);
@@ -37,11 +36,10 @@ namespace SysGestor.BLL.ProdutoBll
             AssertionConcern.AssertArgumentNotNull(produtoDto.IdInterno, Errors.InvalidId);
             AssertionConcern.AssertArgumentNotEmpty(produtoDto.Descricao, Errors.EmptyDescription);
             AssertionConcern.AssertArgumentNotNull(produtoDto.CategoriaDto.Id, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotNull(produtoDto.GradeDto.Id, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotNull(produtoDto.FornecedorDto.Id, Errors.InvalidValue);
+            AssertionConcern.AssertArgumentNotNull(produtoDto.UnidadeDto.IdUnidMedida, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotEquals(produtoDto.Descricao,
-                                                GetEqualsProduto(produtoDto.Descricao),
-                                                Errors.EqualsValue);
+                                                 GetEqualsProduto(produtoDto.Descricao),
+                                                 Errors.EqualsValue);
 
             _produtoDal.Alterar(produtoDto);
         }
@@ -67,6 +65,11 @@ namespace SysGestor.BLL.ProdutoBll
             return _produtoDal.GetProdutoById(idProduto);
         }
 
+        public int GetIdProduto()
+        {
+            return _produtoDal.GetIdProduto();
+        }
+            
         public string GetEqualsProduto(string descricao)
         {
             return _produtoDal.GetEqualsProduto(descricao);
