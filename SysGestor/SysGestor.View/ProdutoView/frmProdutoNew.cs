@@ -91,7 +91,13 @@ namespace SysGestor.View.ProdutoView
 
         private void txtMargem_Validated(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtMargem.Text)) CalculaMargemLucro();
+            if (!string.IsNullOrEmpty(txtMargem.Text))
+                lblValorVenda.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
+                                     Convert.ToDouble(txtMargem.Text)).ToString("0.00");
+
+            txtMargem.Enabled = false;
+
+            txtMargem.Focus();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -115,13 +121,38 @@ namespace SysGestor.View.ProdutoView
             }
         }
 
-        private void frmProdutoNew_FormClosed(object sender, FormClosedEventArgs e)
+        private void btnLblEditar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                Dispose(true);
-                this.Close();
-            }
+            this.Close();
+            frmProdutoGrid frmProdutoGrid = new frmProdutoGrid();
+            frmProdutoGrid.Show();
+        }
+
+        private void btnLblExcluir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmProdutoGrid frmProdutoGrid = new frmProdutoGrid();
+            frmProdutoGrid.Show();
+        }
+
+        private void txtCategoria_MouseClick(object sender, MouseEventArgs e)
+        {
+            LoadSuggestions();
+        }
+
+        private void txtGrade_Click(object sender, EventArgs e)
+        {
+            LoadSuggestions();
+        }
+
+        private void txtUnidMedida_Click(object sender, EventArgs e)
+        {
+            LoadSuggestions();
+        }
+
+        private void txtFornecedor_Click(object sender, EventArgs e)
+        {
+            LoadSuggestions();
         }
 
         #endregion
@@ -217,18 +248,24 @@ namespace SysGestor.View.ProdutoView
                 produtoDto.Marca = txtMarca.Text.Trim();
                 produtoDto.UnidadeDto.IdUnidMedida = _unidadeBll.GetIdListaUnidade(txtUnidMedida.Text.Trim());
                 produtoDto.LocalizacaoFisica = txtLocalizacaoFisica.Text.Trim();
-                produtoDto.EstoqueMinimo = Convert.ToDecimal(txtEstoqueMinimo.Text.Trim());
+                produtoDto.EstoqueMinimo = txtEstoqueMinimo.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtEstoqueMinimo.Text.Trim());
                 produtoDto.CategoriaDto.Id = _categoriaBll.GetIdListaCategoria(txtCategoria.Text.Trim());
                 produtoDto.FornecedorDto.Id = _fornecedorBll.GetIdListaFornecedor(txtFornecedor.Text.Trim());
                 produtoDto.Observacao = txtObservacao.Text.Trim();
 
+                if (txtValorCusto.Text == "" || txtValorCusto.Text == null)
+                {
+                    MessageBox.Show("Você não preencheu o valor do produto.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 _produtoBll.Inserir(produtoDto);
 
                 valorProdutoDto.ProdutoDto.Id = _produtoBll.GetIdProduto();
-                valorProdutoDto.ValorCompra = Convert.ToDouble(txtValorCusto.Text.Trim());
-                valorProdutoDto.Margem = Convert.ToDecimal(txtMargem.Text.Trim());
-                valorProdutoDto.Comissao = Convert.ToDecimal(txtComissao.Text.Trim());
-                valorProdutoDto.ValorVenda = Convert.ToDouble(lblValorVenda.Text.Trim());
+                valorProdutoDto.ValorCompra = txtValorCusto.Text.Trim() == "" ? 0 : Convert.ToDouble(txtValorCusto.Text.Trim());
+                valorProdutoDto.Margem = txtMargem.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtMargem.Text.Trim());
+                valorProdutoDto.Comissao = txtComissao.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtComissao.Text.Trim());
+                valorProdutoDto.ValorVenda = lblValorVenda.Text.Trim() == "" ? 0 : Convert.ToDouble(lblValorVenda.Text.Trim());
 
                 _valorProdutoBll.Inserir(valorProdutoDto);
 
@@ -244,22 +281,6 @@ namespace SysGestor.View.ProdutoView
             LoadSuggestions();
         }
 
-        private void CalculaMargemLucro()
-        {
-            if (string.IsNullOrEmpty(txtValorCusto.Text)) return;
-
-            double ValorCusto = Convert.ToDouble(txtValorCusto.Text.Trim());
-            double Margem = Convert.ToDouble(txtMargem.Text.Trim());
-            double ValorVenda = 0;
-
-            ValorVenda = ValorCusto + (ValorCusto * (Margem / 100));
-
-            lblValorVenda.Text = ValorVenda.ToString("0.00");
-
-            txtMargem.Enabled = false;
-
-            txtMargem.Focus();
-        }
         #endregion
 
         #region Suggestion
@@ -423,18 +444,5 @@ namespace SysGestor.View.ProdutoView
             }
         }
         #endregion
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btmExcluir_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
     }
 }

@@ -42,6 +42,8 @@ namespace SysGestor.View.ProdutoView.Unidade
             }
 
             loadSuggestionUnidade();
+
+            txtDescricao.Enabled = false;
         }
 
         private void btnSair_Click(object sender, EventArgs e)

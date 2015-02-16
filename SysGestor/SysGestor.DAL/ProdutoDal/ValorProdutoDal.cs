@@ -43,14 +43,19 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "UPDATE valorproduto SET valorcompra = @ValorCompra, valorvenda = @ValorVenda, " + 
+                comando.CommandText = "UPDATE valorproduto SET valorcompra = @ValorCompra, valorvenda = @ValorVenda, " +
+                                      "ultimovalorcompra = @UltValorCompra, ultimovalorvenda = @UltValorVenda, ultimamargem = @UltMargem, ultimacomissao = @UltComissao, " +
                                       "margem = @Margem, comissao = @Comissao " +
                                       "WHERE idproduto = @IdProduto";
 
                 comando.Parameters.AddWithValue("@ValorCompra", valorProdutoDto.ValorCompra);
                 comando.Parameters.AddWithValue("@ValorVenda", valorProdutoDto.ValorVenda);
                 comando.Parameters.AddWithValue("@Margem", valorProdutoDto.Margem);
-                comando.Parameters.AddWithValue("@Margem", valorProdutoDto.Comissao);
+                comando.Parameters.AddWithValue("@Comissao", valorProdutoDto.Comissao);
+                comando.Parameters.AddWithValue("@UltValorCompra", valorProdutoDto.UltimoValorCompra);
+                comando.Parameters.AddWithValue("@UltValorVenda", valorProdutoDto.UltimoValorVenda);
+                comando.Parameters.AddWithValue("@UltMargem", valorProdutoDto.UltimaMargem);
+                comando.Parameters.AddWithValue("@UltComissao", valorProdutoDto.UltimaComissao);
                 comando.Parameters.AddWithValue("@IdProduto", valorProdutoDto.ProdutoDto.Id);
 
                 Conexao.Crud(comando);
@@ -61,17 +66,17 @@ namespace SysGestor.DAL.ProdutoDal
             }
         }
 
-        public ValorProdutoDto GetValorProdutoById(int idValorProduto)
+        public ValorProdutoDto GetValorProdutoById(int IdProduto)
         {
             try
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT idvalorprod, valorcompra, valorvenda, margem, comissao " +
+                comando.CommandText = "SELECT idvalorprod, valorcompra, valorvenda, margem, comissao, ultimovalorcompra, ultimovalorvenda, ultimamargem, ultimacomissao " +
                                       " FROM valorproduto " +
-                                      " WHERE idvalorprod = @IdValorProd ";
+                                      " WHERE idproduto = @IdProduto ";
 
-                comando.Parameters.AddWithValue("@IdValorProd", idValorProduto);
+                comando.Parameters.AddWithValue("@IdProduto", IdProduto);
 
                 MySqlDataReader dr = Conexao.Buscar(comando);
 
@@ -81,10 +86,15 @@ namespace SysGestor.DAL.ProdutoDal
                 {
                     while (dr.Read())
                     {
-                        valorProduto.Id = (int)dr["idvalorprod"];
-                        valorProduto.ValorCompra = (double)dr["valorcompra"];
-                        valorProduto.ValorVenda = (double)dr["valorvenda"];
-                        valorProduto.Comissao = (decimal)dr["comissao"];
+                        valorProduto.Id = Convert.ToInt32(Convert.IsDBNull(dr["idvalorprod"]) ? null : dr["idvalorprod"]);
+                        valorProduto.ValorCompra = Convert.ToDouble(Convert.IsDBNull(dr["valorcompra"]) ? null : dr["valorcompra"]);
+                        valorProduto.ValorVenda = Convert.ToDouble(Convert.IsDBNull(dr["valorvenda"]) ? null : dr["valorvenda"]);
+                        valorProduto.Margem = Convert.ToDecimal(Convert.IsDBNull(dr["margem"]) ? null : dr["margem"]);
+                        valorProduto.Comissao = Convert.ToDecimal(Convert.IsDBNull(dr["comissao"]) ? null : dr["comissao"]);
+                        valorProduto.UltimoValorCompra = Convert.ToDouble(Convert.IsDBNull(dr["ultimovalorcompra"]) ? null : dr["ultimovalorcompra"]);
+                        valorProduto.UltimoValorVenda = Convert.ToDouble(Convert.IsDBNull(dr["ultimovalorvenda"]) ? null : dr["ultimovalorvenda"]);
+                        valorProduto.UltimaMargem = Convert.ToDecimal(Convert.IsDBNull(dr["ultimamargem"]) ? null : dr["ultimamargem"]);
+                        valorProduto.UltimaComissao = Convert.ToDecimal(Convert.IsDBNull(dr["ultimacomissao"]) ? null : dr["ultimacomissao"]); 
                     }
                 }
                 else

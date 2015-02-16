@@ -3,6 +3,7 @@ using SysGestor.View.FornecedorView;
 using SysGestor.View.ProdutoView;
 using SysGestor.View.ProdutoView.Categoria;
 using SysGestor.View.ProdutoView.Grade;
+using SysGestor.View.ProdutoView.MovimentacaoEstoque;
 using SysGestor.View.ProdutoView.Unidade;
 using System;
 using System.Collections.Generic;
@@ -81,6 +82,18 @@ namespace SysGestor.View
         {          
                 frmUnidadeNew frmUnidade = new frmUnidadeNew();
                 frmUnidade.Show();           
+        }
+
+        private void produtoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {      
+            frmProdutoGrid frmProdutoGrid = new frmProdutoGrid();
+            frmProdutoGrid.Show();
+        }
+
+        private void movimentoDeEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMovimentacaoEstoqueNew frmMovEstoqueNew = new frmMovimentacaoEstoqueNew();
+            frmMovEstoqueNew.Show();
         }
     }
 }

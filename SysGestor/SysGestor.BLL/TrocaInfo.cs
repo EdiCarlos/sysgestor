@@ -14,6 +14,5 @@ namespace SysGestor.BLL
         {
             Id = 0;
         }
-
     }
 }

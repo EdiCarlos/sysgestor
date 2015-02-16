@@ -49,6 +49,7 @@
     <Compile Include="PessoaDal\PessoaDal.cs" />
     <Compile Include="ProdutoDal\CategoriaDal.cs" />
     <Compile Include="ProdutoDal\GradeDal.cs" />
+    <Compile Include="ProdutoDal\MovimentacaoEstoqueDal.cs" />
     <Compile Include="ProdutoDal\ProdutoDal.cs" />
     <Compile Include="ProdutoDal\UnidadeDal.cs" />
     <Compile Include="ProdutoDal\ValorProdutoDal.cs" />

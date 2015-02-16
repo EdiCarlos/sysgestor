@@ -41,11 +41,11 @@ namespace SysGestor.BLL.ProdutoBll
             _valorProdutoDal.Alterar(valorProdutoDto);
         }
 
-        public ValorProdutoDto GetValorProdutoById(int idValorProduto)
+        public ValorProdutoDto GetValorProdutoById(int IdProduto)
         {
-            AssertionConcern.AssertArgumentNotNull(idValorProduto, Errors.InvalidId);
+            AssertionConcern.AssertArgumentNotNull(IdProduto, Errors.InvalidId);
 
-            return _valorProdutoDal.GetValorProdutoById(idValorProduto);
+            return _valorProdutoDal.GetValorProdutoById(IdProduto);
         }
     }
 }

@@ -38,7 +38,9 @@
             this.lblId = new System.Windows.Forms.Label();
             this.txtIdInterno = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtMarca = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUnidMedida = new System.Windows.Forms.TextBox();
@@ -65,12 +67,10 @@
             this.txtValorCusto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTipProduto = new System.Windows.Forms.ToolTip(this.components);
+            this.btnLblEditar = new System.Windows.Forms.Label();
+            this.btnLblExcluir = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtObservacao = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtMarca = new System.Windows.Forms.TextBox();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btmExcluir = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
@@ -203,6 +203,16 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Cód. Produto";
             // 
+            // txtMarca
+            // 
+            this.txtMarca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMarca.ForeColor = System.Drawing.Color.DarkBlue;
+            this.txtMarca.Location = new System.Drawing.Point(9, 164);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(517, 24);
+            this.txtMarca.TabIndex = 5;
+            // 
             // txtDescricao
             // 
             this.txtDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -212,6 +222,16 @@
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(517, 24);
             this.txtDescricao.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(6, 146);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(52, 17);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Marca";
             // 
             // label1
             // 
@@ -242,6 +262,7 @@
             this.txtUnidMedida.Name = "txtUnidMedida";
             this.txtUnidMedida.Size = new System.Drawing.Size(200, 24);
             this.txtUnidMedida.TabIndex = 6;
+            this.txtUnidMedida.Click += new System.EventHandler(this.txtUnidMedida_Click);
             // 
             // label10
             // 
@@ -262,6 +283,7 @@
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.Size = new System.Drawing.Size(341, 24);
             this.txtFornecedor.TabIndex = 12;
+            this.txtFornecedor.Click += new System.EventHandler(this.txtFornecedor_Click);
             // 
             // label5
             // 
@@ -282,6 +304,7 @@
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(341, 24);
             this.txtCategoria.TabIndex = 10;
+            this.txtCategoria.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCategoria_MouseClick);
             // 
             // label3
             // 
@@ -302,6 +325,7 @@
             this.txtGrade.Name = "txtGrade";
             this.txtGrade.Size = new System.Drawing.Size(198, 24);
             this.txtGrade.TabIndex = 3;
+            this.txtGrade.Click += new System.EventHandler(this.txtGrade_Click);
             // 
             // label2
             // 
@@ -484,6 +508,38 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Valor Custo*";
             // 
+            // btnLblEditar
+            // 
+            this.btnLblEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLblEditar.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLblEditar.ForeColor = System.Drawing.Color.Green;
+            this.btnLblEditar.Image = global::SysGestor.View.Properties.Resources.edit_32x32;
+            this.btnLblEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLblEditar.Location = new System.Drawing.Point(576, 591);
+            this.btnLblEditar.Name = "btnLblEditar";
+            this.btnLblEditar.Size = new System.Drawing.Size(96, 39);
+            this.btnLblEditar.TabIndex = 22;
+            this.btnLblEditar.Text = "Editar";
+            this.btnLblEditar.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.toolTipProduto.SetToolTip(this.btnLblEditar, "Editar produto.");
+            this.btnLblEditar.Click += new System.EventHandler(this.btnLblEditar_Click);
+            // 
+            // btnLblExcluir
+            // 
+            this.btnLblExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLblExcluir.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLblExcluir.ForeColor = System.Drawing.Color.Red;
+            this.btnLblExcluir.Image = global::SysGestor.View.Properties.Resources.lixeira_32x32;
+            this.btnLblExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLblExcluir.Location = new System.Drawing.Point(684, 591);
+            this.btnLblExcluir.Name = "btnLblExcluir";
+            this.btnLblExcluir.Size = new System.Drawing.Size(103, 39);
+            this.btnLblExcluir.TabIndex = 22;
+            this.btnLblExcluir.Text = "Excluir";
+            this.btnLblExcluir.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.toolTipProduto.SetToolTip(this.btnLblExcluir, "Excluir produto.");
+            this.btnLblExcluir.Click += new System.EventHandler(this.btnLblExcluir_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtObservacao);
@@ -507,70 +563,6 @@
             this.txtObservacao.Name = "txtObservacao";
             this.txtObservacao.Size = new System.Drawing.Size(467, 87);
             this.txtObservacao.TabIndex = 0;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 146);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(52, 17);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Marca";
-            // 
-            // txtMarca
-            // 
-            this.txtMarca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMarca.ForeColor = System.Drawing.Color.DarkBlue;
-            this.txtMarca.Location = new System.Drawing.Point(9, 164);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(517, 24);
-            this.txtMarca.TabIndex = 5;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.BackColor = System.Drawing.Color.Transparent;
-            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.FlatAppearance.BorderSize = 0;
-            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.Green;
-            this.btnEditar.Image = global::SysGestor.View.Properties.Resources.edit_32x32;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(567, 588);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(107, 39);
-            this.btnEditar.TabIndex = 21;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.toolTipProduto.SetToolTip(this.btnEditar, "Editar produto.");
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btmExcluir
-            // 
-            this.btmExcluir.BackColor = System.Drawing.Color.Transparent;
-            this.btmExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btmExcluir.FlatAppearance.BorderSize = 0;
-            this.btmExcluir.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btmExcluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btmExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btmExcluir.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btmExcluir.ForeColor = System.Drawing.Color.Red;
-            this.btmExcluir.Image = global::SysGestor.View.Properties.Resources.lixeira_32x321;
-            this.btmExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btmExcluir.Location = new System.Drawing.Point(680, 588);
-            this.btmExcluir.Name = "btmExcluir";
-            this.btmExcluir.Size = new System.Drawing.Size(107, 39);
-            this.btmExcluir.TabIndex = 21;
-            this.btmExcluir.Text = "Excluir";
-            this.btmExcluir.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.toolTipProduto.SetToolTip(this.btmExcluir, "Excluir produto.");
-            this.btmExcluir.UseVisualStyleBackColor = false;
-            this.btmExcluir.Click += new System.EventHandler(this.btmExcluir_Click);
             // 
             // btnNovo
             // 
@@ -666,8 +658,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 639);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btmExcluir);
+            this.Controls.Add(this.btnLblExcluir);
+            this.Controls.Add(this.btnLblEditar);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSair);
@@ -684,7 +676,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar - Produto";
             this.TopMost = true;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProdutoNew_FormClosed);
             this.Load += new System.EventHandler(this.frmProdutoNew_Load);
             this.groupBoxDados.ResumeLayout(false);
             this.groupBoxDados.PerformLayout();
@@ -743,7 +734,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btmExcluir;
-        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Label btnLblEditar;
+        private System.Windows.Forms.Label btnLblExcluir;
     }
 }

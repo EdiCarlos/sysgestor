@@ -51,7 +51,7 @@ namespace SysGestor.View.ProdutoView.Grade
           
           // dtgCategoria.DefaultCellStyle.Format = "000000";
             dtgGrade.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-
+         
             dtgGrade.DataSource = grades;        
         }
 

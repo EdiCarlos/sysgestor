@@ -48,6 +48,7 @@
     <Compile Include="PessoaBll\PessoaBll.cs" />
     <Compile Include="ProdutoBll\CategoriaBll.cs" />
     <Compile Include="ProdutoBll\GradeBll.cs" />
+    <Compile Include="ProdutoBll\MovimentacaoEstoqueBll.cs" />
     <Compile Include="ProdutoBll\ProdutoBll.cs" />
     <Compile Include="ProdutoBll\UnidadeBll.cs" />
     <Compile Include="ProdutoBll\ValorProdutoBll.cs" />

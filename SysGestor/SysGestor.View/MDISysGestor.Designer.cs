@@ -37,6 +37,7 @@
             this.categoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gradeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.valorProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unidadeMedidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fornecedorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +45,7 @@
             this.produtoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gradeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.unidadeMedidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.movimentoDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMdi.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +91,8 @@
             this.categoriaToolStripMenuItem,
             this.gradeToolStripMenuItem,
             this.valorProdutoToolStripMenuItem,
-            this.unidadeMedidaToolStripMenuItem});
+            this.unidadeMedidaToolStripMenuItem,
+            this.movimentoDeEstoqueToolStripMenuItem});
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             this.produtoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.produtoToolStripMenuItem.Text = "&Produto";
@@ -98,29 +100,36 @@
             // produtoNovoToolStripMenuItem
             // 
             this.produtoNovoToolStripMenuItem.Name = "produtoNovoToolStripMenuItem";
-            this.produtoNovoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.produtoNovoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.produtoNovoToolStripMenuItem.Text = "&Produto Novo";
             this.produtoNovoToolStripMenuItem.Click += new System.EventHandler(this.produtoNovoToolStripMenuItem_Click);
             // 
             // categoriaToolStripMenuItem
             // 
             this.categoriaToolStripMenuItem.Name = "categoriaToolStripMenuItem";
-            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.categoriaToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.categoriaToolStripMenuItem.Text = "&Categoria";
             this.categoriaToolStripMenuItem.Click += new System.EventHandler(this.categoriaToolStripMenuItem_Click);
             // 
             // gradeToolStripMenuItem
             // 
             this.gradeToolStripMenuItem.Name = "gradeToolStripMenuItem";
-            this.gradeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.gradeToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.gradeToolStripMenuItem.Text = "&Grade";
             this.gradeToolStripMenuItem.Click += new System.EventHandler(this.gradeToolStripMenuItem_Click);
             // 
             // valorProdutoToolStripMenuItem
             // 
             this.valorProdutoToolStripMenuItem.Name = "valorProdutoToolStripMenuItem";
-            this.valorProdutoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.valorProdutoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.valorProdutoToolStripMenuItem.Text = "&Valor Produto";
+            // 
+            // unidadeMedidaToolStripMenuItem
+            // 
+            this.unidadeMedidaToolStripMenuItem.Name = "unidadeMedidaToolStripMenuItem";
+            this.unidadeMedidaToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.unidadeMedidaToolStripMenuItem.Text = "&Unidade Medida";
+            this.unidadeMedidaToolStripMenuItem.Click += new System.EventHandler(this.unidadeMedidaToolStripMenuItem_Click);
             // 
             // buscarToolStripMenuItem
             // 
@@ -161,6 +170,7 @@
             this.produtoToolStripMenuItem2.Name = "produtoToolStripMenuItem2";
             this.produtoToolStripMenuItem2.Size = new System.Drawing.Size(125, 22);
             this.produtoToolStripMenuItem2.Text = "&Produto";
+            this.produtoToolStripMenuItem2.Click += new System.EventHandler(this.produtoToolStripMenuItem2_Click);
             // 
             // categoriaToolStripMenuItem1
             // 
@@ -176,12 +186,12 @@
             this.gradeToolStripMenuItem1.Text = "&Grade";
             this.gradeToolStripMenuItem1.Click += new System.EventHandler(this.gradeToolStripMenuItem1_Click);
             // 
-            // unidadeMedidaToolStripMenuItem
+            // movimentoDeEstoqueToolStripMenuItem
             // 
-            this.unidadeMedidaToolStripMenuItem.Name = "unidadeMedidaToolStripMenuItem";
-            this.unidadeMedidaToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.unidadeMedidaToolStripMenuItem.Text = "&Unidade Medida";
-            this.unidadeMedidaToolStripMenuItem.Click += new System.EventHandler(this.unidadeMedidaToolStripMenuItem_Click);
+            this.movimentoDeEstoqueToolStripMenuItem.Name = "movimentoDeEstoqueToolStripMenuItem";
+            this.movimentoDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.movimentoDeEstoqueToolStripMenuItem.Text = "&Movimento de Estoque";
+            this.movimentoDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.movimentoDeEstoqueToolStripMenuItem_Click);
             // 
             // MDISysGestor
             // 
@@ -222,5 +232,6 @@
         private System.Windows.Forms.ToolStripMenuItem categoriaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem gradeToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem unidadeMedidaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem movimentoDeEstoqueToolStripMenuItem;
     }
 }

@@ -141,6 +141,12 @@
   <data name="InsertDataErrors" xml:space="preserve">
     <value>Erro ao inserir dados</value>
   </data>
+  <data name="InvalidDocumento" xml:space="preserve">
+    <value>Número de documento inválido ou não foi informado</value>
+  </data>
+  <data name="InvalidFilter" xml:space="preserve">
+    <value>Filtro não pode ser vazio ou null</value>
+  </data>
   <data name="InvalidId" xml:space="preserve">
     <value>Id inválido ou não foi informado</value>
   </data>

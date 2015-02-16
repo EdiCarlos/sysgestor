@@ -133,6 +133,24 @@ namespace SysGestor.RESOURCE.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Número de documento inválido ou não foi informado.
+        /// </summary>
+        public static string InvalidDocumento {
+            get {
+                return ResourceManager.GetString("InvalidDocumento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filtro não pode ser vazio ou null.
+        /// </summary>
+        public static string InvalidFilter {
+            get {
+                return ResourceManager.GetString("InvalidFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Id inválido ou não foi informado.
         /// </summary>
         public static string InvalidId {

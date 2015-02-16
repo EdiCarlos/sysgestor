@@ -12,6 +12,8 @@ namespace SysGestor.DTO.ProdutoDto
 
         public string Descricao { get; set; }
 
+        public string Categoria { get; set; }
+        
         public string Marca { get; set; }
 
         public decimal Estoque { get; set; }
@@ -31,6 +33,7 @@ namespace SysGestor.DTO.ProdutoDto
         public UnidadeDto UnidadeDto { get; set; }
 
         public FornecedorDto FornecedorDto { get; set; }
+
 
         public ProdutoDto()
         {

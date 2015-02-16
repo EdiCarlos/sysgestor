@@ -4,6 +4,7 @@ using SysGestor.DTO.ProdutoDto;
 using SysGestor.RESOURCE.Resources;
 using SysGestor.RESOURCE.Validation;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SysGestor.BLL.ProdutoBll
 {
@@ -37,10 +38,7 @@ namespace SysGestor.BLL.ProdutoBll
             AssertionConcern.AssertArgumentNotEmpty(produtoDto.Descricao, Errors.EmptyDescription);
             AssertionConcern.AssertArgumentNotNull(produtoDto.CategoriaDto.Id, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotNull(produtoDto.UnidadeDto.IdUnidMedida, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotEquals(produtoDto.Descricao,
-                                                 GetEqualsProduto(produtoDto.Descricao),
-                                                 Errors.EqualsValue);
-
+          
             _produtoDal.Alterar(produtoDto);
         }
 
@@ -69,17 +67,139 @@ namespace SysGestor.BLL.ProdutoBll
         {
             return _produtoDal.GetIdProduto();
         }
-            
+
         public string GetEqualsProduto(string descricao)
         {
             return _produtoDal.GetEqualsProduto(descricao);
         }
 
-        public IList<ProdutoDto> FindAllByDescricaoCategoriaIdInterno(string descricao, string categoria, string idInterno)
+        public List<ProdutoDto> FindAll()
         {
-            return _produtoDal.FindAllByDescricaoCategoriaIdInterno(descricao, categoria, idInterno);
+            var lista = new List<ProdutoDto>();
+
+            lista = null;
+
+            lista = _produtoDal.FindAll().ToList();
+
+            if (lista != null) return lista;
+            else return null;
         }
 
-       
+        public int GetIdListaProduto(string produto)
+        {
+            int id = 0;
+
+            if (!string.IsNullOrEmpty(produto))
+            {
+                var listaProduto = new List<ProdutoDto>();
+
+                listaProduto = FindAll();
+
+                if (listaProduto != null)
+                {
+                    var p = from x in listaProduto where x.Descricao == produto select x.Id; //consulta linq
+
+                    id = p.FirstOrDefault();
+                }
+            }
+            return id;
+        }
+
+        public string GetIdListaCodigoInterno(string produto)
+        {
+            string idInterno = string.Empty;
+
+            if (!string.IsNullOrEmpty(produto))
+            {
+                var listaProduto = new List<ProdutoDto>();
+
+                listaProduto = FindAll();
+
+                if (listaProduto != null)
+                {
+                    var p = from x in listaProduto where x.Descricao == produto select x.IdInterno; //consulta linq
+
+                    idInterno = p.FirstOrDefault();
+                }
+            }
+            return idInterno;
+        }
+
+        public List<ProdutoDto> FindAllByDescricaoCategoriaIdInterno(string searchType, object filter)
+        {
+            AssertionConcern.AssertArgumentNotEmpty(searchType, Errors.InvalidFilter);
+            AssertionConcern.AssertArgumentNotNull(filter, Errors.InvalidValue);
+
+            var lista = new List<ProdutoDto>();
+
+            //lista = _produtoDal.FindAllByDescricaoCategoriaIdInterno();
+
+            //if (lista != null)
+            //{
+            //    if (searchType == "Descricao" && filter != "")
+            //        lista = lista.Where(x => x.Descricao.ToUpper().Contains(Convert.ToString(filter).ToUpper())).ToList();
+
+            //    if (searchType == "Categoria" && filter != "")
+            //        lista = lista.Where(x => x.Categoria.ToUpper().Contains(Convert.ToString(filter).ToUpper())).ToList();
+
+            //    if (searchType == "IdInterno" && filter != "")
+            //        lista = lista.Where(x => x.IdInterno.ToUpper().Contains(Convert.ToString(filter).ToUpper())).ToList();
+
+            //    if (searchType == "Id" && filter != "")
+            //        lista = lista.Where(x => x.Id == (Convert.ToInt32(filter))).ToList();
+            //}
+
+
+            lista = _produtoDal.FindAllByDescricaoCategoriaIdInterno(searchType,filter);
+
+
+            return lista;
+        }
+
+        public double CalculaMargemLucro(double valorCompra, double margem)
+        {
+            double valorVenda = 0;
+
+            AssertionConcern.AssertArgumentNotNull(valorCompra, Errors.InvalidValue);
+            AssertionConcern.AssertArgumentNotNull(margem, Errors.InvalidValue);
+
+            valorVenda = valorCompra + (valorCompra * (margem / 100));
+
+            return valorVenda;
+        }
+
+        public void AumentaEstoque(decimal qtdAumentada , int idProduto)
+        {
+            decimal qtdEstoque;
+
+           qtdEstoque = _produtoDal.GetEstoqueByIdProduto(idProduto);
+
+           if (qtdAumentada < 0)
+               throw new Exception("Quantidade não pode ser menor que 0.");
+
+           if (idProduto == 0 || idProduto == null)
+               throw new Exception("Produto não cadastrado.");
+
+           qtdEstoque += qtdAumentada;
+
+           _produtoDal.AlteraEstoque(qtdEstoque, idProduto);
+        }
+
+        public void BaixaEstoque(decimal qtdBaixa, int idProduto)
+        {
+            decimal qtdEstoque = 0;
+
+            qtdEstoque = _produtoDal.GetEstoqueByIdProduto(idProduto);
+
+            if (qtdEstoque <= 0 || qtdEstoque < qtdBaixa) 
+                throw new Exception("Não existe produto no estoque para atender a quantidade vendida.");
+
+            if (idProduto == 0 || idProduto == null)
+                throw new Exception("Produto não cadastrado.");
+
+            qtdEstoque -= qtdBaixa;
+
+            _produtoDal.AlteraEstoque(qtdEstoque, idProduto);
+        }
     }
 }
