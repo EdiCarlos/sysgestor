@@ -38,10 +38,6 @@
             this.groupBoxBusca = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dtgFornecedor = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.pcbCabecalho = new System.Windows.Forms.PictureBox();
             this.selecionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +45,10 @@
             this.dataNasc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.pcbCabecalho = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBoxBusca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgFornecedor)).BeginInit();
@@ -175,51 +175,6 @@
             this.dtgFornecedor.TabIndex = 10;
             this.dtgFornecedor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgFornecedor_CellContentClick);
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.HeaderText = "Editar";
-            this.dataGridViewImageColumn1.Image = global::SysGestor.View.Properties.Resources.edit_16x16;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ToolTipText = "Editar Cliente";
-            this.dataGridViewImageColumn1.Width = 50;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.HeaderText = "Excluir";
-            this.dataGridViewImageColumn2.Image = global::SysGestor.View.Properties.Resources.excluir_16x16;
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ToolTipText = "Excluir Cliente";
-            this.dataGridViewImageColumn2.Width = 50;
-            // 
-            // btnSair
-            // 
-            this.btnSair.BackColor = System.Drawing.Color.Transparent;
-            this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSair.FlatAppearance.BorderSize = 0;
-            this.btnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnSair.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Image = global::SysGestor.View.Properties.Resources.sair_32x32;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(716, 47);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(77, 39);
-            this.btnSair.TabIndex = 14;
-            this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            // 
-            // pcbCabecalho
-            // 
-            this.pcbCabecalho.Image = global::SysGestor.View.Properties.Resources.img_sistema;
-            this.pcbCabecalho.Location = new System.Drawing.Point(-1, 0);
-            this.pcbCabecalho.Name = "pcbCabecalho";
-            this.pcbCabecalho.Size = new System.Drawing.Size(809, 92);
-            this.pcbCabecalho.TabIndex = 13;
-            this.pcbCabecalho.TabStop = false;
-            // 
             // selecionar
             // 
             this.selecionar.HeaderText = "Selec.";
@@ -270,6 +225,51 @@
             this.excluir.ToolTipText = "Excluir Cliente";
             this.excluir.Width = 40;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Editar";
+            this.dataGridViewImageColumn1.Image = global::SysGestor.View.Properties.Resources.edit_16x16;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ToolTipText = "Editar Cliente";
+            this.dataGridViewImageColumn1.Width = 50;
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "Excluir";
+            this.dataGridViewImageColumn2.Image = global::SysGestor.View.Properties.Resources.excluir_16x16;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            this.dataGridViewImageColumn2.ToolTipText = "Excluir Cliente";
+            this.dataGridViewImageColumn2.Width = 50;
+            // 
+            // btnSair
+            // 
+            this.btnSair.BackColor = System.Drawing.Color.Transparent;
+            this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSair.FlatAppearance.BorderSize = 0;
+            this.btnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnSair.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Image = global::SysGestor.View.Properties.Resources.sair_32x32;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(716, 47);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(77, 39);
+            this.btnSair.TabIndex = 14;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // pcbCabecalho
+            // 
+            this.pcbCabecalho.Image = global::SysGestor.View.Properties.Resources.img_sistema;
+            this.pcbCabecalho.Location = new System.Drawing.Point(-1, 0);
+            this.pcbCabecalho.Name = "pcbCabecalho";
+            this.pcbCabecalho.Size = new System.Drawing.Size(809, 92);
+            this.pcbCabecalho.TabIndex = 13;
+            this.pcbCabecalho.TabStop = false;
+            // 
             // frmFornecedorGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +290,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista - Fornecedor";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFornecedorGrid_FormClosing);
             this.Load += new System.EventHandler(this.frmFornecedorGrid_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

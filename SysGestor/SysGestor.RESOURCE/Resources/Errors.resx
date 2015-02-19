@@ -144,6 +144,12 @@
   <data name="InvalidDocumento" xml:space="preserve">
     <value>Número de documento inválido ou não foi informado</value>
   </data>
+  <data name="InvalidEmptyLogin" xml:space="preserve">
+    <value>Login vazio ou inválido</value>
+  </data>
+  <data name="InvalidEmptyPassword" xml:space="preserve">
+    <value>Senha vazio ou inválida</value>
+  </data>
   <data name="InvalidFilter" xml:space="preserve">
     <value>Filtro não pode ser vazio ou null</value>
   </data>

@@ -142,6 +142,24 @@ namespace SysGestor.RESOURCE.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login vazio ou inválido.
+        /// </summary>
+        public static string InvalidEmptyLogin {
+            get {
+                return ResourceManager.GetString("InvalidEmptyLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senha vazio ou inválida.
+        /// </summary>
+        public static string InvalidEmptyPassword {
+            get {
+                return ResourceManager.GetString("InvalidEmptyPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filtro não pode ser vazio ou null.
         /// </summary>
         public static string InvalidFilter {

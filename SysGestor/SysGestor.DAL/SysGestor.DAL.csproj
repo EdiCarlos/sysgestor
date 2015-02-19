@@ -47,6 +47,9 @@
     <Compile Include="PessoaDal\EnderecoDal.cs" />
     <Compile Include="PessoaDal\FornecedorDal\FornecedorDal.cs" />
     <Compile Include="PessoaDal\PessoaDal.cs" />
+    <Compile Include="PessoaDal\UsuarioDAL\PermissaoDal.cs" />
+    <Compile Include="PessoaDal\UsuarioDAL\PermissaoUsuarioDal.cs" />
+    <Compile Include="PessoaDal\UsuarioDAL\UsuarioDal.cs" />
     <Compile Include="ProdutoDal\CategoriaDal.cs" />
     <Compile Include="ProdutoDal\GradeDal.cs" />
     <Compile Include="ProdutoDal\MovimentacaoEstoqueDal.cs" />
@@ -55,6 +58,7 @@
     <Compile Include="ProdutoDal\ValorProdutoDal.cs" />
     <Compile Include="Repositorio\Conexao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VendaDal\PedidoDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PedidoDal\" />

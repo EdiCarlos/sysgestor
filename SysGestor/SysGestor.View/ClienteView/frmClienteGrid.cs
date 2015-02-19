@@ -156,8 +156,15 @@ namespace SysGestor.View.ClienteView
             if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Dispose(true);
-                this.Close();
+                Formularios.FormClienteGrid = null;
             }
+        }
+
+        private void frmClienteGrid_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) ==
+              DialogResult.Yes) Formularios.FormClienteGrid = null;
+            else e.Cancel = true;
         }
     }
 }

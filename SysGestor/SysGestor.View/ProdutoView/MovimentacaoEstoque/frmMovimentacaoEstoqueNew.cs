@@ -1,5 +1,6 @@
-﻿using SysGestor.BLL.ProdutoBll;
-using SysGestor.DTO.ProdutoDto;
+﻿using SysGestor.BLL;
+using SysGestor.BLL.ProdutoBll;
+using SysGestor.DTO.Produto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
         ProdutoBll _produtoBll;
         ValorProdutoBll _valorProdutoBll;
         string searchType;
+        decimal auxiliar;
 
         AutoCompleteStringCollection sourceProduto;
 
@@ -49,28 +51,31 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
                 MovimentacaoEstoqueDto movEstqueDto = new MovimentacaoEstoqueDto();
                 ValorProdutoDto valorProdutoDto = new ValorProdutoDto();
 
+                movEstqueDto.Id = TrocaInfo.Id;
                 movEstqueDto.IdDocumento = txtDocumento.Text.Trim();
                 movEstqueDto.Quantidade = txtQtd.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtQtd.Text.Trim());
-                movEstqueDto.ValorCompra = txtValorCusto.Text.Trim() == "" ? 0 : Convert.ToDouble(txtValorCusto.Text.Trim());
+                movEstqueDto.ValorCompra = txtValorCustoEstoque.Text.Trim() == "" ? 0 : Convert.ToDouble(txtValorCustoEstoque.Text.Trim());
                 movEstqueDto.Observacao = txtObservacao.Text.Trim();
                 movEstqueDto.ProdutoDto.Id = _produtoBll.GetIdListaProduto(txtProduto.Text.Trim());
                 movEstqueDto.ProdutoDto.IdInterno = _produtoBll.GetIdListaCodigoInterno(txtProduto.Text.Trim());
-                
-                _movEstoqueBll.Salvar(movEstqueDto);
-                _produtoBll.AumentaEstoque(movEstqueDto.Quantidade, movEstqueDto.ProdutoDto.Id);
 
-                if (txtValorCusto.Text == "" || txtValorCusto.Text == null || txtComissao.Text == "" || txtComissao.Text == null)
+                TrocaInfo.Dispose();
+
+                if (movEstqueDto.Id != 0 || movEstqueDto.Id != null)
+                    _produtoBll.BaixaEstoque(auxiliar, movEstqueDto.ProdutoDto.Id);
+
+                    _movEstoqueBll.Salvar(movEstqueDto);
+
+                if (txtValorCusto.Text != "" || txtValorCusto.Text != null)
                 {
-                    if (MessageBox.Show("Você deseja alterar o valor do produto?", Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
-                    valorProdutoDto.ProdutoDto.Id = _produtoBll.GetIdProduto();
+                    valorProdutoDto.ProdutoDto.Id = movEstqueDto.ProdutoDto.Id;
                     valorProdutoDto.ValorCompra = txtValorCusto.Text.Trim() == "" ? 0 : Convert.ToDouble(txtValorCusto.Text.Trim());
                     valorProdutoDto.Margem = txtMargem.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtMargem.Text.Trim());
-                    valorProdutoDto.Comissao = txtComissao.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtComissao.Text.Trim());
                     valorProdutoDto.ValorVenda = lblValorVenda.Text.Trim() == "" ? 0 : Convert.ToDouble(lblValorVenda.Text.Trim());
 
                     _valorProdutoBll.Alterar(valorProdutoDto);
                 }
-                
+
                 MessageBox.Show("Movimento de estoque cadastrado com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             catch (Exception ex)
@@ -84,9 +89,9 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
 
         private void carregaGrid(string filter)
         {
-            if (rbProduto.Checked) searchType = "Descricao";
+            if (rbProduto.Checked) searchType = "Produto";
 
-            if (rbDocumento.Checked) searchType = "Categoria";
+            if (rbDocumento.Checked) searchType = "Documento";
 
             dtgMovEstoque.AutoGenerateColumns = false;
 
@@ -107,7 +112,7 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
             dtgMovEstoque.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
             dtgMovEstoque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
             dtgMovEstoque.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-            dtgMovEstoque.Columns[5].DefaultCellStyle.Format= "C2";
+            dtgMovEstoque.Columns[5].DefaultCellStyle.Format = "C2";
 
             dtgMovEstoque.DataSource = lista;
         }
@@ -121,10 +126,10 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
             txtProduto.Text = string.Empty;
             txtDocumento.Text = string.Empty;
             txtQtd.Text = string.Empty;
+            txtValorCustoEstoque.Text = string.Empty;
             txtObservacao.Text = string.Empty;
             txtValorCusto.Text = string.Empty;
             txtMargem.Text = string.Empty;
-            txtComissao.Text = string.Empty;
             lblValorVenda.Text = string.Empty;
         }
 
@@ -133,10 +138,10 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
             txtProduto.Enabled = false;
             txtDocumento.Enabled = false;
             txtQtd.Enabled = false;
+            txtValorCustoEstoque.Enabled = false;
             txtObservacao.Enabled = false;
             txtValorCusto.Enabled = false;
             txtMargem.Enabled = false;
-            txtComissao.Enabled = false;
             lblValorVenda.Enabled = false;
 
             btnGravar.Enabled = false;
@@ -148,10 +153,10 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
             txtProduto.Enabled = true;
             txtDocumento.Enabled = true;
             txtQtd.Enabled = true;
+            txtValorCustoEstoque.Enabled = true;
             txtObservacao.Enabled = true;
             txtValorCusto.Enabled = true;
             txtMargem.Enabled = true;
-            txtComissao.Enabled = true;
             lblValorVenda.Enabled = true;
 
             btnGravar.Enabled = true;
@@ -261,7 +266,135 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
         {
             carregaGrid(txtPesquisa.Text.Trim());
         }
+
+        private void txtValorCustoEstoque_Validated(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtValorCustoEstoque.Text))
+                txtQtd.Enabled = true;
+            txtQtd.Focus();
+        }
+
+        private void txtQtd_Validated(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtQtd.Text))
+                lblTotalEntradaProduto.Text = _movEstoqueBll.CalculaValorEntradaEstoque(Convert.ToDouble(txtQtd.Text),
+                                             Convert.ToDouble(txtValorCustoEstoque.Text)).ToString("N2");
+
+            txtQtd.Enabled = false;
+
+            txtQtd.Focus();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja excluir esse(s) registro(s)?", Application.CompanyName,
+                                                                                     MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            int[] ids;
+            int count = 0;
+
+            for (int i = 0; i < dtgMovEstoque.RowCount; i++)
+            {
+                if (Convert.ToBoolean(dtgMovEstoque.Rows[i].Cells[0].Value) == true)
+                {
+                    count++;
+                }
+            }
+
+            ids = new int[count];
+            int x = 0;
+
+            for (int i = 0; i < dtgMovEstoque.RowCount; i++)
+            {
+                if (Convert.ToBoolean(dtgMovEstoque.Rows[i].Cells[0].Value) == true)
+                {
+                    ids[x] = Convert.ToInt32(dtgMovEstoque.Rows[i].Cells[1].Value.ToString());
+                    x++;
+                }
+            }
+            try
+            {
+                _movEstoqueBll.RemoveMass(ids);
+                MessageBox.Show("Registro(s), removido(s) com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            carregaGrid(txtPesquisa.Text.Trim());
+        }
+
+        private void chkSelecionarTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in dtgMovEstoque.Rows)
+            {
+                if (chkSelecionarTodos.Checked)
+                {
+                    item.Cells[0].Value = true;
+                }
+                else
+                {
+                    item.Cells[0].Value = false;
+                }
+            }
+        }
+
+        private void dtgMovEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgMovEstoque.Columns[e.ColumnIndex] is DataGridViewImageColumn && e.RowIndex != -1 && e.ColumnIndex == 9)
+            {
+                if (MessageBox.Show("Tem certeza que deseja excluir esse registro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.No)
+                    return;
+
+                dtgMovEstoque.EndEdit();
+
+                if (dtgMovEstoque.CurrentRow.Cells[1].Value == null)
+                    return;
+
+                int id = Convert.ToInt32(dtgMovEstoque.CurrentRow.Cells[1].Value.ToString());
+
+                try
+                {
+                    _movEstoqueBll.Remove(id);
+                    MessageBox.Show("Registro, removido com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                carregaGrid(txtPesquisa.Text.Trim());
+            }
+
+
+            if (dtgMovEstoque.Columns[e.ColumnIndex] is DataGridViewImageColumn && e.RowIndex != -1 && e.ColumnIndex == 8)
+            {
+                dtgMovEstoque.EndEdit();
+
+                if (dtgMovEstoque.CurrentRow.Cells[1].Value == null)
+                    return;
+
+                double valor, total;
+                valor = Convert.ToDouble(dtgMovEstoque.CurrentRow.Cells[5].Value);
+                total = (Convert.ToDouble(dtgMovEstoque.CurrentRow.Cells[4].Value)) *
+                                                               (Convert.ToDouble(dtgMovEstoque.CurrentRow.Cells[5].Value));
+
+                TrocaInfo.Id = Convert.ToInt32(dtgMovEstoque.CurrentRow.Cells[1].Value.ToString());
+                txtProduto.Text = dtgMovEstoque.CurrentRow.Cells[3].Value.ToString();
+                txtDocumento.Text = dtgMovEstoque.CurrentRow.Cells[2].Value.ToString();
+                txtValorCustoEstoque.Text = valor.ToString("N2");
+                txtQtd.Text = dtgMovEstoque.CurrentRow.Cells[4].Value.ToString();
+                lblTotalEntradaProduto.Text = total.ToString("N2");
+                txtObservacao.Text = dtgMovEstoque.CurrentRow.Cells[7].Value.ToString();
+                auxiliar = Convert.ToDecimal(dtgMovEstoque.CurrentRow.Cells[4].Value);
+                habilitaCampo();
+            }
+        }
+
         #endregion
+
 
     }
 }

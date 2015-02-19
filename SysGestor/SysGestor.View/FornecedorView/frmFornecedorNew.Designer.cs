@@ -48,7 +48,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.mskCep = new System.Windows.Forms.MaskedTextBox();
             this.txtBairro = new System.Windows.Forms.TextBox();
-            this.txtLogradouro = new System.Windows.Forms.TextBox();
+            this.rtxFitaDetalheradouro = new System.Windows.Forms.TextBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -67,8 +67,8 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtRgIe = new System.Windows.Forms.TextBox();
             this.groupBoxTipoPessoa = new System.Windows.Forms.GroupBox();
-            this.rbFisica = new System.Windows.Forms.RadioButton();
             this.rbJuridica = new System.Windows.Forms.RadioButton();
+            this.rbFisica = new System.Windows.Forms.RadioButton();
             this.mskCpfCnpj = new System.Windows.Forms.MaskedTextBox();
             this.groupBoxDados = new System.Windows.Forms.GroupBox();
             this.mskDataNasc = new System.Windows.Forms.MaskedTextBox();
@@ -271,7 +271,7 @@
             this.groupBoxEndereco.Controls.Add(this.label8);
             this.groupBoxEndereco.Controls.Add(this.mskCep);
             this.groupBoxEndereco.Controls.Add(this.txtBairro);
-            this.groupBoxEndereco.Controls.Add(this.txtLogradouro);
+            this.groupBoxEndereco.Controls.Add(this.rtxFitaDetalheradouro);
             this.groupBoxEndereco.Controls.Add(this.txtCidade);
             this.groupBoxEndereco.Controls.Add(this.label9);
             this.groupBoxEndereco.Controls.Add(this.label10);
@@ -327,15 +327,15 @@
             this.txtBairro.Size = new System.Drawing.Size(499, 24);
             this.txtBairro.TabIndex = 4;
             // 
-            // txtLogradouro
+            // rtxFitaDetalheradouro
             // 
-            this.txtLogradouro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLogradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLogradouro.ForeColor = System.Drawing.Color.DarkBlue;
-            this.txtLogradouro.Location = new System.Drawing.Point(19, 35);
-            this.txtLogradouro.Name = "txtLogradouro";
-            this.txtLogradouro.Size = new System.Drawing.Size(562, 24);
-            this.txtLogradouro.TabIndex = 1;
+            this.rtxFitaDetalheradouro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rtxFitaDetalheradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxFitaDetalheradouro.ForeColor = System.Drawing.Color.DarkBlue;
+            this.rtxFitaDetalheradouro.Location = new System.Drawing.Point(19, 35);
+            this.rtxFitaDetalheradouro.Name = "rtxFitaDetalheradouro";
+            this.rtxFitaDetalheradouro.Size = new System.Drawing.Size(562, 24);
+            this.rtxFitaDetalheradouro.TabIndex = 1;
             // 
             // txtCidade
             // 
@@ -559,19 +559,6 @@
             this.groupBoxTipoPessoa.TabStop = false;
             this.groupBoxTipoPessoa.Text = "Tipo Pessoa";
             // 
-            // rbFisica
-            // 
-            this.rbFisica.AutoSize = true;
-            this.rbFisica.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbFisica.ForeColor = System.Drawing.Color.DarkBlue;
-            this.rbFisica.Location = new System.Drawing.Point(29, 15);
-            this.rbFisica.Name = "rbFisica";
-            this.rbFisica.Size = new System.Drawing.Size(65, 22);
-            this.rbFisica.TabIndex = 0;
-            this.rbFisica.Text = "Física";
-            this.rbFisica.UseVisualStyleBackColor = true;
-            this.rbFisica.CheckedChanged += new System.EventHandler(this.rbFisica_CheckedChanged);
-            // 
             // rbJuridica
             // 
             this.rbJuridica.AutoSize = true;
@@ -586,6 +573,19 @@
             this.rbJuridica.Text = "Jurídica";
             this.rbJuridica.UseVisualStyleBackColor = true;
             this.rbJuridica.CheckedChanged += new System.EventHandler(this.rbJuridica_CheckedChanged);
+            // 
+            // rbFisica
+            // 
+            this.rbFisica.AutoSize = true;
+            this.rbFisica.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbFisica.ForeColor = System.Drawing.Color.DarkBlue;
+            this.rbFisica.Location = new System.Drawing.Point(29, 15);
+            this.rbFisica.Name = "rbFisica";
+            this.rbFisica.Size = new System.Drawing.Size(65, 22);
+            this.rbFisica.TabIndex = 0;
+            this.rbFisica.Text = "Física";
+            this.rbFisica.UseVisualStyleBackColor = true;
+            this.rbFisica.CheckedChanged += new System.EventHandler(this.rbFisica_CheckedChanged);
             // 
             // mskCpfCnpj
             // 
@@ -652,6 +652,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro - Fornecedor";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFornecedorNew_FormClosing);
             this.Load += new System.EventHandler(this.frmFornecedorNew_Load);
             this.groupBoxContato.ResumeLayout(false);
             this.groupBoxContato.PerformLayout();
@@ -692,7 +693,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.MaskedTextBox mskCep;
         private System.Windows.Forms.TextBox txtBairro;
-        private System.Windows.Forms.TextBox txtLogradouro;
+        private System.Windows.Forms.TextBox rtxFitaDetalheradouro;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;

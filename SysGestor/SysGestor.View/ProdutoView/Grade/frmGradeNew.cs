@@ -1,5 +1,5 @@
 ﻿using SysGestor.BLL.ProdutoBll;
-using SysGestor.DTO.ProdutoDto;
+using SysGestor.DTO.Produto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -41,18 +41,23 @@
   <ItemGroup>
     <Compile Include="PessoaDto\CidadeDto.cs" />
     <Compile Include="PessoaDto\ClienteDto\ClienteDto.cs" />
+    <Compile Include="PessoaDto\UsuarioDTO\PermissaoDto.cs" />
+    <Compile Include="PessoaDto\UsuarioDTO\PermissaoUsuarioDto.cs" />
     <Compile Include="PessoaDto\ContatoDto.cs" />
     <Compile Include="PessoaDto\EnderecoDto.cs" />
     <Compile Include="PessoaDto\FornecedorDto\FornecedorDto.cs" />
     <Compile Include="PessoaDto\PessoaDto.cs" />
-    <Compile Include="ProdutoDto\CategoriaDto.cs" />
-    <Compile Include="ProdutoDto\GradeDto.cs" />
-    <Compile Include="ProdutoDto\MovimentacaoEstoqueDto.cs" />
-    <Compile Include="ProdutoDto\ProdutoDto.cs" />
-    <Compile Include="ProdutoDto\ProdutoGridDto\ValorProdutoGridDto.cs" />
-    <Compile Include="ProdutoDto\UnidadeDto.cs" />
-    <Compile Include="ProdutoDto\ValorProdutoDto.cs" />
+    <Compile Include="PessoaDto\UsuarioDTO\UsuarioDto.cs" />
+    <Compile Include="Produto\CategoriaDto.cs" />
+    <Compile Include="Produto\GradeDto.cs" />
+    <Compile Include="Produto\MovimentacaoEstoqueDto.cs" />
+    <Compile Include="Produto\ProdutoDto.cs" />
+    <Compile Include="Produto\ProdutoGridDto\ValorProdutoGridDto.cs" />
+    <Compile Include="Produto\UnidadeDto.cs" />
+    <Compile Include="Produto\ValorProdutoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VendaDto\ItemPedido.cs" />
+    <Compile Include="VendaDto\PedidoDto.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

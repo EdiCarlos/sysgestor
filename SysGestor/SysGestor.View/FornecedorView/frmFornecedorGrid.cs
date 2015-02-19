@@ -155,8 +155,15 @@ namespace SysGestor.View.FornecedorView
             if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Dispose(true);
-                this.Close();
+                Formularios.FormFornecedorGrid = null;
             }
+        }
+
+        private void frmFornecedorGrid_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) ==
+               DialogResult.Yes) Formularios.FormFornecedorGrid = null;
+            else e.Cancel = true;
         }
     }
 }

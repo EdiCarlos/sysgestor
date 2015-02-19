@@ -1,6 +1,6 @@
 ﻿using System;
 using SysGestor.DAL.ProdutoDal;
-using SysGestor.DTO.ProdutoDto;
+using SysGestor.DTO.Produto;
 using SysGestor.RESOURCE.Resources;
 using SysGestor.RESOURCE.Validation;
 using System.Collections.Generic;
@@ -166,7 +166,7 @@ namespace SysGestor.BLL.ProdutoBll
             valorVenda = valorCompra + (valorCompra * (margem / 100));
 
             return valorVenda;
-        }
+        }       
 
         public void AumentaEstoque(decimal qtdAumentada , int idProduto)
         {
@@ -192,7 +192,7 @@ namespace SysGestor.BLL.ProdutoBll
             qtdEstoque = _produtoDal.GetEstoqueByIdProduto(idProduto);
 
             if (qtdEstoque <= 0 || qtdEstoque < qtdBaixa) 
-                throw new Exception("Não existe produto no estoque para atender a quantidade vendida.");
+                throw new Exception("Quantidade no estoque menor que a quantidade a baixar.");
 
             if (idProduto == 0 || idProduto == null)
                 throw new Exception("Produto não cadastrado.");

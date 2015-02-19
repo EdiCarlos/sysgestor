@@ -1,10 +1,13 @@
 ﻿using SysGestor.View.ClienteView;
 using SysGestor.View.FornecedorView;
+using SysGestor.View.LoginView;
 using SysGestor.View.ProdutoView;
 using SysGestor.View.ProdutoView.Categoria;
 using SysGestor.View.ProdutoView.Grade;
 using SysGestor.View.ProdutoView.MovimentacaoEstoque;
 using SysGestor.View.ProdutoView.Unidade;
+using SysGestor.View.UsuarioView;
+using SysGestor.View.VendaView;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,30 +26,62 @@ namespace SysGestor.View
         {
             InitializeComponent();
         }
-
+        #region Cliente
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmClienteNew frmClienteView = new frmClienteNew();
-            frmClienteView.Show();
+            if (Formularios.FormClienteNew == null) Formularios.FormClienteNew = new frmClienteNew();
+
+            Formularios.FormClienteNew.Show();
+            Formularios.FormClienteNew.Focus();
         }
 
         private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmClienteGrid frmClienteGrid = new frmClienteGrid();
-            frmClienteGrid.Show();
-        }
+            if (Formularios.FormClienteGrid == null) Formularios.FormClienteGrid = new frmClienteGrid();
 
+            Formularios.FormClienteGrid.Show();
+            Formularios.FormClienteGrid.Focus();
+        }
+        #endregion
+
+        #region Fornecedor
         private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmFornecedorNew frmFornecedorNew = new frmFornecedorNew();
-            frmFornecedorNew.Show();
+            if (Formularios.FormFornecedorNew == null) Formularios.FormFornecedorNew = new frmFornecedorNew();
+
+            Formularios.FormFornecedorNew.Show();
+            Formularios.FormFornecedorNew.Focus();
         }
 
         private void fornecedorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmFornecedorGrid frmFornecedorGrid = new frmFornecedorGrid();
-            frmFornecedorGrid.Show();
+            if (Formularios.FormFornecedorGrid == null) Formularios.FormFornecedorGrid = new frmFornecedorGrid();
+
+            Formularios.FormFornecedorGrid.Show();
+            Formularios.FormFornecedorGrid.Focus();
         }
+        #endregion
+
+        #region Fornecedor
+
+        #endregion
+
+        #region Fornecedor
+
+        #endregion
+
+        #region Fornecedor
+
+        #endregion
+
+        #region Fornecedor
+
+        #endregion
+
+        #region Fornecedor
+
+        #endregion
+        
 
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -79,13 +114,13 @@ namespace SysGestor.View
         }
 
         private void unidadeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
-        {          
-                frmUnidadeNew frmUnidade = new frmUnidadeNew();
-                frmUnidade.Show();           
+        {
+            frmUnidadeNew frmUnidade = new frmUnidadeNew();
+            frmUnidade.Show();
         }
 
         private void produtoToolStripMenuItem2_Click(object sender, EventArgs e)
-        {      
+        {
             frmProdutoGrid frmProdutoGrid = new frmProdutoGrid();
             frmProdutoGrid.Show();
         }
@@ -95,5 +130,43 @@ namespace SysGestor.View
             frmMovimentacaoEstoqueNew frmMovEstoqueNew = new frmMovimentacaoEstoqueNew();
             frmMovEstoqueNew.Show();
         }
+
+        private void pDVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPDV frmPdv = new frmPDV();
+            frmPdv.Show();
+        }
+
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormPedido == null) Formularios.FormPedido = new frmPedido();
+            
+            Formularios.FormPedido.Show();
+            Formularios.FormPedido.Focus();
+
+        }
+
+        private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormUsuarioNew == null) Formularios.FormUsuarioNew = new frmUsuarioNew();
+
+            Formularios.FormUsuarioNew.Show();
+            Formularios.FormUsuarioNew.Focus();
+        }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MDISysGestor_Load(object sender, EventArgs e)
+        {
+            if (Formularios.FormLogin == null) Formularios.FormLogin = new frmLogin();
+
+            Formularios.FormLogin.Show();
+            Formularios.FormLogin.Focus();
+        }
+
+      
     }
 }

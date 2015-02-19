@@ -1,5 +1,5 @@
+G:\github\sysgestor\SysGestor\SysGestor.DTO\obj\Debug\SysGestor.DTO.csprojResolveAssemblyReference.cache
 G:\github\sysgestor\SysGestor\SysGestor.DTO\bin\Debug\SysGestor.DTO.dll
 G:\github\sysgestor\SysGestor\SysGestor.DTO\bin\Debug\SysGestor.DTO.pdb
 G:\github\sysgestor\SysGestor\SysGestor.DTO\obj\Debug\SysGestor.DTO.dll
 G:\github\sysgestor\SysGestor\SysGestor.DTO\obj\Debug\SysGestor.DTO.pdb
-G:\github\sysgestor\SysGestor\SysGestor.DTO\obj\Debug\SysGestor.DTO.csprojResolveAssemblyReference.cache

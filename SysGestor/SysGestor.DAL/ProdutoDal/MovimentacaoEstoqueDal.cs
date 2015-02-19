@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SysGestor.DAL.Repositorio;
-using SysGestor.DTO.ProdutoDto;
+using SysGestor.DTO.Produto;
 using SysGestor.RESOURCE.Resources;
 using System;
 using System.Collections.Generic;
@@ -73,6 +73,27 @@ namespace SysGestor.DAL.ProdutoDal
 
                 Conexao.Crud(comando);
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.DeleteDataErros + " - " + ex.Message);
+            }
+        }
+
+        public void RemoveMass(int[] idMovEstoque)
+        {
+            try
+            {
+                for (int i = 0; i < idMovEstoque.Length; i++)
+                {
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.CommandType = CommandType.Text;
+                    comando.CommandText = "DELETE FROM movestoque WHERE idmovestoque = @IdMovEstoque";
+
+                    comando.Parameters.AddWithValue("@IdMovEstoque", idMovEstoque[i]);
+
+                    Conexao.Crud(comando);
+                }
             }
             catch (Exception ex)
             {

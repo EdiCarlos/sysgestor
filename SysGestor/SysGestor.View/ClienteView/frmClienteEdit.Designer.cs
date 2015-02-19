@@ -716,6 +716,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar - Cliente";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmClienteEdit_FormClosing);
             this.Load += new System.EventHandler(this.frmClienteEdit_Load);
             this.groupBoxContato.ResumeLayout(false);
             this.groupBoxContato.PerformLayout();

@@ -1,5 +1,5 @@
 ﻿
-namespace SysGestor.DTO.ProdutoDto
+namespace SysGestor.DTO.Produto
 {
     public class ValorProdutoDto
     {

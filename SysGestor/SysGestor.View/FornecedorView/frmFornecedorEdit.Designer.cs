@@ -629,6 +629,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar - Fornecedor";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmFornecedorEdit_FormClosing);
             this.Load += new System.EventHandler(this.frmFornecedorEdit_Load);
             this.groupBoxDados.ResumeLayout(false);
             this.groupBoxDados.PerformLayout();

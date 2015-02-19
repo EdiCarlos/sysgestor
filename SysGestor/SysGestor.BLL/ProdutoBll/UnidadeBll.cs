@@ -1,5 +1,5 @@
 ﻿using SysGestor.DAL.ProdutoDal;
-using SysGestor.DTO.ProdutoDto;
+using SysGestor.DTO.Produto;
 using SysGestor.RESOURCE.Resources;
 using SysGestor.RESOURCE.Validation;
 using System.Collections.Generic;

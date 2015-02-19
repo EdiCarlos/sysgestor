@@ -73,6 +73,16 @@ namespace SysGestor.View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background {
+            get {
+                object obj = ResourceManager.GetObject("background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancel_32x32 {
             get {
                 object obj = ResourceManager.GetObject("cancel_32x32", resourceCulture);
@@ -163,6 +173,16 @@ namespace SysGestor.View.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap login32x32 {
+            get {
+                object obj = ResourceManager.GetObject("login32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap new_32x32 {
             get {
                 object obj = ResourceManager.GetObject("new_32x32", resourceCulture);
@@ -186,6 +206,36 @@ namespace SysGestor.View.Properties {
         internal static System.Drawing.Bitmap Save_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Save_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap textBox_texto {
+            get {
+                object obj = ResourceManager.GetObject("textBox-texto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap textBox_texto1 {
+            get {
+                object obj = ResourceManager.GetObject("textBox-texto1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap txtBox {
+            get {
+                object obj = ResourceManager.GetObject("txtBox", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -67,8 +67,15 @@ namespace SysGestor.View.FornecedorView
             if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Dispose(true);
-                this.Close();
+                Formularios.FormFornecedorNew = null;
             }
+        }
+
+        private void frmFornecedorNew_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) ==
+               DialogResult.Yes) Formularios.FormFornecedorNew = null;
+            else e.Cancel = true;
         }
         #endregion
 
@@ -115,7 +122,7 @@ namespace SysGestor.View.FornecedorView
             fornecedorDto.DataCadastro = DateTime.Now;
             fornecedorDto.Observacao = txtObservacao.Text.Trim();
 
-            enderecoDto.Logradouro = txtLogradouro.Text.Trim();
+            enderecoDto.Logradouro = rtxFitaDetalheradouro.Text.Trim();
             enderecoDto.Numero = txtNumero.Text.Trim();
             enderecoDto.Complemento = txtComplemento.Text.Trim();
             enderecoDto.Bairro = txtBairro.Text.Trim();
@@ -155,7 +162,7 @@ namespace SysGestor.View.FornecedorView
             mskCpfCnpj.Text = string.Empty;
             txtRgIe.Text = string.Empty;
             mskDataNasc.Text = string.Empty;
-            txtLogradouro.Text = string.Empty;
+            rtxFitaDetalheradouro.Text = string.Empty;
             txtNumero.Text = string.Empty;
             txtComplemento.Text = string.Empty;
             txtBairro.Text = string.Empty;
@@ -175,7 +182,7 @@ namespace SysGestor.View.FornecedorView
             mskCpfCnpj.Enabled = false;
             txtRgIe.Enabled = false;
             mskDataNasc.Enabled = false;
-            txtLogradouro.Enabled = false;
+            rtxFitaDetalheradouro.Enabled = false;
             txtNumero.Enabled = false;
             txtComplemento.Enabled = false;
             txtBairro.Enabled = false;
@@ -198,7 +205,7 @@ namespace SysGestor.View.FornecedorView
             mskCpfCnpj.Enabled = true;
             txtRgIe.Enabled = true;
             mskDataNasc.Enabled = true;
-            txtLogradouro.Enabled = true;
+            rtxFitaDetalheradouro.Enabled = true;
             txtNumero.Enabled = true;
             txtComplemento.Enabled = true;
             txtBairro.Enabled = true;
@@ -275,6 +282,8 @@ namespace SysGestor.View.FornecedorView
                 _tipoPessoa = "Jurídica";
             }
         }
-        #endregion                  
+        #endregion
+
+
     }
 }

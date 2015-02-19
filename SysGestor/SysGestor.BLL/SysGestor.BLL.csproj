@@ -46,6 +46,9 @@
     <Compile Include="PessoaBll\EnderecoBll.cs" />
     <Compile Include="PessoaBll\FornecedorBll\FornecedorBll.cs" />
     <Compile Include="PessoaBll\PessoaBll.cs" />
+    <Compile Include="PessoaBll\UsuarioBLL\PermissaoBll.cs" />
+    <Compile Include="PessoaBll\UsuarioBLL\PermissaoUsuarioBll.cs" />
+    <Compile Include="PessoaBll\UsuarioBLL\UsuarioBll.cs" />
     <Compile Include="ProdutoBll\CategoriaBll.cs" />
     <Compile Include="ProdutoBll\GradeBll.cs" />
     <Compile Include="ProdutoBll\MovimentacaoEstoqueBll.cs" />

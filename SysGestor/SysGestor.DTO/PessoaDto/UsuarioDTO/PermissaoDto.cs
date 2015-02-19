@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SysGestor.DTO.ProdutoDto
+namespace SysGestor.DTO.PessoaDto.UsuarioDTO
 {
-    public class UnidadeDto
+    public class PermissaoDto
     {
-        public int IdUnidMedida { get; set; }
+        public int Id { get; set; }
 
         public string Descricao { get; set; }
 

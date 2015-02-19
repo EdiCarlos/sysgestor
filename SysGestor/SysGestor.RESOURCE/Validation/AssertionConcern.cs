@@ -5,6 +5,14 @@ namespace SysGestor.RESOURCE.Validation
 {
     public class AssertionConcern
     {
+        public static void AssertArgumentArrayIntNull(int[] value, string message)
+        {
+            if (value.Length <= 0 || value.Length == null)
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
+
         public static void AssertArgumentEquals(object object1, object object2, string message)
         {
             if (!object1.Equals(object2))

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SysGestor.DTO.ProdutoDto.ProdutoGridDto
+namespace SysGestor.DTO.Produto.ProdutoGridDto
 {
     public class ValorProdutoGridDto
     {

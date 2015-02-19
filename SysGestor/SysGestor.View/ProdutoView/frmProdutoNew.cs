@@ -1,7 +1,7 @@
 ﻿using SysGestor.BLL.PessoaBll.FornecedorBll;
 using SysGestor.BLL.ProdutoBll;
 using SysGestor.DTO.PessoaDto.FornecedorDto;
-using SysGestor.DTO.ProdutoDto;
+using SysGestor.DTO.Produto;
 using SysGestor.View.FornecedorView;
 using SysGestor.View.ProdutoView.Grade;
 using SysGestor.View.ProdutoView.Unidade;

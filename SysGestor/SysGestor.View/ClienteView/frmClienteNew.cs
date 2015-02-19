@@ -20,7 +20,7 @@ namespace SysGestor.View.ClienteView
         AutoCompleteStringCollection source = new AutoCompleteStringCollection();
         private string _tipoPessoa;
         PessoaBll _pessoaBll;
-    
+
         public frmClienteNew()
         {
             InitializeComponent();
@@ -68,8 +68,15 @@ namespace SysGestor.View.ClienteView
             if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Dispose(true);
-                this.Close();
+                Formularios.FormClienteNew = null;
             }
+        }
+
+        private void frmClienteNew_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) ==
+                DialogResult.Yes) Formularios.FormClienteNew = null;
+            else e.Cancel = true;
         }
         #endregion
 
@@ -124,7 +131,7 @@ namespace SysGestor.View.ClienteView
             clienteDto.DataCadastro = DateTime.Now;
             clienteDto.Observacao = txtObservacao.Text.Trim();
 
-            enderecoDto.Logradouro = txtLogradouro.Text.Trim();
+            enderecoDto.Logradouro = rtxFitaDetalheradouro.Text.Trim();
             enderecoDto.Numero = txtNumero.Text.Trim();
             enderecoDto.Complemento = txtComplemento.Text.Trim();
             enderecoDto.Bairro = txtBairro.Text.Trim();
@@ -136,19 +143,27 @@ namespace SysGestor.View.ClienteView
             contatoDto.TelComercial = mskTelComercial.Text.Trim();
             contatoDto.Email = txtEmail.Text.Trim();
 
-            clienteBll.Inserir(clienteDto);
+            try
+            {
+                clienteBll.Inserir(clienteDto);
 
-            contatoDto.PessoaDto.Id = _pessoaBll.GetIdPessoa();
+                contatoDto.PessoaDto.Id = _pessoaBll.GetIdPessoa();
 
-            enderecoBll.Inserir(enderecoDto);
+                enderecoBll.Inserir(enderecoDto);
 
-            contatoBll.Inserir(contatoDto);
-
-            desabilitaCampo();
-        }        
+                contatoBll.Inserir(contatoDto);
+                               
+                MessageBox.Show("Cliente inserido com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                desabilitaCampo();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }          
+        }
         #endregion
-             
-        #region Validação de Campos     
+
+        #region Validação de Campos
         private void txtRgIe_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar))
@@ -165,7 +180,7 @@ namespace SysGestor.View.ClienteView
             txtRgIe.Text = string.Empty;
             mskDataNasc.Text = string.Empty;
             txtLimiteCredito.Text = string.Empty;
-            txtLogradouro.Text = string.Empty;
+            rtxFitaDetalheradouro.Text = string.Empty;
             txtNumero.Text = string.Empty;
             txtComplemento.Text = string.Empty;
             txtBairro.Text = string.Empty;
@@ -186,7 +201,7 @@ namespace SysGestor.View.ClienteView
             txtRgIe.Enabled = false;
             mskDataNasc.Enabled = false;
             txtLimiteCredito.Enabled = false;
-            txtLogradouro.Enabled = false;
+            rtxFitaDetalheradouro.Enabled = false;
             txtNumero.Enabled = false;
             txtComplemento.Enabled = false;
             txtBairro.Enabled = false;
@@ -210,7 +225,7 @@ namespace SysGestor.View.ClienteView
             txtRgIe.Enabled = true;
             mskDataNasc.Enabled = true;
             txtLimiteCredito.Enabled = true;
-            txtLogradouro.Enabled = true;
+            rtxFitaDetalheradouro.Enabled = true;
             txtNumero.Enabled = true;
             txtComplemento.Enabled = true;
             txtBairro.Enabled = true;
@@ -287,6 +302,7 @@ namespace SysGestor.View.ClienteView
                 _tipoPessoa = "Jurídica";
             }
         }
-        #endregion                  
+        #endregion
+
     }
 }

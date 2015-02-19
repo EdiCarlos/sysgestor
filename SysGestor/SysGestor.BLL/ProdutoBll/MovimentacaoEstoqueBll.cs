@@ -1,5 +1,5 @@
 ﻿using SysGestor.DAL.ProdutoDal;
-using SysGestor.DTO.ProdutoDto;
+using SysGestor.DTO.Produto;
 using SysGestor.RESOURCE.Resources;
 using SysGestor.RESOURCE.Validation;
 using System;
@@ -13,10 +13,12 @@ namespace SysGestor.BLL.ProdutoBll
     public class MovimentacaoEstoqueBll
     {
         MovimentacaoEstoqueDal _movEstoqueDal;
+        ProdutoBll _produtoBll;
 
         public MovimentacaoEstoqueBll()
         {
             _movEstoqueDal = new MovimentacaoEstoqueDal();
+            _produtoBll = new ProdutoBll();
         }
 
         private void Inserir(MovimentacaoEstoqueDto movimentacaoEstoqueDto)
@@ -26,7 +28,8 @@ namespace SysGestor.BLL.ProdutoBll
             AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.ValorCompra, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.ProdutoDto.Id, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.ProdutoDto.IdInterno, Errors.InvalidValue);
-          
+
+            _produtoBll.AumentaEstoque(movimentacaoEstoqueDto.Quantidade, movimentacaoEstoqueDto.ProdutoDto.Id);
             _movEstoqueDal.Inserir(movimentacaoEstoqueDto);
         }
 
@@ -37,6 +40,7 @@ namespace SysGestor.BLL.ProdutoBll
             AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.Quantidade, Errors.InvalidValue);
             AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.ValorCompra, Errors.InvalidValue);
 
+            _produtoBll.AumentaEstoque(movimentacaoEstoqueDto.Quantidade, movimentacaoEstoqueDto.ProdutoDto.Id);
             _movEstoqueDal.Alterar(movimentacaoEstoqueDto);
         }
 
@@ -53,6 +57,13 @@ namespace SysGestor.BLL.ProdutoBll
             _movEstoqueDal.Remove(idMovEstoque);
         }
 
+        public void RemoveMass(int[] idMovEstoque)
+        {
+            AssertionConcern.AssertArgumentArrayIntNull(idMovEstoque, Errors.InvalidId);
+
+            _movEstoqueDal.RemoveMass(idMovEstoque);
+        }
+
         public List<MovimentacaoEstoqueDto> FindAllFilter(string searchType, object filter)
         {
             AssertionConcern.AssertArgumentNotEmpty(searchType, Errors.InvalidFilter);
@@ -63,6 +74,18 @@ namespace SysGestor.BLL.ProdutoBll
             lista = _movEstoqueDal.FindAllFilter(searchType, filter);
 
             return lista;
+        }
+
+        public double CalculaValorEntradaEstoque(double qtd, double valorCompra)
+        {
+            double total = 0;
+
+            AssertionConcern.AssertArgumentNotNull(qtd, Errors.InvalidValue);
+            AssertionConcern.AssertArgumentNotNull(valorCompra, Errors.InvalidValue);
+
+            total = qtd * valorCompra;
+
+            return total;
         }
     }
 }

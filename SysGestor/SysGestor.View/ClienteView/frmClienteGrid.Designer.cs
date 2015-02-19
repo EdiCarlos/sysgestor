@@ -231,6 +231,7 @@
             this.idCliente.DataPropertyName = "IdCliente";
             this.idCliente.HeaderText = "Código";
             this.idCliente.Name = "idCliente";
+            this.idCliente.ReadOnly = true;
             this.idCliente.Width = 80;
             // 
             // nome
@@ -239,12 +240,14 @@
             this.nome.DataPropertyName = "Nome";
             this.nome.HeaderText = "Nome / Razão Social";
             this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
             // 
             // CpfCnpj
             // 
             this.CpfCnpj.DataPropertyName = "CpfCnpj";
             this.CpfCnpj.HeaderText = "CPF / CNPJ";
             this.CpfCnpj.Name = "CpfCnpj";
+            this.CpfCnpj.ReadOnly = true;
             this.CpfCnpj.Width = 110;
             // 
             // dataNasc
@@ -252,6 +255,7 @@
             this.dataNasc.DataPropertyName = "DataNascimento";
             this.dataNasc.HeaderText = "D. Nasc.";
             this.dataNasc.Name = "dataNasc";
+            this.dataNasc.ReadOnly = true;
             this.dataNasc.Width = 110;
             // 
             // editar
@@ -289,6 +293,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista - Cliente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmClienteGrid_FormClosing);
             this.Load += new System.EventHandler(this.frmClienteGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgCliente)).EndInit();
             this.groupBoxEndereco.ResumeLayout(false);
