@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SysGestor.DAL.Repositorio;
 using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.RESOURCE.Resources;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -139,6 +140,98 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
             catch (Exception ex)
             {
                 throw new Exception("Erro ao buscar dados. " + ex.Message);
+            }
+        }
+
+        public ClienteDto GetClienteByNome(string nome)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idcliente, B.limitecredito " +
+                                      "FROM pessoa A " +
+                                      "INNER JOIN cliente B ON A.idpessoa = B.idpessoa "
+                                    + "WHERE A.nome = @Nome ";
+
+                comando.Parameters.AddWithValue("@Nome", nome);
+
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                var cliente = new ClienteDto();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        cliente.PessoaDto.Id = (int)dr["idpessoa"];
+                        cliente.Nome = (string)dr["nome"];
+                        cliente.TipoPessoa = (string)dr["tipopessoa"];
+                        cliente.CpfCnpj = (string)dr["cpfcnpj"];
+                        cliente.RgIe = (string)dr["rgie"];
+                        cliente.DataNascimento = (DateTime)dr["datanascimento"];
+                        cliente.DataCadastro = (DateTime)dr["datacadastro"];
+                        cliente.Ativo = (int)dr["ativo"];
+                        cliente.Observacao = (string)dr["observacao"];
+                        cliente.IdCliente = (int)dr["idcliente"];
+                        cliente.LimiteCredito = (double)dr["limitecredito"];
+                    }
+                }
+                else
+                {
+                    cliente = null;
+                }
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message.ToString());
+            }
+        }
+
+        public ClienteDto GetClienteByCpfCnpj(string cpfCnpj)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT A.idpessoa, A.nome, A.tipopessoa, A.cpfcnpj, A.rgie, A.datanascimento, A.datacadastro, A.ativo, A.observacao, B.idcliente, B.limitecredito " +
+                                      "FROM pessoa A " +
+                                      "INNER JOIN cliente B ON A.idpessoa = B.idpessoa "
+                                    + "WHERE A.cpfcnpj = @CpfCnpj ";
+
+                comando.Parameters.AddWithValue("@CpfCnpj", cpfCnpj);
+
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                var cliente = new ClienteDto();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        cliente.PessoaDto.Id = (int)dr["idpessoa"];
+                        cliente.Nome = (string)dr["nome"];
+                        cliente.TipoPessoa = (string)dr["tipopessoa"];
+                        cliente.CpfCnpj = (string)dr["cpfcnpj"];
+                        cliente.RgIe = (string)dr["rgie"];
+                        cliente.DataNascimento = (DateTime)dr["datanascimento"];
+                        cliente.DataCadastro = (DateTime)dr["datacadastro"];
+                        cliente.Ativo = (int)dr["ativo"];
+                        cliente.Observacao = (string)dr["observacao"];
+                        cliente.IdCliente = (int)dr["idcliente"];
+                        cliente.LimiteCredito = (double)dr["limitecredito"];
+                    }
+                }
+                else
+                {
+                    cliente = null;
+                }
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message.ToString());
             }
         }
 

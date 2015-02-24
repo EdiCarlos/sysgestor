@@ -1,20 +1,14 @@
-﻿using SysGestor.View.VendaView;
-using SysGestor.View.ClienteView;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SysGestor.View.ClienteView;
 using SysGestor.View.FornecedorView;
+using SysGestor.View.MenuForm;
 using SysGestor.View.UsuarioView;
-using SysGestor.View.LoginView;
+using SysGestor.View.VendaView;
 
 namespace SysGestor.View
 {
     public class Formularios
     {
-        public static frmLogin FormLogin { get; set; }
-
+       
         public static frmClienteNew FormClienteNew { get; set; }
         public static frmClienteGrid FormClienteGrid { get; set; }
         public static frmClienteEdit FormClienteEdit { get; set; }
@@ -29,5 +23,10 @@ namespace SysGestor.View
         
 
         public static frmPedido FormPedido { get; set; }
+        public static frmFecharPedidoVista FormFecharPedidoVista { get; set; }
+        public static frmCancelarItem FormCancelarItem { get; set; }
+        public static frmBuscarPedido FormBuscarPedido { get; set; }
+
+        public static frmMenuFecharPedido FormMenuFecharPedido { get; set; }
     }
 }

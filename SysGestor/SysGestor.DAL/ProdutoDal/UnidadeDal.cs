@@ -66,6 +66,41 @@ namespace SysGestor.DAL.ProdutoDal
             }
         }
 
+        public UnidadeDto GetUnidadeById(int idUnidade)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT idunidmedida, descricao, ativo FROM unidmedida WHERE idunidmedida = @IdUnidade";
+
+                comando.Parameters.AddWithValue("@IdUnidade", idUnidade);
+
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                var unidade = new UnidadeDto();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        unidade.IdUnidMedida = Convert.ToInt32(System.Convert.IsDBNull(dr["idunidmedida"]) ? null : dr["idunidmedida"]);
+                        unidade.Descricao = Convert.ToString(System.Convert.IsDBNull(dr["descricao"]) ? null : dr["descricao"]);
+                        unidade.Ativo = Convert.ToInt32(System.Convert.IsDBNull(dr["ativo"]) ? null : dr["ativo"]);
+                    }
+                }
+                else
+                {
+                    unidade = null;
+                }
+                return unidade;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
+            }
+        }
+
         public string GetEqualsUnidade(string descricao)
         {
             try

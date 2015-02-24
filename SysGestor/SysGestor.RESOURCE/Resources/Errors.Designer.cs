@@ -106,11 +106,29 @@ namespace SysGestor.RESOURCE.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Senha não informada.
+        /// </summary>
+        public static string EmptyPassword {
+            get {
+                return ResourceManager.GetString("EmptyPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Campo telefone não pode ser vazio.
         /// </summary>
         public static string EmptyPhone {
             get {
                 return ResourceManager.GetString("EmptyPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuário não informado.
+        /// </summary>
+        public static string EmptyUser {
+            get {
+                return ResourceManager.GetString("EmptyUser", resourceCulture);
             }
         }
         
@@ -183,6 +201,15 @@ namespace SysGestor.RESOURCE.Resources {
         public static string InvalidValue {
             get {
                 return ResourceManager.GetString("InvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantidade não informada.
+        /// </summary>
+        public static string NullQtd {
+            get {
+                return ResourceManager.GetString("NullQtd", resourceCulture);
             }
         }
         

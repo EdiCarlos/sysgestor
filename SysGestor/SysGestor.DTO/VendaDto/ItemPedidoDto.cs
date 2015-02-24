@@ -2,7 +2,7 @@
 
 namespace SysGestor.DTO.VendaDto
 {
-    public class ItemPedido
+    public class ItemPedidoDto
     {
         public int Id { get; set; }
 
@@ -15,7 +15,7 @@ namespace SysGestor.DTO.VendaDto
         public PedidoDto PedidoDto { get; set; }
 
 
-        public ItemPedido()
+        public ItemPedidoDto()
         {
             ProdutoDto = new ProdutoDto();
             PedidoDto = new PedidoDto();

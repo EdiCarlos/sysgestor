@@ -1,4 +1,4 @@
-﻿using SysGestor.BLL.ProdutoBll;
+﻿using SysGestor.BLL.ProdutoBLL;
 using SysGestor.DTO.Produto;
 using System;
 using System.Windows.Forms;

@@ -6,7 +6,7 @@ using SysGestor.RESOURCE.Validation;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SysGestor.BLL.ProdutoBll
+namespace SysGestor.BLL.ProdutoBLL
 {
     public class ProdutoBll
     {
@@ -61,6 +61,13 @@ namespace SysGestor.BLL.ProdutoBll
             AssertionConcern.AssertArgumentNotNull(idProduto, Errors.InvalidId);
 
             return _produtoDal.GetProdutoById(idProduto);
+        }
+
+        public ProdutoDto GetProdutoByIdInterno(string idInterno)
+        {
+            AssertionConcern.AssertArgumentNotNull(idInterno, Errors.InvalidId);
+
+            return _produtoDal.GetProdutoByIdInterno(idInterno);
         }
 
         public int GetIdProduto()

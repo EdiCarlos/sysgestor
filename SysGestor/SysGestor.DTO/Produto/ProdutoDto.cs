@@ -18,7 +18,7 @@ namespace SysGestor.DTO.Produto
 
         public decimal Estoque { get; set; }
 
-        public decimal EstoqueMinimo { get; set; }
+        public decimal EstoqueMinimo { get; set; }       
 
         public string LocalizacaoFisica { get; set; }
 
@@ -34,7 +34,7 @@ namespace SysGestor.DTO.Produto
 
         public FornecedorDto FornecedorDto { get; set; }
 
-
+      
         public ProdutoDto()
         {
             CategoriaDto = new CategoriaDto();

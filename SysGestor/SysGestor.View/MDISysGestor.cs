@@ -1,4 +1,5 @@
-﻿using SysGestor.View.ClienteView;
+﻿using SysGestor.DTO.AuthenticationDTO;
+using SysGestor.View.ClienteView;
 using SysGestor.View.FornecedorView;
 using SysGestor.View.LoginView;
 using SysGestor.View.ProdutoView;
@@ -81,7 +82,7 @@ namespace SysGestor.View
         #region Fornecedor
 
         #endregion
-        
+
 
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -133,14 +134,17 @@ namespace SysGestor.View
 
         private void pDVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPDV frmPdv = new frmPDV();
-            frmPdv.Show();
+            if (Formularios.FormPedido == null) Formularios.FormPedido = new frmPedido();
+
+            Formularios.FormPedido.MdiParent = this;
+            Formularios.FormPedido.Show();
+            Formularios.FormPedido.Focus();
         }
 
         private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Formularios.FormPedido == null) Formularios.FormPedido = new frmPedido();
-            
+                       
             Formularios.FormPedido.Show();
             Formularios.FormPedido.Focus();
 
@@ -161,12 +165,23 @@ namespace SysGestor.View
 
         private void MDISysGestor_Load(object sender, EventArgs e)
         {
-            if (Formularios.FormLogin == null) Formularios.FormLogin = new frmLogin();
-
-            Formularios.FormLogin.Show();
-            Formularios.FormLogin.Focus();
+            frmLogin FormLogin = new frmLogin(this);
+         
+            FormLogin.Show();
         }
 
-      
+        private void MDISysGestor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        public void HabilitarForm(bool habilita)
+        {
+            menuStripMdi.Enabled = habilita;
+            if (habilita == true) lblUsuarioLogado.Text = "Login: " + AuthenticationDto.Id + " - " + AuthenticationDto.Usuario;
+            else lblUsuarioLogado.Text = "Login: ";
+        }
+
+
     }
 }

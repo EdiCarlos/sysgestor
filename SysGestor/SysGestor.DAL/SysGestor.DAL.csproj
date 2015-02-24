@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationDAL\AuthenticationDal.cs" />
     <Compile Include="PessoaDal\CidadeDal.cs" />
     <Compile Include="PessoaDal\ClienteDal\ClienteDal.cs" />
     <Compile Include="PessoaDal\ContatoDal.cs" />
@@ -58,11 +59,10 @@
     <Compile Include="ProdutoDal\ValorProdutoDal.cs" />
     <Compile Include="Repositorio\Conexao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VendaDal\PedidoDal.cs" />
+    <Compile Include="VendaDal\ItemPedidoDal.cs" />
+    <Compile Include="PedidoDAL\PedidoDal.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PedidoDal\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SysGestor.DTO\SysGestor.DTO.csproj">
       <Project>{53dcd568-65b9-46ec-8d08-549a6ac50822}</Project>

@@ -96,6 +96,12 @@
     <Compile Include="MDISysGestor.Designer.cs">
       <DependentUpon>MDISysGestor.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuForm\frmMenuFecharPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuForm\frmMenuFecharPedido.Designer.cs">
+      <DependentUpon>frmMenuFecharPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProdutoView\Categoria\frmCategoriaEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,24 @@
     <Compile Include="UsuarioView\frmUsuarioNew.Designer.cs">
       <DependentUpon>frmUsuarioNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="VendaView\frmBuscarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendaView\frmBuscarPedido.Designer.cs">
+      <DependentUpon>frmBuscarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VendaView\frmCancelarItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendaView\frmCancelarItem.Designer.cs">
+      <DependentUpon>frmCancelarItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VendaView\frmFecharPedidoVista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendaView\frmFecharPedidoVista.Designer.cs">
+      <DependentUpon>frmFecharPedidoVista.cs</DependentUpon>
+    </Compile>
     <Compile Include="VendaView\frmPDV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MDISysGestor.resx">
       <DependentUpon>MDISysGestor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuForm\frmMenuFecharPedido.resx">
+      <DependentUpon>frmMenuFecharPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProdutoView\Categoria\frmCategoriaEdit.resx">
       <DependentUpon>frmCategoriaEdit.cs</DependentUpon>
@@ -270,6 +297,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioView\frmUsuarioNew.resx">
       <DependentUpon>frmUsuarioNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendaView\frmBuscarPedido.resx">
+      <DependentUpon>frmBuscarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendaView\frmCancelarItem.resx">
+      <DependentUpon>frmCancelarItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VendaView\frmFecharPedidoVista.resx">
+      <DependentUpon>frmFecharPedidoVista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VendaView\frmPDV.resx">
       <DependentUpon>frmPDV.cs</DependentUpon>

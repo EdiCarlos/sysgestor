@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDISysGestor));
             this.menuStripMdi = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,12 +54,16 @@
             this.pDVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orçamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStripMdi.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMdi
             // 
+            this.menuStripMdi.Enabled = false;
             this.menuStripMdi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastroToolStripMenuItem,
             this.buscarToolStripMenuItem,
@@ -238,48 +243,67 @@
             // pDVToolStripMenuItem
             // 
             this.pDVToolStripMenuItem.Name = "pDVToolStripMenuItem";
-            this.pDVToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.pDVToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pDVToolStripMenuItem.Text = "&PDV";
             this.pDVToolStripMenuItem.Click += new System.EventHandler(this.pDVToolStripMenuItem_Click);
             // 
             // pedidoToolStripMenuItem
             // 
             this.pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
-            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pedidoToolStripMenuItem.Text = "&Pedido";
             this.pedidoToolStripMenuItem.Click += new System.EventHandler(this.pedidoToolStripMenuItem_Click);
             // 
             // orçamentoToolStripMenuItem
             // 
             this.orçamentoToolStripMenuItem.Name = "orçamentoToolStripMenuItem";
-            this.orçamentoToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.orçamentoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.orçamentoToolStripMenuItem.Text = "&Orçamento";
             // 
-            // panel1
+            // panelPrincipal
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(932, 513);
-            this.panel1.TabIndex = 3;
+            this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPrincipal.Location = new System.Drawing.Point(0, 24);
+            this.panelPrincipal.Name = "panelPrincipal";
+            this.panelPrincipal.Size = new System.Drawing.Size(932, 513);
+            this.panelPrincipal.TabIndex = 3;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblUsuarioLogado});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 515);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(932, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblUsuarioLogado
+            // 
+            this.lblUsuarioLogado.Name = "lblUsuarioLogado";
+            this.lblUsuarioLogado.Size = new System.Drawing.Size(40, 17);
+            this.lblUsuarioLogado.Text = "Login:";
             // 
             // MDISysGestor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(932, 537);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.menuStripMdi);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStripMdi;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "MDISysGestor";
-            this.Text = "MDISysGestor";
+            this.Text = "SysGestor - Venda e Controle Financeiro | LICENCIADO PARA: Empresa Modelo Ltda.";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MDISysGestor_FormClosing);
             this.Load += new System.EventHandler(this.MDISysGestor_Load);
             this.menuStripMdi.ResumeLayout(false);
             this.menuStripMdi.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,6 +336,8 @@
         private System.Windows.Forms.ToolStripMenuItem usuárioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelPrincipal;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblUsuarioLogado;
     }
 }

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationDTO\AuthenticationDto.cs" />
     <Compile Include="PessoaDto\CidadeDto.cs" />
     <Compile Include="PessoaDto\ClienteDto\ClienteDto.cs" />
     <Compile Include="PessoaDto\UsuarioDTO\PermissaoDto.cs" />
@@ -56,7 +57,9 @@
     <Compile Include="Produto\UnidadeDto.cs" />
     <Compile Include="Produto\ValorProdutoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VendaDto\ItemPedido.cs" />
+    <Compile Include="VendaDto\CancelaItemDto.cs" />
+    <Compile Include="VendaDto\ItemPedidoDto.cs" />
+    <Compile Include="VendaDto\ItemPedidoGridDto.cs" />
     <Compile Include="VendaDto\PedidoDto.cs" />
   </ItemGroup>
   <ItemGroup />

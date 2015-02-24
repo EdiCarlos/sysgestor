@@ -2,6 +2,8 @@
 using SysGestor.DAL.PessoaDal.ClienteDal;
 using SysGestor.DTO.PessoaDto;
 using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.RESOURCE.Resources;
+using SysGestor.RESOURCE.Validation;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -39,6 +41,20 @@ namespace SysGestor.BLL
         public ClienteDto GetCliente(int id)
         {
             return _clienteDal.GetCliente(id);   
+        }
+
+        public ClienteDto GetClienteByNome(string nome)
+        {
+            AssertionConcern.AssertArgumentNotEmpty(nome, Errors.InvalidValue);
+
+            return _clienteDal.GetClienteByNome(nome);
+        }
+
+        public ClienteDto GetClienteByCpfCnpj(string cpfCnpj)
+        {
+            AssertionConcern.AssertArgumentNotEmpty(cpfCnpj, Errors.InvalidValue);
+
+            return _clienteDal.GetClienteByCpfCnpj(cpfCnpj);
         }
 
         public IList<ClienteDto> FindAll()

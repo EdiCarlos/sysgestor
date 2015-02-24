@@ -1,6 +1,6 @@
 ﻿using SysGestor.BLL;
 using SysGestor.BLL.PessoaBll.FornecedorBll;
-using SysGestor.BLL.ProdutoBll;
+using SysGestor.BLL.ProdutoBLL;
 using SysGestor.DTO.PessoaDto.FornecedorDto;
 using SysGestor.DTO.Produto;
 using SysGestor.View.FornecedorView;
@@ -130,6 +130,7 @@ namespace SysGestor.View.ProdutoView
                 valorProdutoDto.Comissao = Convert.ToDecimal(txtComissao.Text.Trim());
                 valorProdutoDto.ValorVenda = Convert.ToDouble(lblValorVenda.Text.Trim());
 
+                //TODO
                 //valorProdutoDto.UltimoValorCompra = Convert.ToDouble(lblUltValorCusto.Text);
                 //valorProdutoDto.UltimaMargem = Convert.ToDecimal(lblUltMargem.Text);
                 //valorProdutoDto.UltimaComissao = Convert.ToDecimal(lblUltComissao.Text);

@@ -5,7 +5,7 @@ using SysGestor.RESOURCE.Validation;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SysGestor.BLL.ProdutoBll
+namespace SysGestor.BLL.ProdutoBLL
 {
     public class UnidadeBll
     {
@@ -45,6 +45,13 @@ namespace SysGestor.BLL.ProdutoBll
         public string GetEqualsUnidade(string descricao)
         {
             return _unidadeDal.GetEqualsUnidade(descricao);
+        }
+
+        public UnidadeDto GetUnidadeById(int idUnidade)
+        {
+            AssertionConcern.AssertArgumentNotNull(idUnidade, Errors.InvalidId);
+
+            return _unidadeDal.GetUnidadeById(idUnidade);
         }
 
         public void Remove(int id)

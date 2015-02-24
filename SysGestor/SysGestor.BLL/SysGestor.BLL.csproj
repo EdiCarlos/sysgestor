@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationBLL\AuthenticationBll.cs" />
     <Compile Include="PessoaBll\CidadeBll.cs" />
     <Compile Include="PessoaBll\ClienteBll\ClienteBll.cs" />
     <Compile Include="PessoaBll\ContatoBll.cs" />
@@ -49,14 +50,16 @@
     <Compile Include="PessoaBll\UsuarioBLL\PermissaoBll.cs" />
     <Compile Include="PessoaBll\UsuarioBLL\PermissaoUsuarioBll.cs" />
     <Compile Include="PessoaBll\UsuarioBLL\UsuarioBll.cs" />
-    <Compile Include="ProdutoBll\CategoriaBll.cs" />
-    <Compile Include="ProdutoBll\GradeBll.cs" />
-    <Compile Include="ProdutoBll\MovimentacaoEstoqueBll.cs" />
-    <Compile Include="ProdutoBll\ProdutoBll.cs" />
-    <Compile Include="ProdutoBll\UnidadeBll.cs" />
-    <Compile Include="ProdutoBll\ValorProdutoBll.cs" />
+    <Compile Include="ProdutoBLL\CategoriaBll.cs" />
+    <Compile Include="ProdutoBLL\GradeBll.cs" />
+    <Compile Include="ProdutoBLL\MovimentacaoEstoqueBll.cs" />
+    <Compile Include="ProdutoBLL\ProdutoBll.cs" />
+    <Compile Include="ProdutoBLL\UnidadeBll.cs" />
+    <Compile Include="ProdutoBLL\ValorProdutoBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrocaInfo.cs" />
+    <Compile Include="VendaBll\ItemPedidoBll.cs" />
+    <Compile Include="VendaBll\PedidoBll.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SysGestor.DAL\SysGestor.DAL.csproj">

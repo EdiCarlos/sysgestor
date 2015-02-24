@@ -132,8 +132,14 @@
   <data name="EmptyName" xml:space="preserve">
     <value>Campo nome não pode ser vazio</value>
   </data>
+  <data name="EmptyPassword" xml:space="preserve">
+    <value>Senha não informada</value>
+  </data>
   <data name="EmptyPhone" xml:space="preserve">
     <value>Campo telefone não pode ser vazio</value>
+  </data>
+  <data name="EmptyUser" xml:space="preserve">
+    <value>Usuário não informado</value>
   </data>
   <data name="EqualsValue" xml:space="preserve">
     <value>Existe um valor igual ao que você está tentando inserir</value>
@@ -158,6 +164,9 @@
   </data>
   <data name="InvalidValue" xml:space="preserve">
     <value>Valor não pode ser null</value>
+  </data>
+  <data name="NullQtd" xml:space="preserve">
+    <value>Quantidade não informada</value>
   </data>
   <data name="NullReturn" xml:space="preserve">
     <value>O valor retornado é null</value>

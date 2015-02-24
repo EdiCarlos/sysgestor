@@ -1,5 +1,5 @@
 ﻿using SysGestor.BLL.PessoaBll.FornecedorBll;
-using SysGestor.BLL.ProdutoBll;
+using SysGestor.BLL.ProdutoBLL;
 using SysGestor.DTO.PessoaDto.FornecedorDto;
 using SysGestor.DTO.Produto;
 using SysGestor.View.FornecedorView;

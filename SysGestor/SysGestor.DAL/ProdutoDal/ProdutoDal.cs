@@ -45,8 +45,8 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "UPDATE produto SET referencia = @Referencia, codigointerno = @CodigoInterno, descricao = @Descricao, marca = @Marca, estoqueminimo = @EstoqueMinimo, " +  
-                                      "localizacaofisica = @LocalizacaoFisica, observacao = @Observacao, idcategoria = @IdCategoria, idgrade = @IdGrade, idfornecedor = @IdFornecedor " +
+                comando.CommandText = "UPDATE produto SET referencia = @Referencia, codigointerno = @CodigoInterno, descricao = @Descricao, marca = @Marca, estoqueminimo = @EstoqueMinimo, " +
+                                      "localizacaofisica = @LocalizacaoFisica, observacao = @Observacao, idcategoria = @IdCategoria, idgrade = @IdGrade, idunidmedida = @IdUnidMedida, idfornecedor = @IdFornecedor " +
                                       "WHERE idproduto = @IdProduto AND codigointerno = @CodigoInterno";
 
                 comando.Parameters.AddWithValue("@Referencia", produtoDto.Referencia);
@@ -206,6 +206,46 @@ namespace SysGestor.DAL.ProdutoDal
                         produto.GradeDto.Descricao = (string)dr["grade"];
                         produto.UnidadeDto.Descricao = (string)dr["unidade"];
                         produto.FornecedorDto.Nome = (string)dr["nome"];
+                    }
+                }
+                else
+                {
+                    produto = null;
+                }
+                return produto;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
+            }
+        }
+
+        public ProdutoDto GetProdutoByIdInterno(string idInterno)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT idproduto, codigointerno, referencia, descricao, idunidmedida " +
+                                      "FROM produto "+
+                                      "WHERE codigointerno = @CodigoInterno";
+
+
+                comando.Parameters.AddWithValue("@CodigoInterno", idInterno);
+
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                var produto = new ProdutoDto();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        produto.Id = Convert.ToInt32(System.Convert.IsDBNull(dr["idproduto"]) ? null : dr["idproduto"]);
+                        produto.IdInterno = Convert.ToString(System.Convert.IsDBNull(dr["codigointerno"]) ? null : dr["codigointerno"]);
+                        produto.Referencia = Convert.ToString(System.Convert.IsDBNull(dr["referencia"]) ? null : dr["referencia"]);
+                        produto.Descricao = Convert.ToString(System.Convert.IsDBNull(dr["descricao"]) ? null : dr["descricao"]);
+                        produto.UnidadeDto.IdUnidMedida = Convert.ToInt32(System.Convert.IsDBNull(dr["idunidmedida"]) ? null : dr["idunidmedida"]);
                     }
                 }
                 else
