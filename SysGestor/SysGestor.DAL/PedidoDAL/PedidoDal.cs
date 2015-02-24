@@ -194,5 +194,56 @@ namespace SysGestor.DAL.PedidoDAL
                 throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
             }
         }
+
+        public List<PedidoGridDto> FindAllPedido()
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT A.idpedido, A.datapedido, A.status, " +
+                                      "(select nome from pessoa where idpessoa = (select idpessoa  from cliente where idcliente = A.idcliente)) as nome, " + 
+                                      " (select CpfCnpj from pessoa where idpessoa = (select idpessoa  from cliente where idcliente = B.idcliente)) as CpfCnpj " +
+                                      "FROM pedido A " + 
+                                      "INNER JOIN cliente B ON A.idcliente = B.idcliente ";
+
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                var listaPedido = new List<PedidoGridDto>();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        var pedido = new PedidoGridDto();
+
+                        pedido.Id = Convert.ToInt32(System.Convert.IsDBNull(dr["idpedido"]) ? null : dr["idpedido"]);
+                        pedido.NomeCliente = Convert.ToString(System.Convert.IsDBNull(dr["nome"]) ? null : dr["nome"]);
+                        pedido.CpfCnpj = Convert.ToString(System.Convert.IsDBNull(dr["CpfCnpj"]) ? null : dr["CpfCnpj"]);
+                        pedido.DataPedido = Convert.ToDateTime(System.Convert.IsDBNull(dr["datapedido"]) ? null : dr["datapedido"]);
+                        pedido.Status = Convert.ToInt32(System.Convert.IsDBNull(dr["status"]) ? null : dr["status"]);
+
+                        if(pedido.Status == 0)
+                        pedido.TipoPedido =   "Orçamento";
+                        else if (pedido.Status == 1)
+                            pedido.TipoPedido = "Venda";
+                        else
+                            pedido.TipoPedido = "Pedido Fechado";
+                      
+
+                        listaPedido.Add(pedido);
+                    }
+                }
+                else
+                {
+                    listaPedido = null;
+                }
+                return listaPedido;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
+            }
+        }
     }
 }

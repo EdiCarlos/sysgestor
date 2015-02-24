@@ -100,6 +100,8 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
             try
             {
                 lista = _movEstoqueBll.FindAllFilter(searchType, filter);
+
+                dtgMovEstoque.DataSource = lista;
             }
             catch (Exception ex)
             {
@@ -113,8 +115,7 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
             dtgMovEstoque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
             dtgMovEstoque.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
             dtgMovEstoque.Columns[5].DefaultCellStyle.Format = "C2";
-
-            dtgMovEstoque.DataSource = lista;
+           
         }
 
 

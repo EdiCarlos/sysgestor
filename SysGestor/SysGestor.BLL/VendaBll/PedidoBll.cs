@@ -64,5 +64,10 @@ namespace SysGestor.BLL.VendaBll
         {
             return _pedidoDal.FindAll();
         }
+
+        public List<PedidoGridDto> FindAllPedido()
+        {
+            return _pedidoDal.FindAllPedido();
+        }
     }
 }
