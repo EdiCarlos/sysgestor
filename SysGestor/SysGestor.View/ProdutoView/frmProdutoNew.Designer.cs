@@ -676,6 +676,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar - Produto";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProdutoNew_FormClosed);
             this.Load += new System.EventHandler(this.frmProdutoNew_Load);
             this.groupBoxDados.ResumeLayout(false);
             this.groupBoxDados.PerformLayout();

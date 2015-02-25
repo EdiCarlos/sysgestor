@@ -34,7 +34,7 @@ namespace SysGestor.View.ProdutoView
                 this.Close();
             }
         }
-               
+
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
             carregaGrid(txtPesquisa.Text.Trim());
@@ -68,6 +68,11 @@ namespace SysGestor.View.ProdutoView
                     x++;
                 }
             }
+
+            if (count == 0)
+                MessageBox.Show("Nenhum registro selecionado.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            return;
+
             try
             {
                 _produtoBll.RemoveMass(ids);

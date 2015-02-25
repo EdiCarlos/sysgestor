@@ -1,8 +1,8 @@
 ﻿using SysGestor.View.ClienteView;
 using SysGestor.View.FornecedorView;
-using SysGestor.View.MenuForm;
 using SysGestor.View.UsuarioView;
 using SysGestor.View.VendaView;
+using SysGestor.View.ProdutoView;
 
 namespace SysGestor.View
 {
@@ -17,16 +17,17 @@ namespace SysGestor.View
         public static frmFornecedorGrid FormFornecedorGrid { get; set; }
         public static frmFornecedorEdit FormFornecedorEdit { get; set; }
 
+        public static frmProdutoNew FormProdutoNew { get; set; }
+
         public static frmUsuarioNew FormUsuarioNew { get; set; }
         public static frmUsuarioGrid FormUsuarioGrid { get; set; }
         public static frmUsuarioEdit FormUsuarioEdit { get; set; }
         
 
         public static frmPedido FormPedido { get; set; }
-        public static frmFecharPedidoVista FormFecharPedidoVista { get; set; }
         public static frmCancelarItem FormCancelarItem { get; set; }
         public static frmBuscarPedido FormBuscarPedido { get; set; }
+        public static frmFecharVendaVista   FormFecharVendaVista { get; set; }
 
-        public static frmMenuFecharPedido FormMenuFecharPedido { get; set; }
     }
 }

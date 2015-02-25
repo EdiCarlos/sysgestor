@@ -117,8 +117,14 @@ namespace SysGestor.View.ProdutoView
             if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Dispose(true);
+                Formularios.FormProdutoNew = null;
                 this.Close();
             }
+        }
+
+        private void frmProdutoNew_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Formularios.FormProdutoNew = null;
         }
 
         private void btnLblEditar_Click(object sender, EventArgs e)
@@ -444,5 +450,7 @@ namespace SysGestor.View.ProdutoView
             }
         }
         #endregion
+
+      
     }
 }

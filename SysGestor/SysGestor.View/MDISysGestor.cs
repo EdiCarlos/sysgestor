@@ -110,8 +110,10 @@ namespace SysGestor.View
 
         private void produtoNovoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProdutoNew frmProdutoNew = new frmProdutoNew();
-            frmProdutoNew.Show();
+            if (Formularios.FormProdutoNew == null) Formularios.FormProdutoNew = new frmProdutoNew();
+
+            Formularios.FormProdutoNew.Show();
+            Formularios.FormProdutoNew.Focus();
         }
 
         private void unidadeMedidaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,18 +138,9 @@ namespace SysGestor.View
         {
             if (Formularios.FormPedido == null) Formularios.FormPedido = new frmPedido();
 
-            Formularios.FormPedido.MdiParent = this;
+          
             Formularios.FormPedido.Show();
             Formularios.FormPedido.Focus();
-        }
-
-        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Formularios.FormPedido == null) Formularios.FormPedido = new frmPedido();
-                       
-            Formularios.FormPedido.Show();
-            Formularios.FormPedido.Focus();
-
         }
 
         private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)

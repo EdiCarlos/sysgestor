@@ -22,8 +22,11 @@ namespace SysGestor.View.VendaView
 
         CancelaItemDto _cancelaItemDto;
 
-        public frmCancelarItem(int idPedido, int statusPedido)
+        public frmPedido FormPedido { get; set; }
+
+        public frmCancelarItem(int idPedido, int statusPedido, frmPedido _formPedido)
         {
+            this.FormPedido = _formPedido;
             this.idPedido = idPedido;
             this.statusPedido = statusPedido;
             InitializeComponent();
@@ -69,10 +72,13 @@ namespace SysGestor.View.VendaView
             {
                 qtd = _cancelaItemDto.Quantidade - Convert.ToDecimal(txtQtd.Text);
 
+                
                 if (chkExcluirTodos.Checked)
                     itemPedidoBll.CancelaItemPedido(statusPedido, Convert.ToDecimal(txtQtd.Text), _cancelaItemDto.IdItemPedido, _cancelaItemDto.IdProduto);
                 else
                     itemPedidoBll.AlteraItemPedido(statusPedido, _cancelaItemDto.IdItemPedido, qtd, Convert.ToDecimal(txtQtd.Text), _cancelaItemDto.IdProduto);
+
+                FormPedido.CarregaGrid();
 
                 Formularios.FormCancelarItem = null;
                 this.Close();
@@ -123,6 +129,8 @@ namespace SysGestor.View.VendaView
                             itemPedidoBll.CancelaItemPedido(statusPedido, Convert.ToDecimal(txtQtd.Text), _cancelaItemDto.IdItemPedido, _cancelaItemDto.IdProduto);
                         else
                             itemPedidoBll.AlteraItemPedido(statusPedido, _cancelaItemDto.IdItemPedido, qtd, Convert.ToDecimal(txtQtd.Text), _cancelaItemDto.IdProduto);
+
+                        FormPedido.CarregaGrid();
 
                         Formularios.FormCancelarItem = null;
                         this.Close();

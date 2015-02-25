@@ -42,12 +42,11 @@ namespace SysGestor.DAL.PedidoDAL
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "UPDATE pedido SET status = @Status, tipo = @Tipo, idusuario = @IdUsuario " +
+                comando.CommandText = "UPDATE pedido SET status = @Status, tipo = @Tipo " +
                                       "WHERE idpedido = @IdPedido";
 
                 comando.Parameters.AddWithValue("@Status", pedidoDto.Status);
                 comando.Parameters.AddWithValue("@Tipo", pedidoDto.Tipo);
-                comando.Parameters.AddWithValue("@IdUsuario", pedidoDto.UsuarioDto.Id);
                 comando.Parameters.AddWithValue("@IdPedido", pedidoDto.Id);
 
                 Conexao.Crud(comando);
@@ -205,7 +204,8 @@ namespace SysGestor.DAL.PedidoDAL
                                       "(select nome from pessoa where idpessoa = (select idpessoa  from cliente where idcliente = A.idcliente)) as nome, " + 
                                       " (select CpfCnpj from pessoa where idpessoa = (select idpessoa  from cliente where idcliente = B.idcliente)) as CpfCnpj " +
                                       "FROM pedido A " + 
-                                      "INNER JOIN cliente B ON A.idcliente = B.idcliente ";
+                                      "INNER JOIN cliente B ON A.idcliente = B.idcliente " + 
+                                      "WHERE A.status = 0 OR A.status = 1";
 
                 MySqlDataReader dr = Conexao.Buscar(comando);
 

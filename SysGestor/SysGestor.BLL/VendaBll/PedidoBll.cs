@@ -2,7 +2,9 @@
 using SysGestor.DTO.VendaDto;
 using SysGestor.RESOURCE.Resources;
 using SysGestor.RESOURCE.Validation;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SysGestor.BLL.VendaBll
 {
@@ -68,6 +70,31 @@ namespace SysGestor.BLL.VendaBll
         public List<PedidoGridDto> FindAllPedido()
         {
             return _pedidoDal.FindAllPedido();
+        }
+
+        public List<PedidoGridDto> FindAllPedido(string searchValue, int tipoVenda, DateTime dataInicial, DateTime dataFinal, object filter)
+        {
+            var lista = new List<PedidoGridDto>();
+
+            lista = _pedidoDal.FindAllPedido();
+
+            if (searchValue == "Pedido" && filter != null)
+                return lista.Where(x => x.Id == Convert.ToInt32(filter) && 
+                                   x.Status == tipoVenda && 
+                                   (x.DataPedido.Date >= dataInicial && x.DataPedido.Date <= dataFinal)).ToList();
+
+            if (searchValue == "Cliente" && filter != null)
+                return lista.Where(x => x.NomeCliente.ToUpper().Contains(Convert.ToString(filter).ToUpper()) &&
+                                   x.Status == tipoVenda &&
+                                   (x.DataPedido.Date >= dataInicial && x.DataPedido.Date <= dataFinal)).ToList();
+
+            if (searchValue == "CpfCnpj" && filter != null)
+                return lista.Where(x => x.CpfCnpj.Contains(Convert.ToString(filter)) && 
+                                   x.Status == tipoVenda && 
+                                   (x.DataPedido.Date >= dataInicial && x.DataPedido.Date <= dataFinal)).ToList();
+
+            
+            return lista;
         }
     }
 }
