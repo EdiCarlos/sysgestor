@@ -70,7 +70,13 @@ namespace SysGestor.View.ProdutoView.Grade
             {
                 Dispose(true);
                 this.Close();
+                Formularios.FormGradeNew = null;
             }
+        }
+
+        private void frmGradeNew_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Formularios.FormGradeNew = null;
         }
         #endregion
 
@@ -96,5 +102,7 @@ namespace SysGestor.View.ProdutoView.Grade
             btnNovo.Enabled = false;
         }
         #endregion
+
+    
     }
 }

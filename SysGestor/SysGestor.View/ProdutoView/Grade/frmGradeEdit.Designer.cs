@@ -161,6 +161,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar - Grade";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGradeEdit_FormClosed);
             this.Load += new System.EventHandler(this.frmGradeEdit_Load);
             this.groupBoxDados.ResumeLayout(false);
             this.groupBoxDados.PerformLayout();

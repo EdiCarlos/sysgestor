@@ -1,0 +1,11 @@
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Release\SysGestor.BLL.dll
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Release\SysGestor.BLL.pdb
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Release\SysGestor.DAL.dll
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Release\SysGestor.DTO.dll
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Release\SysGestor.RESOURCE.dll
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Release\SysGestor.DAL.pdb
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Release\SysGestor.DTO.pdb
+G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Release\SysGestor.RESOURCE.pdb
+G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Release\SysGestor.BLL.csprojResolveAssemblyReference.cache
+G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Release\SysGestor.BLL.dll
+G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Release\SysGestor.BLL.pdb

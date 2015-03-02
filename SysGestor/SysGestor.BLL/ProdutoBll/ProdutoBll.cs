@@ -70,6 +70,13 @@ namespace SysGestor.BLL.ProdutoBLL
             return _produtoDal.GetProdutoByIdInterno(idInterno);
         }
 
+        public ProdutoDto GetProdutoByDescricao(string descricao)
+        {
+            AssertionConcern.AssertArgumentNotEmpty(descricao, Errors.EmptyDescription);
+
+            return _produtoDal.GetProdutoByDescricao(descricao);
+        }
+
         public int GetIdProduto()
         {
             return _produtoDal.GetIdProduto();

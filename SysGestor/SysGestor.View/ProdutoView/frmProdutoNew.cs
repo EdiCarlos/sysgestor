@@ -130,15 +130,19 @@ namespace SysGestor.View.ProdutoView
         private void btnLblEditar_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmProdutoGrid frmProdutoGrid = new frmProdutoGrid();
-            frmProdutoGrid.Show();
+            if (Formularios.FormProdutoGrid == null) Formularios.FormProdutoGrid = new frmProdutoGrid();
+
+            Formularios.FormProdutoGrid.Show();
+            Formularios.FormProdutoGrid.Focus();
         }
 
         private void btnLblExcluir_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmProdutoGrid frmProdutoGrid = new frmProdutoGrid();
-            frmProdutoGrid.Show();
+            if (Formularios.FormProdutoGrid == null) Formularios.FormProdutoGrid = new frmProdutoGrid();
+
+            Formularios.FormProdutoGrid.Show();
+            Formularios.FormProdutoGrid.Focus();
         }
 
         private void txtCategoria_MouseClick(object sender, MouseEventArgs e)

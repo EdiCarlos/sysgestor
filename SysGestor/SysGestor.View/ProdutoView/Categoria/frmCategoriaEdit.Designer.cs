@@ -160,6 +160,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar - Categoria";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCategoriaEdit_FormClosed);
             this.Load += new System.EventHandler(this.frmCategoriaEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).EndInit();
             this.groupBoxDados.ResumeLayout(false);

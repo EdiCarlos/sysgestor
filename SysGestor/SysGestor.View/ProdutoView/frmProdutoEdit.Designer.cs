@@ -773,6 +773,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar - Produto";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProdutoEdit_FormClosed);
             this.Load += new System.EventHandler(this.frmProdutoEdit_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -115,8 +115,7 @@ namespace SysGestor.View.VendaView
                 MessageBox.Show("Pagamento efetuado com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                 Formularios.FormPedido.RefreshPDV();
-                Formularios.FormPedido.CarregaGrid();
-
+          
                 this.Close();
                 Formularios.FormFecharVendaVista = null;
             }
@@ -160,20 +159,31 @@ namespace SysGestor.View.VendaView
                     break;
 
                 case Keys.F2:
-                    _pedidoDto.Id = Convert.ToInt32(lblIdPedido.Text);
-                    _pedidoDto.Status = 2;
-                    _pedidoDto.Tipo = "Vista";
+                       if(valor == 0)
+            {
+                MessageBox.Show("Falha ao efetuar pagamento.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                    try
-                    {
-                        _pedidoBll.AlterarPedido(_pedidoDto);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    this.Close();
-                    Formularios.FormFecharVendaVista = null;
+            _pedidoDto.Id = Convert.ToInt32(lblIdPedido.Text);
+            _pedidoDto.Status = 2;
+            _pedidoDto.Tipo = "V";
+
+            try
+            {
+                _pedidoBll.AlterarPedido(_pedidoDto);
+
+                MessageBox.Show("Pagamento efetuado com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                Formularios.FormPedido.RefreshPDV();
+           
+                this.Close();
+                Formularios.FormFecharVendaVista = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
                     break;
 
                 case Keys.F3:

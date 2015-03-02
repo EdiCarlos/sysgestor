@@ -77,9 +77,10 @@ namespace SysGestor.View.LoginView
                     MessageBox.Show("Usuário ou senha não foram informados corretamente.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     return;
                 }
-
-                this.Close();
                 this.Formulario.HabilitarForm(logado);
+                this.Close();
+                Formularios.FormLogin = null;
+               
             }
             catch (Exception ex)
             {

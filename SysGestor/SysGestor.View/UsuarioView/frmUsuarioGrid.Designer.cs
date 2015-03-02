@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuarioGrid));
             this.pcbCabecalho = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -48,6 +49,8 @@
             this.login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnLblNovo = new System.Windows.Forms.Label();
+            this.ttpUsuario = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBoxEndereco.SuspendLayout();
@@ -215,7 +218,7 @@
             this.excluir});
             this.dtgUsuario.Location = new System.Drawing.Point(11, 214);
             this.dtgUsuario.Name = "dtgUsuario";
-            this.dtgUsuario.Size = new System.Drawing.Size(782, 411);
+            this.dtgUsuario.Size = new System.Drawing.Size(782, 360);
             this.dtgUsuario.TabIndex = 10;
             this.dtgUsuario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgUsuario_CellContentClick);
             // 
@@ -265,11 +268,28 @@
             this.excluir.ToolTipText = "Excluir Cliente";
             this.excluir.Width = 40;
             // 
+            // btnLblNovo
+            // 
+            this.btnLblNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLblNovo.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLblNovo.ForeColor = System.Drawing.Color.Green;
+            this.btnLblNovo.Image = global::SysGestor.View.Properties.Resources.new_32x32;
+            this.btnLblNovo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnLblNovo.Location = new System.Drawing.Point(708, 591);
+            this.btnLblNovo.Name = "btnLblNovo";
+            this.btnLblNovo.Size = new System.Drawing.Size(85, 39);
+            this.btnLblNovo.TabIndex = 36;
+            this.btnLblNovo.Text = "Novo";
+            this.btnLblNovo.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.ttpUsuario.SetToolTip(this.btnLblNovo, "Cadastro de usuário.");
+            this.btnLblNovo.Click += new System.EventHandler(this.btnLblNovo_Click);
+            // 
             // frmUsuarioGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 639);
+            this.Controls.Add(this.btnLblNovo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBoxEndereco);
@@ -318,5 +338,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn login;
         private System.Windows.Forms.DataGridViewImageColumn editar;
         private System.Windows.Forms.DataGridViewImageColumn excluir;
+        private System.Windows.Forms.Label btnLblNovo;
+        private System.Windows.Forms.ToolTip ttpUsuario;
     }
 }

@@ -98,7 +98,13 @@ namespace SysGestor.View.ProdutoView.Categoria
             {
                 Dispose(true);
                 this.Close();
+                Formularios.FormCategoriaGrid = null;
             }
+        }
+
+        private void frmCategoriaGrid_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Formularios.FormCategoriaGrid = null;
         }
 
         private void dtgCategoria_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -150,5 +156,14 @@ namespace SysGestor.View.ProdutoView.Categoria
                 }
             }
         }
+
+        private void btnLblNovo_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormCategoriaNew == null) Formularios.FormCategoriaNew = new frmCategoriaNew();
+
+            Formularios.FormCategoriaNew.Show();
+            Formularios.FormCategoriaNew.Focus();
+        }
+     
     }
 }

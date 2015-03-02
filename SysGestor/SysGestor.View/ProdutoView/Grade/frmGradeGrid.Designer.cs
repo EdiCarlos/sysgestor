@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGradeGrid));
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.selecionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dtgGrade = new System.Windows.Forms.DataGridView();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBoxEndereco = new System.Windows.Forms.GroupBox();
             this.rbDescrição = new System.Windows.Forms.RadioButton();
             this.rbCodigo = new System.Windows.Forms.RadioButton();
@@ -40,13 +43,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.chkSelecionarTodos = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.pcbCabecalho = new System.Windows.Forms.PictureBox();
+            this.btnLblNovo = new System.Windows.Forms.Label();
+            this.ttpGrade = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgGrade)).BeginInit();
             this.groupBoxEndereco.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -90,9 +93,25 @@
             this.excluir});
             this.dtgGrade.Location = new System.Drawing.Point(11, 214);
             this.dtgGrade.Name = "dtgGrade";
-            this.dtgGrade.Size = new System.Drawing.Size(782, 259);
+            this.dtgGrade.Size = new System.Drawing.Size(782, 284);
             this.dtgGrade.TabIndex = 15;
             this.dtgGrade.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgGrade_CellContentClick);
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar";
+            this.editar.Image = global::SysGestor.View.Properties.Resources.edit_16x16;
+            this.editar.Name = "editar";
+            this.editar.ToolTipText = "Editar Cliente";
+            this.editar.Width = 40;
+            // 
+            // excluir
+            // 
+            this.excluir.HeaderText = "Excluir";
+            this.excluir.Image = global::SysGestor.View.Properties.Resources.lixeira_16x16;
+            this.excluir.Name = "excluir";
+            this.excluir.ToolTipText = "Excluir Cliente";
+            this.excluir.Width = 40;
             // 
             // groupBoxEndereco
             // 
@@ -176,6 +195,21 @@
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Image = global::SysGestor.View.Properties.Resources.lixeira_32x32;
+            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcluir.Location = new System.Drawing.Point(162, 53);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(92, 42);
+            this.btnExcluir.TabIndex = 4;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.HeaderText = "Editar";
@@ -191,37 +225,6 @@
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ToolTipText = "Excluir Cliente";
             this.dataGridViewImageColumn2.Width = 50;
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar";
-            this.editar.Image = global::SysGestor.View.Properties.Resources.edit_16x16;
-            this.editar.Name = "editar";
-            this.editar.ToolTipText = "Editar Cliente";
-            this.editar.Width = 40;
-            // 
-            // excluir
-            // 
-            this.excluir.HeaderText = "Excluir";
-            this.excluir.Image = global::SysGestor.View.Properties.Resources.lixeira_16x16;
-            this.excluir.Name = "excluir";
-            this.excluir.ToolTipText = "Excluir Cliente";
-            this.excluir.Width = 40;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Image = global::SysGestor.View.Properties.Resources.lixeira_32x32;
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(162, 53);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(92, 42);
-            this.btnExcluir.TabIndex = 4;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnSair
             // 
@@ -252,26 +255,43 @@
             this.pcbCabecalho.TabIndex = 18;
             this.pcbCabecalho.TabStop = false;
             // 
+            // btnLblNovo
+            // 
+            this.btnLblNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLblNovo.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLblNovo.ForeColor = System.Drawing.Color.Green;
+            this.btnLblNovo.Image = global::SysGestor.View.Properties.Resources.new_32x32;
+            this.btnLblNovo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnLblNovo.Location = new System.Drawing.Point(708, 515);
+            this.btnLblNovo.Name = "btnLblNovo";
+            this.btnLblNovo.Size = new System.Drawing.Size(85, 39);
+            this.btnLblNovo.TabIndex = 37;
+            this.btnLblNovo.Text = "Novo";
+            this.btnLblNovo.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.ttpGrade.SetToolTip(this.btnLblNovo, "Cadastro de grade.");
+            this.btnLblNovo.Click += new System.EventHandler(this.btnLblNovo_Click);
+            // 
             // frmGradeGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 479);
+            this.ClientSize = new System.Drawing.Size(806, 563);
+            this.Controls.Add(this.btnLblNovo);
             this.Controls.Add(this.dtgGrade);
             this.Controls.Add(this.groupBoxEndereco);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.pcbCabecalho);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(822, 517);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(822, 517);
             this.Name = "frmGradeGrid";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista - Grade";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGradeGrid_FormClosed);
             this.Load += new System.EventHandler(this.frmGradeGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgGrade)).EndInit();
             this.groupBoxEndereco.ResumeLayout(false);
@@ -303,5 +323,7 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.PictureBox pcbCabecalho;
+        private System.Windows.Forms.Label btnLblNovo;
+        private System.Windows.Forms.ToolTip ttpGrade;
     }
 }

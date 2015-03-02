@@ -36,7 +36,7 @@ namespace SysGestor.BLL.AuthenticationBLL
             else return false;
         }
 
-        public static void Logout()
+        public void Logout()
         {
             AuthenticationDto.Id = 0;
             AuthenticationDto.Usuario = null;

@@ -165,5 +165,13 @@ namespace SysGestor.View.UsuarioView
               DialogResult.Yes) Formularios.FormUsuarioGrid = null;
             else e.Cancel = true;
         }
+
+        private void btnLblNovo_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormUsuarioGrid == null) Formularios.FormUsuarioGrid = new frmUsuarioGrid();
+
+            Formularios.FormUsuarioGrid.Show();
+            Formularios.FormUsuarioGrid.Focus();
+        }
     }
 }

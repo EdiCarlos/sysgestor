@@ -62,7 +62,13 @@ namespace SysGestor.View.ProdutoView
             {
                 Dispose(true);
                 this.Close();
+                Formularios.FormCategoriaNew = null;
             }
+        }
+
+        private void frmCategoriaNew_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Formularios.FormCategoriaNew = null;
         }
         #endregion
 
@@ -89,6 +95,5 @@ namespace SysGestor.View.ProdutoView
         }
         #endregion
 
-       
     }
 }

@@ -162,6 +162,9 @@
   <data name="InvalidId" xml:space="preserve">
     <value>Id inválido ou não foi informado</value>
   </data>
+  <data name="InvalidOrNullOperation" xml:space="preserve">
+    <value>Operação Inválida ou nula</value>
+  </data>
   <data name="InvalidValue" xml:space="preserve">
     <value>Valor não pode ser null</value>
   </data>

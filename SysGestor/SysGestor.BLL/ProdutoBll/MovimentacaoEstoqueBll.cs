@@ -21,71 +21,69 @@ namespace SysGestor.BLL.ProdutoBLL
             _produtoBll = new ProdutoBll();
         }
 
-        private void Inserir(MovimentacaoEstoqueDto movimentacaoEstoqueDto)
+        public void Inserir(MovimentacaoEstoqueDto movimentacaoEstoqueDto)
         {
-            AssertionConcern.AssertArgumentNotEmpty(movimentacaoEstoqueDto.IdDocumento, Errors.InvalidDocumento);
-            AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.Quantidade, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.ValorCompra, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.ProdutoDto.Id, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.ProdutoDto.IdInterno, Errors.InvalidValue);
-
-            _produtoBll.AumentaEstoque(movimentacaoEstoqueDto.Quantidade, movimentacaoEstoqueDto.ProdutoDto.Id);
+            AssertionConcern.AssertArgumentDecimalNull(movimentacaoEstoqueDto.Quantidade, Errors.InvalidValue);
+            AssertionConcern.AssertArgumentIntNull(movimentacaoEstoqueDto.ProdutoDto.Id, Errors.InvalidValue);
+            AssertionConcern.AssertArgumentNotEmpty(movimentacaoEstoqueDto.ProdutoDto.IdInterno, Errors.InvalidValue);
+            AssertionConcern.AssertArgumentNotEmpty(movimentacaoEstoqueDto.Operacao, Errors.InvalidOrNullOperation);
+       
             _movEstoqueDal.Inserir(movimentacaoEstoqueDto);
         }
 
-        private void Alterar(MovimentacaoEstoqueDto movimentacaoEstoqueDto)
+        public void Alterar(MovimentacaoEstoqueDto movimentacaoEstoqueDto)
         {
-            AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.Id, Errors.InvalidId);
-            AssertionConcern.AssertArgumentNotEmpty(movimentacaoEstoqueDto.IdDocumento, Errors.InvalidDocumento);
+            AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.ProdutoDto.Id, Errors.InvalidId);
+            AssertionConcern.AssertArgumentNotEmpty(movimentacaoEstoqueDto.ProdutoDto.IdInterno, Errors.InvalidId);
             AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.Quantidade, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotNull(movimentacaoEstoqueDto.ValorCompra, Errors.InvalidValue);
+            AssertionConcern.AssertArgumentNotEmpty(movimentacaoEstoqueDto.Operacao, Errors.InvalidValue);
 
-            _produtoBll.AumentaEstoque(movimentacaoEstoqueDto.Quantidade, movimentacaoEstoqueDto.ProdutoDto.Id);
+            //_produtoBll.AumentaEstoque(movimentacaoEstoqueDto.Quantidade, movimentacaoEstoqueDto.ProdutoDto.Id);
             _movEstoqueDal.Alterar(movimentacaoEstoqueDto);
         }
 
-        public void Salvar(MovimentacaoEstoqueDto movimentacaoEstoqueDto)
-        {
-            if (movimentacaoEstoqueDto.Id == 0 || movimentacaoEstoqueDto == null) Inserir(movimentacaoEstoqueDto);
-            else Alterar(movimentacaoEstoqueDto);        
-        }
+        //public void Salvar(MovimentacaoEstoqueDto movimentacaoEstoqueDto)
+        //{
+        //    if (movimentacaoEstoqueDto.IdProduto == 0 || movimentacaoEstoqueDto.IdProduto == null) Inserir(movimentacaoEstoqueDto);
+        //    else Alterar(movimentacaoEstoqueDto);        
+        //}
 
-        public void Remove(int idMovEstoque)
-        {
-            AssertionConcern.AssertArgumentNotNull(idMovEstoque, Errors.InvalidId);
+        //public void Remove(int idMovEstoque)
+        //{
+        //    AssertionConcern.AssertArgumentNotNull(idMovEstoque, Errors.InvalidId);
 
-            _movEstoqueDal.Remove(idMovEstoque);
-        }
+        //    _movEstoqueDal.Remove(idMovEstoque);
+        //}
 
-        public void RemoveMass(int[] idMovEstoque)
-        {
-            AssertionConcern.AssertArgumentArrayIntNull(idMovEstoque, Errors.InvalidId);
+        //public void RemoveMass(int[] idMovEstoque)
+        //{
+        //    AssertionConcern.AssertArgumentArrayIntNull(idMovEstoque, Errors.InvalidId);
 
-            _movEstoqueDal.RemoveMass(idMovEstoque);
-        }
+        //    _movEstoqueDal.RemoveMass(idMovEstoque);
+        //}
 
-        public List<MovimentacaoEstoqueDto> FindAllFilter(string searchType, object filter)
-        {
-            AssertionConcern.AssertArgumentNotEmpty(searchType, Errors.InvalidFilter);
-            AssertionConcern.AssertArgumentNotNull(filter, Errors.InvalidValue);
+        //public List<MovimentacaoEstoqueDto> FindAllFilter(string searchType, object filter)
+        //{
+        //    AssertionConcern.AssertArgumentNotEmpty(searchType, Errors.InvalidFilter);
+        //    AssertionConcern.AssertArgumentNotNull(filter, Errors.InvalidValue);
 
-            var lista = new List<MovimentacaoEstoqueDto>();
+        //    var lista = new List<MovimentacaoEstoqueDto>();
 
-            lista = _movEstoqueDal.FindAllFilter(searchType, filter);
+        //    lista = _movEstoqueDal.FindAllFilter(searchType, filter);
 
-            return lista;
-        }
+        //    return lista;
+        //}
 
-        public double CalculaValorEntradaEstoque(double qtd, double valorCompra)
-        {
-            double total = 0;
+        //public double CalculaValorEntradaEstoque(double qtd, double valorCompra)
+        //{
+        //    double total = 0;
 
-            AssertionConcern.AssertArgumentNotNull(qtd, Errors.InvalidValue);
-            AssertionConcern.AssertArgumentNotNull(valorCompra, Errors.InvalidValue);
+        //    AssertionConcern.AssertArgumentNotNull(qtd, Errors.InvalidValue);
+        //    AssertionConcern.AssertArgumentNotNull(valorCompra, Errors.InvalidValue);
 
-            total = qtd * valorCompra;
+        //    total = qtd * valorCompra;
 
-            return total;
-        }
+        //    return total;
+        //}
     }
 }

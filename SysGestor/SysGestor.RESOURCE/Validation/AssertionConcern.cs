@@ -21,6 +21,14 @@ namespace SysGestor.RESOURCE.Validation
             }
         }
 
+        public static void AssertArgumentDecimalNull(decimal value, string message)
+        {
+            if (value <= 0 || value == null)
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
+
         public static void AssertArgumentEquals(object object1, object object2, string message)
         {
             if (!object1.Equals(object2))

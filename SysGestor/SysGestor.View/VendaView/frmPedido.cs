@@ -24,6 +24,7 @@ namespace SysGestor.View.VendaView
         ClienteBll _clienteBll;
         ClienteDto _clienteDto;
         PedidoBll _pedidoBll;
+        MovimentacaoEstoqueBll _movEstoqueBll;
 
         decimal total;
         int statusPedido;
@@ -45,6 +46,7 @@ namespace SysGestor.View.VendaView
             _clienteBll = new ClienteBll();
             _clienteDto = new ClienteDto();
             _pedidoBll = new PedidoBll();
+            _movEstoqueBll = new MovimentacaoEstoqueBll();
         }
 
         private void frmPedido_Load(object sender, EventArgs e)
@@ -55,12 +57,32 @@ namespace SysGestor.View.VendaView
             dtgItensPedido.Focus();
             SuggestionCpfCnpj();
             SuggestionCliente();
+            txtCpf.Text = "111.111.111-11";
+
+            try
+            {
+                _clienteDto = _clienteBll.GetClienteByCpfCnpj(txtCpf.Text.Trim());
+
+                txtCliente.Text = _clienteDto.Nome;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
 
         #region Eventos
         private void txtCodigoProduto_Validated(object sender, EventArgs e)
         {
+            if (txtCodigoProduto.Text.Trim() == "+")
+            {
+                RefreshPDV();
+                GravarPedido();
+                txtCodigoProduto.Focus();
+            }
+
             if (txtCodigoProduto.Text.Trim() == "*")
             {
                 aumentarQtdItem = "*";
@@ -81,10 +103,11 @@ namespace SysGestor.View.VendaView
             if (rbVenda.Checked == false && rbOrcamento.Checked == false)
             {
                 MessageBox.Show("Escolha o tipo de pedido,\n antes de continuar. \n\n1 - VENDA\n\n2 - ORÇAMENTO ", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                rbVenda.Focus();
+
+                txtCodigoProduto.Text = string.Empty;
                 return;
             }
-          
+
             if (idPedido == 0 && txtCodigoProduto.Text != string.Empty) GravarPedido();
 
 
@@ -128,7 +151,7 @@ namespace SysGestor.View.VendaView
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Produto não encontrado. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -171,9 +194,15 @@ namespace SysGestor.View.VendaView
 
         private void frmPedido_FormClosed(object sender, FormClosedEventArgs e)
         {
-            timer1.Stop();
+            if (idPedido > 0)
+            {
+                if (MessageBox.Show("Pedido Nº " + idPedido + "\n\nO pedido aberto ainda não foi concluído, \n\ndeseja sair do PDV assim mesmo?",
+                    Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes) 
+                timer1.Stop();
+                Formularios.FormPedido = null;
+            }
             Formularios.FormPedido = null;
-        }
+         }
 
         private void txtCodigoProduto_TextChanged(object sender, EventArgs e)
         {
@@ -225,6 +254,8 @@ namespace SysGestor.View.VendaView
 
         private void btnF3_Click(object sender, EventArgs e)
         {
+            if (idPedido == 0) return;
+
             if (Formularios.FormFecharVendaVista == null) Formularios.FormFecharVendaVista = new frmFecharVendaVista(idPedido, txtCliente.Text, lblTotal.Text, AuthenticationDto.Id, this);
 
             Formularios.FormFecharVendaVista.Show();
@@ -278,6 +309,8 @@ namespace SysGestor.View.VendaView
                     break;
 
                 case Keys.F3:
+                    if (idPedido == 0) return;
+
                     if (Formularios.FormFecharVendaVista == null) Formularios.FormFecharVendaVista = new frmFecharVendaVista(idPedido, txtCliente.Text, lblTotal.Text, AuthenticationDto.Id, this);
 
                     Formularios.FormFecharVendaVista.Show();
@@ -323,48 +356,61 @@ namespace SysGestor.View.VendaView
         #region Funções
         private void GravarPedido()
         {
-            PedidoDto pedidoDto = new PedidoDto();
-
-            if (rbVenda.Checked) statusPedido = 1;
-            if (rbOrcamento.Checked) statusPedido = 0;
-
-            pedidoDto.Status = statusPedido;
-            pedidoDto.UsuarioDto.IdUsuario = AuthenticationDto.Id;
-            pedidoDto.ClienteDto.IdCliente = _clienteDto.IdCliente;
-
             try
             {
+                PedidoDto pedidoDto = new PedidoDto();
+
+                if (rbVenda.Checked) statusPedido = 1;
+                if (rbOrcamento.Checked) statusPedido = 0;
+
+                pedidoDto.Status = statusPedido;
+                pedidoDto.UsuarioDto.IdUsuario = AuthenticationDto.Id;
+                pedidoDto.ClienteDto.IdCliente = _clienteDto.IdCliente;
+
                 _pedidoBll.InserirPedido(pedidoDto);
                 idPedido = _pedidoBll.GetIdPedido();
 
                 lblProduto.Text = "                        CAIXA OCUPADO";
+                lblNumeroPedido.Text = Convert.ToString(idPedido);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao abrir pedido. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void GravarItemDoPedido()
         {
-            ItemPedidoDto itemPedidoDto = new ItemPedidoDto();
-            ItemPedidoBll itemPedidoBll = new ItemPedidoBll();
-
-            itemPedidoDto.Quantidade = Convert.ToDecimal(txtQtd.Text.Trim());
-            itemPedidoDto.Desconto = 0;
-            itemPedidoDto.ProdutoDto.Id = _produtoDto.Id;
-            itemPedidoDto.ProdutoDto.IdInterno = _produtoDto.IdInterno;
-            itemPedidoDto.PedidoDto.Id = idPedido;
-
             try
             {
+                ItemPedidoDto itemPedidoDto = new ItemPedidoDto();
+                ItemPedidoBll itemPedidoBll = new ItemPedidoBll();
+                MovimentacaoEstoqueDto movEstoqueDto = new MovimentacaoEstoqueDto();
+
+                itemPedidoDto.Quantidade = Convert.ToDecimal(txtQtd.Text.Trim());
+                itemPedidoDto.Desconto = 0;
+                itemPedidoDto.ProdutoDto.Id = _produtoDto.Id;
+                itemPedidoDto.ProdutoDto.IdInterno = _produtoDto.IdInterno;
+                itemPedidoDto.PedidoDto.Id = idPedido;
+
+                movEstoqueDto.ProdutoDto.Id = _produtoDto.Id;
+                movEstoqueDto.ProdutoDto.IdInterno = _produtoDto.IdInterno;
+                movEstoqueDto.Quantidade = Convert.ToDecimal(txtQtd.Text.Trim());
+                movEstoqueDto.Operacao = "D";
+                movEstoqueDto.Observacao = "Venda no caixa.";
+                movEstoqueDto.UsuarioDto.IdUsuario = AuthenticationDto.Id;
+                movEstoqueDto.UnidadeDto.IdUnidMedida = _produtoDto.UnidadeDto.IdUnidMedida;
+
+
                 statusItemInsert = true;
 
                 itemPedidoBll.InserirItemPedido(itemPedidoDto, statusPedido);
+                _movEstoqueBll.Inserir(movEstoqueDto);
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao gravar item no pedido. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 statusItemInsert = false;
             }
         }
@@ -395,7 +441,7 @@ namespace SysGestor.View.VendaView
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao carregar item(s) do pedido. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
@@ -414,10 +460,18 @@ namespace SysGestor.View.VendaView
         private decimal calculaValorPedido()
         {
             decimal valorTotal = 0;
-            int i = 0;
-            for (i = 0; i < dtgItensPedido.Rows.Count; i++)
+            try
             {
-                valorTotal += Convert.ToDecimal(dtgItensPedido.Rows[i].Cells[6].Value.ToString());
+
+                int i = 0;
+                for (i = 0; i < dtgItensPedido.Rows.Count; i++)
+                {
+                    valorTotal += Convert.ToDecimal(dtgItensPedido.Rows[i].Cells[6].Value.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao calcular valor do  pedido. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return valorTotal;
         }
@@ -443,51 +497,66 @@ namespace SysGestor.View.VendaView
                 _clienteDto = _clienteBll.GetClienteByCpfCnpj(txtCpf.Text.Trim());
 
                 txtCliente.Text = _clienteDto.Nome;
+
+                lblNumeroPedido.Text = Convert.ToString(idPedido);
+                lblProduto.Text = "                        CAIXA OCUPADO";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao buscar pedido. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void CancelaPedido()
         {
-            int[] IdProduto;
-            string[] idProdutoInterno;
-            int[] idItemPedido;
-            decimal[] qtdEstorno;
-
-            int x = dtgItensPedido.RowCount;
-
-            IdProduto = new int[x];
-            idProdutoInterno = new string[x];
-            idItemPedido = new int[x];
-            qtdEstorno = new decimal[x];
-
-            for (int i = 0; i < dtgItensPedido.RowCount; i++)
+            try
             {
-                idProdutoInterno[i] = dtgItensPedido.Rows[i].Cells[1].Value.ToString();
+                if (dtgItensPedido.RowCount >= 1)
+                {
+                    int[] IdProduto;
+                    string[] idProdutoInterno;
+                    int[] idItemPedido;
+                    decimal[] qtdEstorno;
+
+                    int x = dtgItensPedido.RowCount;
+
+                    IdProduto = new int[x];
+                    idProdutoInterno = new string[x];
+                    idItemPedido = new int[x];
+                    qtdEstorno = new decimal[x];
+
+                    for (int i = 0; i < dtgItensPedido.RowCount; i++)
+                    {
+                        idProdutoInterno[i] = dtgItensPedido.Rows[i].Cells[1].Value.ToString();
+                    }
+
+
+                    ItemPedidoBll itemPedidoBll = new ItemPedidoBll();
+                    CancelaItemDto cancelaItemDto = new CancelaItemDto();
+
+                    for (int i = 0; i < dtgItensPedido.RowCount; i++)
+                    {
+                        cancelaItemDto = itemPedidoBll.GetItemCancelar(idPedido, idProdutoInterno[i]);
+
+                        qtdEstorno[i] = cancelaItemDto.Quantidade;
+                        IdProduto[i] = cancelaItemDto.IdProduto;
+                        idItemPedido[i] = cancelaItemDto.IdItemPedido;
+                    }
+
+                    for (int i = 0; i < dtgItensPedido.RowCount; i++)
+                    {
+                        itemPedidoBll.CancelaItemPedido(statusPedido, qtdEstorno[i], idItemPedido[i], IdProduto[i]);
+                    }
+                }
+
+                _pedidoBll.Remove(idPedido);
+
             }
-
-
-            ItemPedidoBll itemPedidoBll = new ItemPedidoBll();
-            CancelaItemDto cancelaItemDto = new CancelaItemDto();
-
-            for (int i = 0; i < dtgItensPedido.RowCount; i++)
+            catch (Exception ex)
             {
-                cancelaItemDto = itemPedidoBll.GetItemCancelar(idPedido, idProdutoInterno[i]);
+                MessageBox.Show("Erro ao cancelar pedido. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                qtdEstorno[i] = cancelaItemDto.Quantidade;
-                IdProduto[i] = cancelaItemDto.IdProduto;
-                idItemPedido[i] = cancelaItemDto.IdItemPedido;
             }
-
-            for (int i = 0; i < dtgItensPedido.RowCount; i++)
-            {
-                itemPedidoBll.CancelaItemPedido(statusPedido, qtdEstorno[i], idItemPedido[i], IdProduto[i]);
-            }
-
-            _pedidoBll.Remove(idPedido);
         }
 
         public void RefreshPDV()
@@ -498,13 +567,24 @@ namespace SysGestor.View.VendaView
             aumentarQtdItem = null;
             statusItemInsert = true;
 
+            lblNumeroPedido.Text = "0000";
             txtCodigoProduto.Text = string.Empty;
             lblProduto.Text = "                        CAIXA LIVRE";
             lblValorUnit.Text = string.Empty;
             lblSubTotal.Text = string.Empty;
             lblTotal.Text = string.Empty;
-            txtCpf.Text = string.Empty;
-            txtCliente.Text = string.Empty;
+            txtCpf.Text = "111.111.111-11";
+
+            try
+            {
+                _clienteDto = _clienteBll.GetClienteByCpfCnpj(txtCpf.Text.Trim());
+
+                txtCliente.Text = _clienteDto.Nome;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao recarregar PDV. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             dtgItensPedido.DataSource = null;
             dtgItensPedido.Rows.Clear();

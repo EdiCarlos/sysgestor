@@ -182,6 +182,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar - Grade";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGradeNew_FormClosed);
             this.Load += new System.EventHandler(this.frmGradeNew_Load);
             this.groupBoxDados.ResumeLayout(false);
             this.groupBoxDados.PerformLayout();

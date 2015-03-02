@@ -52,16 +52,13 @@ namespace SysGestor.View.ProdutoView.Unidade
             {
                 Dispose(true);
                 this.Close();
+                Formularios.FormUnidadeMedida = null;
             }
         }
 
         private void frmUnidadeNew_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                Dispose(true);
-                this.Close();
-            }
+                Formularios.FormUnidadeMedida = null;
         }
 
         private void loadSuggestionUnidade()

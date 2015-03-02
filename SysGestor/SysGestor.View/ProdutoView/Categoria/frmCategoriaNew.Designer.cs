@@ -182,6 +182,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar - Categoria";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCategoriaNew_FormClosing);
             this.Load += new System.EventHandler(this.frmCategoriaNew_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).EndInit();
             this.groupBoxDados.ResumeLayout(false);

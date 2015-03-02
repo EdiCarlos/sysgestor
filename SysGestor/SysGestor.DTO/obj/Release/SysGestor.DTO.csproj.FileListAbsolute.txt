@@ -1,0 +1,4 @@
+G:\github\sysgestor\SysGestor\SysGestor.DTO\bin\Release\SysGestor.DTO.dll
+G:\github\sysgestor\SysGestor\SysGestor.DTO\bin\Release\SysGestor.DTO.pdb
+G:\github\sysgestor\SysGestor\SysGestor.DTO\obj\Release\SysGestor.DTO.dll
+G:\github\sysgestor\SysGestor\SysGestor.DTO\obj\Release\SysGestor.DTO.pdb

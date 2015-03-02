@@ -32,7 +32,13 @@ namespace SysGestor.View.ProdutoView
             {
                 Dispose(true);
                 this.Close();
+                Formularios.FormProdutoGrid = null;
             }
+        }
+
+        private void frmProdutoGrid_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Formularios.FormProdutoGrid = null;
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
@@ -144,6 +150,14 @@ namespace SysGestor.View.ProdutoView
                 }
             }
         }
+
+        private void btnLblNovo_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormProdutoNew == null) Formularios.FormProdutoNew = new frmProdutoNew();
+
+            Formularios.FormProdutoNew.Show();
+            Formularios.FormProdutoNew.Focus();
+        }
         #endregion
 
         #region Funções
@@ -179,5 +193,6 @@ namespace SysGestor.View.ProdutoView
             dtgProduto.DataSource = produtos;
         }
         #endregion
+
     }
 }

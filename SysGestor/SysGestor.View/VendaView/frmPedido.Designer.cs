@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedido));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.lblProduto = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -103,6 +103,8 @@
             this.btnF1_Ajuda = new System.Windows.Forms.Button();
             this.rbVenda = new System.Windows.Forms.RadioButton();
             this.rbOrcamento = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblNumeroPedido = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel2.SuspendLayout();
@@ -136,6 +138,8 @@
             // 
             // lblProduto
             // 
+            this.lblProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProduto.AutoSize = true;
             this.lblProduto.BackColor = System.Drawing.Color.White;
             this.lblProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -366,6 +370,7 @@
             // 
             // dtgItensPedido
             // 
+            this.dtgItensPedido.AllowUserToAddRows = false;
             this.dtgItensPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -373,14 +378,14 @@
             this.dtgItensPedido.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtgItensPedido.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dtgItensPedido.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgItensPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgItensPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgItensPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgItensPedido.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.item,
@@ -392,8 +397,8 @@
             this.valorTotal});
             this.dtgItensPedido.Location = new System.Drawing.Point(54, 40);
             this.dtgItensPedido.Name = "dtgItensPedido";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgItensPedido.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgItensPedido.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgItensPedido.Size = new System.Drawing.Size(353, 297);
             this.dtgItensPedido.TabIndex = 7;
             // 
@@ -415,8 +420,8 @@
             // 
             this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descricao.DataPropertyName = "Descricao";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft;
-            this.descricao.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft;
+            this.descricao.DefaultCellStyle = dataGridViewCellStyle2;
             this.descricao.HeaderText = "Descrição";
             this.descricao.Name = "descricao";
             this.descricao.ReadOnly = true;
@@ -431,8 +436,8 @@
             // unidade
             // 
             this.unidade.DataPropertyName = "Unidade";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft;
-            this.unidade.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomLeft;
+            this.unidade.DefaultCellStyle = dataGridViewCellStyle3;
             this.unidade.HeaderText = "Unid.";
             this.unidade.Name = "unidade";
             this.unidade.ReadOnly = true;
@@ -552,9 +557,9 @@
             this.lblUsuario.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.lblUsuario.Location = new System.Drawing.Point(81, 7);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(302, 17);
+            this.lblUsuario.Size = new System.Drawing.Size(307, 17);
             this.lblUsuario.TabIndex = 16;
-            this.lblUsuario.Text = "00001 - Análise - Sistemas e Tecnologia";
+            this.lblUsuario.Text = "00001 - @nálise - Sistemas e Tecnologia";
             // 
             // lblHoraAtual
             // 
@@ -947,6 +952,30 @@
             this.rbOrcamento.Text = "Orçamento";
             this.rbOrcamento.UseVisualStyleBackColor = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(384, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 17);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Pedido Nº";
+            // 
+            // lblNumeroPedido
+            // 
+            this.lblNumeroPedido.AutoSize = true;
+            this.lblNumeroPedido.BackColor = System.Drawing.Color.Transparent;
+            this.lblNumeroPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumeroPedido.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblNumeroPedido.Location = new System.Drawing.Point(465, 6);
+            this.lblNumeroPedido.Name = "lblNumeroPedido";
+            this.lblNumeroPedido.Size = new System.Drawing.Size(44, 17);
+            this.lblNumeroPedido.TabIndex = 16;
+            this.lblNumeroPedido.Text = "0000";
+            // 
             // frmPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -962,6 +991,8 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lblHoraAtual);
+            this.Controls.Add(this.lblNumeroPedido);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
@@ -1084,5 +1115,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorTotal;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblNumeroPedido;
     }
 }

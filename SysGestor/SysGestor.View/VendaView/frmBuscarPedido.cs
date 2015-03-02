@@ -39,7 +39,7 @@ namespace SysGestor.View.VendaView
         }
 
         private void frmBuscarPedido_FormClosed(object sender, FormClosedEventArgs e)
-        {
+        {           
             Formularios.FormBuscarPedido = null;
         }
 
@@ -98,12 +98,12 @@ namespace SysGestor.View.VendaView
                 string cpfCnpj = dtgPrincipal.CurrentRow.Cells[2].Value.ToString();
               
                 if (dtgPrincipal.CurrentRow.Cells[3].Value.ToString() == "Orçamento") tipo = 0;
-                if (dtgPrincipal.CurrentRow.Cells[3].Value.ToString() == "Venda") tipo = 1;
-              
-
-                this.Hide();
+                if (dtgPrincipal.CurrentRow.Cells[3].Value.ToString() == "Venda") tipo = 1;              
 
                 FormPedido.RecuperaPedido(cpfCnpj, tipo);
+
+                this.Close();
+                Formularios.FormBuscarPedido = null;
             }
         }
 

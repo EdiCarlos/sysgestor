@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFornecedorGrid));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkSelecionarTodos = new System.Windows.Forms.CheckBox();
@@ -49,6 +50,8 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnSair = new System.Windows.Forms.Button();
             this.pcbCabecalho = new System.Windows.Forms.PictureBox();
+            this.btnLblNovo = new System.Windows.Forms.Label();
+            this.ttpFornecedor = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBoxBusca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgFornecedor)).BeginInit();
@@ -171,7 +174,7 @@
             this.excluir});
             this.dtgFornecedor.Location = new System.Drawing.Point(11, 214);
             this.dtgFornecedor.Name = "dtgFornecedor";
-            this.dtgFornecedor.Size = new System.Drawing.Size(782, 413);
+            this.dtgFornecedor.Size = new System.Drawing.Size(782, 360);
             this.dtgFornecedor.TabIndex = 10;
             this.dtgFornecedor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgFornecedor_CellContentClick);
             // 
@@ -270,11 +273,28 @@
             this.pcbCabecalho.TabIndex = 13;
             this.pcbCabecalho.TabStop = false;
             // 
+            // btnLblNovo
+            // 
+            this.btnLblNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLblNovo.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLblNovo.ForeColor = System.Drawing.Color.Green;
+            this.btnLblNovo.Image = global::SysGestor.View.Properties.Resources.new_32x32;
+            this.btnLblNovo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnLblNovo.Location = new System.Drawing.Point(708, 591);
+            this.btnLblNovo.Name = "btnLblNovo";
+            this.btnLblNovo.Size = new System.Drawing.Size(85, 39);
+            this.btnLblNovo.TabIndex = 35;
+            this.btnLblNovo.Text = "Novo";
+            this.btnLblNovo.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.ttpFornecedor.SetToolTip(this.btnLblNovo, "Cadastro de fornecedor.");
+            this.btnLblNovo.Click += new System.EventHandler(this.btnLblNovo_Click);
+            // 
             // frmFornecedorGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 639);
+            this.Controls.Add(this.btnLblNovo);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.pcbCabecalho);
             this.Controls.Add(this.groupBox1);
@@ -324,5 +344,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataNasc;
         private System.Windows.Forms.DataGridViewImageColumn editar;
         private System.Windows.Forms.DataGridViewImageColumn excluir;
+        private System.Windows.Forms.Label btnLblNovo;
+        private System.Windows.Forms.ToolTip ttpFornecedor;
     }
 }

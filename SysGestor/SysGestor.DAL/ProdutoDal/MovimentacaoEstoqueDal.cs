@@ -19,16 +19,18 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "INSERT INTO movestoque(iddocumento, qtd, valorcompra, data, observacao, idproduto, idinterno) " +
-                                      "VALUES (@IdDocumento, @Qtd, @ValorCompra, @Data, @Observacao, @IdProduto, @IdInterno)";
+                comando.CommandText = "INSERT INTO movestoque(idproduto, codigointerno, documento, qtd, data, operacao, observacao, idusuario, idunidmedida) " +
+                                      "VALUES (@IdProduto, @CodigoInterno, @Documento, @Qtd, @Data, @Operacao, @Observacao, @IdUsuario, @IdUnidMedida)";
 
-                comando.Parameters.AddWithValue("@IdDocumento", movimentacaoEstoqueDto.IdDocumento);
-                comando.Parameters.AddWithValue("@Qtd", movimentacaoEstoqueDto.Quantidade);
-                comando.Parameters.AddWithValue("@ValorCompra", movimentacaoEstoqueDto.ValorCompra);
-                comando.Parameters.AddWithValue("@Data", DateTime.Now);
-                comando.Parameters.AddWithValue("@Observacao", movimentacaoEstoqueDto.Observacao);
                 comando.Parameters.AddWithValue("@IdProduto", movimentacaoEstoqueDto.ProdutoDto.Id);
-                comando.Parameters.AddWithValue("@IdInterno", movimentacaoEstoqueDto.ProdutoDto.IdInterno);
+                comando.Parameters.AddWithValue("@CodigoInterno", movimentacaoEstoqueDto.ProdutoDto.IdInterno);
+                comando.Parameters.AddWithValue("@Documento", movimentacaoEstoqueDto.Documento);
+                comando.Parameters.AddWithValue("@Qtd", movimentacaoEstoqueDto.Quantidade);
+                comando.Parameters.AddWithValue("@Data", DateTime.Now);
+                comando.Parameters.AddWithValue("@Operacao", movimentacaoEstoqueDto.Operacao);
+                comando.Parameters.AddWithValue("@Observacao", movimentacaoEstoqueDto.Observacao);
+                comando.Parameters.AddWithValue("@IdUsuario", movimentacaoEstoqueDto.UsuarioDto.IdUsuario);
+                comando.Parameters.AddWithValue("@IdUnidMedida", movimentacaoEstoqueDto.UnidadeDto.IdUnidMedida);
                
                 Conexao.Crud(comando);
             }
@@ -44,14 +46,16 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "UPDATE movestoque SET iddocumento = @IdDocumento, qtd = @Qtd, valorcompra = @ValorCompra, observacao = @Observacao " +
-                                      "WHERE idmovestoque = @IdMovEstoque";
+                comando.CommandText = "UPDATE movestoque SET idproduto = @IdProduto , codigointerno = @CodigoInterno, documento = @Documento, qtd = @Qtd, operacao = @Operacao, observacao = @Observacao, idusuario = @Observacao " +
+                                      "WHERE idproduto = @IdProduto";
 
-                comando.Parameters.AddWithValue("@IdDocumento", movimentacaoEstoqueDto.IdDocumento);
+                comando.Parameters.AddWithValue("@IdProduto", movimentacaoEstoqueDto.ProdutoDto.Id);
+                comando.Parameters.AddWithValue("@CodigoInterno", movimentacaoEstoqueDto.ProdutoDto.IdInterno);
+                comando.Parameters.AddWithValue("@Documento", movimentacaoEstoqueDto.Documento);
                 comando.Parameters.AddWithValue("@Qtd", movimentacaoEstoqueDto.Quantidade);
-                comando.Parameters.AddWithValue("@ValorCompra", movimentacaoEstoqueDto.ValorCompra);
+                comando.Parameters.AddWithValue("@Operacao", movimentacaoEstoqueDto.Operacao);
                 comando.Parameters.AddWithValue("@Observacao", movimentacaoEstoqueDto.Observacao);
-                comando.Parameters.AddWithValue("@IdMovEstoque", movimentacaoEstoqueDto.Id);
+                comando.Parameters.AddWithValue("@IdUsuario", movimentacaoEstoqueDto.UsuarioDto.IdUsuario);
 
                 Conexao.Crud(comando);
             }
@@ -60,98 +64,6 @@ namespace SysGestor.DAL.ProdutoDal
                 throw new Exception(Errors.UpdateDataErrors + " - " + ex.Message);
             }
         }
-
-        public void Remove(int idMovEstoque)
-        {
-            try
-            {
-                MySqlCommand comando = new MySqlCommand();
-                comando.CommandType = CommandType.Text;
-                comando.CommandText = "DELETE FROM movestoque WHERE idmovestoque = @IdMovEstoque";
-
-                comando.Parameters.AddWithValue("@IdMovEstoque", idMovEstoque);
-
-                Conexao.Crud(comando);
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(Errors.DeleteDataErros + " - " + ex.Message);
-            }
-        }
-
-        public void RemoveMass(int[] idMovEstoque)
-        {
-            try
-            {
-                for (int i = 0; i < idMovEstoque.Length; i++)
-                {
-                    MySqlCommand comando = new MySqlCommand();
-                    comando.CommandType = CommandType.Text;
-                    comando.CommandText = "DELETE FROM movestoque WHERE idmovestoque = @IdMovEstoque";
-
-                    comando.Parameters.AddWithValue("@IdMovEstoque", idMovEstoque[i]);
-
-                    Conexao.Crud(comando);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(Errors.DeleteDataErros + " - " + ex.Message);
-            }
-        }
-
-        public List<MovimentacaoEstoqueDto> FindAllFilter(string searchType, object filter)
-        {
-            string pesquisa = "";
-
-            if (searchType == "Documento" && filter != "")
-                pesquisa = "WHERE A.iddocumento LIKE '%" + filter + "%'";
-
-            if (searchType == "Produto" && filter != "")
-                pesquisa = "WHERE B.descricao LIKE '%" + filter + "%'";
-
-            try
-            {
-                MySqlCommand comando = new MySqlCommand();
-                comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT A.idmovestoque, A.iddocumento, A.qtd, A.valorcompra, A.data, A.observacao, B.descricao as produto " +
-                                      "FROM movestoque A " +
-                                      "INNER JOIN produto B ON A.idproduto = B.idproduto " + pesquisa;
-
-                MySqlDataReader dr = Conexao.Buscar(comando);
-
-                var lista = new List<MovimentacaoEstoqueDto>();
-
-                if (dr.HasRows)
-                {
-                    while (dr.Read())
-                    {
-                        var movEstoque = new MovimentacaoEstoqueDto();
-
-                        movEstoque.Id = (int)dr["idmovestoque"];
-                        movEstoque.IdDocumento = (string)dr["iddocumento"];
-                        movEstoque.Quantidade = Convert.ToDecimal(Convert.IsDBNull(dr["qtd"]) ? null : dr["qtd"]);
-                        movEstoque.ValorCompra = Convert.ToDouble(Convert.IsDBNull(dr["valorcompra"]) ? null : dr["valorcompra"]);
-                        movEstoque.Data = Convert.ToDateTime(Convert.IsDBNull(dr["data"]) ? null : dr["data"]);
-                        movEstoque.Observacao = (string)dr["observacao"];
-                        movEstoque.DescProduto = (string)dr["produto"];
-                        
-                        lista.Add(movEstoque);
-                    }
-                }
-                else
-                {
-                    lista = null;
-                }
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
-            }
-        }
-
-     
+               
     }
 }

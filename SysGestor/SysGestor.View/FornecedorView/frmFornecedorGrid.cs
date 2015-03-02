@@ -155,6 +155,7 @@ namespace SysGestor.View.FornecedorView
             if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Dispose(true);
+                this.Close();
                 Formularios.FormFornecedorGrid = null;
             }
         }
@@ -164,6 +165,14 @@ namespace SysGestor.View.FornecedorView
             if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) ==
                DialogResult.Yes) Formularios.FormFornecedorGrid = null;
             else e.Cancel = true;
+        }
+
+        private void btnLblNovo_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormFornecedorNew == null) Formularios.FormFornecedorNew = new frmFornecedorNew();
+
+            Formularios.FormFornecedorNew.Show();
+            Formularios.FormFornecedorNew.Focus();
         }
     }
 }

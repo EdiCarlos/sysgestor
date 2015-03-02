@@ -101,7 +101,13 @@ namespace SysGestor.View.ProdutoView.Grade
             {
                 Dispose(true);
                 this.Close();
+                Formularios.FormGradeGrid = null;
             }
+        }
+
+        private void frmGradeGrid_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Formularios.FormGradeGrid = null;
         }
 
         private void dtgGrade_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -153,5 +159,15 @@ namespace SysGestor.View.ProdutoView.Grade
                 }
             }
         }
+
+        private void btnLblNovo_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormGradeNew == null) Formularios.FormGradeNew = new frmGradeNew();
+
+            Formularios.FormGradeNew.Show();
+            Formularios.FormGradeNew.Focus();
+        }
+
+       
     }
 }

@@ -196,6 +196,15 @@ namespace SysGestor.RESOURCE.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operação Inválida ou nula.
+        /// </summary>
+        public static string InvalidOrNullOperation {
+            get {
+                return ResourceManager.GetString("InvalidOrNullOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Valor não pode ser null.
         /// </summary>
         public static string InvalidValue {

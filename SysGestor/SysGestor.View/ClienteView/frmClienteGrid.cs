@@ -166,5 +166,13 @@ namespace SysGestor.View.ClienteView
               DialogResult.Yes) Formularios.FormClienteGrid = null;
             else e.Cancel = true;
         }
+
+        private void btnLblNovo_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormClienteNew == null) Formularios.FormClienteNew = new frmClienteNew();
+
+            Formularios.FormClienteNew.Show();
+            Formularios.FormClienteNew.Focus();
+        }
     }
 }

@@ -166,16 +166,8 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT A.idproduto, A.referencia, A.codigointerno, A.descricao, A.marca, A.estoque, A.estoqueminimo, " +
-                                   "A.localizacaofisica, A.observacao, A.idcategoria, A.idgrade, A.idunidmedida, A.idfornecedor, " +
-                                   "A.ativo, B.descricao as categoria, C.descricao as grade, E.descricao as unidade, " +
-                                   "(select nome from pessoa where idpessoa = (select idpessoa  from fornecedor where idfornecedor = D.idfornecedor)) as nome " +
-                                   "FROM produto A " +
-                                   "INNER JOIN categoria B ON A.idcategoria = B.idcategoria " +
-                                   "INNER JOIN grade C ON A.idgrade = C.idgrade " +
-                                   "INNER JOIN unidmedida E ON A.idgrade = E.idunidmedida " +
-                                   "INNER JOIN fornecedor D  ON A.idfornecedor = D.idfornecedor " +
-                                   "WHERE A.idproduto = @IdProduto";
+                comando.CommandText = "SELECT * FROM vwproduto " +
+                                      "WHERE idproduto = @IdProduto";
 
 
                 comando.Parameters.AddWithValue("@IdProduto", idProduto);
@@ -204,8 +196,8 @@ namespace SysGestor.DAL.ProdutoDal
                         produto.Ativo = (int)dr["ativo"];
                         produto.Categoria = (string)dr["categoria"];
                         produto.GradeDto.Descricao = (string)dr["grade"];
-                        produto.UnidadeDto.Descricao = (string)dr["unidade"];
-                        produto.FornecedorDto.Nome = (string)dr["nome"];
+                        produto.UnidadeDto.Descricao = (string)dr["unidademedida"];
+                        produto.FornecedorDto.Nome = (string)dr["fornecedor"];
                     }
                 }
                 else
@@ -232,6 +224,46 @@ namespace SysGestor.DAL.ProdutoDal
 
 
                 comando.Parameters.AddWithValue("@CodigoInterno", idInterno);
+
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                var produto = new ProdutoDto();
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        produto.Id = Convert.ToInt32(System.Convert.IsDBNull(dr["idproduto"]) ? null : dr["idproduto"]);
+                        produto.IdInterno = Convert.ToString(System.Convert.IsDBNull(dr["codigointerno"]) ? null : dr["codigointerno"]);
+                        produto.Referencia = Convert.ToString(System.Convert.IsDBNull(dr["referencia"]) ? null : dr["referencia"]);
+                        produto.Descricao = Convert.ToString(System.Convert.IsDBNull(dr["descricao"]) ? null : dr["descricao"]);
+                        produto.UnidadeDto.IdUnidMedida = Convert.ToInt32(System.Convert.IsDBNull(dr["idunidmedida"]) ? null : dr["idunidmedida"]);
+                    }
+                }
+                else
+                {
+                    produto = null;
+                }
+                return produto;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
+            }
+        }
+
+        public ProdutoDto GetProdutoByDescricao(string descricao)
+        {
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT idproduto, codigointerno, referencia, descricao, idunidmedida " +
+                                      "FROM produto " +
+                                      "WHERE descricao = @Descricao";
+
+
+                comando.Parameters.AddWithValue("@Descricao", descricao);
 
                 MySqlDataReader dr = Conexao.Buscar(comando);
 

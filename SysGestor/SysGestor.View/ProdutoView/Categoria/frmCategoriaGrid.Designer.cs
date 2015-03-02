@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCategoriaGrid));
             this.pcbCabecalho = new System.Windows.Forms.PictureBox();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -47,6 +48,8 @@
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnLblNovo = new System.Windows.Forms.Label();
+            this.ttpCategoria = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBoxEndereco.SuspendLayout();
@@ -212,7 +215,7 @@
             this.excluir});
             this.dtgCategoria.Location = new System.Drawing.Point(11, 208);
             this.dtgCategoria.Name = "dtgCategoria";
-            this.dtgCategoria.Size = new System.Drawing.Size(782, 259);
+            this.dtgCategoria.Size = new System.Drawing.Size(782, 266);
             this.dtgCategoria.TabIndex = 10;
             this.dtgCategoria.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgCategoria_CellContentClick);
             // 
@@ -252,26 +255,43 @@
             this.excluir.ToolTipText = "Excluir Cliente";
             this.excluir.Width = 40;
             // 
+            // btnLblNovo
+            // 
+            this.btnLblNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLblNovo.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLblNovo.ForeColor = System.Drawing.Color.Green;
+            this.btnLblNovo.Image = global::SysGestor.View.Properties.Resources.new_32x32;
+            this.btnLblNovo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnLblNovo.Location = new System.Drawing.Point(708, 493);
+            this.btnLblNovo.Name = "btnLblNovo";
+            this.btnLblNovo.Size = new System.Drawing.Size(85, 39);
+            this.btnLblNovo.TabIndex = 36;
+            this.btnLblNovo.Text = "Novo";
+            this.btnLblNovo.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.ttpCategoria.SetToolTip(this.btnLblNovo, "Cadastro de categoria.");
+            this.btnLblNovo.Click += new System.EventHandler(this.btnLblNovo_Click);
+            // 
             // frmCategoriaGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 479);
+            this.ClientSize = new System.Drawing.Size(806, 541);
+            this.Controls.Add(this.btnLblNovo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBoxEndereco);
             this.Controls.Add(this.dtgCategoria);
             this.Controls.Add(this.pcbCabecalho);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(822, 517);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(822, 517);
             this.Name = "frmCategoriaGrid";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista - Categoria";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmCategoriaGrid_FormClosed);
             this.Load += new System.EventHandler(this.frmCategoriaGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -303,5 +323,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewImageColumn editar;
         private System.Windows.Forms.DataGridViewImageColumn excluir;
+        private System.Windows.Forms.Label btnLblNovo;
+        private System.Windows.Forms.ToolTip ttpCategoria;
     }
 }

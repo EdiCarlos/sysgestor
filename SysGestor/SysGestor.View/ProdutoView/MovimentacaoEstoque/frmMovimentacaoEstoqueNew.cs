@@ -1,5 +1,7 @@
 ﻿using SysGestor.BLL;
+using SysGestor.BLL.AuthenticationBLL;
 using SysGestor.BLL.ProdutoBLL;
+using SysGestor.DTO.AuthenticationDTO;
 using SysGestor.DTO.Produto;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,11 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
     {
         MovimentacaoEstoqueBll _movEstoqueBll;
         ProdutoBll _produtoBll;
+        ProdutoDto _produtoDto;
         ValorProdutoBll _valorProdutoBll;
+        ValorProdutoDto _valorProdutoDto;
+        UnidadeBll _unidadeBll;
+        UnidadeDto _unidadeDto;
         string searchType;
         decimal auxiliar;
 
@@ -37,111 +43,39 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
 
             _movEstoqueBll = new MovimentacaoEstoqueBll();
             _produtoBll = new ProdutoBll();
+            _produtoDto = new ProdutoDto();
             _valorProdutoBll = new ValorProdutoBll();
+            _valorProdutoDto = new ValorProdutoDto();
+            _unidadeBll = new UnidadeBll();
+            _unidadeBll = new UnidadeBll();
 
             loadSuggestionProduto();
-            carregaGrid(txtPesquisa.Text.Trim());
+
         }
-
-        #region Funções
-        private void GravaProduto()
-        {
-            try
-            {
-                MovimentacaoEstoqueDto movEstqueDto = new MovimentacaoEstoqueDto();
-                ValorProdutoDto valorProdutoDto = new ValorProdutoDto();
-
-                movEstqueDto.Id = TrocaInfo.Id;
-                movEstqueDto.IdDocumento = txtDocumento.Text.Trim();
-                movEstqueDto.Quantidade = txtQtd.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtQtd.Text.Trim());
-                movEstqueDto.ValorCompra = txtValorCustoEstoque.Text.Trim() == "" ? 0 : Convert.ToDouble(txtValorCustoEstoque.Text.Trim());
-                movEstqueDto.Observacao = txtObservacao.Text.Trim();
-                movEstqueDto.ProdutoDto.Id = _produtoBll.GetIdListaProduto(txtProduto.Text.Trim());
-                movEstqueDto.ProdutoDto.IdInterno = _produtoBll.GetIdListaCodigoInterno(txtProduto.Text.Trim());
-
-                TrocaInfo.Dispose();
-
-                if (movEstqueDto.Id != 0 || movEstqueDto.Id != null)
-                    _produtoBll.BaixaEstoque(auxiliar, movEstqueDto.ProdutoDto.Id);
-
-                    _movEstoqueBll.Salvar(movEstqueDto);
-
-                if (txtValorCusto.Text != "" || txtValorCusto.Text != null)
-                {
-                    valorProdutoDto.ProdutoDto.Id = movEstqueDto.ProdutoDto.Id;
-                    valorProdutoDto.ValorCompra = txtValorCusto.Text.Trim() == "" ? 0 : Convert.ToDouble(txtValorCusto.Text.Trim());
-                    valorProdutoDto.Margem = txtMargem.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtMargem.Text.Trim());
-                    valorProdutoDto.ValorVenda = lblValorVenda.Text.Trim() == "" ? 0 : Convert.ToDouble(lblValorVenda.Text.Trim());
-
-                    _valorProdutoBll.Alterar(valorProdutoDto);
-                }
-
-                MessageBox.Show("Movimento de estoque cadastrado com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            desabilitaCampo();
-            carregaGrid(txtPesquisa.Text.Trim());
-        }
-
-        private void carregaGrid(string filter)
-        {
-            if (rbProduto.Checked) searchType = "Produto";
-
-            if (rbDocumento.Checked) searchType = "Documento";
-
-            dtgMovEstoque.AutoGenerateColumns = false;
-
-            var lista = new List<MovimentacaoEstoqueDto>();
-
-            try
-            {
-                lista = _movEstoqueBll.FindAllFilter(searchType, filter);
-
-                dtgMovEstoque.DataSource = lista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-            // dtgCategoria.DefaultCellStyle.Format = "000000";
-            dtgMovEstoque.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-            dtgMovEstoque.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-            dtgMovEstoque.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-            dtgMovEstoque.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
-            dtgMovEstoque.Columns[5].DefaultCellStyle.Format = "C2";
-           
-        }
-
-
-        #endregion
-
+              
         #region Validação de Campos
         private void limpaCampo()
         {
+            txtCodigoInterno.Text = string.Empty;
+            txtCodigoProduto.Text = string.Empty;
             txtProduto.Text = string.Empty;
             txtDocumento.Text = string.Empty;
             txtQtd.Text = string.Empty;
             txtValorCustoEstoque.Text = string.Empty;
             txtObservacao.Text = string.Empty;
-            txtValorCusto.Text = string.Empty;
             txtMargem.Text = string.Empty;
             lblValorVenda.Text = string.Empty;
         }
 
         private void desabilitaCampo()
         {
+            txtCodigoInterno.Enabled = false;
+            txtCodigoProduto.Enabled = false;
             txtProduto.Enabled = false;
             txtDocumento.Enabled = false;
             txtQtd.Enabled = false;
             txtValorCustoEstoque.Enabled = false;
             txtObservacao.Enabled = false;
-            txtValorCusto.Enabled = false;
             txtMargem.Enabled = false;
             lblValorVenda.Enabled = false;
 
@@ -151,12 +85,13 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
 
         private void habilitaCampo()
         {
+            txtCodigoInterno.Enabled = true;
+            txtCodigoProduto.Enabled = true;
             txtProduto.Enabled = true;
             txtDocumento.Enabled = true;
             txtQtd.Enabled = true;
             txtValorCustoEstoque.Enabled = true;
             txtObservacao.Enabled = true;
-            txtValorCusto.Enabled = true;
             txtMargem.Enabled = true;
             lblValorVenda.Enabled = true;
 
@@ -197,7 +132,7 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
                 }
 
                 txtProduto.AutoCompleteCustomSource = sourceProduto;
-                txtProduto.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txtProduto.AutoCompleteMode = AutoCompleteMode.Suggest;
                 txtProduto.AutoCompleteSource = AutoCompleteSource.CustomSource;
             }
             catch (Exception ex)
@@ -208,44 +143,146 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
         #endregion
 
         #region Eventos
+        private void txtCodigoInterno_Validated(object sender, EventArgs e)
+        {
+            if (txtCodigoInterno.Text == string.Empty) return;
+
+            try
+            {
+                _produtoDto = _produtoBll.GetProdutoByIdInterno(txtCodigoInterno.Text.Trim());
+                _unidadeDto = _unidadeBll.GetUnidadeById(_produtoDto.UnidadeDto.IdUnidMedida);
+                _valorProdutoDto = _valorProdutoBll.GetValorProdutoById(_produtoDto.Id);
+
+                txtCodigoProduto.Text = _produtoDto.Id.ToString();
+                txtProduto.Text = _produtoDto.Descricao;
+                lblUnidade.Text = _unidadeDto.Descricao;
+                txtValorCustoEstoque.Text = _valorProdutoDto.ValorCompra.ToString("N2");
+                txtMargem.Text = _valorProdutoDto.Margem.ToString();
+                lblValorVenda.Text = _valorProdutoDto.ValorVenda.ToString("N2");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Produto não encontrado. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtCodigoProduto_Validated(object sender, EventArgs e)
+        {
+            if (txtCodigoProduto.Text.Trim() == string.Empty) return;
+            try
+            {
+                _produtoDto = _produtoBll.GetProdutoById(Convert.ToInt32(txtCodigoProduto.Text.Trim()));
+                _unidadeDto = _unidadeBll.GetUnidadeById(_produtoDto.UnidadeDto.IdUnidMedida);
+                _valorProdutoDto = _valorProdutoBll.GetValorProdutoById(_produtoDto.Id);
+
+                txtCodigoInterno.Text = _produtoDto.IdInterno.ToString();
+                txtProduto.Text = _produtoDto.Descricao;
+                lblUnidade.Text = _unidadeDto.Descricao;
+                txtValorCustoEstoque.Text = _valorProdutoDto.ValorCompra.ToString("N2");
+                txtMargem.Text = _valorProdutoDto.Margem.ToString();
+                lblValorVenda.Text = _valorProdutoDto.ValorVenda.ToString("N2");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Produto não encontrado. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            GravaProduto();
+
+            try
+            {
+            MovimentacaoEstoqueDto movEstqueDto = new MovimentacaoEstoqueDto();
+
+            movEstqueDto.ProdutoDto.Id = Convert.ToInt32(txtCodigoProduto.Text.Trim());
+            movEstqueDto.ProdutoDto.IdInterno = txtCodigoInterno.Text.Trim();
+            movEstqueDto.Documento = txtDocumento.Text.Trim();
+            movEstqueDto.Quantidade = txtQtd.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtQtd.Text.Trim());
+            if (rbEntrada.Checked) movEstqueDto.Operacao = "C";
+            if (rbSaida.Checked) movEstqueDto.Operacao = "D";           
+            movEstqueDto.Observacao = txtObservacao.Text.Trim();
+            movEstqueDto.UsuarioDto.IdUsuario = AuthenticationDto.Id;
+            movEstqueDto.UnidadeDto.IdUnidMedida = _unidadeDto.IdUnidMedida;
+
+
+                _movEstoqueBll.Inserir(movEstqueDto);
+
+                if (movEstqueDto.Operacao == "C")
+                    _produtoBll.AumentaEstoque(movEstqueDto.Quantidade, movEstqueDto.ProdutoDto.Id);
+
+                if (movEstqueDto.Operacao == "D")
+                    _produtoBll.BaixaEstoque(movEstqueDto.Quantidade, movEstqueDto.ProdutoDto.Id);
+
+
+                if (txtValorCustoEstoque.Text != "" || txtValorCustoEstoque.Text != null)
+                {
+                    _valorProdutoDto.ProdutoDto.Id = movEstqueDto.ProdutoDto.Id;
+                    _valorProdutoDto.ValorCompra = txtValorCustoEstoque.Text.Trim() == "" ? 0 : Convert.ToDouble(txtValorCustoEstoque.Text.Trim());
+                    _valorProdutoDto.Margem = txtMargem.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtMargem.Text.Trim());
+                    _valorProdutoDto.ValorVenda = lblValorVenda.Text.Trim() == "" ? 0 : Convert.ToDouble(lblValorVenda.Text.Trim());
+
+                    _valorProdutoBll.Alterar(_valorProdutoDto);
+                }
+
+                MessageBox.Show("Movimento de estoque cadastrado com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                desabilitaCampo();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao cadastrar movimento de estoque. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
-        private void txtValorCusto_Validated(object sender, EventArgs e)
+        private void txtProduto_Validated(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtValorCusto.Text))
-                txtMargem.Enabled = true;
-            txtMargem.Focus();
+            if (txtProduto.Text.Trim() == string.Empty) return;
+            try
+            {
+                _produtoDto = _produtoBll.GetProdutoByDescricao(txtProduto.Text.Trim());
+                _unidadeDto = _unidadeBll.GetUnidadeById(_produtoDto.UnidadeDto.IdUnidMedida);
+                _valorProdutoDto = _valorProdutoBll.GetValorProdutoById(_produtoDto.Id);
+
+                txtCodigoInterno.Text = _produtoDto.IdInterno.ToString();
+                txtCodigoProduto.Text = _produtoDto.Id.ToString();
+                lblUnidade.Text = _unidadeDto.Descricao;
+                txtValorCustoEstoque.Text = _valorProdutoDto.ValorCompra.ToString("N2");
+                txtMargem.Text = _valorProdutoDto.Margem.ToString();
+                lblValorVenda.Text = _valorProdutoDto.ValorVenda.ToString("N2");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Produto não encontrado. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void txtMargem_Validated(object sender, EventArgs e)
+        private void txtValorCustoEstoque_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtMargem.Text))
-                lblValorVenda.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
-                                     Convert.ToDouble(txtMargem.Text)).ToString("N2");
+            if (!string.IsNullOrEmpty(txtMargem.Text) && !string.IsNullOrEmpty(txtValorCustoEstoque.Text))
+                lblValorVenda.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCustoEstoque.Text), Convert.ToDouble(txtMargem.Text)).ToString("N2");
+        }
 
-            txtMargem.Enabled = false;
-
-            txtMargem.Focus();
+        private void txtMargem_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMargem.Text) && !string.IsNullOrEmpty(txtValorCustoEstoque.Text))
+                lblValorVenda.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCustoEstoque.Text), Convert.ToDouble(txtMargem.Text)).ToString("N2");
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
             habilitaCampo();
             limpaCampo();
-            txtProduto.Focus();
+            txtCodigoInterno.Focus();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnCadProduto_Click(object sender, EventArgs e)
         {
-            desabilitaCampo();
-        }
+            if (Formularios.FormProdutoNew == null) Formularios.FormProdutoNew = new frmProdutoNew();
 
-        private void txtProduto_MouseClick(object sender, MouseEventArgs e)
-        {
-            loadSuggestionProduto();
+            Formularios.FormProdutoNew.Show();
+            Formularios.FormProdutoNew.Focus();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -254,148 +291,31 @@ namespace SysGestor.View.ProdutoView.MovimentacaoEstoque
             {
                 Dispose(true);
                 this.Close();
+
+                Formularios.FormMovimentaEstoque = null;
             }
         }
 
-        private void btnCadProduto_Click(object sender, EventArgs e)
+        private void frmMovimentacaoEstoqueNew_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmProdutoNew frmProdutoNew = new frmProdutoNew();
-            frmProdutoNew.Show();
+            Formularios.FormMovimentaEstoque = null;
         }
 
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            carregaGrid(txtPesquisa.Text.Trim());
+            desabilitaCampo();
         }
 
-        private void txtValorCustoEstoque_Validated(object sender, EventArgs e)
+        private void frmMovimentacaoEstoqueNew_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtValorCustoEstoque.Text))
-                txtQtd.Enabled = true;
-            txtQtd.Focus();
-        }
-
-        private void txtQtd_Validated(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtQtd.Text))
-                lblTotalEntradaProduto.Text = _movEstoqueBll.CalculaValorEntradaEstoque(Convert.ToDouble(txtQtd.Text),
-                                             Convert.ToDouble(txtValorCustoEstoque.Text)).ToString("N2");
-
-            txtQtd.Enabled = false;
-
-            txtQtd.Focus();
-        }
-
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Tem certeza que deseja excluir esse(s) registro(s)?", Application.CompanyName,
-                                                                                     MessageBoxButtons.YesNo) == DialogResult.No)
-                return;
-
-            int[] ids;
-            int count = 0;
-
-            for (int i = 0; i < dtgMovEstoque.RowCount; i++)
+            if (e.KeyChar == 13)
             {
-                if (Convert.ToBoolean(dtgMovEstoque.Rows[i].Cells[0].Value) == true)
-                {
-                    count++;
-                }
-            }
-
-            ids = new int[count];
-            int x = 0;
-
-            for (int i = 0; i < dtgMovEstoque.RowCount; i++)
-            {
-                if (Convert.ToBoolean(dtgMovEstoque.Rows[i].Cells[0].Value) == true)
-                {
-                    ids[x] = Convert.ToInt32(dtgMovEstoque.Rows[i].Cells[1].Value.ToString());
-                    x++;
-                }
-            }
-            try
-            {
-                _movEstoqueBll.RemoveMass(ids);
-                MessageBox.Show("Registro(s), removido(s) com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            carregaGrid(txtPesquisa.Text.Trim());
-        }
-
-        private void chkSelecionarTodos_CheckedChanged(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow item in dtgMovEstoque.Rows)
-            {
-                if (chkSelecionarTodos.Checked)
-                {
-                    item.Cells[0].Value = true;
-                }
-                else
-                {
-                    item.Cells[0].Value = false;
-                }
+                this.ProcessTabKey(true);
+                e.Handled = true;
             }
         }
+        #endregion    
 
-        private void dtgMovEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dtgMovEstoque.Columns[e.ColumnIndex] is DataGridViewImageColumn && e.RowIndex != -1 && e.ColumnIndex == 9)
-            {
-                if (MessageBox.Show("Tem certeza que deseja excluir esse registro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.No)
-                    return;
-
-                dtgMovEstoque.EndEdit();
-
-                if (dtgMovEstoque.CurrentRow.Cells[1].Value == null)
-                    return;
-
-                int id = Convert.ToInt32(dtgMovEstoque.CurrentRow.Cells[1].Value.ToString());
-
-                try
-                {
-                    _movEstoqueBll.Remove(id);
-                    MessageBox.Show("Registro, removido com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                carregaGrid(txtPesquisa.Text.Trim());
-            }
-
-
-            if (dtgMovEstoque.Columns[e.ColumnIndex] is DataGridViewImageColumn && e.RowIndex != -1 && e.ColumnIndex == 8)
-            {
-                dtgMovEstoque.EndEdit();
-
-                if (dtgMovEstoque.CurrentRow.Cells[1].Value == null)
-                    return;
-
-                double valor, total;
-                valor = Convert.ToDouble(dtgMovEstoque.CurrentRow.Cells[5].Value);
-                total = (Convert.ToDouble(dtgMovEstoque.CurrentRow.Cells[4].Value)) *
-                                                               (Convert.ToDouble(dtgMovEstoque.CurrentRow.Cells[5].Value));
-
-                TrocaInfo.Id = Convert.ToInt32(dtgMovEstoque.CurrentRow.Cells[1].Value.ToString());
-                txtProduto.Text = dtgMovEstoque.CurrentRow.Cells[3].Value.ToString();
-                txtDocumento.Text = dtgMovEstoque.CurrentRow.Cells[2].Value.ToString();
-                txtValorCustoEstoque.Text = valor.ToString("N2");
-                txtQtd.Text = dtgMovEstoque.CurrentRow.Cells[4].Value.ToString();
-                lblTotalEntradaProduto.Text = total.ToString("N2");
-                txtObservacao.Text = dtgMovEstoque.CurrentRow.Cells[7].Value.ToString();
-                auxiliar = Convert.ToDecimal(dtgMovEstoque.CurrentRow.Cells[4].Value);
-                habilitaCampo();
-            }
-        }
-
-        #endregion
-
-
+     
     }
 }

@@ -277,7 +277,13 @@ namespace SysGestor.View.ProdutoView
             {
                 Dispose(true);
                 this.Close();
+                Formularios.FormProdutoEdit = null;
             }
+        }
+
+        private void frmProdutoEdit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Formularios.FormProdutoEdit = null;
         }
 
         private void btnLblExcluir_Click(object sender, EventArgs e)
@@ -476,5 +482,7 @@ namespace SysGestor.View.ProdutoView
             }
         }
         #endregion
+
+      
     }
 }

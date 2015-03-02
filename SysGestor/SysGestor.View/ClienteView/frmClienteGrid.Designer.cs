@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClienteGrid));
             this.dtgCliente = new System.Windows.Forms.DataGridView();
+            this.selecionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CpfCnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataNasc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBoxEndereco = new System.Windows.Forms.GroupBox();
             this.rbCpfCnpj = new System.Windows.Forms.RadioButton();
             this.rbNome = new System.Windows.Forms.RadioButton();
@@ -42,13 +50,8 @@
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnSair = new System.Windows.Forms.Button();
             this.pcbCabecalho = new System.Windows.Forms.PictureBox();
-            this.selecionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CpfCnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataNasc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnLblNovo = new System.Windows.Forms.Label();
+            this.ttpCliente = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dtgCliente)).BeginInit();
             this.groupBoxEndereco.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -74,9 +77,63 @@
             this.excluir});
             this.dtgCliente.Location = new System.Drawing.Point(12, 214);
             this.dtgCliente.Name = "dtgCliente";
-            this.dtgCliente.Size = new System.Drawing.Size(782, 411);
+            this.dtgCliente.Size = new System.Drawing.Size(782, 359);
             this.dtgCliente.TabIndex = 0;
             this.dtgCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgCliente_CellContentClick);
+            // 
+            // selecionar
+            // 
+            this.selecionar.HeaderText = "Selec.";
+            this.selecionar.Name = "selecionar";
+            this.selecionar.Width = 40;
+            // 
+            // idCliente
+            // 
+            this.idCliente.DataPropertyName = "IdCliente";
+            this.idCliente.HeaderText = "Código";
+            this.idCliente.Name = "idCliente";
+            this.idCliente.ReadOnly = true;
+            this.idCliente.Width = 80;
+            // 
+            // nome
+            // 
+            this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nome.DataPropertyName = "Nome";
+            this.nome.HeaderText = "Nome / Razão Social";
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            // 
+            // CpfCnpj
+            // 
+            this.CpfCnpj.DataPropertyName = "CpfCnpj";
+            this.CpfCnpj.HeaderText = "CPF / CNPJ";
+            this.CpfCnpj.Name = "CpfCnpj";
+            this.CpfCnpj.ReadOnly = true;
+            this.CpfCnpj.Width = 110;
+            // 
+            // dataNasc
+            // 
+            this.dataNasc.DataPropertyName = "DataNascimento";
+            this.dataNasc.HeaderText = "D. Nasc.";
+            this.dataNasc.Name = "dataNasc";
+            this.dataNasc.ReadOnly = true;
+            this.dataNasc.Width = 110;
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar";
+            this.editar.Image = global::SysGestor.View.Properties.Resources.edit_16x16;
+            this.editar.Name = "editar";
+            this.editar.ToolTipText = "Editar Cliente";
+            this.editar.Width = 40;
+            // 
+            // excluir
+            // 
+            this.excluir.HeaderText = "Excluir";
+            this.excluir.Image = global::SysGestor.View.Properties.Resources.lixeira_16x16;
+            this.excluir.Name = "excluir";
+            this.excluir.ToolTipText = "Excluir Cliente";
+            this.excluir.Width = 40;
             // 
             // groupBoxEndereco
             // 
@@ -220,65 +277,28 @@
             this.pcbCabecalho.TabIndex = 8;
             this.pcbCabecalho.TabStop = false;
             // 
-            // selecionar
+            // btnLblNovo
             // 
-            this.selecionar.HeaderText = "Selec.";
-            this.selecionar.Name = "selecionar";
-            this.selecionar.Width = 40;
-            // 
-            // idCliente
-            // 
-            this.idCliente.DataPropertyName = "IdCliente";
-            this.idCliente.HeaderText = "Código";
-            this.idCliente.Name = "idCliente";
-            this.idCliente.ReadOnly = true;
-            this.idCliente.Width = 80;
-            // 
-            // nome
-            // 
-            this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nome.DataPropertyName = "Nome";
-            this.nome.HeaderText = "Nome / Razão Social";
-            this.nome.Name = "nome";
-            this.nome.ReadOnly = true;
-            // 
-            // CpfCnpj
-            // 
-            this.CpfCnpj.DataPropertyName = "CpfCnpj";
-            this.CpfCnpj.HeaderText = "CPF / CNPJ";
-            this.CpfCnpj.Name = "CpfCnpj";
-            this.CpfCnpj.ReadOnly = true;
-            this.CpfCnpj.Width = 110;
-            // 
-            // dataNasc
-            // 
-            this.dataNasc.DataPropertyName = "DataNascimento";
-            this.dataNasc.HeaderText = "D. Nasc.";
-            this.dataNasc.Name = "dataNasc";
-            this.dataNasc.ReadOnly = true;
-            this.dataNasc.Width = 110;
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar";
-            this.editar.Image = global::SysGestor.View.Properties.Resources.edit_16x16;
-            this.editar.Name = "editar";
-            this.editar.ToolTipText = "Editar Cliente";
-            this.editar.Width = 40;
-            // 
-            // excluir
-            // 
-            this.excluir.HeaderText = "Excluir";
-            this.excluir.Image = global::SysGestor.View.Properties.Resources.lixeira_16x16;
-            this.excluir.Name = "excluir";
-            this.excluir.ToolTipText = "Excluir Cliente";
-            this.excluir.Width = 40;
+            this.btnLblNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLblNovo.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLblNovo.ForeColor = System.Drawing.Color.Green;
+            this.btnLblNovo.Image = global::SysGestor.View.Properties.Resources.new_32x32;
+            this.btnLblNovo.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnLblNovo.Location = new System.Drawing.Point(709, 591);
+            this.btnLblNovo.Name = "btnLblNovo";
+            this.btnLblNovo.Size = new System.Drawing.Size(85, 39);
+            this.btnLblNovo.TabIndex = 34;
+            this.btnLblNovo.Text = "Novo";
+            this.btnLblNovo.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.ttpCliente.SetToolTip(this.btnLblNovo, "Cadastro de cliente.");
+            this.btnLblNovo.Click += new System.EventHandler(this.btnLblNovo_Click);
             // 
             // frmClienteGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 639);
+            this.Controls.Add(this.btnLblNovo);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.pcbCabecalho);
             this.Controls.Add(this.groupBox1);
@@ -327,5 +347,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataNasc;
         private System.Windows.Forms.DataGridViewImageColumn editar;
         private System.Windows.Forms.DataGridViewImageColumn excluir;
+        private System.Windows.Forms.Label btnLblNovo;
+        private System.Windows.Forms.ToolTip ttpCliente;
     }
 }
