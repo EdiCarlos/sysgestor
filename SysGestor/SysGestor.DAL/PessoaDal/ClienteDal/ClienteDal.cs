@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using SysGestor.DAL.Repositorio;
-using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.DTO.PessoaDTO.ClienteDto;
 using SysGestor.RESOURCE.Resources;
 using System;
 using System.Collections.Generic;
@@ -69,7 +69,7 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
                 if (dr.HasRows)
                 {
                     while (dr.Read())
-                    {                  
+                    {
                         cliente.PessoaDto.Id = (int)dr["idpessoa"];
                         cliente.Nome = (string)dr["nome"];
                         cliente.TipoPessoa = (string)dr["tipopessoa"];
@@ -80,7 +80,7 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
                         cliente.Ativo = (int)dr["ativo"];
                         cliente.Observacao = (string)dr["observacao"];
                         cliente.IdCliente = (int)dr["idcliente"];
-                        cliente.LimiteCredito = (double)dr["limitecredito"];                
+                        cliente.LimiteCredito = (double)dr["limitecredito"];
                     }
                 }
                 else
@@ -105,7 +105,7 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
                                       "FROM pessoa A " +
                                       "INNER JOIN cliente B ON A.idpessoa = B.idpessoa " +
                                       "WHERE A.ativo = 0";
-           
+
                 MySqlDataReader dr = Conexao.Buscar(comando);
 
                 var listaCliente = new List<ClienteDto>();
@@ -246,7 +246,7 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
                 comando.Parameters.AddWithValue("@IdCliente", idCliente);
 
                 Conexao.Crud(comando);
-               
+
             }
             catch (Exception ex)
             {
@@ -254,7 +254,7 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
             }
         }
 
-        public void RemoveMass(int [] idCliente)
+        public void RemoveMass(int[] idCliente)
         {
             try
             {
@@ -266,12 +266,37 @@ namespace SysGestor.DAL.PessoaDal.ClienteDal
 
                     comando.Parameters.AddWithValue("@IdCliente", idCliente[i]);
 
-                    Conexao.Crud(comando); 
-                }              
+                    Conexao.Crud(comando);
+                }
             }
             catch (Exception ex)
             {
                 throw new Exception("Erro ao excluir dados. " + ex.Message);
+            }
+        }
+
+        public double GetDebitoByIdCLiente(int idCliente)
+        {
+            double valor = 0;
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT SUM(A.valorparc) FROM parcela A " +
+                                      "JOIN pedido B ON A.idpedido = B.idpedido " +
+                                      "JOIN cliente C ON B.idcliente = C.idcliente " +
+                                      "WHERE A.valorpago = 0 AND C.idcliente = @IdCliente";
+
+                comando.Parameters.AddWithValue("@IdCliente", idCliente);
+
+                valor = Convert.ToDouble(Conexao.Selecionar(comando));
+
+                return valor;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message.ToString());
             }
         }
     }

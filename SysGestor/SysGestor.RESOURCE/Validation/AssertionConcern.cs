@@ -5,6 +5,16 @@ namespace SysGestor.RESOURCE.Validation
 {
     public class AssertionConcern
     {
+        public static void AssrtArgumentIntValidates(string value, string message)
+        {
+            int x = 0;
+
+            if (!int.TryParse(value, out x))
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
+
         public static void AssertArgumentArrayIntNull(int[] value, string message)
         {
             if (value.Length <= 0 || value.Length == null)

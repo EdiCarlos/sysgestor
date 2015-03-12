@@ -1,7 +1,7 @@
 ﻿using SysGestor.BLL.PessoaBll;
 using SysGestor.BLL.PessoaBll.FornecedorBll;
-using SysGestor.DTO.PessoaDto;
-using SysGestor.DTO.PessoaDto.FornecedorDto;
+using SysGestor.DTO.PessoaDTO;
+using SysGestor.DTO.PessoaDTO.FornecedorDto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -122,7 +122,7 @@ namespace SysGestor.View.FornecedorView
             fornecedorDto.DataCadastro = DateTime.Now;
             fornecedorDto.Observacao = txtObservacao.Text.Trim();
 
-            enderecoDto.Logradouro = rtxFitaDetalheradouro.Text.Trim();
+            enderecoDto.Logradouro = txtLogradouro.Text.Trim();
             enderecoDto.Numero = txtNumero.Text.Trim();
             enderecoDto.Complemento = txtComplemento.Text.Trim();
             enderecoDto.Bairro = txtBairro.Text.Trim();
@@ -162,7 +162,7 @@ namespace SysGestor.View.FornecedorView
             mskCpfCnpj.Text = string.Empty;
             txtRgIe.Text = string.Empty;
             mskDataNasc.Text = string.Empty;
-            rtxFitaDetalheradouro.Text = string.Empty;
+            txtLogradouro.Text = string.Empty;
             txtNumero.Text = string.Empty;
             txtComplemento.Text = string.Empty;
             txtBairro.Text = string.Empty;
@@ -182,7 +182,7 @@ namespace SysGestor.View.FornecedorView
             mskCpfCnpj.Enabled = false;
             txtRgIe.Enabled = false;
             mskDataNasc.Enabled = false;
-            rtxFitaDetalheradouro.Enabled = false;
+            txtLogradouro.Enabled = false;
             txtNumero.Enabled = false;
             txtComplemento.Enabled = false;
             txtBairro.Enabled = false;
@@ -205,7 +205,7 @@ namespace SysGestor.View.FornecedorView
             mskCpfCnpj.Enabled = true;
             txtRgIe.Enabled = true;
             mskDataNasc.Enabled = true;
-            rtxFitaDetalheradouro.Enabled = true;
+            txtLogradouro.Enabled = true;
             txtNumero.Enabled = true;
             txtComplemento.Enabled = true;
             txtBairro.Enabled = true;

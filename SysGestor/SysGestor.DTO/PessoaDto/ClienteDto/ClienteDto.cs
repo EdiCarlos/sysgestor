@@ -1,5 +1,5 @@
 ﻿
-namespace SysGestor.DTO.PessoaDto.ClienteDto
+namespace SysGestor.DTO.PessoaDTO.ClienteDto
 {
     public class ClienteDto : PessoaDto
     {

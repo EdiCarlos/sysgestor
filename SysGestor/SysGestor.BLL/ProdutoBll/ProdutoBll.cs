@@ -215,5 +215,10 @@ namespace SysGestor.BLL.ProdutoBLL
 
             _produtoDal.AlteraEstoque(qtdEstoque, idProduto);
         }
+
+        public string VerificaCodigoInternoCadastrado()
+        {
+            return _produtoDal.VerificaCodigoInternoCadastrado();
+        }
     }
 }

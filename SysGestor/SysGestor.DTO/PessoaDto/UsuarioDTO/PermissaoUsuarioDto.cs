@@ -1,5 +1,5 @@
 ﻿
-namespace SysGestor.DTO.PessoaDto.UsuarioDTO
+namespace SysGestor.DTO.PessoaDTO.UsuarioDTO
 {
     public class PermissaoUsuarioDto
     {

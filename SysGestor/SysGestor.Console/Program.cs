@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SysGestor.DAL.Repositorio;
 using SysGestor.BLL;
-using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.DTO.PessoaDTO.ClienteDto;
 using SysGestor.DAL.PessoaDal;
 
 

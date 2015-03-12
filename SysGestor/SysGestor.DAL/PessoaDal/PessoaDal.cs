@@ -1,7 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using SysGestor.DAL.Repositorio;
-using SysGestor.DTO.PessoaDto;
-using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.DTO.PessoaDTO;
+using SysGestor.DTO.PessoaDTO.ClienteDto;
 using System;
 using System.Data;
 

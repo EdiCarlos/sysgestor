@@ -1,5 +1,5 @@
 ﻿using SysGestor.DAL.PessoaDal;
-using SysGestor.DTO.PessoaDto;
+using SysGestor.DTO.PessoaDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

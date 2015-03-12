@@ -466,6 +466,7 @@
             this.btnDebito.TabIndex = 7;
             this.btnDebito.Text = "Débitos";
             this.btnDebito.UseVisualStyleBackColor = true;
+            this.btnDebito.Click += new System.EventHandler(this.btnDebito_Click);
             // 
             // lblDebito
             // 

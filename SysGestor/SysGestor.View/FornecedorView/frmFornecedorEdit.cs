@@ -1,8 +1,8 @@
 ﻿using SysGestor.BLL;
 using SysGestor.BLL.PessoaBll;
 using SysGestor.BLL.PessoaBll.FornecedorBll;
-using SysGestor.DTO.PessoaDto;
-using SysGestor.DTO.PessoaDto.FornecedorDto;
+using SysGestor.DTO.PessoaDTO;
+using SysGestor.DTO.PessoaDTO.FornecedorDto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

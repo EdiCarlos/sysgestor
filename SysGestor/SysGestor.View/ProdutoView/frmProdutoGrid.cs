@@ -153,6 +153,9 @@ namespace SysGestor.View.ProdutoView
 
         private void btnLblNovo_Click(object sender, EventArgs e)
         {
+            this.Close();
+            Formularios.FormProdutoGrid = null;
+
             if (Formularios.FormProdutoNew == null) Formularios.FormProdutoNew = new frmProdutoNew();
 
             Formularios.FormProdutoNew.Show();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SysGestor.DTO.PessoaDto.UsuarioDTO
+namespace SysGestor.DTO.PessoaDTO.UsuarioDTO
 {
     public class PermissaoDto
     {

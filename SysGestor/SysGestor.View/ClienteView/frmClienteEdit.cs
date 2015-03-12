@@ -1,7 +1,8 @@
 ﻿using SysGestor.BLL;
 using SysGestor.BLL.PessoaBll;
-using SysGestor.DTO.PessoaDto;
-using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.DTO.PessoaDTO;
+using SysGestor.DTO.PessoaDTO.ClienteDto;
+using SysGestor.View.Crediario;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -334,6 +335,14 @@ namespace SysGestor.View.ClienteView
             }
         }
         #endregion      
+
+        private void btnDebito_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormCrediarioCliente == null) Formularios.FormCrediarioCliente = new frmCrediarioCliente(clienteDto.IdCliente);
+
+            Formularios.FormCrediarioCliente.Show();
+            Formularios.FormCrediarioCliente.Focus();
+        }
 
       
 

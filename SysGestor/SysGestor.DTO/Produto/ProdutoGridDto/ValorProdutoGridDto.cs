@@ -20,6 +20,14 @@ namespace SysGestor.DTO.Produto.ProdutoGridDto
 
         public decimal Margem { get; set; }
 
-        public decimal Comissao { get; set; }       
+        public decimal Comissao { get; set; }
+
+        public double ValorPrazo { get; set; }
+
+        public double ValorCartao { get; set; }
+
+        public decimal MargemPrazo { get; set; }
+
+        public decimal MargemCartao { get; set; }
     }
 }

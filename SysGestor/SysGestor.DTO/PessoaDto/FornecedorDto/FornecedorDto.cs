@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SysGestor.DTO.PessoaDto.FornecedorDto
+namespace SysGestor.DTO.PessoaDTO.FornecedorDto
 {
     public class FornecedorDto : PessoaDto
     {

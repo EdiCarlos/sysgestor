@@ -2,9 +2,10 @@
 using SysGestor.BLL.ProdutoBLL;
 using SysGestor.BLL.VendaBll;
 using SysGestor.DTO.AuthenticationDTO;
-using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.DTO.PessoaDTO.ClienteDto;
 using SysGestor.DTO.Produto;
 using SysGestor.DTO.VendaDto;
+using SysGestor.View.Crediario;
 using SysGestor.View.ProdutoView;
 using System;
 using System.Collections.Generic;
@@ -78,7 +79,6 @@ namespace SysGestor.View.VendaView
         {
             if (txtCodigoProduto.Text.Trim() == "+")
             {
-                RefreshPDV();
                 GravarPedido();
                 txtCodigoProduto.Focus();
             }
@@ -197,12 +197,12 @@ namespace SysGestor.View.VendaView
             if (idPedido > 0)
             {
                 if (MessageBox.Show("Pedido Nº " + idPedido + "\n\nO pedido aberto ainda não foi concluído, \n\ndeseja sair do PDV assim mesmo?",
-                    Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes) 
-                timer1.Stop();
+                    Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+                    timer1.Stop();
                 Formularios.FormPedido = null;
             }
             Formularios.FormPedido = null;
-         }
+        }
 
         private void txtCodigoProduto_TextChanged(object sender, EventArgs e)
         {
@@ -246,10 +246,10 @@ namespace SysGestor.View.VendaView
 
         private void btnF2_Click(object sender, EventArgs e)
         {
-            if (Formularios.FormProdutoNew == null) Formularios.FormProdutoNew = new frmProdutoNew();
+            if (Formularios.FormProdutoGrid == null) Formularios.FormProdutoGrid = new frmProdutoGrid();
 
-            Formularios.FormProdutoNew.Show();
-            Formularios.FormProdutoNew.Focus();
+            Formularios.FormProdutoGrid.Show();
+            Formularios.FormProdutoGrid.Focus();
         }
 
         private void btnF3_Click(object sender, EventArgs e)
@@ -260,6 +260,16 @@ namespace SysGestor.View.VendaView
 
             Formularios.FormFecharVendaVista.Show();
             Formularios.FormFecharVendaVista.Focus();
+        }
+
+        private void btnF4_Click(object sender, EventArgs e)
+        {
+            if (idPedido == 0) return;
+
+            if (Formularios.FormFecharVendaPrazo == null) Formularios.FormFecharVendaPrazo = new frmFecharVendaPrazo(idPedido, _clienteDto, lblTotal.Text, AuthenticationDto.Id, this);
+
+            Formularios.FormFecharVendaPrazo.Show();
+            Formularios.FormFecharVendaPrazo.Focus();
         }
 
         private void btnF5_Click(object sender, EventArgs e)
@@ -297,6 +307,20 @@ namespace SysGestor.View.VendaView
             Formularios.FormBuscarPedido.Focus();
         }
 
+        private void btnF9_Click(object sender, EventArgs e)
+        {
+            if (_clienteDto == null)
+            {
+                MessageBox.Show("Selecione o cliente para prosseguir com a ação.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+
+            if (Formularios.FormCrediarioCliente == null) Formularios.FormCrediarioCliente = new frmCrediarioCliente(_clienteDto.IdCliente);
+
+            Formularios.FormCrediarioCliente.Show();
+            Formularios.FormCrediarioCliente.Focus();
+        }
+
         private void frmPedido_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -315,6 +339,15 @@ namespace SysGestor.View.VendaView
 
                     Formularios.FormFecharVendaVista.Show();
                     Formularios.FormFecharVendaVista.Focus();
+                    break;
+
+                case Keys.F4:
+                    if (idPedido == 0) return;
+
+                    if (Formularios.FormFecharVendaPrazo == null) Formularios.FormFecharVendaPrazo = new frmFecharVendaPrazo(idPedido, _clienteDto, lblTotal.Text, AuthenticationDto.Id, this);
+
+                    Formularios.FormFecharVendaPrazo.Show();
+                    Formularios.FormFecharVendaPrazo.Focus();
                     break;
 
                 case Keys.F5:
@@ -348,6 +381,18 @@ namespace SysGestor.View.VendaView
                     Formularios.FormBuscarPedido.Focus();
                     break;
 
+                case Keys.F9:
+                    if (_clienteDto == null)
+                    {
+                        MessageBox.Show("Selecione o cliente para prosseguir com a ação.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        return;
+                    }
+
+                    if (Formularios.FormCrediarioCliente == null) Formularios.FormCrediarioCliente = new frmCrediarioCliente(_clienteDto.IdCliente);
+
+                    Formularios.FormCrediarioCliente.Show();
+                    Formularios.FormCrediarioCliente.Focus();
+                    break;
 
             }
         }
@@ -672,15 +717,6 @@ namespace SysGestor.View.VendaView
             }
         }
         #endregion
-
-
-
-
-
-
-
-
-
 
 
     }

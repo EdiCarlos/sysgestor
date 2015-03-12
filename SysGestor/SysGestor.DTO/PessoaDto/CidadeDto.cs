@@ -1,5 +1,5 @@
 ﻿
-namespace SysGestor.DTO.PessoaDto
+namespace SysGestor.DTO.PessoaDTO
 {
     public class CidadeDto
     {

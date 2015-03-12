@@ -1,6 +1,6 @@
 ﻿using SysGestor.BLL;
 using SysGestor.BLL.VendaBll;
-using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.DTO.PessoaDTO.ClienteDto;
 using SysGestor.DTO.VendaDto;
 using System;
 using System.Collections.Generic;

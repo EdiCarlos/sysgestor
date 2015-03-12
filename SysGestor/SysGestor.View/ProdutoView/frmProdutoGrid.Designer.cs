@@ -335,6 +335,7 @@
             // 
             // btnLblNovo
             // 
+            this.btnLblNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLblNovo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLblNovo.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
             this.btnLblNovo.ForeColor = System.Drawing.Color.Green;

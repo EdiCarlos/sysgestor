@@ -1,7 +1,7 @@
 ﻿using SysGestor.BLL;
 using SysGestor.BLL.PessoaBll;
-using SysGestor.DTO.PessoaDto;
-using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.DTO.PessoaDTO;
+using SysGestor.DTO.PessoaDTO.ClienteDto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

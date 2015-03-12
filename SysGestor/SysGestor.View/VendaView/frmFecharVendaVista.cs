@@ -17,7 +17,7 @@ namespace SysGestor.View.VendaView
         PedidoBll _pedidoBll;
         PedidoDto _pedidoDto;
 
-        double valor, descontoDinheiro, descontoPorcentagem;
+        double valor, descontoDinheiro, descontoPorcentagem, pagamento;
 
         public frmFecharVendaVista(int idPedido, string cliente, string valor, int idUsuario, frmPedido _formPedido)
         {
@@ -74,7 +74,7 @@ namespace SysGestor.View.VendaView
 
         private void btnCalculaPagamento_Click(object sender, EventArgs e)
         {
-            double troco, dinheiro, cheque, cartaoCredito, cartaoDebito, pagamento;
+            double troco, dinheiro, cheque, cartaoCredito, cartaoDebito;
 
             valor = Convert.ToDouble(lblTotalPagar.Text);
             troco = Convert.ToDouble(lblTroco.Text);
@@ -98,35 +98,13 @@ namespace SysGestor.View.VendaView
 
         private void btnConfirma_Click(object sender, EventArgs e)
         {
-            if(valor == 0)
-            {
-                MessageBox.Show("Falha ao efetuar pagamento.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            _pedidoDto.Id = Convert.ToInt32(lblIdPedido.Text);
-            _pedidoDto.Status = 2;
-            _pedidoDto.Tipo = "Vista";
-
-            try
-            {
-                _pedidoBll.AlterarPedido(_pedidoDto);
-
-                MessageBox.Show("Pagamento efetuado com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                Formularios.FormPedido.RefreshPDV();
-          
-                this.Close();
-                Formularios.FormFecharVendaVista = null;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ConfirmaOperacao();
         }
 
         private void btnCancela_Click(object sender, EventArgs e)
         {
+            Formularios.FormPedido.RefreshPDV();
+
             this.Close();
             Formularios.FormFecharVendaVista = null;
         }
@@ -159,33 +137,8 @@ namespace SysGestor.View.VendaView
                     break;
 
                 case Keys.F2:
-                       if(valor == 0)
-            {
-                MessageBox.Show("Falha ao efetuar pagamento.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            _pedidoDto.Id = Convert.ToInt32(lblIdPedido.Text);
-            _pedidoDto.Status = 2;
-            _pedidoDto.Tipo = "V";
-
-            try
-            {
-                _pedidoBll.AlterarPedido(_pedidoDto);
-
-                MessageBox.Show("Pagamento efetuado com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                Formularios.FormPedido.RefreshPDV();
-           
-                this.Close();
-                Formularios.FormFecharVendaVista = null;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-                    break;
-
+                      ConfirmaOperacao();
+                      break;
                 case Keys.F3:
                     this.Close();
                     Formularios.FormFecharVendaVista = null;
@@ -203,6 +156,35 @@ namespace SysGestor.View.VendaView
             {
                 this.ProcessTabKey(true);
                 e.Handled = true;
+            }
+        }
+
+        private void ConfirmaOperacao()
+        {
+            if (pagamento == 0)
+            {
+                MessageBox.Show("Falha ao efetuar pagamento.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _pedidoDto.Id = Convert.ToInt32(lblIdPedido.Text);
+            _pedidoDto.Status = 2;
+            _pedidoDto.Tipo = "V";
+
+            try
+            {
+                _pedidoBll.AlterarPedido(_pedidoDto);
+
+                MessageBox.Show("Pagamento efetuado com sucesso.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                Formularios.FormPedido.RefreshPDV();
+
+                this.Close();
+                Formularios.FormFecharVendaVista = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

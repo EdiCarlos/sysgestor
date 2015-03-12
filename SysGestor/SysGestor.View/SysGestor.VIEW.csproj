@@ -35,8 +35,12 @@
     <ApplicationIcon>favicon %281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +68,36 @@
     </Compile>
     <Compile Include="ClienteView\frmClienteNew.Designer.cs">
       <DependentUpon>frmClienteNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crediario\frmCrediarioCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crediario\frmCrediarioCliente.Designer.cs">
+      <DependentUpon>frmCrediarioCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crediario\frmPagamentoCrediario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crediario\frmPagamentoCrediario.Designer.cs">
+      <DependentUpon>frmPagamentoCrediario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpresaView\frmEmpresaEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpresaView\frmEmpresaEdit.Designer.cs">
+      <DependentUpon>frmEmpresaEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpresaView\frmEmpresaGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpresaView\frmEmpresaGrid.Designer.cs">
+      <DependentUpon>frmEmpresaGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmpresaView\frmEmpresaNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmpresaView\frmEmpresaNew.Designer.cs">
+      <DependentUpon>frmEmpresaNew.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios.cs" />
     <Compile Include="FornecedorView\frmFornecedorEdit.cs">
@@ -169,6 +203,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RelatorioView\Etiqueta\frmEtiquetaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatorioView\Etiqueta\frmEtiquetaProduto.Designer.cs">
+      <DependentUpon>frmEtiquetaProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatorioView\Etiqueta\frmRelatorioEtiquetaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatorioView\Etiqueta\frmRelatorioEtiquetaProduto.Designer.cs">
+      <DependentUpon>frmRelatorioEtiquetaProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="UsuarioView\frmUsuarioEdit.cs">
       <SubType>Form</SubType>
@@ -200,6 +246,12 @@
     <Compile Include="VendaView\frmCancelarItem.Designer.cs">
       <DependentUpon>frmCancelarItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="VendaView\frmFecharVendaPrazo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VendaView\frmFecharVendaPrazo.Designer.cs">
+      <DependentUpon>frmFecharVendaPrazo.cs</DependentUpon>
+    </Compile>
     <Compile Include="VendaView\frmFecharVendaVista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +278,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClienteView\frmClienteNew.resx">
       <DependentUpon>frmClienteNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crediario\frmCrediarioCliente.resx">
+      <DependentUpon>frmCrediarioCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crediario\frmPagamentoCrediario.resx">
+      <DependentUpon>frmPagamentoCrediario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpresaView\frmEmpresaEdit.resx">
+      <DependentUpon>frmEmpresaEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpresaView\frmEmpresaGrid.resx">
+      <DependentUpon>frmEmpresaGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmpresaView\frmEmpresaNew.resx">
+      <DependentUpon>frmEmpresaNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FornecedorView\frmFornecedorEdit.resx">
       <DependentUpon>frmFornecedorEdit.cs</DependentUpon>
@@ -280,6 +347,13 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioView\Etiqueta\ArquivosRDLC\EtiquetaProduto_3x7.rdlc" />
+    <EmbeddedResource Include="RelatorioView\Etiqueta\frmEtiquetaProduto.resx">
+      <DependentUpon>frmEtiquetaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioView\Etiqueta\frmRelatorioEtiquetaProduto.resx">
+      <DependentUpon>frmRelatorioEtiquetaProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsuarioView\frmUsuarioEdit.resx">
       <DependentUpon>frmUsuarioEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +369,9 @@
     <EmbeddedResource Include="VendaView\frmCancelarItem.resx">
       <DependentUpon>frmCancelarItem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VendaView\frmFecharVendaPrazo.resx">
+      <DependentUpon>frmFecharVendaPrazo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VendaView\frmFecharVendaVista.resx">
       <DependentUpon>frmFecharVendaVista.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,6 +381,7 @@
     <EmbeddedResource Include="VendaView\frmPedido.resx">
       <DependentUpon>frmPedido.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\SysGestor.DTO.RelatorioDto.Etiqueta.EtiquetaProduto_3x7Dto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -356,6 +434,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon %281%29.ico" />
+    <None Include="Resources\search26x26.png" />
+    <None Include="Resources\receber.png" />
+    <None Include="Resources\return.png" />
     <None Include="Resources\login32x32.png" />
     <None Include="Resources\txtBox.png" />
     <None Include="Resources\background.jpg" />

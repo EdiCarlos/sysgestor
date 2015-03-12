@@ -1,5 +1,5 @@
 ﻿using SysGestor.BLL.PessoaBll.UsuarioBLL;
-using SysGestor.DTO.PessoaDto.UsuarioDTO;
+using SysGestor.DTO.PessoaDTO.UsuarioDTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

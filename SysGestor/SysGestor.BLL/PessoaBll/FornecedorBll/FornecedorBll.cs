@@ -1,6 +1,6 @@
 ﻿using SysGestor.DAL.PessoaDal;
 using SysGestor.DAL.PessoaDal.FornecedorDal;
-using SysGestor.DTO.PessoaDto.FornecedorDto;
+using SysGestor.DTO.PessoaDTO.FornecedorDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;

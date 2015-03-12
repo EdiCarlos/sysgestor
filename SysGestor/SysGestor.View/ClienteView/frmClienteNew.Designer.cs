@@ -32,11 +32,6 @@
             this.lblNomeRazaoSocial = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.groupBoxDados = new System.Windows.Forms.GroupBox();
-            this.btnDebito = new System.Windows.Forms.Button();
-            this.lblDebito = new System.Windows.Forms.Label();
-            this.lblLimiteDisponivel = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtLimiteCredito = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.mskCpfCnpj = new System.Windows.Forms.MaskedTextBox();
@@ -108,11 +103,6 @@
             // 
             // groupBoxDados
             // 
-            this.groupBoxDados.Controls.Add(this.btnDebito);
-            this.groupBoxDados.Controls.Add(this.lblDebito);
-            this.groupBoxDados.Controls.Add(this.lblLimiteDisponivel);
-            this.groupBoxDados.Controls.Add(this.label5);
-            this.groupBoxDados.Controls.Add(this.label4);
             this.groupBoxDados.Controls.Add(this.txtLimiteCredito);
             this.groupBoxDados.Controls.Add(this.label3);
             this.groupBoxDados.Controls.Add(this.mskCpfCnpj);
@@ -130,57 +120,6 @@
             this.groupBoxDados.TabIndex = 0;
             this.groupBoxDados.TabStop = false;
             this.groupBoxDados.Text = "Dados";
-            // 
-            // btnDebito
-            // 
-            this.btnDebito.Location = new System.Drawing.Point(708, 127);
-            this.btnDebito.Name = "btnDebito";
-            this.btnDebito.Size = new System.Drawing.Size(66, 39);
-            this.btnDebito.TabIndex = 7;
-            this.btnDebito.Text = "Débitos";
-            this.btnDebito.UseVisualStyleBackColor = true;
-            // 
-            // lblDebito
-            // 
-            this.lblDebito.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDebito.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblDebito.Location = new System.Drawing.Point(534, 140);
-            this.lblDebito.Name = "lblDebito";
-            this.lblDebito.Size = new System.Drawing.Size(167, 25);
-            this.lblDebito.TabIndex = 6;
-            this.lblDebito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblLimiteDisponivel
-            // 
-            this.lblLimiteDisponivel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblLimiteDisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLimiteDisponivel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblLimiteDisponivel.Location = new System.Drawing.Point(348, 140);
-            this.lblLimiteDisponivel.Name = "lblLimiteDisponivel";
-            this.lblLimiteDisponivel.Size = new System.Drawing.Size(167, 25);
-            this.lblLimiteDisponivel.TabIndex = 5;
-            this.lblLimiteDisponivel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(532, 122);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 17);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Total Débito";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(342, 122);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 17);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Limite Disponível";
             // 
             // txtLimiteCredito
             // 
@@ -766,11 +705,6 @@
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnDebito;
-        private System.Windows.Forms.Label lblDebito;
-        private System.Windows.Forms.Label lblLimiteDisponivel;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLimiteCredito;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox mskCpfCnpj;

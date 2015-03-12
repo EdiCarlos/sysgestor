@@ -554,7 +554,7 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.Color.Transparent;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblUsuario.ForeColor = System.Drawing.Color.Black;
             this.lblUsuario.Location = new System.Drawing.Point(81, 7);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(307, 17);
@@ -695,9 +695,9 @@
             this.label22.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label22.Location = new System.Drawing.Point(832, 13);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(139, 17);
+            this.label22.Size = new System.Drawing.Size(97, 17);
             this.label22.TabIndex = 21;
-            this.label22.Text = "Consultar Produto";
+            this.label22.Text = "Pagar Título";
             // 
             // label21
             // 
@@ -848,6 +848,7 @@
             this.btnF9.TabIndex = 0;
             this.btnF9.Text = "F9";
             this.btnF9.UseVisualStyleBackColor = true;
+            this.btnF9.Click += new System.EventHandler(this.btnF9_Click);
             // 
             // btnF6
             // 
@@ -890,6 +891,7 @@
             this.btnF4.TabIndex = 0;
             this.btnF4.Text = "F4";
             this.btnF4.UseVisualStyleBackColor = true;
+            this.btnF4.Click += new System.EventHandler(this.btnF4_Click);
             // 
             // btnF3
             // 
@@ -969,7 +971,7 @@
             this.lblNumeroPedido.AutoSize = true;
             this.lblNumeroPedido.BackColor = System.Drawing.Color.Transparent;
             this.lblNumeroPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumeroPedido.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblNumeroPedido.ForeColor = System.Drawing.Color.Black;
             this.lblNumeroPedido.Location = new System.Drawing.Point(465, 6);
             this.lblNumeroPedido.Name = "lblNumeroPedido";
             this.lblNumeroPedido.Size = new System.Drawing.Size(44, 17);

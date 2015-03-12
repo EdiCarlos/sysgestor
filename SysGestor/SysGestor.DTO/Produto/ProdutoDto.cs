@@ -1,4 +1,5 @@
-﻿using SysGestor.DTO.PessoaDto.FornecedorDto;
+﻿using SysGestor.DTO.PessoaDTO.FornecedorDto;
+using SysGestor.DTO.EmpresaDTO;
 
 namespace SysGestor.DTO.Produto
 {
@@ -34,6 +35,8 @@ namespace SysGestor.DTO.Produto
 
         public FornecedorDto FornecedorDto { get; set; }
 
+        public EmpresaDto EmpresaDto { get; set; }
+
       
         public ProdutoDto()
         {
@@ -41,6 +44,7 @@ namespace SysGestor.DTO.Produto
             GradeDto = new GradeDto();
             FornecedorDto = new FornecedorDto();
             UnidadeDto = new UnidadeDto();
+            EmpresaDto = new EmpresaDto();
         }
 
 

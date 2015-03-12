@@ -1,6 +1,7 @@
 ﻿using SysGestor.BLL.AuthenticationBLL;
 using SysGestor.DTO.AuthenticationDTO;
 using SysGestor.View.ClienteView;
+using SysGestor.View.EmpresaView;
 using SysGestor.View.FornecedorView;
 using SysGestor.View.LoginView;
 using SysGestor.View.ProdutoView;
@@ -8,6 +9,7 @@ using SysGestor.View.ProdutoView.Categoria;
 using SysGestor.View.ProdutoView.Grade;
 using SysGestor.View.ProdutoView.MovimentacaoEstoque;
 using SysGestor.View.ProdutoView.Unidade;
+using SysGestor.View.RelatorioView.Etiqueta;
 using SysGestor.View.UsuarioView;
 using SysGestor.View.VendaView;
 using System;
@@ -29,6 +31,32 @@ namespace SysGestor.View
             Formularios.FormLogin.Show();
             Formularios.FormLogin.Focus();
         }
+
+        #region Empresa
+        private void novoToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormEmpresaNew == null) Formularios.FormEmpresaNew = new frmEmpresaNew();
+
+            Formularios.FormEmpresaNew.Show();
+            Formularios.FormEmpresaNew.Focus();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormEmpresaGrid == null) Formularios.FormEmpresaGrid = new frmEmpresaGrid();
+
+            Formularios.FormEmpresaGrid.Show();
+            Formularios.FormEmpresaGrid.Focus();
+        }
+
+        private void empresaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormEmpresaGrid == null) Formularios.FormEmpresaGrid = new frmEmpresaGrid();
+
+            Formularios.FormEmpresaGrid.Show();
+            Formularios.FormEmpresaGrid.Focus();
+        }
+        #endregion
 
         #region Cliente
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -324,47 +352,17 @@ namespace SysGestor.View
         #endregion
 
        
+        #region Relatórios
+        private void etiquetaDeProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormEtiquetaProduto == null) Formularios.FormEtiquetaProduto = new frmEtiquetaProduto();
+
+            Formularios.FormEtiquetaProduto.Show();
+            Formularios.FormEtiquetaProduto.Focus();
+        }
+        #endregion
 
        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-       
-
-     
-
-      
-
-       
-
-       
-
-       
-
-        
-
-      
-
-       
-
-      
-
-      
-
-       
-
-      
 
     }
 }

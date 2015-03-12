@@ -1,7 +1,7 @@
 ﻿using SysGestor.BLL;
 using SysGestor.BLL.PessoaBll.FornecedorBll;
 using SysGestor.BLL.ProdutoBLL;
-using SysGestor.DTO.PessoaDto.FornecedorDto;
+using SysGestor.DTO.PessoaDTO.FornecedorDto;
 using SysGestor.DTO.Produto;
 using SysGestor.View.FornecedorView;
 using SysGestor.View.ProdutoView.Grade;
@@ -68,7 +68,7 @@ namespace SysGestor.View.ProdutoView
             valorProdutoDto = _valorProdutoBll.GetValorProdutoById(produtoDto.Id);
 
             lblId.Text = Convert.ToString(produtoDto.Id);
-            txtIdInterno.Text = produtoDto.IdInterno;
+            lblIdInterno.Text = produtoDto.IdInterno;
             txtReferencia.Text = produtoDto.Referencia;
             txtDescricao.Text = produtoDto.Descricao;
             txtGrade.Text = produtoDto.GradeDto.Descricao;
@@ -81,15 +81,23 @@ namespace SysGestor.View.ProdutoView
             txtObservacao.Text = produtoDto.Observacao;
 
             txtValorCusto.Text = valorProdutoDto.ValorCompra.ToString("N2");
-            txtMargem.Text = Convert.ToString(valorProdutoDto.Margem);
+            txtMargemVista.Text = Convert.ToString(valorProdutoDto.Margem);
+            txtMargemPrazo.Text = Convert.ToString(valorProdutoDto.MargemPrazo);
+            txtMargemCartao.Text = Convert.ToString(valorProdutoDto.MargemCartao);
             txtComissao.Text = Convert.ToString(valorProdutoDto.Comissao);
-            lblValorVenda.Text = valorProdutoDto.ValorVenda.ToString("N2");
+            lblValorVista.Text = valorProdutoDto.ValorVenda.ToString("N2");
+            lblValorPrazo.Text = valorProdutoDto.ValorPrazo.ToString("N2");
+            lblValorCartao.Text = valorProdutoDto.ValorCartao.ToString("N2");
 
 
             lblUltValorCusto.Text = valorProdutoDto.ValorCompra.ToString("N2");
-            lblUltMargem.Text = Convert.ToString(valorProdutoDto.Margem);
+            lblUltMargemVista.Text = Convert.ToString(valorProdutoDto.Margem);
+            lblUltMargemPrazo.Text = Convert.ToString(valorProdutoDto.MargemPrazo);
+            lblUltMargemCartao.Text = Convert.ToString(valorProdutoDto.MargemCartao);
             lblUltComissao.Text = Convert.ToString(valorProdutoDto.Comissao);
-            lblUltValorVenda.Text = valorProdutoDto.ValorVenda.ToString("N2");
+            lblUltValorVendaVista.Text = valorProdutoDto.ValorVenda.ToString("N2");
+            lblUltValorVendaPrazo.Text = valorProdutoDto.ValorPrazo.ToString("N2");
+            lblUltValorVendaCartao.Text = valorProdutoDto.ValorCartao.ToString("N2");
 
 
         }
@@ -110,7 +118,7 @@ namespace SysGestor.View.ProdutoView
                 ValorProdutoDto valorProdutoDto = new ValorProdutoDto();
 
                 produtoDto.Id = Convert.ToInt32(lblId.Text.Trim());
-                produtoDto.IdInterno = txtIdInterno.Text.Trim();
+                produtoDto.IdInterno = lblIdInterno.Text.Trim();
                 produtoDto.Referencia = txtReferencia.Text.Trim();
                 produtoDto.Descricao = txtDescricao.Text.Trim();
                 produtoDto.GradeDto.Id = _gradeBll.GetIdListaGrade(txtGrade.Text.Trim());
@@ -126,15 +134,13 @@ namespace SysGestor.View.ProdutoView
 
                 valorProdutoDto.ProdutoDto.Id = produtoDto.Id;
                 valorProdutoDto.ValorCompra = Convert.ToDouble(txtValorCusto.Text.Trim());
-                valorProdutoDto.Margem = Convert.ToDecimal(txtMargem.Text.Trim());
+                valorProdutoDto.Margem = Convert.ToDecimal(txtMargemVista.Text.Trim());
+                valorProdutoDto.MargemPrazo = Convert.ToDecimal(txtMargemPrazo.Text.Trim());
+                valorProdutoDto.MargemCartao = Convert.ToDecimal(txtMargemCartao.Text.Trim());
                 valorProdutoDto.Comissao = Convert.ToDecimal(txtComissao.Text.Trim());
-                valorProdutoDto.ValorVenda = Convert.ToDouble(lblValorVenda.Text.Trim());
-
-                //TODO
-                //valorProdutoDto.UltimoValorCompra = Convert.ToDouble(lblUltValorCusto.Text);
-                //valorProdutoDto.UltimaMargem = Convert.ToDecimal(lblUltMargem.Text);
-                //valorProdutoDto.UltimaComissao = Convert.ToDecimal(lblUltComissao.Text);
-                //valorProdutoDto.UltimoValorVenda = Convert.ToDouble(lblUltValorVenda.Text);
+                valorProdutoDto.ValorVenda = Convert.ToDouble(lblValorVista.Text.Trim());
+                valorProdutoDto.ValorPrazo = Convert.ToDouble(lblValorPrazo.Text.Trim());
+                valorProdutoDto.ValorCartao = Convert.ToDouble(lblValorCartao.Text.Trim());           
 
                 _valorProdutoBll.Alterar(valorProdutoDto);
 
@@ -149,14 +155,14 @@ namespace SysGestor.View.ProdutoView
 
             LoadSuggestions();
         }
-
+       
         #endregion
 
         #region Validação de Campos
         private void limpaCampo()
         {
             lblId.Text = string.Empty;
-            txtIdInterno.Text = string.Empty;
+            lblIdInterno.Text = string.Empty;
             txtReferencia.Text = string.Empty;
             txtDescricao.Text = string.Empty;
             txtMarca.Text = string.Empty;
@@ -167,16 +173,20 @@ namespace SysGestor.View.ProdutoView
             txtCategoria.Text = string.Empty;
             txtFornecedor.Text = string.Empty;
             txtValorCusto.Text = string.Empty;
-            txtMargem.Text = string.Empty;
+            txtMargemVista.Text = string.Empty;
+            txtMargemPrazo.Text = string.Empty;
+            txtMargemCartao.Text = string.Empty;
             txtComissao.Text = string.Empty;
-            lblValorVenda.Text = string.Empty;
+            lblValorVista.Text = string.Empty;
+            lblValorPrazo.Text = string.Empty;
+            lblValorCartao.Text = string.Empty;
             txtObservacao.Text = string.Empty;
         }
 
         private void desabilitaCampo()
         {
             lblId.Enabled = false;
-            txtIdInterno.Enabled = false;
+            lblIdInterno.Enabled = false;
             txtReferencia.Enabled = false;
             txtDescricao.Enabled = false;
             txtMarca.Enabled = false;
@@ -187,9 +197,13 @@ namespace SysGestor.View.ProdutoView
             txtCategoria.Enabled = false;
             txtFornecedor.Enabled = false;
             txtValorCusto.Enabled = false;
-            txtMargem.Enabled = false;
+            txtMargemVista.Enabled = false;
+            txtMargemPrazo.Enabled = false;
+            txtMargemCartao.Enabled = false;
             txtComissao.Enabled = false;
-            lblValorVenda.Enabled = false;
+            lblValorVista.Enabled = false;
+            lblValorPrazo.Enabled = false;
+            lblValorCartao.Enabled = false;
             txtObservacao.Enabled = false;
 
             btnGravar.Enabled = false;
@@ -198,7 +212,7 @@ namespace SysGestor.View.ProdutoView
         private void habilitaCampo()
         {
             lblId.Enabled = true;
-            txtIdInterno.Enabled = true;
+            lblIdInterno.Enabled = true;
             txtReferencia.Enabled = true;
             txtDescricao.Enabled = true;
             txtMarca.Enabled = true;
@@ -209,10 +223,14 @@ namespace SysGestor.View.ProdutoView
             txtCategoria.Enabled = true;
             txtFornecedor.Enabled = true;
             txtValorCusto.Enabled = true;
-            txtMargem.Enabled = true;
-            txtComissao.Enabled = true;
-            lblValorVenda.Enabled = true;
-            txtObservacao.Enabled = true;
+            txtMargemVista.Enabled = true;
+            txtMargemPrazo.Enabled = false;
+            txtMargemCartao.Enabled = false;
+            txtComissao.Enabled = false;
+            lblValorVista.Enabled = false;
+            lblValorPrazo.Enabled = false;
+            lblValorCartao.Enabled = false;
+            txtObservacao.Enabled = false;
 
             btnGravar.Enabled = true;
         }
@@ -249,21 +267,42 @@ namespace SysGestor.View.ProdutoView
         }
 
         private void txtValorCusto_Validated(object sender, EventArgs e)
-        {
+        {         
             if (!string.IsNullOrEmpty(txtValorCusto.Text))
-                txtMargem.Enabled = true;
-            txtMargem.Focus();
+                txtMargemVista.Enabled = true;           
+            txtMargemVista.Focus();
         }
 
-        private void txtMargem_Validated(object sender, EventArgs e)
+        private void txtMargemVista_Validated(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtMargem.Text))
-                lblValorVenda.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
-                                     Convert.ToDouble(txtMargem.Text)).ToString("N2");
+            if (!string.IsNullOrEmpty(txtMargemVista.Text))
+                lblValorVista.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
+                                     Convert.ToDouble(txtMargemVista.Text)).ToString("N2");
 
-            txtMargem.Enabled = false;
+            txtMargemVista.Enabled = false;
+            txtMargemPrazo.Enabled = true;           
+            txtMargemPrazo.Focus();
+        }
 
-            txtMargem.Focus();
+        private void txtMargemPrazo_Validated(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMargemPrazo.Text))
+                lblValorPrazo.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
+                                     Convert.ToDouble(txtMargemPrazo.Text)).ToString("N2");
+
+            txtMargemPrazo.Enabled = false;
+            txtMargemCartao.Enabled = true;
+            txtMargemCartao.Focus();
+        }
+
+        private void txtMargemCartao_Validated(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMargemCartao.Text))
+                lblValorCartao.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
+                                     Convert.ToDouble(txtMargemCartao.Text)).ToString("N2");
+
+            txtMargemCartao.Enabled = false;
+            txtObservacao.Focus();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -482,7 +521,6 @@ namespace SysGestor.View.ProdutoView
             }
         }
         #endregion
-
       
     }
 }

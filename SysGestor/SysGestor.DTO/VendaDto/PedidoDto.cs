@@ -1,6 +1,6 @@
 ﻿using System;
-using SysGestor.DTO.PessoaDto.ClienteDto;
-using SysGestor.DTO.PessoaDto.UsuarioDTO;
+using SysGestor.DTO.PessoaDTO.ClienteDto;
+using SysGestor.DTO.PessoaDTO.UsuarioDTO;
 
 namespace SysGestor.DTO.VendaDto
 {

@@ -40,15 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticationDTO\AuthenticationDto.cs" />
-    <Compile Include="PessoaDto\CidadeDto.cs" />
-    <Compile Include="PessoaDto\ClienteDto\ClienteDto.cs" />
-    <Compile Include="PessoaDto\UsuarioDTO\PermissaoDto.cs" />
-    <Compile Include="PessoaDto\UsuarioDTO\PermissaoUsuarioDto.cs" />
-    <Compile Include="PessoaDto\ContatoDto.cs" />
-    <Compile Include="PessoaDto\EnderecoDto.cs" />
-    <Compile Include="PessoaDto\FornecedorDto\FornecedorDto.cs" />
-    <Compile Include="PessoaDto\PessoaDto.cs" />
-    <Compile Include="PessoaDto\UsuarioDTO\UsuarioDto.cs" />
+    <Compile Include="EmpresaDTO\EmpresaCollection.cs" />
+    <Compile Include="EmpresaDTO\EmpresaDto.cs" />
+    <Compile Include="PessoaDTO\CidadeDto.cs" />
+    <Compile Include="PessoaDTO\ClienteDto\ClienteDto.cs" />
+    <Compile Include="PessoaDTO\UsuarioDTO\PermissaoDto.cs" />
+    <Compile Include="PessoaDTO\UsuarioDTO\PermissaoUsuarioDto.cs" />
+    <Compile Include="PessoaDTO\ContatoDto.cs" />
+    <Compile Include="PessoaDTO\EnderecoDto.cs" />
+    <Compile Include="PessoaDTO\FornecedorDto\FornecedorDto.cs" />
+    <Compile Include="PessoaDTO\PessoaDto.cs" />
+    <Compile Include="PessoaDTO\UsuarioDTO\UsuarioDto.cs" />
     <Compile Include="Produto\CategoriaDto.cs" />
     <Compile Include="Produto\GradeDto.cs" />
     <Compile Include="Produto\MovimentacaoEstoqueDto.cs" />
@@ -57,11 +59,15 @@
     <Compile Include="Produto\UnidadeDto.cs" />
     <Compile Include="Produto\ValorProdutoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelatorioDTO\Etiqueta\EtiquetaProduto_3x7Collection.cs" />
+    <Compile Include="RelatorioDTO\Etiqueta\EtiquetaProduto_3x7Dto.cs" />
     <Compile Include="VendaDto\CancelaItemDto.cs" />
     <Compile Include="VendaDto\ItemPedidoDto.cs" />
     <Compile Include="VendaDto\ItemPedidoGridDto.cs" />
+    <Compile Include="VendaDto\ParcelaCollection.cs" />
     <Compile Include="VendaDto\PedidoDto.cs" />
     <Compile Include="VendaDto\PedidoGridDto.cs" />
+    <Compile Include="VendaDto\ParcelaDto.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

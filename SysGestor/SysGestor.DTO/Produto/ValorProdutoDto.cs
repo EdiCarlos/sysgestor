@@ -21,6 +21,14 @@ namespace SysGestor.DTO.Produto
 
         public decimal UltimaComissao { get; set; }
 
+        public double ValorPrazo { get; set; }
+
+        public double ValorCartao { get; set; }
+
+        public decimal MargemPrazo { get; set; }
+
+        public decimal MargemCartao { get; set; }
+
         public ProdutoDto ProdutoDto { get; set; }
 
         public ValorProdutoDto()

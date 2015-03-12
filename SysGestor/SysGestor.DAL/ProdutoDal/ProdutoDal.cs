@@ -16,8 +16,8 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "INSERT INTO produto(referencia, codigointerno, descricao, marca, estoqueminimo, localizacaofisica, observacao, idcategoria, idgrade, idunidmedida, idfornecedor) " +
-                                      "VALUES (@Referencia, @CodigoInterno, @Descricao, @Marca, @EstoqueMinimo, @LocalizacaoFisica, @Observacao, @IdCategoria, @IdGrade, @IdUnidMedida, @IdFornecedor)";
+                comando.CommandText = "INSERT INTO produto(referencia, codigointerno, descricao, marca, estoqueminimo, localizacaofisica, observacao, idcategoria, idgrade, idunidmedida, idfornecedor, idempresa) " +
+                                      "VALUES (@Referencia, @CodigoInterno, @Descricao, @Marca, @EstoqueMinimo, @LocalizacaoFisica, @Observacao, @IdCategoria, @IdGrade, @IdUnidMedida, @IdFornecedor, @IdEmppresa)";
 
                 comando.Parameters.AddWithValue("@Referencia", produtoDto.Referencia);
                 comando.Parameters.AddWithValue("@CodigoInterno", produtoDto.IdInterno);
@@ -30,6 +30,7 @@ namespace SysGestor.DAL.ProdutoDal
                 comando.Parameters.AddWithValue("@IdGrade", produtoDto.GradeDto.Id);
                 comando.Parameters.AddWithValue("@IdUnidMedida", produtoDto.UnidadeDto.IdUnidMedida);
                 comando.Parameters.AddWithValue("@IdFornecedor", produtoDto.FornecedorDto.Id);
+                comando.Parameters.AddWithValue("@IdEmppresa", produtoDto.EmpresaDto.IdEmpresa);
 
                 Conexao.Crud(comando);
             }
@@ -523,6 +524,33 @@ namespace SysGestor.DAL.ProdutoDal
             {
                 throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
             }
+        }
+
+        public string VerificaCodigoInternoCadastrado()
+        {
+            string codigoInterno = string.Empty;
+
+            try
+            {
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT codigointerno "
+                                    + "FROM produto ORDER BY idproduto DESC LIMIT 1";
+                MySqlDataReader dr = Conexao.Buscar(comando);
+
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        codigoInterno = (string)dr["codigointerno"];
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(Errors.SelectDataErrors + " - " + ex.Message);
+            }
+            return codigoInterno;
         }
     }
 }

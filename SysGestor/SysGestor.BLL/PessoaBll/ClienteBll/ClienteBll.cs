@@ -1,7 +1,7 @@
 ﻿using SysGestor.DAL.PessoaDal;
 using SysGestor.DAL.PessoaDal.ClienteDal;
-using SysGestor.DTO.PessoaDto;
-using SysGestor.DTO.PessoaDto.ClienteDto;
+using SysGestor.DTO.PessoaDTO;
+using SysGestor.DTO.PessoaDTO.ClienteDto;
 using SysGestor.RESOURCE.Resources;
 using SysGestor.RESOURCE.Validation;
 using System.Collections;
@@ -40,7 +40,7 @@ namespace SysGestor.BLL
 
         public ClienteDto GetCliente(int id)
         {
-            return _clienteDal.GetCliente(id);   
+            return _clienteDal.GetCliente(id);
         }
 
         public ClienteDto GetClienteByNome(string nome)
@@ -76,6 +76,13 @@ namespace SysGestor.BLL
         public void RemoveMass(int[] idCliente)
         {
             _clienteDal.RemoveMass(idCliente);
+        }
+
+        public double GetDebitoByIdCLiente(int idCliente)
+        {
+            AssertionConcern.AssertArgumentIntNull(idCliente, Errors.InvalidId);
+
+            return _clienteDal.GetDebitoByIdCLiente(idCliente);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using SysGestor.DAL.PessoaDal;
 using SysGestor.DAL.PessoaDal.UsuarioDAL;
-using SysGestor.DTO.PessoaDto.UsuarioDTO;
+using SysGestor.DTO.PessoaDTO.UsuarioDTO;
 using SysGestor.RESOURCE.Resources;
 using SysGestor.RESOURCE.Validation;
 using System;

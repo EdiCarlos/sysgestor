@@ -8,6 +8,9 @@ using SysGestor.View.ProdutoView.MovimentacaoEstoque;
 using SysGestor.View.ProdutoView.Unidade;
 using SysGestor.View.UsuarioView;
 using SysGestor.View.VendaView;
+using SysGestor.View.Crediario;
+using SysGestor.View.EmpresaView;
+using SysGestor.View.RelatorioView.Etiqueta;
 
 namespace SysGestor.View
 {
@@ -49,7 +52,18 @@ namespace SysGestor.View
         public static frmPedido FormPedido { get; set; }
         public static frmCancelarItem FormCancelarItem { get; set; }
         public static frmBuscarPedido FormBuscarPedido { get; set; }
-        public static frmFecharVendaVista   FormFecharVendaVista { get; set; }
+        public static frmFecharVendaVista FormFecharVendaVista { get; set; }
+        public static frmFecharVendaPrazo FormFecharVendaPrazo { get; set; }
+
+        public static frmCrediarioCliente FormCrediarioCliente { get; set; }
+        public static frmPagamentoCrediario FormPagamentoCrediario { get; set; }
+
+        public static frmEmpresaNew FormEmpresaNew { get; set; }
+        public static frmEmpresaGrid FormEmpresaGrid { get; set; }
+        public static frmEmpresaEdit FormEmpresaEdit { get; set; }
+
+        public static frmEtiquetaProduto FormEtiquetaProduto { get; set; }
+        public static frmRelatorioEtiquetaProduto FormRelatorioEtiquetaProduto { get; set; }
 
     }
 }

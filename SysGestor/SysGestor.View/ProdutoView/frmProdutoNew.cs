@@ -1,6 +1,7 @@
-﻿using SysGestor.BLL.PessoaBll.FornecedorBll;
+﻿using SysGestor.BLL.EmpresaBLL;
+using SysGestor.BLL.PessoaBll.FornecedorBll;
 using SysGestor.BLL.ProdutoBLL;
-using SysGestor.DTO.PessoaDto.FornecedorDto;
+using SysGestor.DTO.PessoaDTO.FornecedorDto;
 using SysGestor.DTO.Produto;
 using SysGestor.View.FornecedorView;
 using SysGestor.View.ProdutoView.Grade;
@@ -26,6 +27,8 @@ namespace SysGestor.View.ProdutoView
         FornecedorBll _fornecedorBll;
         UnidadeBll _unidadeBll;
 
+        private object IdEmpresa = 0;
+
         AutoCompleteStringCollection sourceGrade;
         AutoCompleteStringCollection sourceCategoria;
         AutoCompleteStringCollection sourceFornecedor;
@@ -50,6 +53,7 @@ namespace SysGestor.View.ProdutoView
             _unidadeBll = new UnidadeBll();
 
             LoadSuggestions();
+            CarregaEmpresa();
         }
 
         #region Eventos
@@ -85,19 +89,40 @@ namespace SysGestor.View.ProdutoView
         private void txtValorCusto_Validated(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtValorCusto.Text))
-                txtMargem.Enabled = true;
-            txtMargem.Focus();
+                txtMargemVista.Enabled = true;               
+                txtMargemVista.Focus();
         }
 
         private void txtMargem_Validated(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtMargem.Text))
-                lblValorVenda.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
-                                     Convert.ToDouble(txtMargem.Text)).ToString("0.00");
+            if (!string.IsNullOrEmpty(txtMargemVista.Text))
+                lblValorVista.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
+                                     Convert.ToDouble(txtMargemVista.Text)).ToString("0.00");
 
-            txtMargem.Enabled = false;
+            txtMargemVista.Enabled = false;
+            txtMargemPrazo.Enabled = true;         
+            txtMargemPrazo.Focus();
+        }
 
-            txtMargem.Focus();
+        private void txtMargemPrazo_Validated(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMargemPrazo.Text))
+                lblValorPrazo.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
+                                     Convert.ToDouble(txtMargemPrazo.Text)).ToString("0.00");
+
+            txtMargemPrazo.Enabled = false;
+            txtMargemCartao.Enabled = true;
+            txtMargemCartao.Focus();
+        }
+
+        private void txtMargemCartao_Validated(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMargemCartao.Text))
+                lblValorCartao.Text = _produtoBll.CalculaMargemLucro(Convert.ToDouble(txtValorCusto.Text),
+                                     Convert.ToDouble(txtMargemCartao.Text)).ToString("0.00");
+
+            txtMargemCartao.Enabled = false;
+            txtObservacao.Focus();
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -165,6 +190,50 @@ namespace SysGestor.View.ProdutoView
             LoadSuggestions();
         }
 
+        private void txtIdInterno_Validated(object sender, EventArgs e)
+        {
+            int valor = 0;
+
+            if (!int.TryParse(txtIdInterno.Text.Trim(), out valor))
+            {
+                MessageBox.Show("Código digitado incorretamente.\n\nVerifique e tente novamente.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtIdInterno.Focus();
+                return;
+            }        
+
+            if (!string.IsNullOrEmpty(txtIdInterno.Text.Trim()))
+            {
+                txtIdInterno.Text = txtIdInterno.Text.PadLeft(10, '0');
+                lblCodBarras.Text = txtIdInterno.Text.Trim();
+            }
+        }
+
+        private void btnGerarCodBarras_Click(object sender, EventArgs e)
+        {
+            string codigoInterno = string.Empty;
+
+            codigoInterno = _produtoBll.VerificaCodigoInternoCadastrado();
+
+            codigoInterno = (Convert.ToInt32(codigoInterno) + 1).ToString().PadLeft(10, '0');
+
+            txtIdInterno.Text = codigoInterno;
+
+            lblCodBarras.Text = codigoInterno;
+        }
+
+        private void cmbEmpresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            IdEmpresa = cmbEmpresa.SelectedValue.ToString();
+        }
+
+        private void frmProdutoNew_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                this.ProcessTabKey(true);
+                e.Handled = true;
+            }
+        }
         #endregion
 
         #region Validação de Campos
@@ -182,9 +251,13 @@ namespace SysGestor.View.ProdutoView
             txtCategoria.Text = string.Empty;
             txtFornecedor.Text = string.Empty;
             txtValorCusto.Text = string.Empty;
-            txtMargem.Text = string.Empty;
+            txtMargemVista.Text = string.Empty;
+            txtMargemPrazo.Text = string.Empty;
+            txtMargemCartao.Text = string.Empty;
             txtComissao.Text = string.Empty;
-            lblValorVenda.Text = string.Empty;
+            lblValorVista.Text = string.Empty;
+            lblValorPrazo.Text = string.Empty;
+            lblValorCartao.Text = string.Empty;
             txtObservacao.Text = string.Empty;
         }
 
@@ -202,9 +275,13 @@ namespace SysGestor.View.ProdutoView
             txtCategoria.Enabled = false;
             txtFornecedor.Enabled = false;
             txtValorCusto.Enabled = false;
-            txtMargem.Enabled = false;
+            txtMargemVista.Enabled = false;
+            txtMargemPrazo.Enabled = false;
+            txtMargemCartao.Enabled = false;
             txtComissao.Enabled = false;
-            lblValorVenda.Enabled = false;
+            lblValorVista.Enabled = false;
+            lblValorPrazo.Enabled = false;
+            lblValorCartao.Enabled = false;
             txtObservacao.Enabled = false;
 
             btnGravar.Enabled = false;
@@ -225,10 +302,14 @@ namespace SysGestor.View.ProdutoView
             txtCategoria.Enabled = true;
             txtFornecedor.Enabled = true;
             txtValorCusto.Enabled = true;
-            txtMargem.Enabled = true;
-            txtComissao.Enabled = true;
-            lblValorVenda.Enabled = true;
-            txtObservacao.Enabled = true;
+            txtMargemVista.Enabled = true;
+            txtMargemPrazo.Enabled = false;
+            txtMargemCartao.Enabled = false;
+            txtComissao.Enabled = false;
+            lblValorVista.Enabled = false;
+            lblValorPrazo.Enabled = false;
+            lblValorCartao.Enabled = false;
+            txtObservacao.Enabled = false;
 
             btnGravar.Enabled = true;
             btnNovo.Enabled = true;
@@ -246,6 +327,12 @@ namespace SysGestor.View.ProdutoView
 
         private void GravaProduto()
         {
+            if (cmbEmpresa.Text == "---Selecione a Empresa---")
+            {
+                MessageBox.Show("Você não selecionou a empresa.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
                 ProdutoDto produtoDto = new ProdutoDto();
@@ -262,6 +349,7 @@ namespace SysGestor.View.ProdutoView
                 produtoDto.CategoriaDto.Id = _categoriaBll.GetIdListaCategoria(txtCategoria.Text.Trim());
                 produtoDto.FornecedorDto.Id = _fornecedorBll.GetIdListaFornecedor(txtFornecedor.Text.Trim());
                 produtoDto.Observacao = txtObservacao.Text.Trim();
+                produtoDto.EmpresaDto.IdEmpresa = Convert.ToInt32(IdEmpresa);
 
                 if (txtValorCusto.Text == "" || txtValorCusto.Text == null)
                 {
@@ -273,9 +361,13 @@ namespace SysGestor.View.ProdutoView
 
                 valorProdutoDto.ProdutoDto.Id = _produtoBll.GetIdProduto();
                 valorProdutoDto.ValorCompra = txtValorCusto.Text.Trim() == "" ? 0 : Convert.ToDouble(txtValorCusto.Text.Trim());
-                valorProdutoDto.Margem = txtMargem.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtMargem.Text.Trim());
+                valorProdutoDto.Margem = txtMargemVista.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtMargemVista.Text.Trim());
+                valorProdutoDto.MargemPrazo = txtMargemPrazo.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtMargemPrazo.Text.Trim());
+                valorProdutoDto.MargemCartao = txtMargemCartao.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtMargemCartao.Text.Trim());
                 valorProdutoDto.Comissao = txtComissao.Text.Trim() == "" ? 0 : Convert.ToDecimal(txtComissao.Text.Trim());
-                valorProdutoDto.ValorVenda = lblValorVenda.Text.Trim() == "" ? 0 : Convert.ToDouble(lblValorVenda.Text.Trim());
+                valorProdutoDto.ValorVenda = lblValorVista.Text.Trim() == "" ? 0 : Convert.ToDouble(lblValorVista.Text.Trim());
+                valorProdutoDto.ValorPrazo = lblValorPrazo.Text.Trim() == "" ? 0 : Convert.ToDouble(lblValorPrazo.Text.Trim());
+                valorProdutoDto.ValorCartao = lblValorCartao.Text.Trim() == "" ? 0 : Convert.ToDouble(lblValorCartao.Text.Trim());
 
                 _valorProdutoBll.Inserir(valorProdutoDto);
 
@@ -291,6 +383,16 @@ namespace SysGestor.View.ProdutoView
             LoadSuggestions();
         }
 
+
+        private void CarregaEmpresa()
+        {
+            var empresaBll = new EmpresaBll();
+
+            cmbEmpresa.DataSource = empresaBll.FindAll();
+            cmbEmpresa.DisplayMember = "nomefantasia";
+            cmbEmpresa.ValueMember = "idempresa";
+            cmbEmpresa.Text = "---Selecione a Empresa---";
+        }
         #endregion
 
         #region Suggestion
@@ -455,6 +557,5 @@ namespace SysGestor.View.ProdutoView
         }
         #endregion
 
-      
     }
 }

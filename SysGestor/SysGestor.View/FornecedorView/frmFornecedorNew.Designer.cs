@@ -48,7 +48,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.mskCep = new System.Windows.Forms.MaskedTextBox();
             this.txtBairro = new System.Windows.Forms.TextBox();
-            this.rtxFitaDetalheradouro = new System.Windows.Forms.TextBox();
+            this.txtLogradouro = new System.Windows.Forms.TextBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -271,7 +271,7 @@
             this.groupBoxEndereco.Controls.Add(this.label8);
             this.groupBoxEndereco.Controls.Add(this.mskCep);
             this.groupBoxEndereco.Controls.Add(this.txtBairro);
-            this.groupBoxEndereco.Controls.Add(this.rtxFitaDetalheradouro);
+            this.groupBoxEndereco.Controls.Add(this.txtLogradouro);
             this.groupBoxEndereco.Controls.Add(this.txtCidade);
             this.groupBoxEndereco.Controls.Add(this.label9);
             this.groupBoxEndereco.Controls.Add(this.label10);
@@ -327,15 +327,15 @@
             this.txtBairro.Size = new System.Drawing.Size(499, 24);
             this.txtBairro.TabIndex = 4;
             // 
-            // rtxFitaDetalheradouro
+            // txtLogradouro
             // 
-            this.rtxFitaDetalheradouro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtxFitaDetalheradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxFitaDetalheradouro.ForeColor = System.Drawing.Color.DarkBlue;
-            this.rtxFitaDetalheradouro.Location = new System.Drawing.Point(19, 35);
-            this.rtxFitaDetalheradouro.Name = "rtxFitaDetalheradouro";
-            this.rtxFitaDetalheradouro.Size = new System.Drawing.Size(562, 24);
-            this.rtxFitaDetalheradouro.TabIndex = 1;
+            this.txtLogradouro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLogradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogradouro.ForeColor = System.Drawing.Color.DarkBlue;
+            this.txtLogradouro.Location = new System.Drawing.Point(19, 35);
+            this.txtLogradouro.Name = "txtLogradouro";
+            this.txtLogradouro.Size = new System.Drawing.Size(562, 24);
+            this.txtLogradouro.TabIndex = 1;
             // 
             // txtCidade
             // 
@@ -693,7 +693,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.MaskedTextBox mskCep;
         private System.Windows.Forms.TextBox txtBairro;
-        private System.Windows.Forms.TextBox rtxFitaDetalheradouro;
+        private System.Windows.Forms.TextBox txtLogradouro;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
