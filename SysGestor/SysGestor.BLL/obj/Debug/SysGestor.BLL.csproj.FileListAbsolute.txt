@@ -9,3 +9,15 @@ G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DTO.pdb
 G:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.RESOURCE.pdb
 G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.dll
 G:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.pdb
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.BLL.dll
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.BLL.pdb
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DAL.dll
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DTO.dll
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.RESOURCE.dll
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\MySql.Data.dll
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DAL.pdb
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DTO.pdb
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.RESOURCE.pdb
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.csprojResolveAssemblyReference.cache
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.dll
+D:\GITHUB\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.pdb

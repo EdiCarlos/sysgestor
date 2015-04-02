@@ -194,14 +194,14 @@ namespace SysGestor.View.VendaView
 
         private void frmPedido_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (idPedido > 0)
-            {
-                if (MessageBox.Show("Pedido Nº " + idPedido + "\n\nO pedido aberto ainda não foi concluído, \n\ndeseja sair do PDV assim mesmo?",
-                    Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
-                    timer1.Stop();
-                Formularios.FormPedido = null;
-            }
-            Formularios.FormPedido = null;
+        //    if (idPedido > 0)
+        //    {
+        //        if (MessageBox.Show("Pedido Nº " + idPedido + "\n\nO pedido aberto ainda não foi concluído, \n\ndeseja sair do PDV assim mesmo?",
+        //            Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+        //            timer1.Stop();
+        //        Formularios.FormPedido = null;
+        //    }
+        //    Formularios.FormPedido = null;
         }
 
         private void txtCodigoProduto_TextChanged(object sender, EventArgs e)
@@ -321,6 +321,29 @@ namespace SysGestor.View.VendaView
             Formularios.FormCrediarioCliente.Focus();
         }
 
+        private void btnEsc_Click(object sender, EventArgs e)
+        {
+            if (idPedido > 0)
+            {
+                if (MessageBox.Show("Pedido Nº " + idPedido + "\n\nO pedido aberto ainda não foi concluído, \n\ndeseja sair do PDV assim mesmo?",
+                    Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+                {
+                    timer1.Stop();
+                    this.Close();
+                    Formularios.FormPedido = null;
+                }
+                else
+                {
+                    return;   
+                }               
+            }
+            else
+            {
+                this.Close();
+                Formularios.FormPedido = null;
+            }
+        }
+
         private void frmPedido_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -394,6 +417,27 @@ namespace SysGestor.View.VendaView
                     Formularios.FormCrediarioCliente.Focus();
                     break;
 
+                case Keys.Escape:
+                    if (idPedido > 0)
+                    {
+                        if (MessageBox.Show("Pedido Nº " + idPedido + "\n\nO pedido aberto ainda não foi concluído, \n\ndeseja sair do PDV assim mesmo?",
+                            Application.CompanyName, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
+                        {
+                            timer1.Stop();
+                            this.Close();
+                            Formularios.FormPedido = null;
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        this.Close();
+                        Formularios.FormPedido = null;
+                    }
+                    break;
             }
         }
         #endregion
@@ -717,6 +761,10 @@ namespace SysGestor.View.VendaView
             }
         }
         #endregion
+
+     
+
+       
 
 
     }

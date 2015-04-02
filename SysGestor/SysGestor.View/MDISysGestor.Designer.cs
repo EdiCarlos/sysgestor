@@ -354,7 +354,7 @@
             // 
             this.pDVToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pDVToolStripMenuItem.Image")));
             this.pDVToolStripMenuItem.Name = "pDVToolStripMenuItem";
-            this.pDVToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pDVToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.pDVToolStripMenuItem.Text = "&PDV";
             this.pDVToolStripMenuItem.Click += new System.EventHandler(this.pDVToolStripMenuItem_Click);
             // 
@@ -603,6 +603,7 @@
             this.btnPdv.Size = new System.Drawing.Size(44, 34);
             this.btnPdv.TabIndex = 9;
             this.btnPdv.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.ttpPrincipal.SetToolTip(this.btnPdv, "Abrir PDV.");
             this.btnPdv.UseVisualStyleBackColor = false;
             this.btnPdv.Click += new System.EventHandler(this.btnPdv_Click);
             // 

@@ -431,7 +431,7 @@
             // lblCodBarras
             // 
             this.lblCodBarras.BackColor = System.Drawing.Color.White;
-            this.lblCodBarras.Font = new System.Drawing.Font("C39HrP24DhTt", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodBarras.Font = new System.Drawing.Font("C39HrP24DhTt", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodBarras.Location = new System.Drawing.Point(530, 35);
             this.lblCodBarras.Name = "lblCodBarras";
             this.lblCodBarras.Size = new System.Drawing.Size(239, 81);

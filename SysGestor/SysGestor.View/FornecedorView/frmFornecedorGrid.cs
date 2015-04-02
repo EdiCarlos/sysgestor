@@ -170,7 +170,8 @@ namespace SysGestor.View.FornecedorView
         private void btnLblNovo_Click(object sender, EventArgs e)
         {
             if (Formularios.FormFornecedorNew == null) Formularios.FormFornecedorNew = new frmFornecedorNew();
-
+            this.Close();
+            Formularios.FormFornecedorGrid = null;
             Formularios.FormFornecedorNew.Show();
             Formularios.FormFornecedorNew.Focus();
         }
