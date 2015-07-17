@@ -185,10 +185,7 @@ namespace SysGestor.DAL.ProdutoDal
                         listaGrade.Add(grade);
                     }
                 }
-                else
-                {
-                    listaGrade = null;
-                }
+                
                 return listaGrade;
             }
             catch (Exception ex)

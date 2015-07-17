@@ -129,10 +129,7 @@ namespace SysGestor.DAL.PessoaDal.FornecedorDal
 
                     }
                 }
-                else
-                {
-                    listaFornecedor = null;
-                }
+                
                 return listaFornecedor.ToList();
             }
             catch (Exception ex)

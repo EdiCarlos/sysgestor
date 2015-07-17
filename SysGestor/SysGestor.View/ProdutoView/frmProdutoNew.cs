@@ -89,8 +89,8 @@ namespace SysGestor.View.ProdutoView
         private void txtValorCusto_Validated(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtValorCusto.Text))
-                txtMargemVista.Enabled = true;               
-                txtMargemVista.Focus();
+                txtMargemVista.Enabled = true;
+            txtMargemVista.Focus();
         }
 
         private void txtMargem_Validated(object sender, EventArgs e)
@@ -100,7 +100,7 @@ namespace SysGestor.View.ProdutoView
                                      Convert.ToDouble(txtMargemVista.Text)).ToString("0.00");
 
             txtMargemVista.Enabled = false;
-            txtMargemPrazo.Enabled = true;         
+            txtMargemPrazo.Enabled = true;
             txtMargemPrazo.Focus();
         }
 
@@ -199,7 +199,7 @@ namespace SysGestor.View.ProdutoView
                 MessageBox.Show("Código digitado incorretamente.\n\nVerifique e tente novamente.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtIdInterno.Focus();
                 return;
-            }        
+            }
 
             if (!string.IsNullOrEmpty(txtIdInterno.Text.Trim()))
             {
@@ -388,10 +388,17 @@ namespace SysGestor.View.ProdutoView
         {
             var empresaBll = new EmpresaBll();
 
-            cmbEmpresa.DataSource = empresaBll.FindAll();
-            cmbEmpresa.DisplayMember = "nomefantasia";
-            cmbEmpresa.ValueMember = "idempresa";
-            cmbEmpresa.Text = "---Selecione a Empresa---";
+            try
+            {
+                cmbEmpresa.DataSource = empresaBll.FindAll();
+                cmbEmpresa.DisplayMember = "nomefantasia";
+                cmbEmpresa.ValueMember = "idempresa";
+                cmbEmpresa.Text = "---Selecione a Empresa---";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
@@ -406,7 +413,7 @@ namespace SysGestor.View.ProdutoView
             {
                 listaGrade = _gradeBll.FindAll();
 
-                if (listaGrade == null) return; //Se for null sai da função
+                if (listaGrade == null || listaGrade.Count == 0) return; //Se for null ou sem itens sai da função
 
                 DataTable dt = new DataTable();
 
@@ -446,7 +453,7 @@ namespace SysGestor.View.ProdutoView
             {
                 listaUnidade = _unidadeBll.FindAll();
 
-                if (listaUnidade == null) return; //Se for null sai da função
+                if (listaUnidade == null || listaUnidade.Count == 0) return; //Se for null ou sem itens sai da função
 
                 DataTable dt = new DataTable();
 
@@ -486,7 +493,7 @@ namespace SysGestor.View.ProdutoView
             {
                 listaCategoria = _categoriaBll.FindAll();
 
-                if (listaCategoria == null) return; //Se for null sai da função
+                if (listaCategoria == null || listaCategoria.Count == 0) return; //Se for null ou sem itens sai da função
 
                 DataTable dt = new DataTable();
 
@@ -526,7 +533,7 @@ namespace SysGestor.View.ProdutoView
             {
                 listaFornecedor = _fornecedorBll.FindAll();
 
-                if (listaFornecedor == null) return; //Se for null sai da função
+                if (listaFornecedor == null || listaFornecedor.Count == 0) return; //Se for null ou sem itens sai da função
 
                 DataTable dt = new DataTable();
 

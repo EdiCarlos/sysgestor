@@ -159,10 +159,7 @@ namespace SysGestor.DAL.ProdutoDal
                         listaUnidade.Add(unidade);
                     }
                 }
-                else
-                {
-                    listaUnidade = null;
-                }
+                
                 return listaUnidade;
             }
             catch (Exception ex)

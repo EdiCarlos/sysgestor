@@ -29,7 +29,7 @@ namespace SysGestor.View
             if (Formularios.FormLogin == null) Formularios.FormLogin = new frmLogin(this);
 
             Formularios.FormLogin.Show();
-            Formularios.FormLogin.Focus();
+            //Formularios.FormLogin.Focus();
         }
 
         #region Empresa

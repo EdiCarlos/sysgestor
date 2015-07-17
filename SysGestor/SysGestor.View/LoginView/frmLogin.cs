@@ -26,6 +26,7 @@ namespace SysGestor.View.LoginView
         {
             pcLogin.Controls.Add(lblLogar);
             pcLogin.Controls.Add(lblCancelar);
+            txtUsuario.Focus();
         }
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)

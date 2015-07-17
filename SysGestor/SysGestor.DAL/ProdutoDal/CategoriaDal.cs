@@ -185,10 +185,7 @@ namespace SysGestor.DAL.ProdutoDal
                         listaCategoria.Add(categoria);
                     }
                 }
-                else
-                {
-                    listaCategoria = null;
-                }
+             
                 return listaCategoria;
             }
             catch (Exception ex)
