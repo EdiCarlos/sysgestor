@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpresaNew));
             this.groupBoxDados = new System.Windows.Forms.GroupBox();
+            this.btnBuscaImagem = new System.Windows.Forms.Button();
+            this.pcbLogo = new System.Windows.Forms.PictureBox();
             this.mskCnpj = new System.Windows.Forms.MaskedTextBox();
             this.txtIe = new System.Windows.Forms.TextBox();
             this.txtNomeFantasia = new System.Windows.Forms.TextBox();
@@ -63,17 +65,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.ofdFoto = new System.Windows.Forms.OpenFileDialog();
-            this.btnBuscaImagem = new System.Windows.Forms.Button();
-            this.pcbLogo = new System.Windows.Forms.PictureBox();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.pcbCabecalho = new System.Windows.Forms.PictureBox();
             this.groupBoxDados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).BeginInit();
             this.groupBoxContato.SuspendLayout();
             this.groupBoxEndereco.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +95,27 @@
             this.groupBoxDados.TabIndex = 19;
             this.groupBoxDados.TabStop = false;
             this.groupBoxDados.Text = "Dados";
+            // 
+            // btnBuscaImagem
+            // 
+            this.btnBuscaImagem.Image = global::SysGestor.View.Properties.Resources.search26x26;
+            this.btnBuscaImagem.Location = new System.Drawing.Point(571, 195);
+            this.btnBuscaImagem.Name = "btnBuscaImagem";
+            this.btnBuscaImagem.Size = new System.Drawing.Size(45, 34);
+            this.btnBuscaImagem.TabIndex = 4;
+            this.btnBuscaImagem.UseVisualStyleBackColor = true;
+            this.btnBuscaImagem.Click += new System.EventHandler(this.btnBuscaImagem_Click);
+            // 
+            // pcbLogo
+            // 
+            this.pcbLogo.BackColor = System.Drawing.Color.White;
+            this.pcbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbLogo.Location = new System.Drawing.Point(624, 79);
+            this.pcbLogo.Name = "pcbLogo";
+            this.pcbLogo.Size = new System.Drawing.Size(150, 150);
+            this.pcbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbLogo.TabIndex = 3;
+            this.pcbLogo.TabStop = false;
             // 
             // mskCnpj
             // 
@@ -485,27 +506,6 @@
             this.ofdFoto.ShowReadOnly = true;
             this.ofdFoto.Title = "Selecionar Foto";
             // 
-            // btnBuscaImagem
-            // 
-            this.btnBuscaImagem.Image = global::SysGestor.View.Properties.Resources.search26x26;
-            this.btnBuscaImagem.Location = new System.Drawing.Point(571, 195);
-            this.btnBuscaImagem.Name = "btnBuscaImagem";
-            this.btnBuscaImagem.Size = new System.Drawing.Size(45, 34);
-            this.btnBuscaImagem.TabIndex = 4;
-            this.btnBuscaImagem.UseVisualStyleBackColor = true;
-            this.btnBuscaImagem.Click += new System.EventHandler(this.btnBuscaImagem_Click);
-            // 
-            // pcbLogo
-            // 
-            this.pcbLogo.BackColor = System.Drawing.Color.White;
-            this.pcbLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pcbLogo.Location = new System.Drawing.Point(624, 79);
-            this.pcbLogo.Name = "pcbLogo";
-            this.pcbLogo.Size = new System.Drawing.Size(150, 150);
-            this.pcbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbLogo.TabIndex = 3;
-            this.pcbLogo.TabStop = false;
-            // 
             // btnNovo
             // 
             this.btnNovo.BackColor = System.Drawing.Color.Transparent;
@@ -615,15 +615,16 @@
             this.Name = "frmEmpresaNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro - Empresa";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEmpresaNew_FormClosing);
             this.Load += new System.EventHandler(this.frmEmpresaNew_Load);
             this.groupBoxDados.ResumeLayout(false);
             this.groupBoxDados.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).EndInit();
             this.groupBoxContato.ResumeLayout(false);
             this.groupBoxContato.PerformLayout();
             this.groupBoxEndereco.ResumeLayout(false);
             this.groupBoxEndereco.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).EndInit();
             this.ResumeLayout(false);
 
