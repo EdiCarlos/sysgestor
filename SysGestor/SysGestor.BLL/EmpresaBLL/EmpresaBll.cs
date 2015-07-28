@@ -21,14 +21,22 @@ namespace SysGestor.BLL.EmpresaBLL
            _empresaDal = new EmpresaDal();
            _pessoaDal = new PessoaDal();
        }
-       public void InserirEmpresa(EmpresaDto empresaDto)
+       public bool InserirEmpresa(EmpresaDto empresaDto)
        {
            _pessoaDal.Inserir(empresaDto);
            var idPessoa =_pessoaDal.GetIdPessoa();
 
            empresaDto.Id = idPessoa;
 
-          _empresaDal.InserirEmpresa(empresaDto);
+           if (_empresaDal.FindAll() == null)
+           {
+               _empresaDal.InserirEmpresa(empresaDto);
+               return true;
+           }
+           else
+           {
+               return false;
+           }
        }
 
        public EmpresaCollection FindAll()

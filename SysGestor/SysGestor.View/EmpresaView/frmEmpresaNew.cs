@@ -29,7 +29,7 @@ namespace SysGestor.View.EmpresaView
         {
             InitializeComponent();
         }
-        
+
         #region Eventos
         private void frmEmpresaNew_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -51,58 +51,63 @@ namespace SysGestor.View.EmpresaView
         {
             try
             {
-                
-                    CidadeBll cidadeBll = new CidadeBll();
-                    CidadeDto cidadeDto = new CidadeDto();
-                    EmpresaDto empresaDto = new EmpresaDto();
-                    EnderecoDto enderecoDto = new EnderecoDto();
-                    ContatoDto contatoDto = new ContatoDto();
-                    EnderecoBll enderecoBll = new EnderecoBll();
-                    ContatoBll contatoBll = new ContatoBll();
 
-                    string temp = @"C:\temp\";
+                CidadeBll cidadeBll = new CidadeBll();
+                CidadeDto cidadeDto = new CidadeDto();
+                EmpresaDto empresaDto = new EmpresaDto();
+                EnderecoDto enderecoDto = new EnderecoDto();
+                ContatoDto contatoDto = new ContatoDto();
+                EnderecoBll enderecoBll = new EnderecoBll();
+                ContatoBll contatoBll = new ContatoBll();
 
-                    if (!Directory.Exists(temp))
-                    {
-                        Directory.CreateDirectory(temp);
-                    }
+                string temp = @"C:\temp\";
 
-                    caminhoLogo = temp + txtNomeFantasia.Text.Trim() + "-logo.png";
+                if (!Directory.Exists(temp))
+                {
+                    Directory.CreateDirectory(temp);
+                }
 
-                    empresaDto.NomeFantasia = txtNomeFantasia.Text.Trim();
-                    empresaDto.Nome = txtRazaoSocial.Text.Trim();
-                    empresaDto.TipoPessoa = "Jurídica";
-                    empresaDto.DataCadastro = DateTime.Now;
-                    empresaDto.CpfCnpj = mskCnpj.Text.Trim();
-                    empresaDto.RgIe = txtIe.Text.Trim();
-                    empresaDto.Logo = caminhoLogo;
+                caminhoLogo = temp + txtNomeFantasia.Text.Trim() + "-logo.png";
 
-                    enderecoDto.Logradouro = txtLogradouro.Text.Trim();
-                    enderecoDto.Numero = txtNumero.Text.Trim();
-                    enderecoDto.Complemento = txtComplemento.Text.Trim();
-                    enderecoDto.Bairro = txtBairro.Text.Trim();
-                    enderecoDto.Cep = mskCep.Text.Trim();
-                    enderecoDto.CidadeDto.Id = cidadeBll.GetIdCidade(txtCidade.Text.Trim());
+                empresaDto.NomeFantasia = txtNomeFantasia.Text.Trim();
+                empresaDto.Nome = txtRazaoSocial.Text.Trim();
+                empresaDto.TipoPessoa = "Jurídica";
+                empresaDto.DataCadastro = DateTime.Now;
+                empresaDto.CpfCnpj = mskCnpj.Text.Trim();
+                empresaDto.RgIe = txtIe.Text.Trim();
+                empresaDto.Logo = caminhoLogo;
 
-                    contatoDto.TelFixo = mskTelFixo.Text.Trim();
-                    contatoDto.TelCel = mskCelular.Text.Trim();
-                    contatoDto.TelComercial = mskTelComercial.Text.Trim();
-                    contatoDto.Email = txtEmail.Text.Trim();
+                enderecoDto.Logradouro = txtLogradouro.Text.Trim();
+                enderecoDto.Numero = txtNumero.Text.Trim();
+                enderecoDto.Complemento = txtComplemento.Text.Trim();
+                enderecoDto.Bairro = txtBairro.Text.Trim();
+                enderecoDto.Cep = mskCep.Text.Trim();
+                enderecoDto.CidadeDto.Id = cidadeBll.GetIdCidade(txtCidade.Text.Trim());
+
+                contatoDto.TelFixo = mskTelFixo.Text.Trim();
+                contatoDto.TelCel = mskCelular.Text.Trim();
+                contatoDto.TelComercial = mskTelComercial.Text.Trim();
+                contatoDto.Email = txtEmail.Text.Trim();
 
 
-                  _empresaBll.InserirEmpresa(empresaDto);
 
-                  contatoDto.PessoaDto.Id = _pessoaBll.GetIdPessoa();
+                if (_empresaBll.InserirEmpresa(empresaDto) == false)
+                {
+                    MessageBox.Show("Já existe uma empresa cadastrada no sistema.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
+                }
 
-                    enderecoBll.Inserir(enderecoDto);
+                contatoDto.PessoaDto.Id = _pessoaBll.GetIdPessoa();
 
-                    contatoBll.Inserir(contatoDto);
+                enderecoBll.Inserir(enderecoDto);
 
-                    desabilitaCampo();                   
+                contatoBll.Inserir(contatoDto);
 
-                    Image imagem = pcbLogo.Image;                   
-                    imagem.Save(temp + txtNomeFantasia.Text.Trim() + "-logo.png", System.Drawing.Imaging.ImageFormat.Png);
-                                           
+                desabilitaCampo();
+
+                Image imagem = pcbLogo.Image;
+                imagem.Save(temp + txtNomeFantasia.Text.Trim() + "-logo.png", System.Drawing.Imaging.ImageFormat.Png);
+
             }
             catch (Exception ex)
             {
@@ -172,7 +177,7 @@ namespace SysGestor.View.EmpresaView
             Formularios.FormEmpresaNew = null;
         }
         #endregion
-        
+
         #region Funções
         private void limpaCampo()
         {
@@ -273,9 +278,9 @@ namespace SysGestor.View.EmpresaView
             }
         }
 
-        #endregion      
+        #endregion
 
-       
-      
+
+
     }
 }

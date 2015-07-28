@@ -21,7 +21,7 @@ namespace SysGestor.View.EmpresaView
         {
             InitializeComponent();
         }
-        
+
         #region Eventos
         private void dtgPrincipal_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -153,26 +153,35 @@ namespace SysGestor.View.EmpresaView
         #region Funções
         private void carregaGrid(string filtro)
         {
-            if (rbNome.Checked) searchType = "Nome";
-
-            if (rbCpfCnpj.Checked) searchType = "CpfCnpj";
-
-            dtgPrincipal.AutoGenerateColumns = false;
-
-            EmpresaBll empresaBll = new EmpresaBll();
-
-            var empresas = new EmpresaCollection();
-
-            empresas = empresaBll.FindAll(searchType, filtro);
-
-            if (empresas == null)
+            try
             {
-                dtgPrincipal.DataSource = null;
-                dtgPrincipal.Refresh();
-                return;
+                if (rbNome.Checked) searchType = "Nome";
+
+                if (rbCpfCnpj.Checked) searchType = "CpfCnpj";
+
+                dtgPrincipal.AutoGenerateColumns = false;
+
+                EmpresaBll empresaBll = new EmpresaBll();
+
+                var empresas = new EmpresaCollection();
+
+                empresas = empresaBll.FindAll(searchType, filtro);
+
+                if (empresas == null)
+                {
+                    dtgPrincipal.DataSource = null;
+                    dtgPrincipal.Refresh();
+                    return;
+                }
+
+                dtgPrincipal.DataSource = empresas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar dados. - " + ex.Message.ToString(), Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            dtgPrincipal.DataSource = empresas;
+
         }
         #endregion
 

@@ -126,6 +126,7 @@ namespace SysGestor.View.EmpresaView
                 Image imagem = pcbLogo.Image;
                 imagem.Save(temp + txtNomeFantasia.Text.Trim() + "-logo.png", System.Drawing.Imaging.ImageFormat.Png);
 
+                MessageBox.Show("Dados alterado com sucesso. - ", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
             }
             catch (Exception ex)
