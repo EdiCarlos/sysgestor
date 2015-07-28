@@ -94,10 +94,13 @@ namespace SysGestor.View.ClienteView
 
                 TrocaInfo.Id = Convert.ToInt32(dtgCliente.CurrentRow.Cells[1].Value.ToString());
 
-                this.Hide();
+                this.Close();
+                Formularios.FormClienteGrid = null;
 
-                frmClienteEdit frmClienteEdit = new frmClienteEdit();
-                frmClienteEdit.Show();
+                if (Formularios.FormClienteEdit == null) Formularios.FormClienteEdit = new frmClienteEdit();
+
+                Formularios.FormClienteEdit.Show();
+                Formularios.FormClienteEdit.Focus();
             }           
         }
 
@@ -146,25 +149,22 @@ namespace SysGestor.View.ClienteView
                     }
                 }
 
-               clienteBll.RemoveMass(ids);
+                if (ids.Length > 0) clienteBll.RemoveMass(ids);
+                else MessageBox.Show("Selecione um registro para exclusão.", Application.CompanyName, MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
 
                 carregaGrid(txtPesquisa.Text.Trim());
         }
 
         private void btnSair_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
+        {           
                 Dispose(true);
-                Formularios.FormClienteGrid = null;
-            }
+                Formularios.FormClienteGrid = null;            
         }
 
         private void frmClienteGrid_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) ==
-              DialogResult.Yes) Formularios.FormClienteGrid = null;
-            else e.Cancel = true;
+            Dispose(true);
+            Formularios.FormClienteGrid = null;   
         }
 
         private void btnLblNovo_Click(object sender, EventArgs e)

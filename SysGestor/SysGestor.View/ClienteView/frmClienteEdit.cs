@@ -58,9 +58,11 @@ namespace SysGestor.View.ClienteView
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             desabilitaCampo();
-            frmClienteGrid clienteGrid = new frmClienteGrid();
-            clienteGrid.Show();
             this.Close();
+            Formularios.FormClienteEdit = null;
+
+            frmClienteGrid clienteGrid = new frmClienteGrid();
+            clienteGrid.Show();       
         }
 
         private void rbFisica_CheckedChanged(object sender, EventArgs e)
@@ -80,19 +82,10 @@ namespace SysGestor.View.ClienteView
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
                 Dispose(true);
                 Formularios.FormClienteEdit = null;
-            }
         }
-
-        private void frmClienteEdit_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) ==
-                                DialogResult.Yes) Formularios.FormClienteEdit = null;
-            else e.Cancel = true;
-        }
+       
         #endregion
 
         #region Editar
@@ -187,10 +180,11 @@ namespace SysGestor.View.ClienteView
             enderecoBll.Alterar(enderecoDto);
             contatoBll.Alterar(contatoDto);
 
+            this.Close();
+            Formularios.FormClienteEdit = null;
 
             frmClienteGrid clienteGrid = new frmClienteGrid();
-            clienteGrid.Show();
-            this.Close();
+            clienteGrid.Show();           
         }    
         #endregion
 

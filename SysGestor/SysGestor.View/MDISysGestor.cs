@@ -362,7 +362,7 @@ namespace SysGestor.View
         }
         #endregion
 
-       
+     
 
     }
 }
