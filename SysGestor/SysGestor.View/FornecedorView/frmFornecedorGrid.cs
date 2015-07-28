@@ -93,7 +93,8 @@ namespace SysGestor.View.FornecedorView
 
                 TrocaInfo.Id = Convert.ToInt32(dtgFornecedor.CurrentRow.Cells[1].Value.ToString());
 
-                this.Hide();
+                this.Close();
+                Formularios.FormFornecedorGrid = null;
 
                 frmFornecedorEdit frmFornecedorEdit = new frmFornecedorEdit();
                 frmFornecedorEdit.Show();
@@ -145,26 +146,24 @@ namespace SysGestor.View.FornecedorView
                 }
             }
 
-            fornecedorBll.RemoveMass(ids);
+            if(ids.Length > 0) fornecedorBll.RemoveMass(ids);
+            else MessageBox.Show("Selecione um registro para exclusão.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
             carregaGrid(txtPesquisa.Text.Trim());
         }
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
                 Dispose(true);
                 this.Close();
                 Formularios.FormFornecedorGrid = null;
-            }
         }
 
         private void frmFornecedorGrid_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) ==
-               DialogResult.Yes) Formularios.FormFornecedorGrid = null;
-            else e.Cancel = true;
+            Dispose(true);
+            this.Close();
+            Formularios.FormFornecedorGrid = null;
         }
 
         private void btnLblNovo_Click(object sender, EventArgs e)

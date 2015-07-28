@@ -80,18 +80,14 @@ namespace SysGestor.View.FornecedorView
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
                 Dispose(true);
                 Formularios.FormFornecedorEdit = null;
-            }
         }
 
         private void frmFornecedorEdit_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) ==
-               DialogResult.Yes) Formularios.FormFornecedorEdit = null;
-            else e.Cancel = true;
+            Dispose(true);
+            Formularios.FormFornecedorEdit = null;
         }
         #endregion
 
@@ -178,10 +174,13 @@ namespace SysGestor.View.FornecedorView
             enderecoBll.Alterar(enderecoDto);
             contatoBll.Alterar(contatoDto);
 
+            if (Formularios.FormFornecedorGrid == null) Formularios.FormFornecedorGrid = new frmFornecedorGrid();
 
-            frmFornecedorGrid fornecedorGrid = new frmFornecedorGrid();
-            fornecedorGrid.Show();
+            Formularios.FormFornecedorGrid.Show();
+            Formularios.FormFornecedorGrid.Focus();
+
             this.Close();
+            Formularios.FormFornecedorEdit = null;            
         }
         #endregion
 
