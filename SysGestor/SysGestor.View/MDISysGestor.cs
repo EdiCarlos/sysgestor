@@ -59,14 +59,6 @@ namespace SysGestor.View
         #endregion
 
         #region Cliente
-        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Formularios.FormClienteGrid == null) Formularios.FormClienteGrid = new frmClienteGrid();
-
-            Formularios.FormClienteGrid.Show();
-            Formularios.FormClienteGrid.Focus();
-        }
-
         private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (Formularios.FormClienteNew == null) Formularios.FormClienteNew = new frmClienteNew();
@@ -75,7 +67,7 @@ namespace SysGestor.View
             Formularios.FormClienteNew.Focus();
         }
 
-        private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void BuscarClienteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (Formularios.FormClienteGrid == null) Formularios.FormClienteGrid = new frmClienteGrid();
 
@@ -362,7 +354,6 @@ namespace SysGestor.View
         }
         #endregion
 
-     
 
     }
 }

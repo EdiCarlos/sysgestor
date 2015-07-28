@@ -51,6 +51,7 @@
             this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novoToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BuscarClienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fornecedorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,6 @@
             this.gradeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.vendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,7 +119,6 @@
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
             this.clienteToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.clienteToolStripMenuItem.Text = "&Cliente";
-            this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // novoToolStripMenuItem1
             // 
@@ -277,7 +276,7 @@
             // buscarToolStripMenuItem
             // 
             this.buscarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clienteToolStripMenuItem1,
+            this.BuscarClienteToolStripMenuItem1,
             this.fornecedorToolStripMenuItem1,
             this.produtoToolStripMenuItem1,
             this.usuarioToolStripMenuItem,
@@ -285,6 +284,14 @@
             this.buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.buscarToolStripMenuItem.Text = "&BUSCAR";
+            // 
+            // BuscarClienteToolStripMenuItem1
+            // 
+            this.BuscarClienteToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("BuscarClienteToolStripMenuItem1.Image")));
+            this.BuscarClienteToolStripMenuItem1.Name = "BuscarClienteToolStripMenuItem1";
+            this.BuscarClienteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.BuscarClienteToolStripMenuItem1.Text = "&Cliente";
+            this.BuscarClienteToolStripMenuItem1.Click += new System.EventHandler(this.BuscarClienteToolStripMenuItem1_Click);
             // 
             // fornecedorToolStripMenuItem1
             // 
@@ -343,13 +350,6 @@
             this.toolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem2.Text = "&Empresa";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
-            // clienteToolStripMenuItem1
-            // 
-            this.clienteToolStripMenuItem1.Name = "clienteToolStripMenuItem1";
-            this.clienteToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.clienteToolStripMenuItem1.Text = "&Cliente";
-            this.clienteToolStripMenuItem1.Click += new System.EventHandler(this.clienteToolStripMenuItem1_Click);
             // 
             // vendaToolStripMenuItem
             // 
@@ -479,7 +479,7 @@
             this.btnCliente.Size = new System.Drawing.Size(44, 34);
             this.btnCliente.TabIndex = 9;
             this.btnCliente.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.ttpPrincipal.SetToolTip(this.btnCliente, "Cadastrar cliente.");
+            this.ttpPrincipal.SetToolTip(this.btnCliente, "Cadastro de cliente.");
             this.btnCliente.UseVisualStyleBackColor = false;
             this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
@@ -692,6 +692,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem etiquetaDeProdutoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem BuscarClienteToolStripMenuItem1;
     }
 }

@@ -169,6 +169,9 @@ namespace SysGestor.View.ClienteView
 
         private void btnLblNovo_Click(object sender, EventArgs e)
         {
+            Dispose(true);
+            Formularios.FormClienteGrid = null;  
+
             if (Formularios.FormClienteNew == null) Formularios.FormClienteNew = new frmClienteNew();
 
             Formularios.FormClienteNew.Show();
