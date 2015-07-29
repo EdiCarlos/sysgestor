@@ -44,8 +44,8 @@ namespace SysGestor.View.UsuarioView
 
             try
             {
-                 usuarios = usuarioBll.FindAllFilter(searchValue, filter);
-                 dtgUsuario.DataSource = usuarios;
+                usuarios = usuarioBll.FindAllFilter(searchValue, filter);
+                dtgUsuario.DataSource = usuarios;
             }
             catch (Exception ex)
             {
@@ -145,33 +145,33 @@ namespace SysGestor.View.UsuarioView
                 }
             }
 
-            usuarioBll.RemoveMass(ids);
+            if (ids.Length > 0) usuarioBll.RemoveMass(ids);
+            else MessageBox.Show("Selecione o registro para exclusão.", Application.CompanyName, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
             carregaGrid(txtPesquisa.Text.Trim());
         }
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                Dispose(true);
-                Formularios.FormUsuarioGrid = null;
-            }
+            Dispose(true);
+            Formularios.FormUsuarioGrid = null;
         }
 
         private void frmUsuarioGrid_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) ==
-              DialogResult.Yes) Formularios.FormUsuarioGrid = null;
-            else e.Cancel = true;
+            Dispose(true);
+            Formularios.FormUsuarioGrid = null;
         }
 
         private void btnLblNovo_Click(object sender, EventArgs e)
         {
-            if (Formularios.FormUsuarioGrid == null) Formularios.FormUsuarioGrid = new frmUsuarioGrid();
+            Dispose(true);
+            Formularios.FormUsuarioGrid = null;
 
-            Formularios.FormUsuarioGrid.Show();
-            Formularios.FormUsuarioGrid.Focus();
+            if (Formularios.FormUsuarioNew == null) Formularios.FormUsuarioNew = new frmUsuarioNew();
+
+            Formularios.FormUsuarioNew.Show();
+            Formularios.FormUsuarioNew.Focus();
         }
     }
 }

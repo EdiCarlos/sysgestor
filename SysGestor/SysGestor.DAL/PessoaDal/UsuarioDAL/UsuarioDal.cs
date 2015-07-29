@@ -136,11 +136,9 @@ namespace SysGestor.DAL.PessoaDal.UsuarioDAL
 
                     }
                 }
-                else
-                {
-                    listaUsuario = null;
-                }
+               
                 return listaUsuario.ToList();
+
             }
             catch (Exception ex)
             {
@@ -177,7 +175,7 @@ namespace SysGestor.DAL.PessoaDal.UsuarioDAL
                     comando.CommandType = CommandType.Text;
                     comando.CommandText = "UPDATE pessoa SET ativo = 1 WHERE idPessoa = (SELECT idpessoa FROM usuario WHERE idusuario = @IdUsuario)";
 
-                    comando.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    comando.Parameters.AddWithValue("@IdUsuario", idUsuario[i]);
                     Conexao.Crud(comando);
                 }
             }

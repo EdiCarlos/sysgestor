@@ -122,16 +122,7 @@ namespace SysGestor.View.UsuarioView
                 Formularios.FormUsuarioNew = null;
             }
         }
-        #endregion
+        #endregion      
 
-       
-
-        #region
-
-        #endregion
-
-        #region
-
-        #endregion
     }
 }

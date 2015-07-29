@@ -44,10 +44,9 @@ namespace SysGestor.DAL.AuthenticationDAL
             {
                 MySqlCommand comando = new MySqlCommand();
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT idusuario, login " +
+                comando.CommandText = "SELECT idusuario, login, idpessoa " +
                                       "FROM usuario " +
-                                      "WHERE login = @Login AND senha = @Senha";
-
+                                      "WHERE login = @Login AND senha = @Senha && (SELECT ativo FROM pessoa WHERE pessoa.idpessoa = usuario.idpessoa) = 0";
                 comando.Parameters.AddWithValue("@Login", usuario);
                 comando.Parameters.AddWithValue("@Senha", senha);
 

@@ -89,6 +89,6 @@ namespace SysGestor.View.LoginView
             }
         }
 
-
+       
     }
 }
