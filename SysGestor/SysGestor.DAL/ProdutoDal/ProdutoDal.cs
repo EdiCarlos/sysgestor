@@ -440,7 +440,7 @@ namespace SysGestor.DAL.ProdutoDal
                                       "FROM produto A " +
                                       "INNER JOIN categoria B ON A.idcategoria = B.idcategoria " +
                                       "INNER JOIN grade C ON A.idgrade = C.idgrade " +
-                                      "INNER JOIN unidmedida E ON A.idgrade = E.idunidmedida " +
+                                      "INNER JOIN unidmedida E ON A.idunidmedida = E.idunidmedida " +
                                       "INNER JOIN fornecedor D  ON A.idfornecedor = D.idfornecedor " +
                                       "WHERE " + pesquisa + " A.ativo = 0";
 
@@ -476,10 +476,7 @@ namespace SysGestor.DAL.ProdutoDal
                         listaProduto.Add(produto);
                     }
                 }
-                else
-                {
-                    listaProduto = null;
-                }
+                
                 return listaProduto;
             }
             catch (Exception ex)

@@ -4,6 +4,7 @@ using SysGestor.BLL.ProdutoBLL;
 using SysGestor.DTO.PessoaDTO.FornecedorDto;
 using SysGestor.DTO.Produto;
 using SysGestor.View.FornecedorView;
+using SysGestor.View.ProdutoView.Categoria.SearchCategoria;
 using SysGestor.View.ProdutoView.Grade;
 using SysGestor.View.ProdutoView.Unidade;
 using System;
@@ -147,9 +148,15 @@ namespace SysGestor.View.ProdutoView
             }
         }
 
-        private void frmProdutoNew_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmProdutoNew_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Formularios.FormProdutoNew = null;
+            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.No) e.Cancel = true;
+            else
+            {
+                Dispose(true);
+                Formularios.FormProdutoNew = null;
+                this.Close();
+            }
         }
 
         private void btnLblEditar_Click(object sender, EventArgs e)
@@ -173,6 +180,15 @@ namespace SysGestor.View.ProdutoView
         private void txtCategoria_MouseClick(object sender, MouseEventArgs e)
         {
             LoadSuggestions();
+        }
+
+        private void btnSearchCategoria_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormSearchCategoria == null) Formularios.FormSearchCategoria = new frmSearchCategoria();
+
+            Formularios.FormSearchCategoria.Owner = this;
+            Formularios.FormSearchCategoria.Show();
+            Formularios.FormSearchCategoria.Focus();
         }
 
         private void txtGrade_Click(object sender, EventArgs e)
@@ -563,6 +579,5 @@ namespace SysGestor.View.ProdutoView
             }
         }
         #endregion
-
     }
 }

@@ -37,7 +37,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkSelecionarTodos = new System.Windows.Forms.CheckBox();
             this.btnSair = new System.Windows.Forms.Button();
-            this.groupBoxEndereco = new System.Windows.Forms.GroupBox();
+            this.groupBoxPesquisa = new System.Windows.Forms.GroupBox();
             this.rbDescrição = new System.Windows.Forms.RadioButton();
             this.rbCodigo = new System.Windows.Forms.RadioButton();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
@@ -52,7 +52,7 @@
             this.ttpCategoria = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBoxEndereco.SuspendLayout();
+            this.groupBoxPesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgCategoria)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +110,7 @@
             // 
             this.chkSelecionarTodos.AutoSize = true;
             this.chkSelecionarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSelecionarTodos.Location = new System.Drawing.Point(11, 70);
+            this.chkSelecionarTodos.Location = new System.Drawing.Point(6, 63);
             this.chkSelecionarTodos.Name = "chkSelecionarTodos";
             this.chkSelecionarTodos.Size = new System.Drawing.Size(135, 22);
             this.chkSelecionarTodos.TabIndex = 3;
@@ -138,18 +138,18 @@
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // groupBoxEndereco
+            // groupBoxPesquisa
             // 
-            this.groupBoxEndereco.Controls.Add(this.rbDescrição);
-            this.groupBoxEndereco.Controls.Add(this.rbCodigo);
-            this.groupBoxEndereco.Controls.Add(this.txtPesquisa);
-            this.groupBoxEndereco.Controls.Add(this.label10);
-            this.groupBoxEndereco.Location = new System.Drawing.Point(11, 90);
-            this.groupBoxEndereco.Name = "groupBoxEndereco";
-            this.groupBoxEndereco.Size = new System.Drawing.Size(504, 112);
-            this.groupBoxEndereco.TabIndex = 11;
-            this.groupBoxEndereco.TabStop = false;
-            this.groupBoxEndereco.Text = "Buscar Cliente";
+            this.groupBoxPesquisa.Controls.Add(this.rbDescrição);
+            this.groupBoxPesquisa.Controls.Add(this.rbCodigo);
+            this.groupBoxPesquisa.Controls.Add(this.txtPesquisa);
+            this.groupBoxPesquisa.Controls.Add(this.label10);
+            this.groupBoxPesquisa.Location = new System.Drawing.Point(11, 90);
+            this.groupBoxPesquisa.Name = "groupBoxPesquisa";
+            this.groupBoxPesquisa.Size = new System.Drawing.Size(504, 112);
+            this.groupBoxPesquisa.TabIndex = 11;
+            this.groupBoxPesquisa.TabStop = false;
+            this.groupBoxPesquisa.Text = "Buscar Categoria";
             // 
             // rbDescrição
             // 
@@ -279,7 +279,7 @@
             this.Controls.Add(this.btnLblNovo);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.groupBoxEndereco);
+            this.Controls.Add(this.groupBoxPesquisa);
             this.Controls.Add(this.dtgCategoria);
             this.Controls.Add(this.pcbCabecalho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -296,8 +296,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbCabecalho)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBoxEndereco.ResumeLayout(false);
-            this.groupBoxEndereco.PerformLayout();
+            this.groupBoxPesquisa.ResumeLayout(false);
+            this.groupBoxPesquisa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgCategoria)).EndInit();
             this.ResumeLayout(false);
 
@@ -312,7 +312,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkSelecionarTodos;
         private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.GroupBox groupBoxEndereco;
+        private System.Windows.Forms.GroupBox groupBoxPesquisa;
         private System.Windows.Forms.RadioButton rbDescrição;
         private System.Windows.Forms.RadioButton rbCodigo;
         private System.Windows.Forms.TextBox txtPesquisa;

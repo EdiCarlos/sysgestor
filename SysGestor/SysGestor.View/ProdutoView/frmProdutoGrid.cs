@@ -28,12 +28,9 @@ namespace SysGestor.View.ProdutoView
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                Dispose(true);
-                this.Close();
-                Formularios.FormProdutoGrid = null;
-            }
+            Dispose(true);
+            this.Close();
+            Formularios.FormProdutoGrid = null;
         }
 
         private void frmProdutoGrid_FormClosed(object sender, FormClosedEventArgs e)

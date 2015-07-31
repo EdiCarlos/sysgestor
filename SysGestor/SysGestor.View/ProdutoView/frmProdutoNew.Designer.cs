@@ -78,15 +78,19 @@
             this.txtValorCusto = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTipProduto = new System.Windows.Forms.ToolTip(this.components);
-            this.btnLblEditar = new System.Windows.Forms.Label();
-            this.btnLblExcluir = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtObservacao = new System.Windows.Forms.TextBox();
+            this.btnLblExcluir = new System.Windows.Forms.Label();
+            this.btnLblEditar = new System.Windows.Forms.Label();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.pcbCabecalho = new System.Windows.Forms.PictureBox();
+            this.btnSearchCategoria = new System.Windows.Forms.Button();
+            this.btnSearchFornecedor = new System.Windows.Forms.Button();
+            this.btnSearchUnidMedida = new System.Windows.Forms.Button();
+            this.btnSearchGrade = new System.Windows.Forms.Button();
             this.groupBoxDados.SuspendLayout();
             this.groupBoxPreco.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -98,6 +102,10 @@
             this.groupBoxDados.Controls.Add(this.cmbEmpresa);
             this.groupBoxDados.Controls.Add(this.btnCadUnidMedida);
             this.groupBoxDados.Controls.Add(this.btnGerarCodBarras);
+            this.groupBoxDados.Controls.Add(this.btnSearchCategoria);
+            this.groupBoxDados.Controls.Add(this.btnSearchFornecedor);
+            this.groupBoxDados.Controls.Add(this.btnSearchUnidMedida);
+            this.groupBoxDados.Controls.Add(this.btnSearchGrade);
             this.groupBoxDados.Controls.Add(this.btnCadGrade);
             this.groupBoxDados.Controls.Add(this.btnCadFornecedor);
             this.groupBoxDados.Controls.Add(this.btnCadCategoria);
@@ -126,7 +134,7 @@
             this.groupBoxDados.Controls.Add(this.label13);
             this.groupBoxDados.Location = new System.Drawing.Point(12, 97);
             this.groupBoxDados.Name = "groupBoxDados";
-            this.groupBoxDados.Size = new System.Drawing.Size(782, 358);
+            this.groupBoxDados.Size = new System.Drawing.Size(820, 358);
             this.groupBoxDados.TabIndex = 0;
             this.groupBoxDados.TabStop = false;
             this.groupBoxDados.Text = "Informações do Produto";
@@ -158,9 +166,9 @@
             // btnGerarCodBarras
             // 
             this.btnGerarCodBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGerarCodBarras.Location = new System.Drawing.Point(529, 130);
+            this.btnGerarCodBarras.Location = new System.Drawing.Point(540, 130);
             this.btnGerarCodBarras.Name = "btnGerarCodBarras";
-            this.btnGerarCodBarras.Size = new System.Drawing.Size(242, 24);
+            this.btnGerarCodBarras.Size = new System.Drawing.Size(258, 24);
             this.btnGerarCodBarras.TabIndex = 4;
             this.btnGerarCodBarras.Text = "Gerar Código de Barras";
             this.btnGerarCodBarras.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -196,7 +204,7 @@
             // btnCadCategoria
             // 
             this.btnCadCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadCategoria.Location = new System.Drawing.Point(354, 315);
+            this.btnCadCategoria.Location = new System.Drawing.Point(325, 315);
             this.btnCadCategoria.Name = "btnCadCategoria";
             this.btnCadCategoria.Size = new System.Drawing.Size(27, 24);
             this.btnCadCategoria.TabIndex = 11;
@@ -287,9 +295,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(6, 157);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 17);
+            this.label6.Size = new System.Drawing.Size(86, 17);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Descrição *";
+            this.label6.Text = "Descrição*";
             // 
             // txtUnidMedida
             // 
@@ -340,7 +348,7 @@
             this.txtCategoria.ForeColor = System.Drawing.Color.DarkBlue;
             this.txtCategoria.Location = new System.Drawing.Point(9, 315);
             this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(341, 24);
+            this.txtCategoria.Size = new System.Drawing.Size(312, 24);
             this.txtCategoria.TabIndex = 10;
             this.txtCategoria.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtCategoria_MouseClick);
             // 
@@ -361,7 +369,7 @@
             this.txtGrade.ForeColor = System.Drawing.Color.DarkBlue;
             this.txtGrade.Location = new System.Drawing.Point(540, 175);
             this.txtGrade.Name = "txtGrade";
-            this.txtGrade.Size = new System.Drawing.Size(198, 24);
+            this.txtGrade.Size = new System.Drawing.Size(199, 24);
             this.txtGrade.TabIndex = 3;
             this.txtGrade.Click += new System.EventHandler(this.txtGrade_Click);
             // 
@@ -392,7 +400,7 @@
             this.txtEstoqueMinimo.ForeColor = System.Drawing.Color.DarkBlue;
             this.txtEstoqueMinimo.Location = new System.Drawing.Point(540, 267);
             this.txtEstoqueMinimo.Name = "txtEstoqueMinimo";
-            this.txtEstoqueMinimo.Size = new System.Drawing.Size(231, 24);
+            this.txtEstoqueMinimo.Size = new System.Drawing.Size(258, 24);
             this.txtEstoqueMinimo.TabIndex = 9;
             this.txtEstoqueMinimo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -656,21 +664,29 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Valor Custo*";
             // 
-            // btnLblEditar
+            // groupBox1
             // 
-            this.btnLblEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLblEditar.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLblEditar.ForeColor = System.Drawing.Color.Green;
-            this.btnLblEditar.Image = global::SysGestor.View.Properties.Resources.edit_32x32;
-            this.btnLblEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLblEditar.Location = new System.Drawing.Point(576, 615);
-            this.btnLblEditar.Name = "btnLblEditar";
-            this.btnLblEditar.Size = new System.Drawing.Size(96, 39);
-            this.btnLblEditar.TabIndex = 22;
-            this.btnLblEditar.Text = "Editar";
-            this.btnLblEditar.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.toolTipProduto.SetToolTip(this.btnLblEditar, "Editar produto.");
-            this.btnLblEditar.Click += new System.EventHandler(this.btnLblEditar_Click);
+            this.groupBox1.Controls.Add(this.txtObservacao);
+            this.groupBox1.Location = new System.Drawing.Point(301, 461);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(530, 118);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Observação";
+            // 
+            // txtObservacao
+            // 
+            this.txtObservacao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtObservacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtObservacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtObservacao.ForeColor = System.Drawing.Color.DarkBlue;
+            this.txtObservacao.Location = new System.Drawing.Point(13, 22);
+            this.txtObservacao.Multiline = true;
+            this.txtObservacao.Name = "txtObservacao";
+            this.txtObservacao.Size = new System.Drawing.Size(504, 87);
+            this.txtObservacao.TabIndex = 0;
             // 
             // btnLblExcluir
             // 
@@ -688,29 +704,21 @@
             this.toolTipProduto.SetToolTip(this.btnLblExcluir, "Excluir produto.");
             this.btnLblExcluir.Click += new System.EventHandler(this.btnLblExcluir_Click);
             // 
-            // groupBox1
+            // btnLblEditar
             // 
-            this.groupBox1.Controls.Add(this.txtObservacao);
-            this.groupBox1.Location = new System.Drawing.Point(301, 461);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(493, 118);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Observação";
-            // 
-            // txtObservacao
-            // 
-            this.txtObservacao.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtObservacao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtObservacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservacao.ForeColor = System.Drawing.Color.DarkBlue;
-            this.txtObservacao.Location = new System.Drawing.Point(13, 22);
-            this.txtObservacao.Multiline = true;
-            this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Size = new System.Drawing.Size(467, 87);
-            this.txtObservacao.TabIndex = 0;
+            this.btnLblEditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLblEditar.Font = new System.Drawing.Font("Lucida Handwriting", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLblEditar.ForeColor = System.Drawing.Color.Green;
+            this.btnLblEditar.Image = global::SysGestor.View.Properties.Resources.edit_32x32;
+            this.btnLblEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLblEditar.Location = new System.Drawing.Point(576, 615);
+            this.btnLblEditar.Name = "btnLblEditar";
+            this.btnLblEditar.Size = new System.Drawing.Size(96, 39);
+            this.btnLblEditar.TabIndex = 22;
+            this.btnLblEditar.Text = "Editar";
+            this.btnLblEditar.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.toolTipProduto.SetToolTip(this.btnLblEditar, "Editar produto.");
+            this.btnLblEditar.Click += new System.EventHandler(this.btnLblEditar_Click);
             // 
             // btnNovo
             // 
@@ -723,7 +731,7 @@
             this.btnNovo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.Image = global::SysGestor.View.Properties.Resources.new_32x32;
             this.btnNovo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovo.Location = new System.Drawing.Point(401, 48);
+            this.btnNovo.Location = new System.Drawing.Point(433, 48);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(87, 39);
             this.btnNovo.TabIndex = 15;
@@ -743,7 +751,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = global::SysGestor.View.Properties.Resources.cancel_32x32;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(600, 48);
+            this.btnCancelar.Location = new System.Drawing.Point(632, 48);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(111, 39);
             this.btnCancelar.TabIndex = 16;
@@ -763,7 +771,7 @@
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.Image = global::SysGestor.View.Properties.Resources.sair_32x32;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(718, 47);
+            this.btnSair.Location = new System.Drawing.Point(750, 47);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(77, 39);
             this.btnSair.TabIndex = 17;
@@ -783,7 +791,7 @@
             this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGravar.Image = global::SysGestor.View.Properties.Resources.Save_32x32;
             this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGravar.Location = new System.Drawing.Point(495, 48);
+            this.btnGravar.Location = new System.Drawing.Point(527, 48);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(98, 39);
             this.btnGravar.TabIndex = 18;
@@ -794,18 +802,77 @@
             // 
             // pcbCabecalho
             // 
+            this.pcbCabecalho.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pcbCabecalho.Image = global::SysGestor.View.Properties.Resources.img_sistema;
             this.pcbCabecalho.Location = new System.Drawing.Point(-1, 0);
             this.pcbCabecalho.Name = "pcbCabecalho";
-            this.pcbCabecalho.Size = new System.Drawing.Size(809, 92);
+            this.pcbCabecalho.Size = new System.Drawing.Size(847, 95);
+            this.pcbCabecalho.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbCabecalho.TabIndex = 14;
             this.pcbCabecalho.TabStop = false;
+            // 
+            // btnSearchCategoria
+            // 
+            this.btnSearchCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchCategoria.Image = global::SysGestor.View.Properties.Resources.buscar;
+            this.btnSearchCategoria.Location = new System.Drawing.Point(352, 315);
+            this.btnSearchCategoria.Name = "btnSearchCategoria";
+            this.btnSearchCategoria.Size = new System.Drawing.Size(27, 24);
+            this.btnSearchCategoria.TabIndex = 4;
+            this.btnSearchCategoria.Text = "...";
+            this.btnSearchCategoria.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTipProduto.SetToolTip(this.btnSearchCategoria, "Buscar Categoria.");
+            this.btnSearchCategoria.UseVisualStyleBackColor = true;
+            this.btnSearchCategoria.Click += new System.EventHandler(this.btnSearchCategoria_Click);
+            // 
+            // btnSearchFornecedor
+            // 
+            this.btnSearchFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchFornecedor.Image = global::SysGestor.View.Properties.Resources.buscar;
+            this.btnSearchFornecedor.Location = new System.Drawing.Point(771, 315);
+            this.btnSearchFornecedor.Name = "btnSearchFornecedor";
+            this.btnSearchFornecedor.Size = new System.Drawing.Size(27, 24);
+            this.btnSearchFornecedor.TabIndex = 4;
+            this.btnSearchFornecedor.Text = "...";
+            this.btnSearchFornecedor.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTipProduto.SetToolTip(this.btnSearchFornecedor, "Buscar Fornecedor.");
+            this.btnSearchFornecedor.UseVisualStyleBackColor = true;
+            this.btnSearchFornecedor.Click += new System.EventHandler(this.btnCadGrade_Click);
+            // 
+            // btnSearchUnidMedida
+            // 
+            this.btnSearchUnidMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchUnidMedida.Image = global::SysGestor.View.Properties.Resources.buscar;
+            this.btnSearchUnidMedida.Location = new System.Drawing.Point(771, 222);
+            this.btnSearchUnidMedida.Name = "btnSearchUnidMedida";
+            this.btnSearchUnidMedida.Size = new System.Drawing.Size(27, 24);
+            this.btnSearchUnidMedida.TabIndex = 4;
+            this.btnSearchUnidMedida.Text = "...";
+            this.btnSearchUnidMedida.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTipProduto.SetToolTip(this.btnSearchUnidMedida, "Buscar Unidade de Medida");
+            this.btnSearchUnidMedida.UseVisualStyleBackColor = true;
+            this.btnSearchUnidMedida.Click += new System.EventHandler(this.btnCadGrade_Click);
+            // 
+            // btnSearchGrade
+            // 
+            this.btnSearchGrade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchGrade.Image = global::SysGestor.View.Properties.Resources.buscar;
+            this.btnSearchGrade.Location = new System.Drawing.Point(771, 175);
+            this.btnSearchGrade.Name = "btnSearchGrade";
+            this.btnSearchGrade.Size = new System.Drawing.Size(27, 24);
+            this.btnSearchGrade.TabIndex = 4;
+            this.btnSearchGrade.Text = "...";
+            this.btnSearchGrade.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.toolTipProduto.SetToolTip(this.btnSearchGrade, "Buscar Grade.");
+            this.btnSearchGrade.UseVisualStyleBackColor = true;
+            this.btnSearchGrade.Click += new System.EventHandler(this.btnCadGrade_Click);
             // 
             // frmProdutoNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 674);
+            this.ClientSize = new System.Drawing.Size(846, 674);
             this.Controls.Add(this.btnLblExcluir);
             this.Controls.Add(this.btnLblEditar);
             this.Controls.Add(this.btnNovo);
@@ -826,7 +893,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar - Produto";
             this.TopMost = true;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProdutoNew_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmProdutoNew_FormClosing);
             this.Load += new System.EventHandler(this.frmProdutoNew_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmProdutoNew_KeyPress);
             this.groupBoxDados.ResumeLayout(false);
@@ -862,7 +929,6 @@
         private System.Windows.Forms.TextBox txtGrade;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.Button btnCadGrade;
         private System.Windows.Forms.ToolTip toolTipProduto;
         private System.Windows.Forms.Button btnCadFornecedor;
@@ -899,5 +965,10 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblValorPrazo;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnSearchGrade;
+        private System.Windows.Forms.Button btnSearchFornecedor;
+        private System.Windows.Forms.Button btnSearchUnidMedida;
+        private System.Windows.Forms.Button btnSearchCategoria;
+        public System.Windows.Forms.TextBox txtCategoria;
     }
 }

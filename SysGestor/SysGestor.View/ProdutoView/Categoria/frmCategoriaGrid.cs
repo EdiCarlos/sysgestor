@@ -94,12 +94,9 @@ namespace SysGestor.View.ProdutoView.Categoria
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair da lista?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
                 Dispose(true);
                 this.Close();
                 Formularios.FormCategoriaGrid = null;
-            }
         }
 
         private void frmCategoriaGrid_FormClosed(object sender, FormClosedEventArgs e)
@@ -163,7 +160,6 @@ namespace SysGestor.View.ProdutoView.Categoria
 
             Formularios.FormCategoriaNew.Show();
             Formularios.FormCategoriaNew.Focus();
-        }
-     
+        }       
     }
 }

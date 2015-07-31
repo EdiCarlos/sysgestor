@@ -312,12 +312,9 @@ namespace SysGestor.View.ProdutoView
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem certeza que deseja sair do cadastro?", Application.CompanyName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
                 Dispose(true);
                 this.Close();
                 Formularios.FormProdutoEdit = null;
-            }
         }
 
         private void frmProdutoEdit_FormClosed(object sender, FormClosedEventArgs e)

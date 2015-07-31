@@ -148,6 +148,12 @@
     <Compile Include="ProdutoView\Categoria\frmCategoriaNew.Designer.cs">
       <DependentUpon>frmCategoriaNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProdutoView\Categoria\SearchCategoria\frmSearchCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\Categoria\SearchCategoria\frmSearchCategoria.Designer.cs">
+      <DependentUpon>frmSearchCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProdutoView\frmProdutoEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -318,6 +324,9 @@
     <EmbeddedResource Include="ProdutoView\Categoria\frmCategoriaNew.resx">
       <DependentUpon>frmCategoriaNew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\Categoria\SearchCategoria\frmSearchCategoria.resx">
+      <DependentUpon>frmSearchCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProdutoView\frmProdutoEdit.resx">
       <DependentUpon>frmProdutoEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -434,6 +443,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon %281%29.ico" />
+    <None Include="Resources\buscar.png" />
     <None Include="Resources\search26x26.png" />
     <None Include="Resources\receber.png" />
     <None Include="Resources\return.png" />
@@ -447,6 +457,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MenuForm\" />
+    <Folder Include="ProdutoView\Grade\SearchGrade\" />
+    <Folder Include="ProdutoView\Unidade\SearchUnidade\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

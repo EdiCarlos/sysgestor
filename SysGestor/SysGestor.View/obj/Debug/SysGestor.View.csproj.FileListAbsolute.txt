@@ -159,3 +159,4 @@ D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.
 D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.VIEW.csproj.GenerateResource.Cache
 D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.View\obj\Debug\RdlCompile.cache
 D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.View\obj\Debug\RdlCompile.compiled
+D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.ProdutoView.Categoria.SearchCategoria.frmSearchCategoria.resources
