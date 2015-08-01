@@ -214,3 +214,4 @@ H:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.VendaView.
 H:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.VIEW.csproj.GenerateResource.Cache
 H:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\RdlCompile.cache
 H:\github\sysgestor\SysGestor\SysGestor.View\obj\Debug\RdlCompile.compiled
+D:\GITHUB\sysgestor\SysGestor\SysGestor.View\obj\Debug\SysGestor.View.ProdutoView.Categoria.SearchCategoria.frmSearchCategoria.resources

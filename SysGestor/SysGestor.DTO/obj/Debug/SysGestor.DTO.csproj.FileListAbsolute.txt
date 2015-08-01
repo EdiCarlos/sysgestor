@@ -17,3 +17,4 @@ H:\github\sysgestor\SysGestor\SysGestor.DTO\bin\Debug\SysGestor.DTO.pdb
 H:\github\sysgestor\SysGestor\SysGestor.DTO\obj\Debug\SysGestor.DTO.csprojResolveAssemblyReference.cache
 H:\github\sysgestor\SysGestor\SysGestor.DTO\obj\Debug\SysGestor.DTO.dll
 H:\github\sysgestor\SysGestor\SysGestor.DTO\obj\Debug\SysGestor.DTO.pdb
+D:\GITHUB\sysgestor\SysGestor\SysGestor.DTO\obj\Debug\SysGestor.DTO.csprojResolveAssemblyReference.cache
