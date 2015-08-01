@@ -33,3 +33,14 @@ D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.RESOUR
 D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.csprojResolveAssemblyReference.cache
 D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.dll
 D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.pdb
+H:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.BLL.dll
+H:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.BLL.pdb
+H:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DAL.dll
+H:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DTO.dll
+H:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.RESOURCE.dll
+H:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DAL.pdb
+H:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.DTO.pdb
+H:\github\sysgestor\SysGestor\SysGestor.BLL\bin\Debug\SysGestor.RESOURCE.pdb
+H:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.csprojResolveAssemblyReference.cache
+H:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.dll
+H:\github\sysgestor\SysGestor\SysGestor.BLL\obj\Debug\SysGestor.BLL.pdb

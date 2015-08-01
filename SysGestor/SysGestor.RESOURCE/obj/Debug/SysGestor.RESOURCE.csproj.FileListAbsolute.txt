@@ -18,3 +18,10 @@ D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.R
 D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.csproj.GenerateResource.Cache
 D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.dll
 D:\GITHUB\sysgestor\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.pdb
+H:\github\sysgestor\SysGestor\SysGestor.RESOURCE\bin\Debug\SysGestor.RESOURCE.dll
+H:\github\sysgestor\SysGestor\SysGestor.RESOURCE\bin\Debug\SysGestor.RESOURCE.pdb
+H:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.csprojResolveAssemblyReference.cache
+H:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.Resources.Errors.resources
+H:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.csproj.GenerateResource.Cache
+H:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.dll
+H:\github\sysgestor\SysGestor\SysGestor.RESOURCE\obj\Debug\SysGestor.RESOURCE.pdb
