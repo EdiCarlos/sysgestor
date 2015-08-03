@@ -6,6 +6,7 @@ using SysGestor.DTO.Produto;
 using SysGestor.View.FornecedorView;
 using SysGestor.View.ProdutoView.Categoria.SearchCategoria;
 using SysGestor.View.ProdutoView.Grade;
+using SysGestor.View.ProdutoView.Grade.SearchGrade;
 using SysGestor.View.ProdutoView.Unidade;
 using System;
 using System.Collections.Generic;
@@ -194,6 +195,15 @@ namespace SysGestor.View.ProdutoView
         private void txtGrade_Click(object sender, EventArgs e)
         {
             LoadSuggestions();
+        }
+
+        private void btnSearchGrade_Click(object sender, EventArgs e)
+        {
+            if (Formularios.FormSearchGrade == null) Formularios.FormSearchGrade = new frmSearchGrade();
+
+            Formularios.FormSearchGrade.Owner = this;
+            Formularios.FormSearchGrade.Show();
+            Formularios.FormSearchGrade.Focus();
         }
 
         private void txtUnidMedida_Click(object sender, EventArgs e)
@@ -579,5 +589,7 @@ namespace SysGestor.View.ProdutoView
             }
         }
         #endregion
+
+       
     }
 }

@@ -12,6 +12,7 @@ using SysGestor.View.Crediario;
 using SysGestor.View.EmpresaView;
 using SysGestor.View.RelatorioView.Etiqueta;
 using SysGestor.View.ProdutoView.Categoria.SearchCategoria;
+using SysGestor.View.ProdutoView.Grade.SearchGrade;
 
 namespace SysGestor.View
 {
@@ -43,6 +44,7 @@ namespace SysGestor.View
         public static frmGradeNew FormGradeNew { get; set; }
         public static frmGradeEdit FormGradeEdit { get; set; }
         public static frmGradeGrid FormGradeGrid { get; set; }
+        public static frmSearchGrade FormSearchGrade { get; set; }
        
         public static frmMovimentacaoEstoqueNew FormMovimentaEstoque { get; set; }
 

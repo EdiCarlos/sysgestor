@@ -15,7 +15,6 @@ G:\github\sysgestor\SysGestor\SysGestor.Console\obj\Debug\SysGestor.Console.pdb
 D:\GITHUB\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.Console.exe.config
 D:\GITHUB\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.Console.exe
 D:\GITHUB\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.Console.pdb
-D:\GITHUB\sysgestor\SysGestor\SysGestor.Console\bin\Debug\MySql.Data.dll
 D:\GITHUB\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.BLL.dll
 D:\GITHUB\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.DAL.dll
 D:\GITHUB\sysgestor\SysGestor\SysGestor.Console\bin\Debug\SysGestor.DTO.dll

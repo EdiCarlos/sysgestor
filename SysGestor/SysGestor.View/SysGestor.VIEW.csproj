@@ -190,6 +190,12 @@
     <Compile Include="ProdutoView\Grade\frmGradeNew.Designer.cs">
       <DependentUpon>frmGradeNew.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProdutoView\Grade\SearchGrade\frmSearchGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProdutoView\Grade\SearchGrade\frmSearchGrade.Designer.cs">
+      <DependentUpon>frmSearchGrade.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProdutoView\MovimentacaoEstoque\frmMovimentacaoEstoqueNew.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +351,9 @@
     <EmbeddedResource Include="ProdutoView\Grade\frmGradeNew.resx">
       <DependentUpon>frmGradeNew.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProdutoView\Grade\SearchGrade\frmSearchGrade.resx">
+      <DependentUpon>frmSearchGrade.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProdutoView\MovimentacaoEstoque\frmMovimentacaoEstoqueNew.resx">
       <DependentUpon>frmMovimentacaoEstoqueNew.cs</DependentUpon>
     </EmbeddedResource>
@@ -457,7 +466,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MenuForm\" />
-    <Folder Include="ProdutoView\Grade\SearchGrade\" />
     <Folder Include="ProdutoView\Unidade\SearchUnidade\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
